@@ -1,0 +1,238 @@
+ideas = {
+	country = {
+		HSP_industrialization_01 = { # industrialization 1
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.05
+			}
+		}
+		HSP_industrialization_02 = { #  industrialization 2
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				production_speed_buildings_factor = 0.1
+				industrial_capacity_dockyard = 0.05
+				industrial_capacity_factory	= 0.05
+				consumer_goods_factor = 0.05
+			}
+		}
+		HSP_industrialization_03 = { # industrialization 3
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				production_speed_buildings_factor = 0.15
+				industrial_capacity_dockyard = 0.07
+				industrial_capacity_factory	= 0.07
+				production_lack_of_resource_penalty_factor = -0.1
+				consumer_goods_factor = 0.1
+			}
+		}
+		HSP_industrialization_04 = { # industrialization 4
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				production_speed_buildings_factor = 0.15
+				industrial_capacity_dockyard = 0.1
+				industrial_capacity_factory	= 0.1
+				production_lack_of_resource_penalty_factor = -0.2
+				consumer_goods_factor = 0.15
+			}
+		}
+		HSP_foreign_investment_01 = { # forign investment 1
+			picture = generic_economic_increase
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.05
+				production_factory_max_efficiency_factor = 0.05
+				consumer_goods_factor = -0.05
+				local_resources_factor = 0.1
+				min_export = 0.05
+			}
+		}
+		HSP_foreign_investment_02 = { # forign investment 2
+			picture = generic_economic_increase
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.07
+				production_factory_max_efficiency_factor = 0.07
+				consumer_goods_factor = -0.1
+				local_resources_factor = 0.15
+				min_export = 0.1
+			}
+		}
+		HSP_foreign_investment_03 = { # forign investment 3
+			picture = generic_economic_increase
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.1
+				production_factory_max_efficiency_factor = 0.1
+				consumer_goods_factor = -0.15
+				local_resources_factor = 0.2
+				min_export = 0.15
+			}
+		}
+		HSP_mass_production_01 = { # mutually exclusive with optimized production
+			picture = generic_goods_red_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				min_export = -0.15
+				industrial_capacity_dockyard = 0.05
+				industrial_capacity_factory	= 0.05
+			}
+		}
+		HSP_optimized_production_01 = { # mutually exclusive with mass production
+			picture = generic_central_management
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				consumer_goods_factor = -0.20
+				global_building_slots_factor = 0.2
+			}
+		}
+		HSP_national_mining_company_01 = {
+			picture = generic_industrial_concern_2
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				local_resources_factor = 0.1
+			}
+		}
+		HSP_madrid_royal_arsenal_01 = {
+			picture = generic_war_preparation
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				industrial_capacity_factory	= 0.05
+				production_speed_arms_factory_factor = 0.05
+			}
+			
+		}
+		HSP_inefficient_bureaucracy_01 = {
+			picture = generic_democratic_opposition
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				political_power_factor = -0.2
+				industrial_capacity_factory	= -0.1
+				consumer_goods_factor = 0.1
+				stability_factor = -0.1
+			}
+		}
+		HSP_efficient_bureaucracy_01 = {
+			picture = generic_constitutional_guarantees
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				political_power_factor = 0.1
+				consumer_goods_factor = -0.15
+			}
+		}
+		HSP_habsburg_pluralism_01 = {
+			picture = generic_constitutional_guarantees
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				compliance_gain = 0.1
+				defensive_war_stability_factor = -0.2
+				neurtality_drift = 0.05
+				conscription_factor = 0.1
+				non_core_manpower = 0.1
+			}
+		}
+		HSP_protector_of_catholicism_01 = {
+			picture = MEX_church_power_5
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				stability_weekly = 0.01
+				conscription = -0.025
+				resistance_decay_on_our_occupied_states = 0.1
+			}
+		}
+		HSP_reconquista_01 = {
+			picture = SPA_maquis
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				conscription = 0.01
+				justify_war_goal_time = -0.5
+				resistance_decay_on_our_occupied_states = 0.1
+				resistance_damage_to_garrison_on_our_occupied_states = 0.1
+			}
+		}
+	}
+}
