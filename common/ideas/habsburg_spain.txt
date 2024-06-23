@@ -1,5 +1,20 @@
 ideas = {
 	country = {
+		HSP_old_fashioned_army_01 = {
+			picture = generic_army_problems
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = -0.1
+				army_defence_factor = -0.1
+				army_org_factor = -0.1
+			}
+		}
 		HSP_industrialization_01 = { # industrialization 1
 			picture = generic_production_bonus
 			allowed = {
@@ -148,7 +163,7 @@ ideas = {
 			}
 		}
 		HSP_madrid_royal_arsenal_01 = {
-			picture = generic_war_preparation
+			picture = generic_infantry_bonus
 			allowed = {
 				original_tag = SPR
 			}
@@ -158,6 +173,39 @@ ideas = {
 			modifier = {
 				industrial_capacity_factory	= 0.05
 				production_speed_arms_factory_factor = 0.05
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					instant = yes
+					build_cost_ic = -0.1
+					reliability = 0.05
+				}
+			}
+			
+		}
+		HSP_madrid_royal_arsenal_02 = {
+			picture = generic_infantry_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				industrial_capacity_factory	= 0.05
+				production_speed_arms_factory_factor = 0.05
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					instant = yes
+					build_cost_ic = -0.1
+					reliability = 0.05
+				}
+				artillery = {
+					instant = yes
+					build_cost_ic = -0.1
+					reliability = 0.05
+				}
 			}
 			
 		}
@@ -186,11 +234,11 @@ ideas = {
 			}
 			modifier = {
 				political_power_factor = 0.1
-				consumer_goods_factor = -0.15
+				consumer_goods_factor = -0.1
 			}
 		}
 		HSP_habsburg_pluralism_01 = {
-			picture = generic_constitutional_guarantees
+			picture = generic_monarchist_uprising
 			allowed = {
 				original_tag = SPR
 			}
@@ -199,10 +247,23 @@ ideas = {
 			}
 			modifier = {
 				compliance_gain = 0.1
-				defensive_war_stability_factor = -0.2
+				defensive_war_stability_factor = 0.2
 				neurtality_drift = 0.05
 				conscription_factor = 0.1
 				non_core_manpower = 0.1
+			}
+		}
+		HSP_royal_university_of_madrid_01 = {
+			picture = generic_research_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				research_speed_factor = 0.05
+
 			}
 		}
 		HSP_protector_of_catholicism_01 = {

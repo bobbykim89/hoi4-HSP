@@ -1,0 +1,5 @@
+# Opinion modifiers
+
+opinion_modifiers = {
+	HSP_panhispanic_unity = { value = 50 }
+}

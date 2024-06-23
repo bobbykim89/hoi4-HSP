@@ -1,3 +1,6 @@
+add_namespace = lar_spain
+
+
 country_event = {
 	id = lar_spain.1
 	title = spain.9.t
@@ -214,3 +217,4 @@ country_event = {
 		}
 	}
 }
+

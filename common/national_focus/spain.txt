@@ -13420,7 +13420,7 @@ focus_tree = {
 		icon = GFX_focus_generic_monarchy_2
 		cost = 5
 		mutually_exclusive = { focus = SPA_a_great_spain focus = SPR_the_popular_front}
-		x = 70
+		x = 72
 		y = 0
 		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
 		completion_reward = {
@@ -13475,6 +13475,13 @@ focus_tree = {
 				popularity = 0.1
 			}
 			remove_ideas = SPR_military_disloyalty
+			swap_ideas = {
+				remove_idea = SPR_military_disloyalty
+				add_idea = HSP_old_fashioned_army_01
+			}
+			hidden_effect = {
+				country_lock_all_division_template = no
+			}
 		}
 	}
 
@@ -13549,6 +13556,8 @@ focus_tree = {
 				remove_idea = SPA_carlism_1
 				add_idea = HSP_inefficient_bureaucracy_01
 			}
+			drop_cosmetic_tag = yes
+			set_cosmetic_tag = HSP_kingdom_of_spain
 		}
 	}
 
@@ -13561,7 +13570,7 @@ focus_tree = {
 		prerequisite = { focus = HSP_new_monarchy }
 		
 		icon = GFX_goal_generic_construct_civ_factory
-		x = -2
+		x = -4
 		y = 1
 		relative_position_id = HSP_new_monarchy
 		cost = 10
@@ -14205,6 +14214,46 @@ focus_tree = {
 		}
 	}
 	focus = {
+		id = HSP_expand_mineral_extraction
+		icon = GFX_goal_generic_construction2
+		cost = 10
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = HSP_national_mining_company
+		}
+		relative_position_id = HSP_national_mining_company
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			41 = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_resource = {
+					type = aluminium
+					amount = 15
+					state = THIS
+				}
+			}
+			176 = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_resource = {
+					type = chromium
+					amount = 15
+					state = THIS
+				}
+			}
+			add_tech_bonus = {
+				name = HSP_expand_mineral_extraction
+				bonus = 1
+				uses = 2
+				category = excavation_tech
+			}
+		}
+	}
+	focus = {
 		id = HSP_invest_on_military_industry
 		icon = GFX_goal_generic_construct_mil_factory
 		cost = 5
@@ -14401,6 +14450,421 @@ focus_tree = {
 				}
 			}
 			add_ideas = HSP_madrid_royal_arsenal_01
+		}
+	}
+	focus = {
+		id = HSP_expand_royal_arsenal
+		icon = GFX_focus_generic_reorient_production
+		cost = 10
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = HSP_madrid_royal_arsenal
+		}
+		relative_position_id = HSP_madrid_royal_arsenal
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		available_if_capitulated = yes
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_expand_royal_arsenal_1mil }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_expand_royal_arsenal_1mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_ideas = HSP_madrid_royal_arsenal_01
+			swap_ideas = {
+				remove_idea = HSP_madrid_royal_arsenal_01
+				add_idea = HSP_madrid_royal_arsenal_02
+			}
+		}
+	}
+	focus = {
+		id = HSP_secret_weapon
+		icon = GFX_goal_generic_secret_weapon
+		cost = 10
+		x = -3
+		y = 1
+		relative_position_id = HSP_expand_royal_arsenal
+		prerequisite = {
+			focus = HSP_expand_royal_arsenal
+		}
+		prerequisite = {
+			focus = HSP_expand_mineral_extraction
+		}
+		prerequisite = {
+			focus = HSP_mass_production focus = HSP_optimized_production
+		}
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_secret_weapon
+				bonus = 1.0
+				uses = 2
+				category = rocketry
+			}
+			add_tech_bonus = {
+				name = HSP_secret_weapon
+				bonus = 1.0
+				uses = 2
+				category = nuclear
+			}
+		}
+	}
+	focus = {
+		id = HSP_reorganize_administration
+		icon = GFX_focus_generic_improve_the_administration
+		cost = 10
+		x = 3
+		y = 1
+		relative_position_id = HSP_new_monarchy
+		prerequisite = {
+			focus = HSP_new_monarchy
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_political_power = 100
+			swap_ideas = {
+				remove_idea = HSP_inefficient_bureaucracy_01
+				add_idea = HSP_efficient_bureaucracy_01
+			}
+		}
+	}
+	focus = {
+		id = HSP_a_unified_government
+		icon = GFX_goal_generic_improve_relations
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_reorganize_administration
+		prerequisite = {
+			focus = HSP_reorganize_administration
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 165
+						state = 171
+						state = 792
+					}
+				}
+				remove_dynamic_modifier = { modifier = autonomous_state }
+			}
+			every_state = {
+				limit	= {
+					is_core_of = ROOT
+					is_in_home_area = yes
+					is_controlled_by = ROOT
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = HSP_restore_royal_authority
+		icon = GFX_focus_generic_monarchy_2
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_a_unified_government
+		prerequisite = {
+			focus = HSP_a_unified_government
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_ideas = HSP_habsburg_pluralism_01
+		}
+	}
+	focus = {
+		id = HSP_integration_of_public_opinion
+		icon = GFX_goal_generic_propaganda
+		cost = 10
+		x = 0
+		y = 2
+		relative_position_id = HSP_reorganize_administration
+		prerequisite = {
+			focus = HSP_reorganize_administration
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_political_power = 100
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.1
+			}
+		}
+	}
+	focus = {
+		id = HSP_royal_university_of_madrid
+		icon = GFX_goal_tfv_generic_tech_sharing
+		cost = 10
+		x = 1
+		y = 2
+		relative_position_id = HSP_restore_royal_authority
+		prerequisite = {
+			focus = HSP_restore_royal_authority
+		}
+		prerequisite = {
+			focus = HSP_integration_of_public_opinion
+		}
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			add_research_slot = 1
+			add_ideas = HSP_royal_university_of_madrid_01
+		}
+	}
+	focus = {
+		id = HSP_restore_iberian_commonwealth
+		icon = GFX_focus_generic_befriend_portugal
+		cost = 5
+		x = 2
+		y = 1
+		available = {
+			any_other_country = {
+				original_tag = POR
+				exists = yes
+				is_subject = no
+			}
+			has_army_manpower = {
+				size > 200000
+			}
+		}
+		relative_position_id = HSP_reorganize_administration
+		prerequisite = {
+			focus = HSP_reorganize_administration
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
+		completion_reward = {
+			custom_effect_tooltip = HSP_restore_iberian_commonwealth_tt
+			POR = {
+				country_event = {
+					id = HSP_spain_events.05
+					hours = 1
+				}
+			}}
+	}
+	focus = {
+		id = HSP_subjugate_brazil
+		icon = GFX_focus_por_recover_brazil
+		cost = 10
+		x = 0
+		y = 2
+		available = {
+			any_other_country = {
+				original_tag = BRA
+				exists = yes
+				is_subject = no
+			}
+			has_army_manpower = {
+				size > 500000
+			}
+		}
+		relative_position_id = HSP_restore_iberian_commonwealth
+		prerequisite = {
+			focus = HSP_restore_iberian_commonwealth
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			BRA = {
+				country_event = {
+					id = HSP_spain_events.8
+				}
+			}
+		}
+	}
+	focus = {
+		id = HSP_looking_outside
+		icon = GFX_goal_generic_territory_or_war
+		cost = 5
+		x = 0
+		y = 2
+		relative_position_id = HSP_royal_university_of_madrid
+		prerequisite = {
+			focus = HSP_royal_university_of_madrid
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_war_support = 0.1
+			set_rule = {
+				can_create_factions = yes
+			}
+
+		}
+	}
+	focus = {
+		id = HSP_hispanic_unity
+		icon = GFX_goal_generic_alliance
+		cost = 5
+		x = -3
+		y = 1
+		relative_position_id = HSP_looking_outside
+		prerequisite = {
+			focus = HSP_looking_outside
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL }
+		available = {
+				has_government = neutrality
+				is_subject = no
+		}
+
+		completion_reward = {
+			if = {
+				limit = { 
+					is_in_faction = no
+				}
+				create_faction = HSP_pan_hispanic_federation_faction
+			}
+			every_other_country = {
+				limit = {
+					OR = {
+						original_tag = MEX
+						capital_scope = {
+							is_on_continent = south_america
+						}
+					}
+					NOT = {
+						has_war_with = ROOT
+						original_tag = BRA
+					}
+				}
+				country_event = {
+					id = HSP_spain_events.11
+					hours = 1
+				}
+				event_option_tooltip = HSP_spain_events.11.a
+			}
+		}
+	}
+	focus = {
+		id = HSP_purchase_latin_american_territory
+		icon = GFX_focus_generic_british_trade
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = HSP_hispanic_unity
+		prerequisite = {
+			focus = HSP_hispanic_unity
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		available = {
+				is_subject = no
+				any_other_country = {
+					original_tag = ENG
+					exists = yes
+					is_subject = no
+				}
+		}
+		bypass = {
+			OR = {
+				any_other_country = {
+					original_tag = ENG
+					exists = no
+				}
+				has_war_with = ENG
+			}
+		}
+		completion_reward = {
+			every_other_country = {
+				limit = {
+					original_tag = ENG
+					NOT = {
+						has_war_with = ROOT
+					}
+				}
+				country_event = {
+					id = HSP_spain_events.15
+					hours = 1
+				}
+			}
+		}
+	}
+	focus = {
+		id = HSP_latin_american_dominance
+		icon = GFX_goal_generic_political_pressure
+		cost = 5
+		x = 1
+		y = 2
+		relative_position_id = HSP_hispanic_unity
+		prerequisite = {
+			focus = HSP_hispanic_unity
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = { }
+	}
+	focus = {
+		id = HSP_purchase_dutch_territory
+		icon = GFX_focus_hol_oranje_boven
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = HSP_purchase_latin_american_territory
+		prerequisite = {
+			focus = HSP_purchase_latin_american_territory
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		available = {
+				is_subject = no
+				any_other_country = {
+					original_tag = HOL
+					exists = yes
+					is_subject = no
+				}
+		}
+		bypass = {
+			OR = {
+				any_other_country = {
+					original_tag = HOL
+					exists = no
+				}
+				has_war_with = HOL
+			}
+		}
+		completion_reward = {
+			
+		}
+	}
+	focus = {
+		id = HSP_establish_viceroyalty
+		icon = GFX_focus_ARG_align_with_the_monroe_doctrine
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = HSP_purchase_dutch_territory
+		prerequisite = {
+			focus = HSP_purchase_dutch_territory
+		}
+		prerequisite = {
+			focus = HSP_latin_american_dominance
+		}
+		completion_reward = {
+
 		}
 	}
 }

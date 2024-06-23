@@ -1,0 +1,532 @@
+add_namespace = HSP_spain_events
+
+# spain requests unification
+country_event = {
+	id = HSP_spain_events.5
+	title = HSP_spain_events.5.t
+	desc = HSP_spain_events.5.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = yes
+	# portugal accepts proposal
+	option = {
+		name =  HSP_spain_events.5.a
+		ai_chance = {
+			base = 30
+			modifier = {
+				add = 100
+				OR = {
+					has_stability < 50
+					has_war = yes
+				}
+			}
+			modifier = {
+				add = -30
+				has_war_with = FROM
+			}
+			modifier = {
+				add = -30
+				OR = {
+					has_government = fascism
+					has_government = communism
+				}
+			}
+			modifier = {
+				add = 100
+				OR = {
+					has_opinion = {
+						target = ROOT
+						value > 80
+					}
+					is_in_faction_with = SPR
+				}
+			}
+		}
+		FROM = {
+			country_event = {
+				id = HSP_spain_events.6
+				hours = 1
+			}
+		}
+		effect_tooltip = {
+			FROM = {
+				annex_country = { 
+					target = PREV 
+					transfer_troops = yes 
+				}
+			}
+		}
+	}
+	# Reject proposal completely
+	option = {
+		name =  HSP_spain_events.5.b
+		ai_chance = {
+			base = 10
+			modifier = {
+				add = -10
+				AND = {
+					is_in_faction = yes
+					NOT = { is_in_faction_with = ROOT }
+				}
+			}
+		}
+		FROM = {
+			country_event = {
+				id = HSP_spain_events.7
+				hours = 1
+			}
+		}
+	}
+}
+
+# portugal accepts unification
+country_event = {
+	id = HSP_spain_events.6
+	title = HSP_spain_events.6.t
+	desc = HSP_spain_events.6.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = yes
+	# great!
+	option = {
+		name =  HSP_spain_events.6.a
+		ai_chance = {
+			base = 10
+		}
+		IF = {
+			limit = {
+				FROM = {
+					has_war = yes
+				}
+			}
+			every_other_country = {
+				limit = {
+					has_war_with = FROM
+				}
+				declare_war_on = {
+					target = ROOT
+					type = puppet_wargoal_focus
+				}
+			}
+		}
+		FROM = {
+			every_owned_state = {
+				limit = {
+					is_core_of = POR
+				}
+				add_core_of = ROOT
+			}
+		}
+		annex_country = { 
+			target = FROM
+			transfer_troops = yes
+		}
+		drop_cosmetic_tag = yes
+		set_cosmetic_tag = SPR_POR_commonwealth
+		#hidden_effect = {
+		#	news_event = { id = JUNO_brazil_news.3 hours = 1 }
+		#}
+	}		
+}
+
+# Portugal rejects unification
+country_event = {
+	id = HSP_spain_events.7
+	title = HSP_spain_events.7.t
+	desc = HSP_spain_events.7.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = yes
+	# Unfortunate
+	option = {
+		name =  HSP_spain_events.7.a
+		ai_chance = {
+			base = 10
+		}
+		add_opinion_modifier = {
+			target = FROM
+			modifier = large_decrease
+		}
+	}		
+}
+
+# Subjugate brazil
+country_event = {
+	id = HSP_spain_events.8
+	title = HSP_spain_events.8.t
+	desc = HSP_spain_events.8.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { # accept
+		name = HSP_spain_events.8.a
+		ai_chance = {
+			base = 30
+			modifier = {
+				add = -25
+				SPR = { has_army_size = { size < 40 } }
+			}
+			modifier = {
+				add = 100
+				SPR = { has_army_size = { size > 39 } }
+			}
+			modifier = {
+				add = 20
+				is_in_faction_with = SPR
+			}
+		}
+		SPR = {
+			country_event = { hours = 2 id = HSP_spain_events.9 }
+		}
+	}
+	option = { # refuse
+		name = HSP_spain_events.8.b
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0.5
+				SPR = { has_army_size = { size > 39 } }
+			}
+			modifier = {
+				factor = 2
+				SPR = { has_army_size = { size < 30 } }
+			}
+			modifier = {
+				factor = 2
+				is_in_faction = yes
+				NOT = {
+					is_in_faction_with = SPR
+				}
+			}
+			modifier = {
+				any_other_country = {
+					has_guaranteed = BRA
+				}
+				factor = 5
+			}
+		}
+		SPR = {
+			country_event = { hours = 2 id = HSP_spain_events.10 }
+		}
+	}
+}
+
+# brazil subjugated
+country_event = {
+	id = HSP_spain_events.9
+	title = HSP_spain_events.9.t
+	desc = HSP_spain_events.9.desc
+	picture = GFX_report_event_military_planning
+	
+	# trigger setting
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { # accept
+		name = HSP_spain_events.9.a
+		random_country = {
+			limit = {
+				original_tag = BRA
+			}
+			SPR = {
+				set_autonomy = {
+					target = PREV
+					autonomy_state = autonomy_puppet
+				}
+				add_political_power = -50
+			}
+		}
+	}
+}
+
+# brazil refuses
+country_event = {
+	id = HSP_spain_events.10
+	title = HSP_spain_events.10.t
+	desc = HSP_spain_events.10.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = yes
+	# Unfortunate
+	option = {
+		name =  HSP_spain_events.10.a
+		create_wargoal = {
+			target = BRA
+			type = puppet_wargoal_focus
+		}
+	}		
+}
+
+# spain purposes hispanic unification
+country_event = {
+	id = HSP_spain_events.11
+	title = HSP_spain_events.11.t
+	desc = HSP_spain_events.11.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	option = {
+		name = HSP_spain_events.11.a
+		ai_chance = {
+			base = 100
+		}
+		add_opinion_modifier = {
+			target = FROM
+			modifier = HSP_panhispanic_unity
+		}
+	}
+}
+
+# spain demands submission
+country_event = {
+	id = HSP_spain_events.12
+	title = HSP_spain_events.12.t
+	desc = HSP_spain_events.12.desc
+	picture = GFX_report_event_finnish_letter
+
+	is_triggered_only = yes
+
+	# accept
+	option = {
+		name = HSP_spain_events.12.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 30
+				FROM = {
+					is_in_faction_with = FROM
+				}
+			}
+			modifier = {
+				add = 20
+				has_opinion = {
+					target = FROM
+					value > 60
+				}
+			}
+		}
+		add_political_power = 100
+		add_stability = 0.1
+		effect_tooltip = {
+			FROM = {
+				puppet = ROOT
+				remove_wargoal = {
+					target = ROOT
+					type = all
+				}
+			}
+		}
+		hidden_effect = {
+			FROM = {
+				country_event = HSP_spain_events.13
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = HSP_spain_events.12.b
+		ai_chance = {
+			base = 20
+			modifier = {
+				add = 80
+				is_in_faction = yes
+				NOT = {
+					is_in_faction_with = SPR
+				}
+				
+			}
+			modifier = {
+				add = 50
+				any_other_country = {
+					NOT = {
+						original_tag = SPR
+					}
+					has_guaranteed = ROOT
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value < 50
+				}
+			}
+		}
+		add_stability = -0.1
+		add_political_power = -150
+		hidden_effect = {
+			country_event = HSP_spain_events.14
+		}
+	}
+}
+
+# ally submits to SPR
+country_event = {
+	id = HSP_spain_events.13
+	title = HSP_spain_events.13.t
+	desc = HSP_spain_events.13.desc
+	picture = GFX_report_event_finnish_letter
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_events.13.a
+		SPR_join_wars_of_from = yes
+		
+		puppet = FROM
+		remove_wargoal = {
+			target = FROM
+			type = all
+		}
+	}
+}
+
+# ally refuses to become puppet
+country_event = {
+	id = HSP_spain_events.14
+	title = HSP_spain_events.14.t
+	desc = HSP_spain_events.14.desc
+	picture = GFX_report_event_finnish_letter
+
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_events.14.a
+		ai_chance = {
+			base = 10
+		}
+		custom_effect_tooltip = HSP_spain_events.14.a_cooldown_tt
+	}
+	option = {
+		name = HSP_spain_events.14.b
+		ai_chance = {
+			base = 0
+		}
+		remove_from_faction = FROM
+	}
+}
+
+# spain purposes purchase of british latin american territories
+country_event = {
+	id = HSP_spain_events.15
+	title = HSP_spain_events.15.t
+	desc = HSP_spain_events.15.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	# accept
+	option = {
+		name = HSP_spain_events.15.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 100
+				OR = {
+					has_opinion = {
+						target = FROM
+						value > 60
+					}
+					is_in_faction_with = SPR
+				}
+			}
+			modifier = {
+				add = -25
+				has_opinion = {
+					target = FROM
+					value < 50
+				}
+			}
+			modifier = {
+				add = -50
+				has_war_with = FROM
+			}
+		}
+		add_stability = -0.05
+		effect_tooltip = {
+			FROM = {
+				transfer_state = 311
+				transfer_state = 690
+				transfer_state = 693
+				transfer_state = 689
+				transfer_state = 691
+				transfer_state = 687
+			}
+		}
+		hidden_effect = {
+			FROM = {
+				country_event = HSP_spain_events.16
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = HSP_spain_events.15.b
+		ai_chance = {
+			base = 25
+			modifier = {
+				add = -100
+				has_opinion = {
+					target = FROM
+					value > 60
+				}
+				
+			}
+			modifier = {
+				add = 25
+				has_opinion = {
+					target = FROM
+					value < 50
+				}
+			}
+			modifier = {
+				add = 100
+				has_war_with = FROM
+			}
+		}
+		hidden_effect = {
+			FROM = {
+				country_event = HSP_spain_events.17
+			}
+		}
+	}
+}
+
+# britain accepts to sell latin american territory
+country_event = {
+	id = HSP_spain_events.16
+	title = HSP_spain_events.16.t
+	desc = HSP_spain_events.16.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = HSP_spain_events.16.a
+		
+		transfer_state = 311
+		transfer_state = 690
+		transfer_state = 693
+		transfer_state = 689
+		transfer_state = 691
+		transfer_state = 687
+	}
+}
+
+# britain refuses
+country_event = {
+	id = HSP_spain_events.17
+	title = HSP_spain_events.17.t
+	desc = HSP_spain_events.17.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = HSP_spain_events.17.a
+		add_opinion_modifier = {
+			target = FROM
+			modifier = large_decrease
+		}
+	}
+}
