@@ -75,14 +75,17 @@ HSP_pan_hispanic_federation_cat = {
 			original_tag = SPR
 		}
 		visible = {
-			has_completed_focus = HSP_hispanic_unity
+			has_completed_focus = HSP_latin_american_dominance
 			country_exists = FROM
-			NOT = {
-				FROM = { is_subject_of = ROOT}
+			FROM = {
+				is_in_faction_with = ROOT
+				NOT = {
+					FROM = { is_subject_of = ROOT}
+				}
 			}
 		}
 		available = {
-			has_completed_focus = HSP_hispanic_unity
+			has_completed_focus = HSP_latin_american_dominance
 			FROM = {
 				is_in_faction_with = ROOT
 				has_opinion = {
@@ -129,14 +132,802 @@ HSP_pan_hispanic_federation_cat = {
 		}
 		cost = 20
 		fire_only_once = no
-		days_remove = 5
-		complete_effect = {
+		days_remove = 10
+		remove_effect = {
 			FROM = {
 				country_event = {
 					id = HSP_spain_events.12 hours = 4
 				}
 			}
 			custom_effect_tooltip = HSP_demand_submission_tt
+		}
+	}
+}
+
+HSP_restore_viceroyalty_cat = {
+	# restore nueva espana
+	HSP_restore_viceroyalty_of_nueva_espana = {
+		icon = GFX_decision_eng_trade_unions_demand
+		
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_reestablish_viceroyalty
+		}
+		available = {
+			has_completed_focus = HSP_reestablish_viceroyalty
+			MEX = {
+				OR = {
+					is_subject_of = SPR
+					AND = {
+						exists = no
+						any_state = {
+							is_core_of = MEX
+							is_owned_by = ROOT
+						}
+					}
+				}
+			}
+			GUA = {
+				OR = {
+					is_subject_of = SPR
+					AND = {
+						exists = no
+						any_state = {
+							is_core_of = GUA
+							is_owned_by = ROOT
+						}
+					}
+				}
+			}
+			ELS = {
+				OR = {
+					is_subject_of = SPR
+					AND = {
+						exists = no
+						any_state = {
+							is_core_of = ELS
+							is_owned_by = ROOT
+						}
+					}
+				}
+			}
+			HON = {
+				OR = {
+					is_subject_of = SPR
+					AND = {
+						exists = no
+						any_state = {
+							is_core_of = HON
+							is_owned_by = ROOT
+						}
+					}
+				}
+			}
+			NIC = {
+				OR = {
+					is_subject_of = SPR
+					AND = {
+						exists = no
+						any_state = {
+							is_core_of = NIC
+							is_owned_by = ROOT
+						}
+					}
+				}
+			}
+			COS = {
+				OR = {
+					is_subject_of = SPR
+					AND = {
+						exists = no
+						any_state = {
+							is_core_of = COS
+							is_owned_by = ROOT
+						}
+					}
+				}
+			}
+			PAN = {
+				OR = {
+					is_subject_of = SPR
+					AND = {
+						exists = no
+						any_state = {
+							is_core_of = PAN
+							is_owned_by = ROOT
+						}
+					}
+				}
+			}
+			CUB = {
+				OR = {
+					is_subject_of = SPR
+					AND = {
+						exists = no
+						any_state = {
+							is_core_of = CUB
+							is_owned_by = ROOT
+						}
+					}
+				}
+			}
+			HAI = {
+				OR = {
+					is_subject_of = SPR
+					AND = {
+						exists = no
+						any_state = {
+							is_core_of = HAI
+							is_owned_by = ROOT
+						}
+					}
+				}
+			}
+			DOM = {
+				OR = {
+					is_subject_of = SPR
+					AND = {
+						exists = no
+						any_state = {
+							is_core_of = DOM
+							is_owned_by = ROOT
+						}
+					}
+				}
+			}
+		}
+		cost = 100
+		days_remove = 30
+		fire_only_once = yes
+		remove_effect = {
+			if = {
+				limit = {
+					MEX = {
+						exists = yes
+						is_subject_of = SPR
+					}
+				}
+				MEX = {
+					every_unit_leader = {
+						set_nationality = SPR
+					}
+				}
+				annex_country = {
+					target = MEX
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					GUA = {
+						exists = yes
+						is_subject_of = SPR
+					}
+				}
+				GUA = {
+					every_unit_leader = {
+						set_nationality = SPR
+					}
+				}
+				annex_country = {
+					target = GUA
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					ELS = {
+						exists = yes
+						is_subject_of = SPR
+					}
+				}
+				ELS = {
+					every_unit_leader = {
+						set_nationality = SPR
+					}
+				}
+				annex_country = {
+					target = ELS
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					HON = {
+						exists = yes
+						is_subject_of = SPR
+					}
+				}
+				HON = {
+					every_unit_leader = {
+						set_nationality = SPR
+					}
+				}
+				annex_country = {
+					target = HON
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					NIC = {
+						exists = yes
+						is_subject_of = SPR
+					}
+				}
+				NIC = {
+					every_unit_leader = {
+						set_nationality = SPR
+					}
+				}
+				annex_country = {
+					target = NIC
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					COS = {
+						exists = yes
+						is_subject_of = SPR
+					}
+				}
+				COS = {
+					every_unit_leader = {
+						set_nationality = SPR
+					}
+				}
+				annex_country = {
+					target = COS
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					PAN = {
+						exists = yes
+						is_subject_of = SPR
+					}
+				}
+				PAN = {
+					every_unit_leader = {
+						set_nationality = SPR
+					}
+				}
+				annex_country = {
+					target = PAN
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					CUB = {
+						exists = yes
+						is_subject_of = SPR
+					}
+				}
+				CUB = {
+					every_unit_leader = {
+						set_nationality = SPR
+					}
+				}
+				annex_country = {
+					target = CUB
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					HAI = {
+						exists = yes
+						is_subject_of = SPR
+					}
+				}
+				HAI = {
+					every_unit_leader = {
+						set_nationality = SPR
+					}
+				}
+				annex_country = {
+					target = HAI
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					DOM = {
+						exists = yes
+						is_subject_of = SPR
+					}
+				}
+				DOM = {
+					every_unit_leader = {
+						set_nationality = SPR
+					}
+				}
+				annex_country = {
+					target = DOM
+					transfer_troops = yes
+				}
+			}
+			# add core of countries in nueva espana region
+			every_state = {
+				limit = {
+					is_core_of = MEX
+				}
+				add_core_of = SPR
+			}
+			every_state = {
+				limit = {
+					is_core_of = GUA
+				}
+				add_core_of = SPR
+			}
+			every_state = {
+				limit = {
+					is_core_of = ELS
+				}
+				add_core_of = SPR
+			}
+			every_state = {
+				limit = {
+					is_core_of = HON
+				}
+				add_core_of = SPR
+			}
+			every_state = {
+				limit = {
+					is_core_of = NIC
+				}
+				add_core_of = SPR
+			}
+			every_state = {
+				limit = {
+					is_core_of = COS
+				}
+				add_core_of = SPR
+			}
+			every_state = {
+				limit = {
+					is_core_of = PAN
+				}
+				add_core_of = SPR
+			}
+			every_state = {
+				limit = {
+					is_core_of = CUB
+				}
+				add_core_of = SPR
+			}
+			every_state = {
+				limit = {
+					is_core_of = HAI
+				}
+				add_core_of = SPR
+			}
+			every_state = {
+				limit = {
+					is_core_of = DOM
+				}
+				add_core_of = SPR
+			}
+			# land purchased from UK
+			311 = { add_core_of = ROOT }
+			690	= { add_core_of = ROOT }
+			693 = { add_core_of = ROOT }
+			689 = { add_core_of = ROOT }
+		}
+	}
+	# restore nueva granada
+	HSP_restore_viceroyalty_of_nueva_granada = {
+		icon = GFX_decision_eng_trade_unions_demand
+		
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_reestablish_viceroyalty
+		}
+		available = {
+			has_completed_focus = HSP_reestablish_viceroyalty
+			VEN = {
+				OR = {
+					is_subject_of = SPR
+					AND = {
+						exists = no
+						any_state = {
+							is_core_of = VEN
+							is_owned_by = ROOT
+						}
+					}
+				}
+			}
+			COL = {
+				OR = {
+					is_subject_of = SPR
+					AND = {
+						exists = no
+						any_state = {
+							is_core_of = COL
+							is_owned_by = ROOT
+						}
+					}
+				}
+			}
+			ECU = {
+				OR = {
+					is_subject_of = SPR
+					AND = {
+						exists = no
+						any_state = {
+							is_core_of = ECU
+							is_owned_by = ROOT
+						}
+					}
+				}
+			}
+		}
+		cost = 100
+		days_remove = 30
+		fire_only_once = yes
+		remove_effect = {
+			if = {
+				limit = {
+					VEN = {
+						exists = yes
+						is_subject_of = SPR
+					}
+				}
+				VEN = {
+					every_unit_leader = {
+						set_nationality = SPR
+					}
+				}
+				annex_country = {
+					target = VEN
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					COL = {
+						exists = yes
+						is_subject_of = SPR
+					}
+				}
+				COL = {
+					every_unit_leader = {
+						set_nationality = SPR
+					}
+				}
+				annex_country = {
+					target = COL
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					ECU = {
+						exists = yes
+						is_subject_of = SPR
+					}
+				}
+				ECU = {
+					every_unit_leader = {
+						set_nationality = SPR
+					}
+				}
+				annex_country = {
+					target = ECU
+					transfer_troops = yes
+				}
+			}
+			# add core of countries in nueva granada region
+			every_state = {
+				limit = {
+					is_core_of = COL
+				}
+				add_core_of = SPR
+			}
+			every_state = {
+				limit = {
+					is_core_of = VEN
+				}
+				add_core_of = SPR
+			}
+			every_state = {
+				limit = {
+					is_core_of = ECU
+				}
+				add_core_of = SPR
+			}
+			# purchasable states
+			695 = { add_core_of = ROOT }
+			691 = { add_core_of = ROOT }
+			687 = { add_core_of = ROOT }
+			309 = { add_core_of = ROOT }
+			310 = { add_core_of = ROOT }
+			# other states
+			692 = { add_core_of = ROOT }
+			694 = { add_core_of = ROOT }
+			308 = { add_core_of = ROOT }
+		}
+	}
+	# restore viceroyalty of peru
+	HSP_restore_viceroyalty_of_peru = {
+		icon = GFX_decision_eng_trade_unions_demand
+		
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_reestablish_viceroyalty
+		}
+		available = {
+			has_completed_focus = HSP_reestablish_viceroyalty
+			PRU = {
+				OR = {
+					is_subject_of = SPR
+					AND = {
+						exists = no
+						any_state = {
+							is_core_of = PRU
+							is_owned_by = ROOT
+						}
+					}
+				}
+			}
+		}
+		cost = 50
+		days_remove = 15
+		fire_only_once = yes
+		remove_effect = {
+			if = {
+				limit = {
+					PRU = {
+						exists = yes
+						is_subject_of = SPR
+					}
+				}
+				PRU = {
+					every_unit_leader = {
+						set_nationality = SPR
+					}
+				}
+				annex_country = {
+					target = PRU
+					transfer_troops = yes
+				}
+			}
+			# add core of countries in peru region
+			every_state = {
+				limit = {
+					is_core_of = PRU
+				}
+				add_core_of = SPR
+			}
+		}
+	}
+	# restore viceroyalty of rio de la plata
+	HSP_restore_viceroyalty_of_rio_de_la_plata = {
+		icon = GFX_decision_eng_trade_unions_demand
+		
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_reestablish_viceroyalty
+		}
+		available = {
+			has_completed_focus = HSP_reestablish_viceroyalty
+			ARG = {
+				OR = {
+					is_subject_of = SPR
+					AND = {
+						exists = no
+						any_state = {
+							is_core_of = ARG
+							is_owned_by = ROOT
+						}
+					}
+				}
+			}
+			URG = {
+				OR = {
+					is_subject_of = SPR
+					AND = {
+						exists = no
+						any_state = {
+							is_core_of = URG
+							is_owned_by = ROOT
+						}
+					}
+				}
+			}
+			PAR = {
+				OR = {
+					is_subject_of = SPR
+					AND = {
+						exists = no
+						any_state = {
+							is_core_of = PAR
+							is_owned_by = ROOT
+						}
+					}
+				}
+			}
+			BOL = {
+				OR = {
+					is_subject_of = SPR
+					AND = {
+						exists = no
+						any_state = {
+							is_core_of = BOL
+							is_owned_by = ROOT
+						}
+					}
+				}
+			}
+			CHL = {
+				OR = {
+					is_subject_of = SPR
+					AND = {
+						exists = no
+						any_state = {
+							is_core_of = CHL
+							is_owned_by = ROOT
+						}
+					}
+				}
+			}
+		}
+		cost = 100
+		days_remove = 30
+		fire_only_once = yes
+		remove_effect = {
+			if = {
+				limit = {
+					ARG = {
+						exists = yes
+						is_subject_of = SPR
+					}
+				}
+				ARG = {
+					every_unit_leader = {
+						set_nationality = SPR
+					}
+				}
+				annex_country = {
+					target = ARG
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					URG = {
+						exists = yes
+						is_subject_of = SPR
+					}
+				}
+				URG = {
+					every_unit_leader = {
+						set_nationality = SPR
+					}
+				}
+				annex_country = {
+					target = URG
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					PAR = {
+						exists = yes
+						is_subject_of = SPR
+					}
+				}
+				PAR = {
+					every_unit_leader = {
+						set_nationality = SPR
+					}
+				}
+				annex_country = {
+					target = PAR
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					BOL = {
+						exists = yes
+						is_subject_of = SPR
+					}
+				}
+				BOL = {
+					every_unit_leader = {
+						set_nationality = SPR
+					}
+				}
+				annex_country = {
+					target = BOL
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					CHL = {
+						exists = yes
+						is_subject_of = SPR
+					}
+				}
+				CHL = {
+					every_unit_leader = {
+						set_nationality = SPR
+					}
+				}
+				annex_country = {
+					target = CHL
+					transfer_troops = yes
+				}
+			}
+			# add core of countries in peru region
+			every_state = {
+				limit = {
+					is_core_of = ARG
+				}
+				add_core_of = SPR
+			}
+			every_state = {
+				limit = {
+					is_core_of = URG
+				}
+				add_core_of = SPR
+			}
+			every_state = {
+				limit = {
+					is_core_of = PAR
+				}
+				add_core_of = SPR
+			}
+			every_state = {
+				limit = {
+					is_core_of = BOL
+				}
+				add_core_of = SPR
+			}
+			every_state = {
+				limit = {
+					is_core_of = CHL
+				}
+				add_core_of = SPR
+			}
+		}
+	}
+}
+
+HSP_war_decisions_cat = {
+	HSP_war_in_america = {
+		icon = generic_operation
+		available = {
+			has_war_with = USA
+		}
+		visible = {
+			has_completed_focus = HSP_restore_lost_territories
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		fire_only_once = yes
+		days_remove = 180
+		modifier = {
+			army_org_factor = 0.1
+		}
+		targeted_modifier = {
+			tag = USA
+			attack_bonus_against = 0.1
+			defense_bonus_against = 0.1
 		}
 	}
 }

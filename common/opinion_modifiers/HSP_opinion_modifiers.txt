@@ -2,4 +2,6 @@
 
 opinion_modifiers = {
 	HSP_panhispanic_unity = { value = 50 }
+	HSP_land_purchase = { value = 20 }
+	HSP_habsburg_hegemony_opinion = { value = -25 }
 }

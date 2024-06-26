@@ -13417,7 +13417,7 @@ focus_tree = {
 				}
 			}
 		}
-		icon = GFX_focus_generic_monarchy_2
+		icon = GFX_goal_generic_national_unity
 		cost = 5
 		mutually_exclusive = { focus = SPA_a_great_spain focus = SPR_the_popular_front}
 		x = 72
@@ -14700,6 +14700,52 @@ focus_tree = {
 		}
 	}
 	focus = {
+		id = HSP_merge_personal_union
+		icon = GFX_focus_por_the_kingdom_reunited
+		cost = 10
+		x = 0
+		y = 2
+		relative_position_id = HSP_subjugate_brazil
+		prerequisite = {
+			focus = HSP_subjugate_brazil
+		}
+		available = {
+			any_other_country = {
+				original_tag = BRA
+				exists = yes
+				is_subject_of = ROOT
+			}
+		}
+		bypass = {
+			any_other_country = {
+				original_tag = BRA
+				OR = {
+					exists = no
+					NOT = {
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		completion_reward = {
+			BRA = {
+				every_owned_state = {
+					limit = {
+						is_core_of = BRA
+					}
+					add_core_of = ROOT
+				}
+				every_unit_leader = {
+					set_nationality = SPR
+				}
+			}
+			annex_country = { 
+				target = BRA
+				transfer_troops = yes
+			}
+		}
+	}
+	focus = {
 		id = HSP_looking_outside
 		icon = GFX_goal_generic_territory_or_war
 		cost = 5
@@ -14816,7 +14862,10 @@ focus_tree = {
 			focus = HSP_hispanic_unity
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = { }
+
+		completion_reward = {
+			unlock_decision_tooltip = HSP_demand_submission
+		}
 	}
 	focus = {
 		id = HSP_purchase_dutch_territory
@@ -14847,11 +14896,22 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
-			
+			every_other_country = {
+				limit = {
+					original_tag = HOL
+					NOT = {
+						has_war_with = ROOT
+					}
+				}
+				country_event = {
+					id = HSP_spain_events.18
+					hours = 1
+				}
+			}
 		}
 	}
 	focus = {
-		id = HSP_establish_viceroyalty
+		id = HSP_reestablish_viceroyalty
 		icon = GFX_focus_ARG_align_with_the_monroe_doctrine
 		cost = 10
 		x = 1
@@ -14863,8 +14923,147 @@ focus_tree = {
 		prerequisite = {
 			focus = HSP_latin_american_dominance
 		}
-		completion_reward = {
-
+		available = {
 		}
+		completion_reward = {
+			unlock_decision_tooltip = HSP_restore_viceroyalty_of_nueva_granada
+		}
+	}
+	focus = {
+		id = HSP_restore_lost_territories
+		icon = GFX_focus_generic_attack_usa
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_reestablish_viceroyalty
+		prerequisite = {
+			focus = HSP_reestablish_viceroyalty
+		}
+		bypass = {
+			any_other_country = {
+				original_tag = USA
+				exists = no
+			}
+		}
+		completion_reward = {
+			378 = { add_core_of = ROOT }
+			377 = { add_core_of = ROOT }
+			376 = { add_core_of = ROOT }
+			375 = { add_core_of = ROOT }
+			366 = { add_core_of = ROOT }
+			367 = { add_core_of = ROOT }
+			370 = { add_core_of = ROOT }
+			371 = { add_core_of = ROOT }
+			374 = { add_core_of = ROOT }
+			379 = { add_core_of = ROOT }
+			380 = { add_core_of = ROOT }
+			382 = { add_core_of = ROOT }
+			383 = { add_core_of = ROOT }
+			384 = { add_core_of = ROOT }
+			381 = { add_core_of = ROOT }
+			387 = { add_core_of = ROOT }
+			388 = { add_core_of = ROOT }
+			389 = { add_core_of = ROOT }
+			390 = { add_core_of = ROOT }
+			391 = { add_core_of = ROOT }
+			686 = { add_core_of = ROOT }
+			every_other_country = {
+				limit = {
+					original_tag = USA
+					NOT = {
+						has_war_with = ROOT
+					}
+				}
+				country_event = {
+					id = HSP_spain_events.21
+					hours = 1
+				}
+			}
+		}
+	}
+	# standalone path - habsburg empire focus
+	focus = {
+		id = HSP_the_empire_resurrected
+		icon = GFX_focus_POL_habsburg
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_looking_outside
+		prerequisite = {
+			focus = HSP_looking_outside
+		}
+		mutually_exclusive = {
+			focus = HSP_approach_uk
+			focus = HSP_approach_germany
+		}
+		completion_reward = {
+			set_rule = {
+				can_join_factions = no
+			}
+			create_faction = HSP_habsburg_hegemony_faction
+			GER = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_habsburg_hegemony_opinion
+				}
+			}
+			ENG = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_habsburg_hegemony_opinion
+				}
+			}
+			FRA = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_habsburg_hegemony_opinion
+				}
+			}
+			ITA = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_habsburg_hegemony_opinion
+				}
+			}
+			add_ideas = HSP_reconquista_01
+			drop_cosmetic_tag = yes
+			set_cosmetic_tag = HSP_habsburg_empire
+		}
+	}
+
+	# allies path
+	focus = {
+		id = HSP_approach_uk
+		icon = GFX_focus_chi_british_cooperation
+		cost = 10
+		x = 5
+		y = 1
+		relative_position_id = HSP_looking_outside
+		prerequisite = {
+			focus = HSP_looking_outside
+		}
+		mutually_exclusive = {
+			focus = HSP_the_empire_resurrected
+			focus = HSP_approach_germany
+		}
+		completion_reward = { }
+	}
+
+	# axis path
+	focus = {
+		id = HSP_approach_germany
+		icon = GFX_focus_chi_mission_to_germany
+		cost = 10
+		x = 10
+		y = 1
+		relative_position_id = HSP_looking_outside
+		prerequisite = {
+			focus = HSP_looking_outside
+		}
+		mutually_exclusive = {
+			focus = HSP_the_empire_resurrected
+			focus = HSP_approach_uk
+		}
+		completion_reward = { }
 	}
 }

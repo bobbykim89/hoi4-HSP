@@ -1252,3 +1252,8 @@ SPR_POR_commonwealth = {
 	color = rgb { 205 212 228 }
 	color_ui = rgb { 255 255 255 }
 }
+
+HSP_habsburg_empire = {
+	color = rgb { 128 128 128 }
+	color_ui = rgb { 128 128 128 }
+}

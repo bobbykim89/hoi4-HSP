@@ -32,10 +32,14 @@ country_event = {
 				}
 			}
 			modifier = {
+				add = 30
+				has_government = neutrality
+			}
+			modifier = {
 				add = 100
 				OR = {
 					has_opinion = {
-						target = ROOT
+						target = FROM
 						value > 80
 					}
 					is_in_faction_with = SPR
@@ -116,6 +120,9 @@ country_event = {
 				}
 				add_core_of = ROOT
 			}
+			every_unit_leader = {
+				set_nationality = SPR
+			}
 		}
 		annex_country = { 
 			target = FROM
@@ -147,7 +154,26 @@ country_event = {
 			target = FROM
 			modifier = large_decrease
 		}
-	}		
+	}
+	# we don't take no for answer
+	option = {
+		name =  HSP_spain_events.7.b
+		ai_chance = {
+			base = 30
+		}
+		FROM = {
+			every_owned_state = {
+				limit = {
+					is_core_of = POR
+				}
+				add_core_of = ROOT
+			}
+		}
+		create_wargoal = {
+			target = FROM
+			type = annex_everything
+		}
+	}
 }
 
 # Subjugate brazil
@@ -177,6 +203,15 @@ country_event = {
 		}
 		SPR = {
 			country_event = { hours = 2 id = HSP_spain_events.9 }
+			effect_tooltip = {
+				SPR = {
+				set_autonomy = {
+					target = PREV
+					autonomy_state = autonomy_personal_union
+				}
+				add_political_power = -50
+			}
+			}
 		}
 	}
 	option = { # refuse
@@ -230,7 +265,7 @@ country_event = {
 			SPR = {
 				set_autonomy = {
 					target = PREV
-					autonomy_state = autonomy_puppet
+					autonomy_state = autonomy_personal_union
 				}
 				add_political_power = -50
 			}
@@ -256,7 +291,7 @@ country_event = {
 	}		
 }
 
-# spain purposes hispanic unification
+# spain proposes hispanic unification
 country_event = {
 	id = HSP_spain_events.11
 	title = HSP_spain_events.11.t
@@ -368,7 +403,6 @@ country_event = {
 
 	option = {
 		name = HSP_spain_events.13.a
-		SPR_join_wars_of_from = yes
 		
 		puppet = FROM
 		remove_wargoal = {
@@ -509,6 +543,16 @@ country_event = {
 		transfer_state = 689
 		transfer_state = 691
 		transfer_state = 687
+
+		add_timed_idea = {
+			idea = HSP_british_latin_american_territory_purchase_01
+			days = 30
+		}
+
+		add_opinion_modifier = {
+			target = FROM
+			modifier = HSP_land_purchase
+		}
 	}
 }
 
@@ -528,5 +572,259 @@ country_event = {
 			target = FROM
 			modifier = large_decrease
 		}
+	}
+}
+
+# spain purposes purchase latin american terrotory from holand
+country_event = {
+	id = HSP_spain_events.18
+	title = HSP_spain_events.18.t
+	desc = HSP_spain_events.18.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	# accept
+	option = {
+		name = HSP_spain_events.18.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 100
+				OR = {
+					has_opinion = {
+						target = FROM
+						value > 60
+					}
+					is_in_faction_with = SPR
+				}
+			}
+			modifier = {
+				add = -25
+				has_opinion = {
+					target = FROM
+					value < 50
+				}
+			}
+			modifier = {
+				add = -50
+				has_war_with = FROM
+			}
+		}
+		add_stability = -0.05
+		effect_tooltip = {
+			FROM = {
+				transfer_state = 309
+				transfer_state = 695
+				add_timed_idea = {
+					idea = HSP_dutch_latin_american_territory_purchase_01
+					days = 30
+				}
+			}
+		}
+		hidden_effect = {
+			FROM = {
+				country_event = HSP_spain_events.19
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = HSP_spain_events.18.b
+		ai_chance = {
+			base = 25
+			modifier = {
+				add = -100
+				has_opinion = {
+					target = FROM
+					value > 60
+				}
+				
+			}
+			modifier = {
+				add = 25
+				has_opinion = {
+					target = FROM
+					value < 50
+				}
+			}
+			modifier = {
+				add = 100
+				has_war_with = FROM
+			}
+		}
+		hidden_effect = {
+			FROM = {
+				country_event = HSP_spain_events.20
+			}
+		}
+	}
+}
+
+# holand accepts to sell latin american territory
+country_event = {
+	id = HSP_spain_events.19
+	title = HSP_spain_events.19.t
+	desc = HSP_spain_events.19.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = HSP_spain_events.19.a
+		
+		transfer_state = 309
+		transfer_state = 695
+		
+		add_timed_idea = {
+			idea = HSP_dutch_latin_american_territory_purchase_01
+			days = 30
+		}
+
+		add_opinion_modifier = {
+			target = FROM
+			modifier = HSP_land_purchase
+		}
+	}
+}
+
+# holand refuses
+country_event = {
+	id = HSP_spain_events.20
+	title = HSP_spain_events.20.t
+	desc = HSP_spain_events.20.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = HSP_spain_events.20.a
+		add_opinion_modifier = {
+			target = FROM
+			modifier = large_decrease
+		}
+	}
+}
+
+country_event = {
+	id = HSP_spain_events.21
+	title = HSP_spain_events.21.t
+	desc = HSP_spain_events.21.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	# USA accepts
+	option = {
+		name = HSP_spain_events.21.a
+		ai_chance = {
+			base = 10
+		}
+		add_stability = -0.1
+		effect_tooltip = {
+			FROM = {
+				transfer_state = 378
+				transfer_state = 377
+				transfer_state = 376
+				transfer_state = 375
+				transfer_state = 366
+				transfer_state = 367
+				transfer_state = 370
+				transfer_state = 371
+				transfer_state = 374
+				transfer_state = 379
+				transfer_state = 380
+				transfer_state = 382
+				transfer_state = 383
+				transfer_state = 384
+				transfer_state = 381
+				transfer_state = 387
+				transfer_state = 388
+				transfer_state = 389
+				transfer_state = 390
+				transfer_state = 391
+				transfer_state = 686
+			}
+		}
+		hidden_effect = {
+			FROM = {
+				country_event = HSP_spain_events.22
+			}
+		}
+	}
+	# USA rejects
+	option = {
+		name = HSP_spain_events.21.b
+		ai_chance = {
+			base = 50
+		}
+		hidden_effect = {
+			FROM = {
+				country_event = HSP_spain_events.23
+			}
+		}
+	}
+}
+
+# USA accepts
+country_event = {
+	id = HSP_spain_events.22
+	title = HSP_spain_events.22.t
+	desc = HSP_spain_events.22.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	# congrats!
+	option = {
+		name = HSP_spain_events.22.a
+
+		transfer_state = 378
+		transfer_state = 377
+		transfer_state = 376
+		transfer_state = 375
+		transfer_state = 366
+		transfer_state = 367
+		transfer_state = 370
+		transfer_state = 371
+		transfer_state = 374
+		transfer_state = 379
+		transfer_state = 380
+		transfer_state = 382
+		transfer_state = 383
+		transfer_state = 384
+		transfer_state = 381
+		transfer_state = 387
+		transfer_state = 388
+		transfer_state = 389
+		transfer_state = 390
+		transfer_state = 391
+		transfer_state = 686
+	}
+}
+
+# USA rejects
+country_event = {
+	id = HSP_spain_events.23
+	title = HSP_spain_events.23.t
+	desc = HSP_spain_events.23.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	# unfortunate
+	option = {
+		name = HSP_spain_events.23.a
+		create_wargoal = {
+			target = FROM
+			type = take_state_focus
+		}
+		unlock_decision_tooltip = HSP_war_in_america
 	}
 }
