@@ -828,3 +828,118 @@ country_event = {
 		unlock_decision_tooltip = HSP_war_in_america
 	}
 }
+
+# suggest personal union with hungary
+country_event = {
+	id = HSP_spain_events.24
+	title = HSP_spain_events.24.t
+	desc = HSP_spain_events.24.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { # accept
+		name = HSP_spain_events.24.a
+		ai_chance = {
+			base = 30
+			modifier = {
+				add = -25
+				SPR = { has_army_size = { size < 40 } }
+			}
+			modifier = {
+				add = 100
+				SPR = { has_army_size = { size > 39 } }
+			}
+			modifier = {
+				add = 20
+				is_in_faction_with = SPR
+			}
+		}
+		SPR = {
+			country_event = { hours = 2 id = HSP_spain_events.25 }
+			effect_tooltip = {
+				SPR = {
+				set_autonomy = {
+					target = PREV
+					autonomy_state = autonomy_personal_union
+				}
+				add_political_power = -50
+			}
+			}
+		}
+	}
+	option = { # refuse
+		name = HSP_spain_events.24.b
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0.5
+				SPR = { has_army_size = { size > 39 } }
+			}
+			modifier = {
+				factor = 2
+				SPR = { has_army_size = { size < 30 } }
+			}
+			modifier = {
+				factor = 2
+				is_in_faction = yes
+				NOT = {
+					is_in_faction_with = SPR
+				}
+			}
+			modifier = {
+				any_other_country = {
+					has_guaranteed = HUN
+				}
+				factor = 5
+			}
+		}
+		SPR = {
+			country_event = { hours = 2 id = HSP_spain_events.26 }
+		}
+	}
+}
+
+# hungary subjugated
+country_event = {
+	id = HSP_spain_events.25
+	title = HSP_spain_events.25.t
+	desc = HSP_spain_events.25.desc
+	picture = GFX_report_event_military_planning
+	
+	# trigger setting
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { # accept
+		name = HSP_spain_events.25.a
+		random_country = {
+			limit = {
+				original_tag = HUN
+			}
+			SPR = {
+				set_autonomy = {
+					target = PREV
+					autonomy_state = autonomy_personal_union
+				}
+				add_political_power = -50
+			}
+		}
+	}
+}
+
+# hungry refuses
+country_event = {
+	id = HSP_spain_events.26
+	title = HSP_spain_events.26.t
+	desc = HSP_spain_events.26.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = yes
+	# Unfortunate
+	option = {
+		name =  HSP_spain_events.26.a
+		create_wargoal = {
+			target = HUN
+			type = puppet_wargoal_focus
+		}
+	}		
+}

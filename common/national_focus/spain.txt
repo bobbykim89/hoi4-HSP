@@ -15030,6 +15030,280 @@ focus_tree = {
 			set_cosmetic_tag = HSP_habsburg_empire
 		}
 	}
+	focus = {
+		id = HSP_demand_crown_of_low_countries
+		icon = GFX_focus_hol_the_zuiderzee_works
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_the_empire_resurrected
+		prerequisite = {
+			focus = HSP_the_empire_resurrected
+		}
+		available = {
+			OR = {
+				any_other_country = {
+					original_tag = HOL
+					exists = yes
+				}
+				any_other_country = {
+					original_tag = BEL
+					exists = yes
+				}
+				any_other_country = {
+					original_tag = LUX
+					exists = yes
+				}
+			}
+		}
+
+		completion_reward = {
+			every_state = {
+				limit = {
+					is_core_of = HOL
+				}
+				add_core_of = ROOT
+			}
+			every_state = {
+				limit = {
+					is_core_of = BEL
+				}
+				add_core_of = ROOT
+			}
+			every_state = {
+				limit = {
+					is_core_of = LUX
+				}
+				add_core_of = ROOT
+			}
+			create_wargoal = {
+				target = HOL
+				type = annex_everything
+			}
+			create_wargoal = {
+				target = BEL
+				type = annex_everything
+			}
+			create_wargoal = {
+				target = LUX
+				type = annex_everything
+			}
+		}
+	}
+
+	focus = {
+		id = HSP_claim_on_elsass_lothringen
+		icon = GFX_focus_attack_france
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_demand_crown_of_low_countries
+		prerequisite = {
+			focus = HSP_demand_crown_of_low_countries
+		}
+		available = {
+			any_other_country = {
+				original_tag = FRA
+				exists = yes
+			}
+		}
+		completion_reward = {
+			28 = { add_core_of = ROOT }
+			create_wargoal = {
+				target = FRA
+				type = take_state_focus
+			}
+			unlock_decision_tooltip = HSP_war_france
+		}
+	}
+
+	focus = {
+		id = HSP_treating_the_root_of_all_problems
+		icon = GFX_focus_attack_britain
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_claim_on_elsass_lothringen
+		prerequisite = {
+			focus = HSP_claim_on_elsass_lothringen
+		}
+		bypass = {
+			any_other_country = {
+				original_tag = ENG
+				exists = no
+			}
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = ENG
+				type = puppet_wargoal_focus
+			}
+			unlock_decision_tooltip = HSP_war_uk
+		}
+	}
+
+	focus = {
+		id = HSP_demand_crown_of_st_stephen
+		icon = GFX_focus_hun_elect_a_king
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_the_empire_resurrected
+		prerequisite = {
+			focus = HSP_the_empire_resurrected
+		}
+		available = {
+			any_other_country = {
+				original_tag = HUN
+				exists = no
+			}
+		}
+		completion_reward = {
+			every_other_country = {
+				limit = {
+					original_tag = HUN
+					NOT = {
+						has_war_with = ROOT
+					}
+				}
+				country_event = {
+					id = HSP_spain_events.21
+					hours = 1
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = HSP_reclaim_austria_hungary
+		icon = GFX_focus_proclaim_the_restauration_of_Austria_Hungary
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_demand_crown_of_st_stephen
+		prerequisite = {
+			focus = HSP_demand_crown_of_st_stephen
+		}
+		available = {
+			any_other_country = {
+				original_tag = HUN
+				exists = yes
+				is_subject_of = ROOT
+			}
+		}
+		completion_reward = {
+			every_other_country = {
+				limit = {
+					original_tag = HUN
+					NOT = {
+						has_war_with = ROOT
+					}
+				}
+				every_state = {
+					limit = {
+						is_core_of = AUS
+					}
+					add_core_of = HUN
+				}
+				every_state = {
+					limit = {
+						is_core_of = CZE
+					}
+					add_core_of = HUN
+				}
+				every_state = {
+					limit = {
+						is_core_of = SLV
+					}
+					add_core_of = HUN
+				}
+				every_state = {
+					limit = {
+						is_core_of = CRO
+					}
+					add_core_of = HUN
+				}
+				every_state = {
+					limit = {
+						is_core_of = BOS
+					}
+					add_core_of = HUN
+				}
+				every_state = {
+					limit = {
+						is_core_of = TRA
+					}
+					add_core_of = HUN
+				}
+				163 = { add_core_of = HUN }
+				852 = { add_core_of = HUN }
+				736 = { add_core_of = HUN }
+				39 = { add_core_of = HUN }
+				850 = { add_core_of = HUN }
+			}
+		}
+	}
+	focus = {
+		id = HSP_one_crown_one_empire
+		icon = GFX_focus_generic_monarchy_1
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_reclaim_austria_hungary
+		prerequisite = {
+			focus = HSP_reclaim_austria_hungary
+		}
+		available = {
+			any_other_country = {
+				original_tag = HUN
+				exists = yes
+				is_subject_of = ROOT
+			}
+		}
+		completion_reward = {
+			HUN = {
+				every_unit_leader = {
+					set_nationality = SPR
+				}
+			}
+			annex_country = {
+				target = HUN
+				transfer_troops = yes
+			}
+			every_state = {
+				limit = {
+					is_core_of = HUN
+				}
+				add_core_of = SPR
+			}
+		}
+	}
+	focus = {
+		id = HSP_claim_crown_of_napoli
+		icon = GFX_focus_attack_italy
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_the_empire_resurrected
+		prerequisite = {
+			focus = HSP_the_empire_resurrected
+		}
+		available = {
+			any_other_country = {
+				original_tag = ITA
+				exists = yes
+			}
+		}
+		completion_reward = {
+			every_state = {
+				limit = {
+					is_core_of = TTS
+				}
+				add_core_of = SPR
+			}
+			unlock_decision_tooltip = HSP_war_italy
+		}
+	}
 
 	# allies path
 	focus = {
