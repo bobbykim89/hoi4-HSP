@@ -991,4 +991,131 @@ HSP_war_decisions_cat = {
 			defense_bonus_against = 0.05
 		}
 	}
+	HSP_war_germany = {
+		icon = generic_operation
+		available = {
+			has_war_with = GER
+		}
+		visible = {
+			has_completed_focus = HSP_claim_crown_of_napoli
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		fire_only_once = yes
+		days_remove = 180
+
+		targeted_modifier = {
+			tag = GER
+			attack_bonus_against = 0.05
+			defense_bonus_against = 0.05
+		}
+	}
+}
+
+HSP_disunite_italy_cat = {
+	HSP_reestablish_papacy = {
+		icon = generic_operation
+		visible = {
+			has_government = neutrality
+			has_completed_focus = HSP_restoration_of_papal_states
+		}
+		available = {
+			controls_state = 2
+			controls_state = 157
+			controls_state = 161
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 30
+		remove_effect = {
+			PAP = {
+				transfer_state = 2
+				transfer_state = 157
+				transfer_state = 161
+			}
+			set_autonomy = {
+				target = PAP
+				autonomy_state = autonomy_puppet
+			}
+			2 = { remove_core_of = ITA}
+			157 = { remove_core_of = ITA}
+			161 = { remove_core_of = ITA}
+		}
+	}
+	HSP_restore_toscana = {
+		icon = generic_operation
+		visible = {
+			has_government = neutrality
+			has_completed_focus = HSP_disunite_italia
+		}
+		available = {
+			controls_state = 162
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 30
+		remove_effect = {
+			TOS = {
+				transfer_state = 162
+			}
+			set_autonomy = {
+				target = TOS
+				autonomy_state = autonomy_integrated_puppet
+			}
+			162 = { remove_core_of = ITA}
+		}
+	}
+	HSP_restore_sardegna = {
+		icon = generic_operation
+		visible = {
+			has_government = neutrality
+			has_completed_focus = HSP_disunite_italia
+		}
+		available = {
+			controls_state = 162
+			controls_state = 114
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 30
+		remove_effect = {
+			SPM = {
+				transfer_state = 158
+				transfer_state = 114
+			}
+			set_autonomy = {
+				target = SPM
+				autonomy_state = autonomy_integrated_puppet
+			}
+			158 = { remove_core_of = ITA}
+			114 = { remove_core_of = ITA}
+		}
+	}
+	HSP_restore_lombardy_venetia = {
+		icon = generic_operation
+		visible = {
+			has_government = neutrality
+			has_completed_focus = HSP_disunite_italia
+		}
+		available = {
+			controls_state = 159
+			controls_state = 160
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 30
+		remove_effect = {
+			LBV = {
+				transfer_state = 159
+				transfer_state = 160
+			}
+			set_autonomy = {
+				target = LBV
+				autonomy_state = autonomy_integrated_puppet
+			}
+			159 = { remove_core_of = ITA}
+			160 = { remove_core_of = ITA}
+		}
+	}
 }

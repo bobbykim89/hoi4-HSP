@@ -14605,7 +14605,7 @@ focus_tree = {
 	focus = {
 		id = HSP_integration_of_public_opinion
 		icon = GFX_goal_generic_propaganda
-		cost = 10
+		cost = 5
 		x = 0
 		y = 2
 		relative_position_id = HSP_reorganize_administration
@@ -15134,6 +15134,7 @@ focus_tree = {
 			}
 		}
 		completion_reward = {
+			118 = { add_core_of = ROOT }
 			create_wargoal = {
 				target = ENG
 				type = puppet_wargoal_focus
@@ -15167,7 +15168,7 @@ focus_tree = {
 					}
 				}
 				country_event = {
-					id = HSP_spain_events.21
+					id = HSP_spain_events.24
 					hours = 1
 				}
 			}
@@ -15301,16 +15302,109 @@ focus_tree = {
 				}
 				add_core_of = SPR
 			}
+			create_wargoal = {
+				target = ITA
+				type = puppet_wargoal_focus
+			}
 			unlock_decision_tooltip = HSP_war_italy
 		}
 	}
+	focus = {
+		id = HSP_disunite_italia
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_claim_crown_of_napoli
+		prerequisite = {
+			focus = HSP_claim_crown_of_napoli
+		}
+		available = {
+			OR = {
+				ITA = {
+					exists = no
+				}
+				any_other_country = {
+					original_tag = ITA
+					OR = {
+						has_capitulated = yes
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		completion_reward = {
+			unlock_decision_tooltip = HSP_restore_toscana
+			unlock_decision_tooltip = HSP_restore_sardegna
+			unlock_decision_tooltip = HSP_restore_lombardy_venetia
+		}
+	}
+	focus = {
+		id = HSP_restoration_of_papal_states
+		icon = GFX_focus_generic_vatican_state
+		cost = 5
+		x = 2
+		y = 1
+		relative_position_id = HSP_disunite_italia
+		prerequisite = {
+			focus = HSP_disunite_italia
+		}
+		available = {
+			has_government = neutrality
+			controls_state = 2
+			controls_state = 157
+			controls_state = 161
+		}
+		completion_reward = {
+			add_ideas = HSP_protector_of_catholicism_01
+			unlock_decision_tooltip = HSP_reestablish_papacy
+		}
+	}
+	focus = {
+		id = HSP_a_bulwark_against_fascism
+		icon = GFX_focus_attack_germany
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_disunite_italia
+		prerequisite = {
+			focus = HSP_disunite_italia
+		}
+		bypass = {
+			GER = {
+				exists = no
+			}
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = GER
+				type = puppet_wargoal_focus
+			}
+			unlock_decision_tooltip = HSP_war_germany
+		}
+	}
+	focus = {
+		id = HSP_imperial_intelligence_network
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 10
+		x = 4
+		y = 1
+		relative_position_id = HSP_the_empire_resurrected
+		prerequisite = {
+			focus = HSP_the_empire_resurrected
+		}
+		completion_reward = {
+			add_ideas = HSP_imperial_intelligence_network_01
+		}
+	}
+
 
 	# allies path
 	focus = {
 		id = HSP_approach_uk
 		icon = GFX_focus_chi_british_cooperation
 		cost = 10
-		x = 5
+		x = 15
 		y = 1
 		relative_position_id = HSP_looking_outside
 		prerequisite = {
@@ -15320,7 +15414,36 @@ focus_tree = {
 			focus = HSP_the_empire_resurrected
 			focus = HSP_approach_germany
 		}
-		completion_reward = { }
+		completion_reward = {
+			GER = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_approach_uk_decrease
+				}
+			}
+			ITA = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_approach_uk_decrease
+				}
+			}
+			ENG = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_approach_uk_increase
+				}
+			}
+			FRA = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_approach_uk_increase
+				}
+			}
+			add_stability = 0.1
+			army_experience = 25
+			air_experience = 25
+			navy_experience = 25
+		}
 	}
 
 	# axis path
@@ -15338,6 +15461,35 @@ focus_tree = {
 			focus = HSP_the_empire_resurrected
 			focus = HSP_approach_uk
 		}
-		completion_reward = { }
+		completion_reward = {
+			GER = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_approach_germany_increase
+				}
+			}
+			ITA = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_approach_germany_increase
+				}
+			}
+			ENG = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_approach_germany_decrease
+				}
+			}
+			FRA = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_approach_germany_decrease
+				}
+			}
+			add_war_support = 0.1
+			army_experience = 25
+			air_experience = 25
+			navy_experience = 25
+		}
 	}
 }

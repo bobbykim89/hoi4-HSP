@@ -320,5 +320,18 @@ ideas = {
 				compliance_growth = 0.05
 			}
 		}
+		HSP_imperial_intelligence_network_01 = {
+			picture = generic_spy_intel
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				operative_slot = 1
+				intel_network_gain_factor = 0.1
+			}
+		}
 	}
 }
