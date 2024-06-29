@@ -14132,13 +14132,9 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			165 = {
-				limit = {
-					is_core_of = ROOT
-				}
 				add_resource = {
 					type = steel
 					amount = 48
-					state = THIS
 				}
 				add_building_construction = {
 					type = industrial_complex
@@ -14161,23 +14157,31 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			41 = {
-				limit = {
-					is_core_of = ROOT
-				}
 				add_resource = {
 					type = aluminium
 					amount = 20
-					state = THIS
 				}
 			}
 			176 = {
-				limit = {
-					is_core_of = ROOT
-				}
 				add_resource = {
 					type = chromium
 					amount = 15
-					state = THIS
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_expand_mining_1civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
 				}
 			}
 		}
@@ -14226,23 +14230,15 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			41 = {
-				limit = {
-					is_core_of = ROOT
-				}
 				add_resource = {
 					type = aluminium
 					amount = 15
-					state = THIS
 				}
 			}
 			176 = {
-				limit = {
-					is_core_of = ROOT
-				}
 				add_resource = {
 					type = chromium
 					amount = 15
-					state = THIS
 				}
 			}
 			add_tech_bonus = {
@@ -14277,7 +14273,6 @@ focus_tree = {
 				}
 			}
 		}
-		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
 			random_owned_controlled_state = {
 				limit = {
@@ -14665,10 +14660,11 @@ focus_tree = {
 			custom_effect_tooltip = HSP_restore_iberian_commonwealth_tt
 			POR = {
 				country_event = {
-					id = HSP_spain_events.05
+					id = HSP_spain_events.5
 					hours = 1
 				}
-			}}
+			}
+		}
 	}
 	focus = {
 		id = HSP_subjugate_brazil
@@ -14925,6 +14921,7 @@ focus_tree = {
 		}
 		available = {
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			unlock_decision_tooltip = HSP_restore_viceroyalty_of_nueva_granada
 		}
@@ -14945,6 +14942,7 @@ focus_tree = {
 				exists = no
 			}
 		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
 		completion_reward = {
 			378 = { add_core_of = ROOT }
 			377 = { add_core_of = ROOT }
@@ -14996,6 +14994,7 @@ focus_tree = {
 			focus = HSP_approach_uk
 			focus = HSP_approach_germany
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			set_rule = {
 				can_join_factions = no
@@ -15056,7 +15055,7 @@ focus_tree = {
 				}
 			}
 		}
-
+		search_filters = {FOCUS_FILTER_ANNEXATION}
 		completion_reward = {
 			every_state = {
 				limit = {
@@ -15107,11 +15106,12 @@ focus_tree = {
 				exists = yes
 			}
 		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
 		completion_reward = {
 			28 = { add_core_of = ROOT }
 			create_wargoal = {
 				target = FRA
-				type = take_state_focus
+				type = take_core_state
 			}
 			unlock_decision_tooltip = HSP_war_france
 		}
@@ -15133,6 +15133,7 @@ focus_tree = {
 				exists = no
 			}
 		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
 		completion_reward = {
 			118 = { add_core_of = ROOT }
 			create_wargoal = {
@@ -15159,6 +15160,7 @@ focus_tree = {
 				exists = no
 			}
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			every_other_country = {
 				limit = {
@@ -15192,6 +15194,7 @@ focus_tree = {
 				is_subject_of = ROOT
 			}
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			every_other_country = {
 				limit = {
@@ -15261,6 +15264,7 @@ focus_tree = {
 				is_subject_of = ROOT
 			}
 		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
 		completion_reward = {
 			HUN = {
 				every_unit_leader = {
@@ -15280,6 +15284,18 @@ focus_tree = {
 		}
 	}
 	focus = {
+		id = HSP_restore_allied_kingdoms
+		icon = GFX_focus_generic_home_defense
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_one_crown_one_empire
+		prerequisite = {
+			focus = HSP_one_crown_one_empire
+		}
+		completion_reward = { }
+	}
+	focus = {
 		id = HSP_claim_crown_of_napoli
 		icon = GFX_focus_attack_italy
 		cost = 10
@@ -15295,6 +15311,7 @@ focus_tree = {
 				exists = yes
 			}
 		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
 		completion_reward = {
 			every_state = {
 				limit = {
@@ -15304,7 +15321,7 @@ focus_tree = {
 			}
 			create_wargoal = {
 				target = ITA
-				type = puppet_wargoal_focus
+				type = take_core_state
 			}
 			unlock_decision_tooltip = HSP_war_italy
 		}
@@ -15333,6 +15350,7 @@ focus_tree = {
 				}
 			}
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			unlock_decision_tooltip = HSP_restore_toscana
 			unlock_decision_tooltip = HSP_restore_sardegna
@@ -15355,6 +15373,7 @@ focus_tree = {
 			controls_state = 157
 			controls_state = 161
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			add_ideas = HSP_protector_of_catholicism_01
 			unlock_decision_tooltip = HSP_reestablish_papacy
@@ -15375,6 +15394,7 @@ focus_tree = {
 				exists = no
 			}
 		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
 		completion_reward = {
 			create_wargoal = {
 				target = GER
@@ -15404,7 +15424,7 @@ focus_tree = {
 		id = HSP_approach_uk
 		icon = GFX_focus_chi_british_cooperation
 		cost = 10
-		x = 15
+		x = 14
 		y = 1
 		relative_position_id = HSP_looking_outside
 		prerequisite = {
@@ -15445,7 +15465,142 @@ focus_tree = {
 			navy_experience = 25
 		}
 	}
-
+	focus = {
+		id = HSP_join_allies
+		icon = GFX_focus_ARG_join_the_allies
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_approach_uk
+		prerequisite = {
+			focus = HSP_approach_uk
+		}
+		bypass = {
+			OR = {
+				ENG = {
+					exists = no
+					NOT = { has_government = fascism}
+				}
+				is_in_faction_with = ENG
+			}
+		}
+		available = {
+			threat > 0.35
+			OR = {
+				ENG = { is_faction_leader = yes}
+				USA = { is_faction_leader = yes}
+			}
+			is_in_faction = no
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			ENG = { country_event = { id = generic.2 hours = 4 random_hours = 2 } }
+		}
+	}
+	focus = {
+		id = HSP_allies_economic_support
+		icon = GFX_goal_generic_major_alliance
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_join_allies
+		prerequisite = {
+			focus = HSP_join_allies
+		}
+		completion_reward = {
+			add_ideas = HSP_access_ally_economy_01
+		}
+	}
+	focus = {
+		id = HSP_join_allies_research_group
+		icon = GFX_goal_generic_scientific_exchange
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_join_allies
+		prerequisite = {
+			focus = HSP_join_allies
+		}
+		available = {
+			is_in_faction_with = ENG
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			ENG = { add_to_tech_sharing_group = allied_research }
+			add_to_tech_sharing_group = allied_research
+		}
+	}
+	focus = {
+		id = HSP_invite_scientists_in_exile
+		icon = GFX_focus_research2
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_join_allies_research_group
+		prerequisite = {
+			focus = HSP_join_allies_research_group
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_ideas = HSP_scientists_in_exile_01
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = HSP_obtaining_rights_to_austria
+		icon = GFX_focus_generic_court
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_allies_economic_support
+		prerequisite = {
+			focus = HSP_allies_economic_support
+		}
+		completion_reward = {
+			every_state = {
+				limit = {
+					is_core_of = AUS
+				}
+				add_core_of = ROOT
+			}
+			every_state = {
+				limit = {
+					is_core_of = SLV
+				}
+				add_core_of = ROOT
+			}
+			69 = { add_core_of = ROOT }
+			39 = { add_core_of = ROOT }
+			850 = { add_core_of = ROOT }
+			736 = { add_core_of = ROOT }
+			852 = { add_core_of = ROOT }
+			103 = { add_core_of = ROOT }
+			163 = { add_core_of = ROOT }
+			create_wargoal = {
+				target = ITA
+				type = take_core_state
+			}
+			create_wargoal = {
+				target = GER
+				type = take_core_state
+			}
+		}
+	}
+	# shared war planning focus
+	focus = {
+		id = HSP_war_planning
+		icon = GFX_focus_generic_total_war
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_join_axis
+		prerequisite = {
+			focus = HSP_join_axis focus = HSP_join_allies
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = HSP_war_decisions_cat
+		}
+	}
 	# axis path
 	focus = {
 		id = HSP_approach_germany
@@ -15461,6 +15616,7 @@ focus_tree = {
 			focus = HSP_the_empire_resurrected
 			focus = HSP_approach_uk
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			GER = {
 				add_opinion_modifier = {
@@ -15490,6 +15646,182 @@ focus_tree = {
 			army_experience = 25
 			air_experience = 25
 			navy_experience = 25
+		}
+	}
+	focus = {
+		id = HSP_join_axis
+		icon = GFX_goal_support_fascism
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_approach_germany
+		prerequisite = {
+			focus = HSP_approach_germany
+		}
+		bypass = {
+			OR = {
+				GER = {
+					exists = no
+					NOT = { has_government = fascism}
+				}
+				is_in_faction_with = GER
+			}
+		}
+		available = {
+			threat > 0.35
+			GER = { is_faction_leader = yes}
+			is_in_faction = no
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			GER = { country_event = { id = generic.2 hours = 4 random_hours = 2 } }
+		}
+	}
+	focus = {
+		id = HSP_join_axis_research_group
+		icon = GFX_goal_generic_scientific_exchange
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_join_axis
+		prerequisite = {
+			focus = HSP_join_axis
+		}
+		available = {
+			is_in_faction_with = GER
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			GER = { add_to_tech_sharing_group = axis_research }
+			add_to_tech_sharing_group = axis_research
+		}
+	}
+	focus = {
+		id = HSP_invite_german_scientists
+		icon = GFX_focus_ARG_fascist_researchers
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_join_axis_research_group
+		prerequisite = {
+			focus = HSP_join_axis_research_group
+		}
+		completion_reward = {
+			add_ideas = HSP_german_scientists_01
+			add_tech_bonus = {
+				name = HSP_invite_german_scientists
+				bonus = 0.75
+				uses = 1
+				category = armor
+			}
+		}
+	}
+	focus = {
+		id = HSP_support_paramilitary_organizations
+		icon = GFX_focus_ITA_generic_fascist_workers
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_join_axis
+		prerequisite = {
+			focus = HSP_join_axis
+		}
+		completion_reward = {
+			add_ideas = HSP_fascist_paramilitary_organization_01
+		}
+	}
+	focus = {
+		id = HSP_completed_iberia
+		icon = GFX_focus_generic_free_iberia
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_support_paramilitary_organizations
+		prerequisite = {
+			focus = HSP_support_paramilitary_organizations
+		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		completion_reward = {
+			118 = { add_core_of = ROOT }
+			create_wargoal = {
+				target = ENG
+				type = take_core_state
+			}
+		}
+	}
+	# shared wargoal focus
+	focus = {
+		id = HSP_securing_a_base_in_asia
+		icon = GFX_focus_attack_china
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_restoration_of_papal_states
+		prerequisite = {
+			focus = HSP_one_crown_one_empire
+			focus = HSP_completed_iberia
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = CHI
+				type = puppet_wargoal_focus
+			}
+			unlock_decision_tooltip = HSP_war_china
+		}
+	}
+	focus = {
+		id = HSP_the_true_enemy
+		icon = GFX_goal_generic_war_with_comintern
+		cost = 10
+		x = 0
+		y = 2
+		relative_position_id = HSP_war_planning
+		prerequisite = {
+			focus = HSP_one_crown_one_empire
+			focus = HSP_completed_iberia
+			focus = HSP_obtaining_rights_to_austria
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = SOV
+				type = puppet_wargoal_focus
+			}
+			unlock_decision_tooltip = HSP_war_sov
+		}
+	}
+	# military focus
+	focus = {
+		id = HSP_military_reform
+		icon = GFX_focus_generic_limited_social_mobilization
+		cost = 5
+		x = 15
+		y = 1
+		relative_position_id = HSP_new_monarchy
+		prerequisite = {
+			focus = HSP_new_monarchy
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = HSP_old_fashioned_army_01
+				add_idea = HSP_old_fashioned_army_02
+			}
+			army_experience = 25
+			air_experience = 25
+			navy_experience = 25
+		}
+	}
+	focus = {
+		id = HSP_military_intelligence
+		icon = GFX_focus_generic_secret_service_agency
+		cost = 10
+		x = -8
+		y = 1
+		relative_position_id = HSP_military_reform
+		prerequisite = {
+			focus = HSP_military_reform
+		}
+		completion_reward = {
+			add_ideas = HSP_military_intelligence_01
 		}
 	}
 }

@@ -823,7 +823,7 @@ country_event = {
 		name = HSP_spain_events.23.a
 		create_wargoal = {
 			target = FROM
-			type = take_state_focus
+			type = take_core_state
 		}
 		unlock_decision_tooltip = HSP_war_in_america
 	}

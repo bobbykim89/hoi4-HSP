@@ -936,7 +936,10 @@ HSP_war_decisions_cat = {
 			has_war_with = FRA
 		}
 		visible = {
-			has_completed_focus = HSP_claim_on_elsass_lothringen
+			OR = {
+				has_completed_focus = HSP_claim_on_elsass_lothringen
+				has_completed_focus = HSP_war_planning
+			}
 		}
 		ai_will_do = {
 			factor = 1
@@ -957,7 +960,10 @@ HSP_war_decisions_cat = {
 			has_war_with = ENG
 		}
 		visible = {
-			has_completed_focus = GFX_focus_attack_britain
+			OR = {
+				has_completed_focus = HSP_treating_the_root_of_all_problems
+				has_completed_focus = HSP_war_planning
+			}
 		}
 		ai_will_do = {
 			factor = 1
@@ -977,7 +983,10 @@ HSP_war_decisions_cat = {
 			has_war_with = ITA
 		}
 		visible = {
-			has_completed_focus = HSP_claim_crown_of_napoli
+			OR = {
+				has_completed_focus = HSP_claim_crown_of_napoli
+				has_completed_focus = HSP_war_planning
+			}
 		}
 		ai_will_do = {
 			factor = 1
@@ -997,7 +1006,10 @@ HSP_war_decisions_cat = {
 			has_war_with = GER
 		}
 		visible = {
-			has_completed_focus = HSP_claim_crown_of_napoli
+			OR = {
+				has_completed_focus = HSP_claim_crown_of_napoli
+				has_completed_focus = HSP_war_planning
+			}
 		}
 		ai_will_do = {
 			factor = 1
@@ -1007,6 +1019,46 @@ HSP_war_decisions_cat = {
 
 		targeted_modifier = {
 			tag = GER
+			attack_bonus_against = 0.05
+			defense_bonus_against = 0.05
+		}
+	}
+	HSP_war_china = {
+		icon = generic_operation
+		available = {
+			has_war_with = CHI
+		}
+		visible = {
+			has_completed_focus = HSP_securing_a_base_in_asia
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		fire_only_once = yes
+		days_remove = 180
+
+		targeted_modifier = {
+			tag = CHI
+			attack_bonus_against = 0.05
+			defense_bonus_against = 0.05
+		}
+	}
+	HSP_war_sov = {
+		icon = generic_operation
+		available = {
+			has_war_with = SOV
+		}
+		visible = {
+			has_completed_focus = HSP_the_true_enemy
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		fire_only_once = yes
+		days_remove = 180
+
+		targeted_modifier = {
+			tag = SOV
 			attack_bonus_against = 0.05
 			defense_bonus_against = 0.05
 		}
