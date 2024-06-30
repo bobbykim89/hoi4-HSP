@@ -15586,21 +15586,6 @@ focus_tree = {
 			}
 		}
 	}
-	# shared war planning focus
-	focus = {
-		id = HSP_war_planning
-		icon = GFX_focus_generic_total_war
-		cost = 10
-		x = 2
-		y = 1
-		relative_position_id = HSP_join_axis
-		prerequisite = {
-			focus = HSP_join_axis focus = HSP_join_allies
-		}
-		completion_reward = {
-			unlock_decision_category_tooltip = HSP_war_decisions_cat
-		}
-	}
 	# axis path
 	focus = {
 		id = HSP_approach_germany
@@ -15749,6 +15734,21 @@ focus_tree = {
 			}
 		}
 	}
+	# shared war planning focus
+	focus = {
+		id = HSP_war_planning
+		icon = GFX_focus_generic_total_war
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_join_axis
+		prerequisite = {
+			focus = HSP_join_axis focus = HSP_join_allies
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = HSP_war_decisions_cat
+		}
+	}
 	# shared wargoal focus
 	focus = {
 		id = HSP_securing_a_base_in_asia
@@ -15822,6 +15822,1212 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = HSP_military_intelligence_01
+		}
+	}
+	# army
+	focus = {
+		id = HSP_spanish_army_military_academy
+		icon = GFX_focus_generic_full_social_mobilization
+		cost = 10
+		x = -6
+		y = 1
+		relative_position_id = HSP_military_reform
+		prerequisite = {
+			focus = HSP_military_reform
+		}
+		completion_reward = {
+			army_experience = 25
+			swap_ideas = {
+				remove_idea = HSP_old_fashioned_army_02
+				add_idea = HSP_old_fashioned_army_03
+			}
+			add_dynamic_modifier = {
+				modifier = HSP_army_modifier_01
+			}
+			add_tech_bonus = {
+				name = HSP_spanish_army_military_academy
+				bonus = 0.75
+				uses = 1
+				category = infantry_weapons
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				name = HSP_spanish_army_military_academy
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_focus_on_mobility
+		icon = GFX_focus_generic_self_propelled_gun
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_spanish_army_military_academy
+		prerequisite = {
+			focus = HSP_spanish_army_military_academy
+		}
+		mutually_exclusive = {
+			focus = HSP_focus_firepower
+			focus = HSP_focus_infantry
+		}
+		completion_reward = {
+			remove_ideas = HSP_old_fashioned_army_03
+			add_tech_bonus = {
+				name = HSP_focus_on_mobility
+				bonus = 0.75
+				uses = 1
+				category = armor
+			}
+			add_to_variable = {
+				HSP_army_army_org_factor = 0.05
+				tooltip = army_org_factor_tt
+			}
+			add_to_variable = {
+				HSP_army_army_speed_factor = 0.05
+				tooltip = army_speed_factor_tt
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.15
+				name = HSP_focus_on_mobility
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_main_tank
+		icon = GFX_focus_generic_tank_production
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_focus_on_mobility
+		prerequisite = {
+			focus = HSP_focus_on_mobility
+		}
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_main_tank_1mil }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			show_mio_tooltip = HSP_barcelona_national_arsenal
+			mio:HSP_barcelona_national_arsenal = {
+				add_mio_size = 2
+			}
+			add_tech_bonus = {
+				name = HSP_main_tank
+				bonus = 0.75
+				uses = 1
+				category = armor
+			}
+			
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_main_tank_1mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_to_variable = {
+				HSP_army_breakthrough_factor = 0.05
+				tooltip = breakthrough_factor_tt
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.15
+				name = HSP_main_tank
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_focus_firepower
+		icon = GFX_goal_generic_army_artillery
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_spanish_army_military_academy
+		prerequisite = {
+			focus = HSP_spanish_army_military_academy
+		}
+		mutually_exclusive = {
+			focus = HSP_focus_on_mobility
+			focus = HSP_focus_infantry
+		}
+		completion_reward = {
+			remove_ideas = HSP_old_fashioned_army_03
+			add_tech_bonus = {
+				name = HSP_focus_firepower
+				bonus = 0.75
+				uses = 1
+				category = artillery
+			}
+			add_to_variable = {
+				HSP_army_army_attack_factor = 0.05
+				tooltip = army_attack_factor_tt
+			}
+			add_to_variable = {
+				HSP_army_army_defence_factor = 0.05
+				tooltip = army_defence_factor_tt
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.15
+				name = HSP_focus_firepower
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_overwhelming_firepower
+		icon = GFX_goal_generic_army_artillery2
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_focus_firepower
+		prerequisite = {
+			focus = HSP_focus_firepower
+		}
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_overwhelming_firepower_1mil }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_overwhelming_firepower
+				bonus = 0.75
+				uses = 2
+				category = artillery
+			}
+			add_to_variable = {
+				HSP_army_army_morale_factor = 0.05
+				tooltip = army_morale_factor_tt
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_overwhelming_firepower_1mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.15
+				name = HSP_overwhelming_firepower
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_focus_infantry
+		icon = GFX_goal_generic_allies_build_infantry
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_spanish_army_military_academy
+		prerequisite = {
+			focus = HSP_spanish_army_military_academy
+		}
+		mutually_exclusive = {
+			focus = HSP_focus_firepower
+			focus = HSP_focus_on_mobility
+		}
+		completion_reward = {
+			remove_ideas = HSP_old_fashioned_army_03
+			add_tech_bonus = {
+				name = HSP_focus_infantry
+				bonus = 0.5
+				uses = 2
+				category = support_tech
+			}
+			add_to_variable = {
+				HSP_army_max_planning_factor = 0.05
+				tooltip = max_planning_factor_tt
+			}
+			add_to_variable = {
+				HSP_army_planning_speed = 0.05
+				tooltip = planning_speed_tt
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.15
+				name = HSP_focus_infantry
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_efficient_training
+		icon = GFX_focus_generic_women_in_military
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_focus_infantry
+		prerequisite = {
+			focus = HSP_focus_infantry
+		}
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_efficient_training_1mil }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_efficient_training
+				bonus = 0.5
+				uses = 2
+				category = infantry_weapons
+			}
+			add_to_variable = {
+				HSP_army_training_time_army_factor = -0.1
+				tooltip = training_time_army_factor_tt
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_efficient_training_1mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.15
+				name = HSP_efficient_training
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_strengthen_special_forces
+		icon = GFX_goal_generic_special_forces
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_overwhelming_firepower
+		prerequisite = {
+			focus = HSP_main_tank
+			focus = HSP_overwhelming_firepower
+			focus = HSP_efficient_training
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_army_special_forces_cap = 0.15
+				tooltip = special_forces_cap_tt
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				name = HSP_strengthen_special_forces
+				uses = 2
+				category = special_forces_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_motorized_army
+		icon = GFX_goal_generic_army_motorized
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_strengthen_special_forces
+		prerequisite = {
+			focus = HSP_strengthen_special_forces
+		}
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_motorized_army_1mil }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_efficient_training
+				bonus = 0.5
+				uses = 2
+				category = motorized_equipment
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_motorized_army_1mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = HSP_spirit_of_conquistador
+		icon = GFX_focus_spa_no_compromise_on_carlist_ideals
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_strengthen_special_forces
+		prerequisite = {
+			focus = HSP_strengthen_special_forces
+		}
+		completion_reward = {
+			add_ideas = HSP_spirit_of_conquistador_01
+		}
+	}
+	focus = {
+		id = HSP_military_promotion
+		icon = GFX_focus_generic_military_mission
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_strengthen_special_forces
+		prerequisite = {
+			focus = HSP_strengthen_special_forces
+		}
+		completion_reward = {
+			every_army_leader = {
+				add_planning = 1
+			}
+		}
+	}
+	# airforce
+	focus = {
+		id = HSP_spanish_airforce_academy
+		icon = GFX_goal_generic_build_airforce
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_military_reform
+		prerequisite = {
+			focus = HSP_military_reform
+		}
+		completion_reward = {
+			add_dynamic_modifier = {
+				modifier = HSP_airforce_modifier_01
+			}
+			add_tech_bonus = {
+				name = HSP_spanish_airforce_academy
+				bonus = 0.75
+				uses = 1
+				category = light_air
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				name = HSP_spanish_airforce_academy
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_expansion_of_production_capacity
+		icon = GFX_focus_generic_aircraft_production
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_spanish_airforce_academy
+		prerequisite = {
+			focus = HSP_spanish_airforce_academy
+		}
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_expansion_of_production_capacity_2mil }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_ideas = HSP_air_production_01
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_expansion_of_production_capacity_2mil
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_expansion_of_production_capacity_2mil }
+				}
+				set_state_flag = HSP_invest_on_military_industry_2mil
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = HSP_modernization_of_aviation_laws
+		icon = GFX_goal_continuous_air_production
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_expansion_of_production_capacity
+		prerequisite = {
+			focus = HSP_expansion_of_production_capacity
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_modernization_of_aviation_laws
+				bonus = 0.5
+				uses = 1
+				category = air_equipment
+			}
+			add_to_variable = {
+				HSP_airforce_air_accidents_factor = -0.2
+				tooltip = air_accidents_factor_tt
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.3
+				name = HSP_modernization_of_aviation_laws
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_lightweight_design
+		icon = GFX_goal_generic_air_production
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_spanish_airforce_academy
+		prerequisite = {
+			focus = HSP_spanish_airforce_academy
+		}
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_lightweight_design_2mil }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_airforce_air_range_factor = 0.1
+				tooltip = air_range_factor_tt
+			}
+			add_to_variable = {
+				HSP_airforce_air_agility_factor = 0.05
+				tooltip = air_agility_factor_tt
+			}
+			add_tech_bonus = {
+				name = HSP_lightweight_design
+				bonus = 0.5
+				uses = 2
+				category = air_equipment
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_lightweight_design_2mil }
+				}
+				set_state_flag = HSP_invest_on_military_industry_2mil
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = HSP_pilot_training
+		icon = GFX_focus_generic_air_defense
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_lightweight_design
+		prerequisite = {
+			focus = HSP_lightweight_design
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_airforce_air_weather_penalty = -0.10
+				tooltip = air_weather_penalty_tt
+			}
+			add_to_variable = {
+				HSP_airforce_air_untrained_pilots_penalty_factor = -0.1
+				tooltip = air_untrained_pilots_penalty_factor_tt
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.2
+				name = HSP_pilot_training
+				uses = 2
+				category = air_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_multi_role_fighters
+		icon = GFX_focus_generic_multi_role_aircraft
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_spanish_airforce_academy
+		prerequisite = {
+			focus = HSP_spanish_airforce_academy
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_multi_role_fighters
+				bonus = 0.75
+				uses = 2
+				category = medium_air
+			}
+		}
+	}
+	focus = {
+		id = HSP_airspace_defense
+		icon = GFX_goal_generic_radar
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_multi_role_fighters
+		prerequisite = {
+			focus = HSP_multi_role_fighters
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_multi_role_fighters
+				bonus = 0.75
+				uses = 2
+				category = radar_tech
+			}
+		}
+	}
+	focus = {
+		id = HSP_knights_of_the_sky
+		icon = GFX_focus_eng_special_air_service
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_pilot_training
+		prerequisite = {
+			focus = HSP_pilot_training
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_airforce_air_ace_generation_chance_factor = 0.2
+				tooltip = air_ace_generation_chance_factor_tt
+			}
+			add_to_variable = {
+				HSP_airforce_ace_effectiveness_factor = 0.3
+				tooltip = ace_effectiveness_factor_tt
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				name = HSP_knights_of_the_sky
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_focus_air_superiority
+		icon = GFX_goal_generic_air_fighter
+		cost = 5
+		x = -2
+		y = 1
+		relative_position_id = HSP_knights_of_the_sky
+		prerequisite = {
+			focus = HSP_knights_of_the_sky
+		}
+		mutually_exclusive = {
+			focus = HSP_focus_strategic_bombing
+			focus = HSP_focus_naval_bombing
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_airforce_air_superiority_efficiency = 0.1
+				tooltip = air_superiority_efficiency_tt
+			}
+		}
+	}
+	focus = {
+		id = HSP_focus_strategic_bombing
+		icon = GFX_focus_generic_long_range_aircraft
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_knights_of_the_sky
+		prerequisite = {
+			focus = HSP_knights_of_the_sky
+		}
+		mutually_exclusive = {
+			focus = HSP_focus_air_superiority
+			focus = HSP_focus_naval_bombing
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_airforce_air_strategic_bomber_bombing_factor = 0.05
+				tooltip = air_strategic_bomber_bombing_factor_tt
+			}
+			add_tech_bonus = {
+				name = HSP_multi_role_fighters
+				bonus = 0.5
+				uses = 1
+				category = heavy_air
+			}
+			show_mio_tooltip = HSP_national_bomber_production_division
+			mio:HSP_national_bomber_production_division = {
+				add_mio_size = 2
+			}
+		}
+	}
+	focus = {
+		id = HSP_focus_naval_bombing
+		icon = GFX_goal_generic_air_naval_bomber
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_knights_of_the_sky
+		prerequisite = {
+			focus = HSP_knights_of_the_sky
+		}
+		mutually_exclusive = {
+			focus = HSP_focus_air_superiority
+			focus = HSP_focus_strategic_bombing
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_airforce_naval_strike_targetting_factor = 0.05
+				tooltip = naval_strike_targetting_factor_tt
+			}
+			add_to_variable = {
+				HSP_airforce_air_nav_efficiency = 0.05
+				tooltip = air_nav_efficiency_tt
+			}
+			add_tech_bonus = {
+				name = HSP_multi_role_fighters
+				bonus = 0.5
+				uses = 1
+				category = naval_air
+			}
+			show_mio_tooltip = HSP_national_naval_defense_division
+			mio:HSP_national_naval_defense_division = {
+				add_mio_size = 2
+			}
+		}
+	}
+	# navy
+	focus = {
+		id = HSP_spanish_naval_academy
+		icon = GFX_goal_generic_navy_cruiser
+		cost = 10
+		x = 6
+		y = 1
+		relative_position_id = HSP_military_reform
+		prerequisite = {
+			focus = HSP_military_reform
+		}
+		completion_reward = {
+			add_dynamic_modifier = {
+				modifier = HSP_navy_modifier_01
+			}
+			add_tech_bonus = {
+				name = HSP_spanish_naval_academy
+				bonus = 0.75
+				uses = 1
+				category = dd_tech
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				name = HSP_spanish_naval_academy
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_expand_naval_production
+		icon = GFX_goal_generic_construct_naval_dockyard
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_spanish_naval_academy
+		prerequisite = {
+			focus = HSP_spanish_naval_academy
+		}
+		complete_tooltip = {
+			every_state = {
+				limit = { has_state_flag = HSP_expand_naval_production_2DY }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = HSP_expand_naval_production_2DY
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_expand_naval_production_2DY }
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = HSP_expand_naval_production_2DY
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_expand_naval_production_2DY }
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = HSP_expand_naval_production_2DY
+			}
+		}
+	}
+	focus = {
+		id = HSP_secure_naval_supply_line
+		icon = GFX_focus_generic_refit_civilian_ships
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_expand_naval_production
+		prerequisite = {
+			focus = HSP_expand_naval_production
+		}
+		complete_tooltip = {
+			every_state = {
+				limit = { has_state_flag = HSP_secure_naval_supply_line_2DY }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_ideas = HSP_convoy_production_01
+			add_tech_bonus = {
+				name = HSP_secure_naval_supply_line
+				bonus = 0.75
+				uses = 1
+				category = dd_tech
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.25
+				name = HSP_secure_naval_supply_line
+				uses = 1
+				category = naval_doctrine
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = HSP_expand_naval_production_2DY
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_expand_naval_production_2DY }
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = HSP_expand_naval_production_2DY
+			}
+		}
+	}
+	focus = {
+		id = HSP_convoy_escord_focus
+		icon = GFX_focus_generic_cruiser2
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_spanish_naval_academy
+		prerequisite = {
+			focus = HSP_spanish_naval_academy
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_navy_industrial_capacity_dockyard = 0.05
+				tooltip = industrial_capacity_dockyard_tt
+			}
+			add_to_variable = {
+				HSP_navy_repair_speed_factor = 0.2
+				tooltip = repair_speed_factor_tt
+			}
+			add_tech_bonus = {
+				name = HSP_convoy_escord_focus
+				bonus = 0.75
+				uses = 2
+				category = cl_tech
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.25
+				name = HSP_convoy_escord_focus
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_new_armada
+		icon = GFX_focus_generic_navy_battleship2
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_convoy_escord_focus
+		prerequisite = {
+			focus = HSP_convoy_escord_focus
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_navy_navy_max_range_factor = 0.1
+				tooltip = navy_max_range_factor_tt
+			}
+			add_to_variable = {
+				HSP_navy_navy_weather_penalty = -0.15
+				tooltip = navy_weather_penalty_tt
+			}
+			show_mio_tooltip = HSP_bilbio_royal_shipyard
+			mio:HSP_bilbio_royal_shipyard = {
+				add_mio_size = 2
+			}
+			add_tech_bonus = {
+				name = HSP_convoy_escord_focus
+				bonus = 0.5
+				uses = 2
+				category = cv_tech
+			}
+		}
+	}
+	focus = {
+		id = HSP_hunters_under_the_water
+		icon = GFX_goal_generic_navy_submarine
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_spanish_naval_academy
+		prerequisite = {
+			focus = HSP_spanish_naval_academy
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_hunters_under_the_water
+				bonus = 0.5
+				uses = 2
+				category = ss_tech
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.25
+				name = HSP_hunters_under_the_water
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_unlimited_submarine_operations
+		icon = GFX_goal_generic_navy_anti_submarine
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_hunters_under_the_water
+		prerequisite = {
+			focus = HSP_hunters_under_the_water
+		}
+		complete_tooltip = {
+			every_state = {
+				limit = { has_state_flag = HSP_unlimited_submarine_operations_2DY }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_ideas = HSP_submarine_mass_production_01
+			add_tech_bonus = {
+				name = HSP_hunters_under_the_water
+				bonus = 0.5
+				uses = 2
+				category = ss_tech
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.25
+				name = HSP_hunters_under_the_water
+				uses = 1
+				category = naval_doctrine
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_unlimited_submarine_operations_2DY }
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = HSP_unlimited_submarine_operations_2DY
+			}
+		}
+	}
+	focus = {
+		id = HSP_flagship_production
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_new_armada
+		prerequisite = {
+			focus = HSP_new_armada
+		}
+		complete_tooltip = {
+			every_state = {
+				limit = { has_state_flag = HSP_flagship_production }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_ideas = HSP_flagship_production_01
+			add_tech_bonus = {
+				name = HSP_hunters_under_the_water
+				bonus = 0.5
+				uses = 2
+				category = bb_tech
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_flagship_production }
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = HSP_flagship_production
+			}
+		}
+	}
+	focus = {
+		id = HSP_modern_fleet_warfare
+		icon = GFX_goal_generic_navy_carrier
+		cost = 5
+		x = -2
+		y = 1
+		relative_position_id = HSP_flagship_production
+		prerequisite = {
+			focus = HSP_flagship_production
+		}
+		mutually_exclusive = {
+			focus = HSP_king_of_sea
+			focus = HSP_way_of_wolf
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_navy_sortie_efficiency = 0.05
+				tooltip = sortie_efficiency_tt
+			}
+		}
+	}
+	focus = {
+		id = HSP_king_of_sea
+		icon = GFX_goal_generic_navy_battleship
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = HSP_flagship_production
+		prerequisite = {
+			focus = HSP_flagship_production
+		}
+		mutually_exclusive = {
+			focus = HSP_modern_fleet_warfare
+			focus = HSP_way_of_wolf
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_navy_navy_capital_ship_attack_factor = 0.05
+				tooltip = navy_capital_ship_attack_factor_tt
+			}
+		}
+	}
+	focus = {
+		id = HSP_way_of_wolf
+		icon = GFX_goal_generic_wolf_pack
+		cost = 5
+		x = 2
+		y = 1
+		relative_position_id = HSP_flagship_production
+		prerequisite = {
+			focus = HSP_flagship_production
+		}
+		mutually_exclusive = {
+			focus = HSP_modern_fleet_warfare
+			focus = HSP_king_of_sea
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_navy_convoy_raiding_efficiency_factor = 0.05
+				tooltip = convoy_raiding_efficiency_factor_tt
+			}
 		}
 	}
 }

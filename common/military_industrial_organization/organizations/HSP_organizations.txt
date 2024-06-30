@@ -1,0 +1,82 @@
+# tanks
+HSP_barcelona_national_arsenal = {
+	include = generic_medium_tank_organization
+	icon = GFX_idea_generic_armor
+	allowed = {	
+		original_tag = SPR
+		has_dlc = "Arms Against Tyranny"
+	}
+	available = {
+		owner = {
+			has_completed_focus = HSP_main_tank
+		}
+	}
+	research_bonus = 0.10
+	initial_trait = {
+		equipment_bonus = {
+			build_cost_ic = -0.1
+			reliability = 0.05
+		}
+	}
+}
+HSP_national_bomber_production_division = {
+	include = generic_heavy_aircraft_organization
+	icon = GFX_idea_generic_air_manufacturer_3
+	allowed = {	
+		original_tag = SPR
+		has_dlc = "Arms Against Tyranny"
+	}
+	available = {
+		owner = {
+			has_completed_focus = HSP_focus_strategic_bombing
+		}
+	}
+	research_bonus = 0.10
+	initial_trait = {
+		equipment_bonus = {
+			reliability = 0.05
+			air_defence = 0.05
+		}
+	}
+}
+HSP_national_naval_defense_division = {
+	include = generic_naval_aircraft_organization
+	icon = GFX_idea_generic_air_manufacturer_2
+	allowed = {	
+		original_tag = SPR
+		has_dlc = "Arms Against Tyranny"
+	}
+	available = {
+		owner = {
+			has_completed_focus = HSP_focus_naval_bombing
+		}
+	}
+	research_bonus = 0.10
+	initial_trait = {
+		equipment_bonus = {
+			reliability = 0.05
+			air_agility = 0.05
+		}
+	}
+}
+
+HSP_bilbio_royal_shipyard = {
+	include = generic_task_force_ship_organization
+	icon = GFX_idea_generic_naval_manufacturer_3
+	allowed = {	
+		original_tag = SPR
+		has_dlc = "Arms Against Tyranny"
+	}
+	available = {
+		owner = {
+			has_completed_focus = HSP_new_armada
+		}
+	}
+	research_bonus = 0.10
+	initial_trait = {
+		equipment_bonus = {
+			reliability = 0.05
+			build_cost_ic = -0.1
+		}
+	}
+}

@@ -30,6 +30,20 @@ ideas = {
 				army_org_factor = -0.05
 			}
 		}
+		HSP_old_fashioned_army_03 = {
+			picture = generic_army_problems
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = -0.05
+				army_defence_factor = -0.05
+			}
+		}
 		HSP_industrialization_01 = { # industrialization 1
 			picture = generic_production_bonus
 			allowed = {
@@ -417,6 +431,150 @@ ideas = {
 				operative_slot = 1
 				decryption_factor = 0.2
 				encryption_factor = 0.2
+			}
+		}
+		HSP_spanish_army_01 = {
+			picture = generic_war_preparation
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				experience_gain_army = 0.02
+			}
+		}
+		# mobility focus
+		HSP_spanish_army_02 = {
+			picture = generic_war_preparation
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				experience_gain_army = 0.02
+				army_speed_factor = 0.05
+				army_org_factor = 0.05
+			}
+		}
+		# firepower focus
+		HSP_spanish_army_03 = {
+			picture = generic_war_preparation
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				experience_gain_army = 0.02
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
+			}
+		}
+		# infantry focus
+		HSP_spanish_army_04 = {
+			picture = generic_war_preparation
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				experience_gain_army = 0.02
+				max_planning_factor = 0.1
+				planning_speed = 0.1
+				training_time_army_factor = -0.1
+			}
+		}
+		HSP_spirit_of_conquistador_01 = {
+			picture = SPA_carlism
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				supply_consumption_factor = -0.05
+				army_speed_factor = 0.05
+				conscription = 0.01
+			}
+		}
+		HSP_air_production_01 = {
+			picture = man_five_year_plan_air
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			equipment_bonus = {
+				small_plane_airframe = {
+					build_cost_ic = -0.1 instant = yes
+				}
+				medium_plane_airframe = {
+					build_cost_ic = -0.1 instant = yes
+				}
+				large_plane_airframe = {
+					build_cost_ic = -0.05 instant = yes
+				}
+			}
+		}
+		HSP_convoy_production_01 = {
+			picture = generic_navy_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			equipment_bonus = {
+				convoy = {
+					instant = yes
+					build_cost_ic = -0.2
+				}
+				ship_hull_light = {
+					build_cost_ic = -0.05 instant = yes
+				}
+				ship_hull_cruiser = {
+					build_cost_ic = -0.05 instant = yes
+				}
+			}
+		}
+		HSP_submarine_mass_production_01 = {
+			picture = generic_naval_manufacturer_2
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			equipment_bonus = {
+				submarine = {
+					build_cost_ic = -0.1 instant = yes
+				}
+			}
+		}
+		HSP_flagship_production_01 = {
+			picture = generic_sea_focused_navy
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			equipment_bonus = {
+				ship_hull_carrier = {
+					build_cost_ic = -0.05 instant = yes
+				}
+				ship_hull_heavy = {
+					build_cost_ic = -0.05 instant = yes
+				}
 			}
 		}
 	}
