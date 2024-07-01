@@ -1,5 +1,6 @@
 # tanks
 HSP_barcelona_national_arsenal = {
+	name = barcelona_national_arsenal
 	include = generic_medium_tank_organization
 	icon = GFX_idea_generic_armor
 	allowed = {	
@@ -20,6 +21,7 @@ HSP_barcelona_national_arsenal = {
 	}
 }
 HSP_national_bomber_production_division = {
+	name = national_bomber_production_division
 	include = generic_heavy_aircraft_organization
 	icon = GFX_idea_generic_air_manufacturer_3
 	allowed = {	
@@ -40,6 +42,7 @@ HSP_national_bomber_production_division = {
 	}
 }
 HSP_national_naval_defense_division = {
+	name = national_naval_defense_division
 	include = generic_naval_aircraft_organization
 	icon = GFX_idea_generic_air_manufacturer_2
 	allowed = {	
@@ -61,6 +64,7 @@ HSP_national_naval_defense_division = {
 }
 
 HSP_bilbio_royal_shipyard = {
+	name = bilbao_royal_shipyard
 	include = generic_task_force_ship_organization
 	icon = GFX_idea_generic_naval_manufacturer_3
 	allowed = {	

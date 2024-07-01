@@ -433,64 +433,6 @@ ideas = {
 				encryption_factor = 0.2
 			}
 		}
-		HSP_spanish_army_01 = {
-			picture = generic_war_preparation
-			allowed = {
-				original_tag = SPR
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			modifier = {
-				experience_gain_army = 0.02
-			}
-		}
-		# mobility focus
-		HSP_spanish_army_02 = {
-			picture = generic_war_preparation
-			allowed = {
-				original_tag = SPR
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			modifier = {
-				experience_gain_army = 0.02
-				army_speed_factor = 0.05
-				army_org_factor = 0.05
-			}
-		}
-		# firepower focus
-		HSP_spanish_army_03 = {
-			picture = generic_war_preparation
-			allowed = {
-				original_tag = SPR
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			modifier = {
-				experience_gain_army = 0.02
-				army_attack_factor = 0.05
-				army_defence_factor = 0.05
-			}
-		}
-		# infantry focus
-		HSP_spanish_army_04 = {
-			picture = generic_war_preparation
-			allowed = {
-				original_tag = SPR
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			modifier = {
-				experience_gain_army = 0.02
-				max_planning_factor = 0.1
-				planning_speed = 0.1
-				training_time_army_factor = -0.1
-			}
-		}
 		HSP_spirit_of_conquistador_01 = {
 			picture = SPA_carlism
 			allowed = {

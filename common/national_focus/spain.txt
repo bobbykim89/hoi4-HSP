@@ -53,6 +53,17 @@ focus_tree = {
 				}
 			}
 		}
+		offset = {
+			x = 39
+			y = 0
+			trigger = {
+				has_completed_focus = HSP_assemble_emergency_council
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+			}
+		}
 	}
 
 #  #  ##  ### ###  ##  #  #  ##  #   ###  ## ###     ###  #  # ### #   ###     #  # ###  
@@ -13433,6 +13444,9 @@ focus_tree = {
 				ruling_party = democratic
 				elections_allowed = no
 			}
+			hidden_effect = {
+				set_global_flag = scw_over
+			}
 		}
 	}
 
@@ -13451,7 +13465,6 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 100
 			remove_ideas = SPR_national_strikes_3
-			
 		}
 	}
 
@@ -14487,7 +14500,6 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-			add_ideas = HSP_madrid_royal_arsenal_01
 			swap_ideas = {
 				remove_idea = HSP_madrid_royal_arsenal_01
 				add_idea = HSP_madrid_royal_arsenal_02
@@ -14710,17 +14722,6 @@ focus_tree = {
 				original_tag = BRA
 				exists = yes
 				is_subject_of = ROOT
-			}
-		}
-		bypass = {
-			any_other_country = {
-				original_tag = BRA
-				OR = {
-					exists = no
-					NOT = {
-						is_subject_of = ROOT
-					}
-				}
 			}
 		}
 		completion_reward = {
@@ -15157,7 +15158,10 @@ focus_tree = {
 		available = {
 			any_other_country = {
 				original_tag = HUN
-				exists = no
+				exists = yes
+			}
+			has_army_manpower = {
+				size > 500000
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -15293,7 +15297,9 @@ focus_tree = {
 		prerequisite = {
 			focus = HSP_one_crown_one_empire
 		}
-		completion_reward = { }
+		completion_reward = {
+			unlock_decision_category_tooltip = HSP_allied_kingdom_cat
+		}
 	}
 	focus = {
 		id = HSP_claim_crown_of_napoli
@@ -16214,6 +16220,12 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.2
+				name = HSP_motorized_army
+				uses = 2
+				category = land_doctrine
+			}
 		}
 	}
 	focus = {
@@ -16243,6 +16255,12 @@ focus_tree = {
 		completion_reward = {
 			every_army_leader = {
 				add_planning = 1
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.2
+				name = HSP_motorized_army
+				uses = 2
+				category = land_doctrine
 			}
 		}
 	}

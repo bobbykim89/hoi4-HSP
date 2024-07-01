@@ -1248,12 +1248,24 @@ HSP_kingdom_of_spain = {
 	color = rgb { 205 212 228 }
 	color_ui = rgb { 255 255 255 }
 }
+HSP_kingdom_of_spain_neutrality = {
+	color = rgb { 205 212 228 }
+	color_ui = rgb { 255 255 255 }
+}
 SPR_POR_commonwealth = {
+	color = rgb { 205 212 228 }
+	color_ui = rgb { 255 255 255 }
+}
+SPR_POR_commonwealth_neutrality = {
 	color = rgb { 205 212 228 }
 	color_ui = rgb { 255 255 255 }
 }
 
 HSP_habsburg_empire = {
+	color = rgb { 128 128 128 }
+	color_ui = rgb { 128 128 128 }
+}
+HSP_habsburg_empire_neutrality = {
 	color = rgb { 128 128 128 }
 	color_ui = rgb { 128 128 128 }
 }
