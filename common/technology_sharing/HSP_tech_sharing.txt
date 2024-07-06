@@ -9,3 +9,20 @@ technology_sharing_group = {
 		is_in_faction_with = ENG
 	}
 }
+
+technology_sharing_group = {
+	id = habsburg_research
+	name = habsburg_research_name
+	desc = habsburg_research_desc
+	picture = GFX_technology_sharing_default
+	research_sharing_per_country_bonus = 0.1
+
+	available = {
+		AND = {
+			OR = {
+				original_tag = SPR
+				is_in_faction_with = SPR
+			}
+		}
+	}
+}

@@ -1,1 +1,36 @@
-﻿
+﻿l_english:
+  # pan hispanic federation
+  HSP_pan_hispanic_federation_cat: "범 스페인어권 연합"
+  HSP_pan_hispanic_federation_cat_desc: ""
+  HSP_invite_to_faction: "§Y[FROM.GetNameDef]§! 초대"
+  HSP_demand_submission: "§Y[FROM.GetNameDef]§! 의 종속 요구"
+  # reestablish viceroyalty
+  HSP_restore_viceroyalty_cat: "부왕령 복원"
+  HSP_restore_viceroyalty_of_nueva_espana: "누에바 에스파냐 부왕령 복원"
+  HSP_restore_viceroyalty_of_nueva_granada: "누에바 그라나다 부왕령 복원"
+  HSP_restore_viceroyalty_of_peru: "페루 부왕령 복원"
+  HSP_restore_viceroyalty_of_rio_de_la_plata: "리오 데 라 플라타 부왕령 복원"
+  # war decisions
+  HSP_war_decisions_cat: "전쟁 계획"
+  HSP_war_in_america: "대미 전쟁 계획"
+  HSP_war_france: "대 프랑스 전쟁 계획"
+  HSP_war_uk: "대영 전쟁 계획"
+  HSP_war_italy: "대 이탈리아 전쟁 계획"
+  HSP_war_germany: "대독 전쟁 계획"
+  HSP_war_china: "대 중국 전쟁 계획"
+  HSP_war_sov: "대 소련 전쟁 계획"
+  # disunite italy
+  HSP_disunite_italy_cat: "이탈리아 해체"
+  HSP_reestablish_papacy: "교황령 복원"
+  HSP_restore_toscana: "토스카나 대공국 복원"
+  HSP_restore_sardegna: "사르데냐 피에몬테 복원"
+  HSP_restore_lombardy_venetia: "롬바르디 베네치아 복원"
+  # allied kingdoms
+  HSP_allied_kingdom_cat: "동맹 왕국 복원"
+  HSP_restore_poland: "폴란드 재건"
+  HSP_restore_polish_lithuanian_commonwealth: "폴란드-리투아니아 재건"
+  HSP_restore_kingdom_of_bulgaria: "불가리아 왕국 재건"
+  HSP_restore_third_bulgarian_empire: "불가리아 제3제국 재건"
+  # habsburg influence
+  HSP_habsburg_influence_cat: "종속국 영향력 증대"
+  HSP_increase_habsburg_influence: "§Y[FROM.GetNameDef]§! 에 영향력 증대"

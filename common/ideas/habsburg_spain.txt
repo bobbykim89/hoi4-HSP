@@ -444,7 +444,9 @@ ideas = {
 			modifier = {
 				supply_consumption_factor = -0.05
 				army_speed_factor = 0.05
+				terrain_penalty_reduction = 0.1
 				conscription = 0.01
+				justify_war_goal_time = -0.2
 			}
 		}
 		HSP_air_production_01 = {
@@ -463,7 +465,7 @@ ideas = {
 					build_cost_ic = -0.1 instant = yes
 				}
 				large_plane_airframe = {
-					build_cost_ic = -0.05 instant = yes
+					build_cost_ic = -0.1 instant = yes
 				}
 			}
 		}
@@ -481,10 +483,10 @@ ideas = {
 					build_cost_ic = -0.2
 				}
 				ship_hull_light = {
-					build_cost_ic = -0.05 instant = yes
+					build_cost_ic = -0.1 instant = yes
 				}
 				ship_hull_cruiser = {
-					build_cost_ic = -0.05 instant = yes
+					build_cost_ic = -0.1 instant = yes
 				}
 			}
 		}
@@ -512,10 +514,10 @@ ideas = {
 			}
 			equipment_bonus = {
 				ship_hull_carrier = {
-					build_cost_ic = -0.05 instant = yes
+					build_cost_ic = -0.1 instant = yes
 				}
 				ship_hull_heavy = {
-					build_cost_ic = -0.05 instant = yes
+					build_cost_ic = -0.1 instant = yes
 				}
 			}
 		}

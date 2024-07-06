@@ -4,3 +4,8 @@
   HSP_habsburg_hegemony_faction:0 "합스부르크 패권연맹"
   # research
   allied_research:0 "연합국 연구"
+  allied_research_name:0 "연합국 연구"
+  allied_research_desc:0 ""
+  habsburg_research:0 "합스부르크 과학기술회"
+  habsburg_research_name:0 "합스부르크 과학기술회"
+  habsburg_research_desc:0 ""

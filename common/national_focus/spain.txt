@@ -14984,7 +14984,7 @@ focus_tree = {
 	focus = {
 		id = HSP_the_empire_resurrected
 		icon = GFX_focus_POL_habsburg
-		cost = 10
+		cost = 5
 		x = 2
 		y = 1
 		relative_position_id = HSP_looking_outside
@@ -15148,7 +15148,7 @@ focus_tree = {
 	focus = {
 		id = HSP_demand_crown_of_st_stephen
 		icon = GFX_focus_hun_elect_a_king
-		cost = 10
+		cost = 5
 		x = 0
 		y = 1
 		relative_position_id = HSP_the_empire_resurrected
@@ -15247,6 +15247,7 @@ focus_tree = {
 				852 = { add_core_of = HUN }
 				736 = { add_core_of = HUN }
 				39 = { add_core_of = HUN }
+				45 = { add_core_of = HUN }
 				850 = { add_core_of = HUN }
 			}
 		}
@@ -15284,6 +15285,30 @@ focus_tree = {
 					is_core_of = HUN
 				}
 				add_core_of = SPR
+			}
+		}
+	}
+	focus = {
+		id = HSP_habsburg_academy_of_science_and_technology
+		icon = GFX_focus_research2
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_one_crown_one_empire
+		prerequisite = {
+			focus = HSP_one_crown_one_empire
+		}
+		available = {
+			
+		}
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			add_to_tech_sharing_group = habsburg_research
+			every_country = {
+				limit = {
+					is_in_faction_with = ROOT
+				}
+				add_to_tech_sharing_group = habsburg_research
 			}
 		}
 	}
@@ -15335,7 +15360,7 @@ focus_tree = {
 	focus = {
 		id = HSP_disunite_italia
 		icon = GFX_goal_generic_occupy_states_ongoing_war
-		cost = 10
+		cost = 5
 		x = 0
 		y = 1
 		relative_position_id = HSP_claim_crown_of_napoli
@@ -15429,7 +15454,7 @@ focus_tree = {
 	focus = {
 		id = HSP_approach_uk
 		icon = GFX_focus_chi_british_cooperation
-		cost = 10
+		cost = 5
 		x = 14
 		y = 1
 		relative_position_id = HSP_looking_outside
@@ -15596,7 +15621,7 @@ focus_tree = {
 	focus = {
 		id = HSP_approach_germany
 		icon = GFX_focus_chi_mission_to_germany
-		cost = 10
+		cost = 5
 		x = 10
 		y = 1
 		relative_position_id = HSP_looking_outside
@@ -15887,7 +15912,7 @@ focus_tree = {
 				category = armor
 			}
 			add_to_variable = {
-				HSP_army_army_org_factor = 0.05
+				HSP_army_army_org_factor = 0.1
 				tooltip = army_org_factor_tt
 			}
 			add_to_variable = {
@@ -15900,6 +15925,7 @@ focus_tree = {
 				uses = 1
 				category = land_doctrine
 			}
+			show_ideas_tooltip = SPA_wilhelm_ritter_von_thoma
 		}
 	}
 	focus = {
@@ -16080,11 +16106,11 @@ focus_tree = {
 				category = support_tech
 			}
 			add_to_variable = {
-				HSP_army_max_planning_factor = 0.05
+				HSP_army_max_planning_factor = 0.1
 				tooltip = max_planning_factor_tt
 			}
 			add_to_variable = {
-				HSP_army_planning_speed = 0.05
+				HSP_army_planning_speed = 0.1
 				tooltip = planning_speed_tt
 			}
 			add_doctrine_cost_reduction = {

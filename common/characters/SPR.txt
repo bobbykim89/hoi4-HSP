@@ -1,5 +1,5 @@
 characters={
-	## Existing characters
+
 	SPR_niceto_alcala_zamora={
 		instance = {
 			allowed = {
@@ -1669,7 +1669,10 @@ characters={
 				}
 			}
 			available = {
-				has_completed_focus = SPA_the_condor_legion
+				OR = {
+					has_completed_focus = SPA_the_condor_legion
+					has_completed_focus = HSP_focus_on_mobility
+				}
 				custom_trigger_tooltip = {
 					tooltip = SPA_not_republican_spain_tt
 					NOT = { tag = SPD }
@@ -4654,7 +4657,10 @@ characters={
 			}
 
 			available = {
-				has_completed_focus = SPA_supremacy_of_the_communion
+				OR = {
+					has_completed_focus = SPA_supremacy_of_the_communion
+					has_completed_focus = HSP_new_monarchy
+				}
 				custom_trigger_tooltip = {
 					tooltip = SPA_not_republican_spain_tt
 					NOT = { tag = SPD }
@@ -4695,6 +4701,7 @@ characters={
 			available = {
 				OR = {
 					has_completed_focus = SPA_supremacy_of_the_communion
+					has_completed_focus = HSP_new_monarchy
 					original_tag = CHL
 				}
 				custom_trigger_tooltip = {

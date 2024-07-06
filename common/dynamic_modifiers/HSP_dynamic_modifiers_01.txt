@@ -6,6 +6,7 @@ HSP_army_modifier_01 = {
 	icon = GFX_idea_generic_war_preparation
 
 	experience_gain_army = 0.02
+	max_command_power = 20
 	army_speed_factor = HSP_army_army_speed_factor
 	army_org_factor = HSP_army_army_org_factor
 	breakthrough_factor = HSP_army_breakthrough_factor
@@ -52,4 +53,16 @@ HSP_navy_modifier_01 = {
 	convoy_raiding_efficiency_factor = HSP_navy_convoy_raiding_efficiency_factor
 	sortie_efficiency = HSP_navy_sortie_efficiency
 	navy_capital_ship_attack_factor = HSP_navy_navy_capital_ship_attack_factor
+}
+
+HSP_habsburg_influence_01 = {
+	icon = GFX_idea_generic_monarchist_uprising
+	enable = {
+		always = yes
+	}
+	cic_to_overlord_factor = 0.2
+	master_ideology_drift = 0.5
+	stability_factor = 0.1
+	stability_weekly = 0.01
+	consumer_goods_factor = -0.15
 }

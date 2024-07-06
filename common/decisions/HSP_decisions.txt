@@ -915,6 +915,7 @@ HSP_war_decisions_cat = {
 		}
 		visible = {
 			has_completed_focus = HSP_restore_lost_territories
+			has_war_with = USA
 		}
 		ai_will_do = {
 			factor = 1
@@ -940,6 +941,7 @@ HSP_war_decisions_cat = {
 				has_completed_focus = HSP_claim_on_elsass_lothringen
 				has_completed_focus = HSP_war_planning
 			}
+			has_war_with = FRA
 		}
 		ai_will_do = {
 			factor = 1
@@ -964,6 +966,7 @@ HSP_war_decisions_cat = {
 				has_completed_focus = HSP_treating_the_root_of_all_problems
 				has_completed_focus = HSP_war_planning
 			}
+			has_war_with = ENG
 		}
 		ai_will_do = {
 			factor = 1
@@ -987,6 +990,7 @@ HSP_war_decisions_cat = {
 				has_completed_focus = HSP_claim_crown_of_napoli
 				has_completed_focus = HSP_war_planning
 			}
+			has_war_with = ITA
 		}
 		ai_will_do = {
 			factor = 1
@@ -1010,6 +1014,7 @@ HSP_war_decisions_cat = {
 				has_completed_focus = HSP_claim_crown_of_napoli
 				has_completed_focus = HSP_war_planning
 			}
+			has_war_with = GER
 		}
 		ai_will_do = {
 			factor = 1
@@ -1030,6 +1035,7 @@ HSP_war_decisions_cat = {
 		}
 		visible = {
 			has_completed_focus = HSP_securing_a_base_in_asia
+			has_war_with = CHI
 		}
 		ai_will_do = {
 			factor = 1
@@ -1050,6 +1056,7 @@ HSP_war_decisions_cat = {
 		}
 		visible = {
 			has_completed_focus = HSP_the_true_enemy
+			has_war_with = SOV
 		}
 		ai_will_do = {
 			factor = 1
@@ -1125,7 +1132,7 @@ HSP_disunite_italy_cat = {
 			has_completed_focus = HSP_disunite_italia
 		}
 		available = {
-			controls_state = 162
+			controls_state = 158
 			controls_state = 114
 		}
 		fire_only_once = yes
@@ -1223,6 +1230,12 @@ HSP_allied_kingdom_cat = {
 				transfer_state = 93
 				transfer_state = 91
 				transfer_state = 89
+				promote_character = POL_karl_albrecht
+				set_party_name = { 
+					ideology = neutrality 
+					long_name = POL_habsburg_party
+					name = POL_habsburg_party 
+				}
 			}
 			set_autonomy = {
 				target = POL
@@ -1273,6 +1286,19 @@ HSP_allied_kingdom_cat = {
 			controls_state = 66
 			controls_state = 68
 			controls_state = 63
+			controls_state = 80
+			# LIT
+			controls_state =  188
+			controls_state =  189
+			controls_state =  814
+			controls_state =  815
+			controls_state =  11
+			# LAT
+			controls_state = 12
+			controls_state = 190
+			controls_state = 808
+			controls_state = 809
+			controls_state = 810
 		}
 		fire_only_once = yes
 		cost = 50
@@ -1311,22 +1337,32 @@ HSP_allied_kingdom_cat = {
 				transfer_state = 66
 				transfer_state = 68
 				transfer_state = 63
-				transfer_state = 11
-				transfer_state = 815
-				transfer_state = 189
-				transfer_state = 188
 				transfer_state = 834
 				transfer_state = 766
 				transfer_state = 196
 				transfer_state = 200
 				transfer_state = 227
 				transfer_state = 228
+				transfer_state = 80
+				# LIT
+				transfer_state = 188
+				transfer_state = 189
+				transfer_state = 814
+				transfer_state = 815
+				transfer_state = 11
+				# LAT
+				transfer_state = 12
+				transfer_state = 190
+				transfer_state = 808
+				transfer_state = 809
+				transfer_state = 810
 				set_cosmetic_tag = PLC_UNIFIED
 			}
 			every_state = {
 				limit = {
 					OR = {
 						is_core_of = LIT
+						is_core_of = LAT
 						is_core_of = KSH
 						is_core_of = UKR
 						state = 96
@@ -1368,6 +1404,228 @@ HSP_allied_kingdom_cat = {
 					}
 				}
 				add_core_of = POL
+			}
+		}
+	}
+	HSP_restore_kingdom_of_bulgaria = {
+		icon = generic_operation
+		visible = {
+			has_government = neutrality
+			has_completed_focus = HSP_restore_allied_kingdoms
+		}
+		available = {
+			controls_state = 211
+			controls_state = 801
+			controls_state = 48
+			controls_state = 212
+
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 30
+		remove_effect = {
+			BUL = {
+				transfer_state = 211
+				transfer_state = 801
+				transfer_state = 48
+				transfer_state = 212
+				set_country_flag = BUL_the_return_of_ferdinand_flag
+				set_party_name = {
+					ideology = neutrality
+					long_name = BUL_ferdinand_loyalists_party_long
+					name = BUL_ferdinand_loyalists_party
+				}
+				add_country_leader_role = {
+					character = BUL_ferdinand_i
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = despotism
+						traits = {
+							dreams_of_a_new_byzantium
+						}
+					}
+					promote_leader = yes
+				}
+			}
+			set_autonomy = {
+				target = BUL
+				autonomy_state = autonomy_puppet
+			}
+		}
+	}
+	HSP_restore_third_bulgarian_empire = {
+		icon = generic_operation
+		visible = {
+			has_government = neutrality
+			has_completed_focus = HSP_restore_allied_kingdoms
+		}
+		available = {
+			BUL = {
+				exists = yes
+				is_subject_of = ROOT
+			}
+			controls_state = 77
+			controls_state = 46
+			controls_state = 78
+			controls_state = 79
+			controls_state = 81
+			controls_state = 105
+			controls_state = 106
+			controls_state = 107
+			controls_state = 108
+			controls_state = 802
+			controls_state = 803
+			# albania
+			controls_state = 805
+			controls_state = 44
+			controls_state = 934
+			# greece
+			controls_state = 47
+			controls_state = 184
+			controls_state = 185
+			controls_state = 186
+			controls_state = 187
+			controls_state = 731
+			# turkey
+			controls_state = 341
+			controls_state = 797
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 30
+		remove_effect = {
+			BUL = {
+				transfer_state = 77
+				transfer_state = 46
+				transfer_state = 78
+				transfer_state = 79
+				transfer_state = 81
+				transfer_state = 105
+				transfer_state = 106
+				transfer_state = 107
+				transfer_state = 108
+				transfer_state = 802
+				transfer_state = 803
+				# albania
+				transfer_state = 805
+				transfer_state = 44
+				transfer_state = 934
+				# greece
+				transfer_state = 47
+				transfer_state = 184
+				transfer_state = 185
+				transfer_state = 186
+				transfer_state = 187
+				transfer_state = 731
+				# turkey
+				transfer_state = 341
+				transfer_state = 797
+				set_cosmetic_tag = TBE_third_bulgarian_empire
+			}
+			every_state = {
+				limit = {
+					OR = {
+						state = 77
+						state = 46
+						state = 78
+						state = 79
+						state = 81
+						state = 105
+						state = 106
+						state = 107
+						state = 108
+						state = 802
+						state = 803
+						# albania
+						state = 805
+						state = 44
+						state = 934
+						# greece
+						state = 47
+						state = 184
+						state = 185
+						state = 186
+						state = 187
+						state = 731
+						# turkey
+						state = 341
+						state = 797
+					}
+				}
+				add_core_of = BUL
+			}
+		}
+	}
+}
+
+HSP_habsburg_influence_cat = {
+	HSP_increase_habsburg_influence = {
+		icon = GFX_decision_eng_trade_unions_demand
+		
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_restore_allied_kingdoms
+			country_exists = FROM
+			FROM = {
+				is_subject_of = ROOT
+				NOT = {
+					FROM = { has_idea = HSP_habsburg_influence_01 }
+				}
+			}
+		}
+		available = {
+			has_completed_focus = HSP_restore_allied_kingdoms
+			FROM = {
+				is_subject_of = ROOT
+				NOT = {
+					FROM = { 
+						has_dynamic_modifier = {
+							modifier = HSP_habsburg_influence_01
+						}
+					}
+				}
+			}
+		}
+		target_trigger = {
+		    FROM = { 
+				AND = {
+					is_subject_of = ROOT
+					NOT = {
+						FROM = { 
+							has_dynamic_modifier = {
+								modifier = HSP_habsburg_influence_01
+							}
+						}
+					}
+				}
+		    }
+		}
+		ai_will_do = {
+			base = 50
+			modifier = {
+				add = 30
+				FROM = {
+					is_in_faction_with = ROOT
+				}
+			}
+			modifier = {
+				add = 20
+				has_opinion = {
+					target = ROOT
+					value > 60
+				}
+			}
+		}
+		cost = 20
+		fire_only_once = yes
+		days_remove = 10
+		remove_effect = {
+			FROM = {
+				add_dynamic_modifier = {
+					modifier = HSP_habsburg_influence_01
+				}
 			}
 		}
 	}
