@@ -40,3 +40,7 @@
   HSP_airforce_modifier_01:0 "스페인 공군"
   HSP_navy_modifier_01:0 "스페인 해군"
   HSP_habsburg_influence_01:0 "합스부르크의 영향력"
+  # production management
+  HSP_focus_land_production_01:0 "지상군 생산 집중"
+  HSP_focus_balanced_production_01:0 "균형잡힌 생산"
+  HSP_focus_naval_production_01:0 "해군 생산 집중"

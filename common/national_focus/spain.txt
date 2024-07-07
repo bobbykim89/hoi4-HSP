@@ -13447,6 +13447,7 @@ focus_tree = {
 			hidden_effect = {
 				set_global_flag = scw_over
 			}
+			news_event = HSP_spain_news.1
 		}
 	}
 
@@ -15324,6 +15325,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			unlock_decision_category_tooltip = HSP_allied_kingdom_cat
+			unlock_decision_category_tooltip = HSP_habsburg_influence_cat
 		}
 	}
 	focus = {
@@ -15868,6 +15870,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			army_experience = 25
+			show_mio_tooltip = HSP_toledo_royal_tank_production_department
 			swap_ideas = {
 				remove_idea = HSP_old_fashioned_army_02
 				add_idea = HSP_old_fashioned_army_03
@@ -16638,6 +16641,22 @@ focus_tree = {
 			mio:HSP_national_naval_defense_division = {
 				add_mio_size = 2
 			}
+		}
+	}
+	# production management
+	focus = {
+		id = HSP_state_led_production_management
+		icon = GFX_goal_generic_neutrality_focus
+		cost = 5
+		x = 3
+		y = 0
+		relative_position_id = HSP_spanish_airforce_academy
+		prerequisite = {
+			focus = HSP_military_reform
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = HSP_production_management_cat
+			add_ideas = HSP_focus_balanced_production_01
 		}
 	}
 	# navy

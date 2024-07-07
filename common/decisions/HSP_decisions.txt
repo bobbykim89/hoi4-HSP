@@ -1556,6 +1556,215 @@ HSP_allied_kingdom_cat = {
 			}
 		}
 	}
+	HSP_offer_protection_of_sweden = {
+		icon = generic_operation
+		visible = {
+			has_government = neutrality
+			has_completed_focus = HSP_restore_allied_kingdoms
+			SWE = {
+				exists = yes
+				is_in_faction = no
+			}
+		}
+		available = {
+			SWE = {
+				exists = yes
+				is_in_faction = no
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 5
+		remove_effect = {
+			SWE = {
+				country_event = {
+					id = HSP_spain_events.27
+					hours = 1
+				}
+			}
+		}
+	}
+	HSP_restore_scandinavia = {
+		icon = generic_operation
+		visible = {
+			has_government = neutrality
+			has_completed_focus = HSP_restore_allied_kingdoms
+			SWE = {
+				exists = yes
+				is_subject_of = ROOT
+			}
+		}
+		available = {
+			SWE = {
+				exists = yes
+				is_subject_of = ROOT
+			}
+			# denmark
+			controls_state = 37
+			controls_state = 99
+			#controls_state = 100 Iceland should not be included here
+			#controls_state = 101 Greenland should not be included here
+			controls_state = 337
+			controls_state = 910
+			controls_state = 911
+			controls_state = 912
+			# norway
+			controls_state = 110
+			controls_state = 142
+			controls_state = 143
+			controls_state = 144
+			controls_state = 920
+			controls_state = 921
+			controls_state = 922
+			controls_state = 923
+			controls_state = 924
+			controls_state = 925
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 30
+		remove_effect = {
+			SWE = {
+				# denmark
+				transfer_state = 37
+				transfer_state = 99
+				transfer_state = 337
+				transfer_state = 910
+				transfer_state = 911
+				transfer_state = 912
+				# norway
+				transfer_state = 110
+				transfer_state = 142
+				transfer_state = 143
+				transfer_state = 144
+				transfer_state = 920
+				transfer_state = 921
+				transfer_state = 922
+				transfer_state = 923
+				transfer_state = 924
+				transfer_state = 925
+				set_cosmetic_tag = SCA_UNIFIED 
+			}
+			every_state = {
+				limit = {
+					OR = {
+						is_core_of = NOR
+						is_core_of = DEN
+					}
+				}
+				add_core_of = SWE
+			}
+		}
+	}
+	HSP_restore_nordic_league = {
+		icon = generic_operation
+		visible = {
+			has_government = neutrality
+			has_completed_focus = HSP_restore_allied_kingdoms
+			SWE = {
+				exists = yes
+				is_subject_of = ROOT
+				has_cosmetic_tag = SCA_UNIFIED
+			}
+		}
+		available = {
+			SWE = {
+				exists = yes
+				is_subject_of = ROOT
+				has_cosmetic_tag = SCA_UNIFIED
+			}
+			# iceland
+			controls_state = 100
+			# finland
+			controls_state = 111
+			controls_state = 145
+			controls_state = 148
+			controls_state = 149
+			controls_state = 150
+			controls_state = 926
+			controls_state = 927
+			controls_state = 928
+			controls_state = 929
+			controls_state = 930
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 30
+		remove_effect = {
+			SWE = {
+				# iceland
+				transfer_state = 100
+				# finland
+				transfer_state = 111
+				transfer_state = 145
+				transfer_state = 148
+				transfer_state = 149
+				transfer_state = 150
+				transfer_state = 926
+				transfer_state = 927
+				transfer_state = 928
+				transfer_state = 929
+				transfer_state = 930
+
+				set_cosmetic_tag = NDC_UNIFIED
+			}
+			every_state = {
+				limit = {
+					OR = {
+						is_core_of = FIN
+						is_core_of = ICE
+					}
+				}
+				add_core_of = SWE
+			}
+		}
+	}
+	HSP_estonia_cession = {
+		icon = generic_operation
+		visible = {
+			has_government = neutrality
+			has_completed_focus = HSP_restore_allied_kingdoms
+			SWE = {
+				exists = yes
+				is_subject_of = ROOT
+				has_cosmetic_tag = NDC_UNIFIED
+			}
+		}
+		available = {
+			SWE = {
+				exists = yes
+				is_subject_of = ROOT
+				has_cosmetic_tag = NDC_UNIFIED
+			}
+			# estonia
+			controls_state = 811
+			controls_state = 812
+			controls_state = 813
+			controls_state = 13
+			controls_state = 191
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 10
+		remove_effect = {
+			SWE = {
+				# estonia
+				transfer_state = 811
+				transfer_state = 812
+				transfer_state = 813
+				transfer_state = 13
+				transfer_state = 191
+			}
+			every_state = {
+				limit = {
+					OR = {
+						is_core_of = EST
+					}
+				}
+				add_core_of = SWE
+			}
+		}
+	}
 }
 
 HSP_habsburg_influence_cat = {
@@ -1625,6 +1834,144 @@ HSP_habsburg_influence_cat = {
 			FROM = {
 				add_dynamic_modifier = {
 					modifier = HSP_habsburg_influence_01
+				}
+			}
+		}
+	}
+}
+
+HSP_production_management_cat = {
+	HSP_focus_land_production = {
+		icon = GFX_decision_eng_trade_unions_demand
+		
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_state_led_production_management
+			OR = {
+				has_idea = HSP_focus_balanced_production_01
+				has_idea = HSP_focus_naval_production_01
+			}
+		}
+		available = {
+			has_completed_focus = HSP_state_led_production_management
+			OR = {
+				has_idea = HSP_focus_balanced_production_01
+				has_idea = HSP_focus_naval_production_01
+			}
+		}
+		cost = 20
+		fire_only_once = no
+		complete_effect = {
+			ROOT = {
+				if = {
+					limit = {
+						has_idea = HSP_focus_balanced_production_01
+					}
+					swap_ideas = {
+						remove_idea = HSP_focus_balanced_production_01
+						add_idea = HSP_focus_land_production_01
+					}
+				}
+				if = {
+					limit = {
+						has_idea = HSP_focus_naval_production_01
+					}
+					swap_ideas = {
+						remove_idea = HSP_focus_naval_production_01
+						add_idea = HSP_focus_land_production_01
+					}
+				}
+			}
+		}
+	}
+	HSP_balanced_production = {
+		icon = GFX_decision_eng_trade_unions_demand
+		
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_state_led_production_management
+			OR = {
+				has_idea = HSP_focus_land_production_01
+				has_idea = HSP_focus_naval_production_01
+			}
+		}
+		available = {
+			has_completed_focus = HSP_state_led_production_management
+			OR = {
+				has_idea = HSP_focus_land_production_01
+				has_idea = HSP_focus_naval_production_01
+			}
+		}
+		cost = 20
+		fire_only_once = no
+		complete_effect = {
+			ROOT = {
+				if = {
+					limit = {
+						has_idea = HSP_focus_land_production_01
+					}
+					swap_ideas = {
+						remove_idea = HSP_focus_land_production_01
+						add_idea = HSP_focus_balanced_production_01
+					}
+				}
+				if = {
+					limit = {
+						has_idea = HSP_focus_naval_production_01
+					}
+					swap_ideas = {
+						remove_idea = HSP_focus_naval_production_01
+						add_idea = HSP_focus_balanced_production_01
+					}
+				}
+			}
+		}
+	}
+	HSP_focus_naval_production = {
+		icon = GFX_decision_eng_trade_unions_demand
+		
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_state_led_production_management
+			OR = {
+				has_idea = HSP_focus_land_production_01
+				has_idea = HSP_focus_balanced_production_01
+			}
+		}
+		available = {
+			has_completed_focus = HSP_state_led_production_management
+			OR = {
+				has_idea = HSP_focus_land_production_01
+				has_idea = HSP_focus_balanced_production_01
+			}
+		}
+		cost = 20
+		fire_only_once = no
+		complete_effect = {
+			ROOT = {
+				if = {
+					limit = {
+						has_idea = HSP_focus_land_production_01
+					}
+					swap_ideas = {
+						remove_idea = HSP_focus_land_production_01
+						add_idea = HSP_focus_naval_production_01
+					}
+				}
+				if = {
+					limit = {
+						has_idea = HSP_focus_balanced_production_01
+					}
+					swap_ideas = {
+						remove_idea = HSP_focus_balanced_production_01
+						add_idea = HSP_focus_naval_production_01
+					}
 				}
 			}
 		}

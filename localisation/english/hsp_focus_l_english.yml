@@ -196,6 +196,8 @@
   HSP_focus_strategic_bombing_desc:0 ""
   HSP_focus_naval_bombing:0 "해상 폭격 중심"
   HSP_focus_naval_bombing_desc:0 ""
+  ## production management
+  HSP_state_led_production_management:0 "국가주도 생산 관리"
   ## navy
   HSP_spanish_naval_academy:0 "스페인 해군 사관학교"
   HSP_spanish_naval_academy_desc:0 ""

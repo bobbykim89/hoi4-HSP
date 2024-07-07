@@ -1,1 +1,24 @@
 add_namespace = HSP_spain_news
+
+news_event = {
+	id = HSP_spain_news.1
+	title = HSP_spain_news.1.title
+	desc = HSP_spain_news.1.desc
+	picture = GFX_news_event_generic_read_write
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_news.1.a
+		trigger = {
+			original_tag = SPR
+		}
+	}
+	option = {
+		name = HSP_spain_news.1.b
+		trigger = {
+			NOT = {
+				original_tag = SPR
+			}
+		}
+	}
+}

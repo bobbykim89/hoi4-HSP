@@ -62,7 +62,7 @@ HSP_habsburg_influence_01 = {
 	}
 	cic_to_overlord_factor = 0.2
 	master_ideology_drift = 0.5
-	stability_factor = 0.1
 	stability_weekly = 0.01
+	global_building_slots = 2
 	consumer_goods_factor = -0.15
 }

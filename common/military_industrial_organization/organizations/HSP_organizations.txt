@@ -20,6 +20,27 @@ HSP_barcelona_national_arsenal = {
 		}
 	}
 }
+HSP_toledo_royal_tank_production_department = {
+	name = toledo_royal_tank_production_department
+	include = generic_heavy_tank_organization
+	icon = GFX_idea_generic_acquire_tanks
+	allowed = {	
+		original_tag = SPR
+		has_dlc = "Arms Against Tyranny"
+	}
+	available = {
+		owner = {
+			has_completed_focus = HSP_spanish_army_military_academy
+		}
+	}
+	research_bonus = 0.10
+	initial_trait = {
+		equipment_bonus = {
+			reliability = 0.1
+			build_cost_ic = 0.1
+		}
+	}
+}
 HSP_national_bomber_production_division = {
 	name = national_bomber_production_division
 	include = generic_heavy_aircraft_organization

@@ -31,6 +31,15 @@
   HSP_restore_polish_lithuanian_commonwealth: "폴란드-리투아니아 재건"
   HSP_restore_kingdom_of_bulgaria: "불가리아 왕국 재건"
   HSP_restore_third_bulgarian_empire: "불가리아 제3제국 재건"
+  HSP_offer_protection_of_sweden: "스웨덴 보호 제의"
+  HSP_restore_scandinavia: "스칸디나비아 왕국 재건"
+  HSP_restore_nordic_league: "노르드 연맹 재건"
+  HSP_estonia_cession: "에스토니아 할양"
   # habsburg influence
   HSP_habsburg_influence_cat: "종속국 영향력 증대"
   HSP_increase_habsburg_influence: "§Y[FROM.GetNameDef]§! 에 영향력 증대"
+  # production management
+  HSP_production_management_cat: "국가주도 생산 관리"
+  HSP_focus_land_production: "지상군 생산 집중"
+  HSP_balanced_production: "균형잡힌 생산"
+  HSP_focus_naval_production: "해군 생산 집중"

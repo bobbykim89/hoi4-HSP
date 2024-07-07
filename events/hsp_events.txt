@@ -943,3 +943,118 @@ country_event = {
 		}
 	}		
 }
+
+# Suggest protection of sweden
+country_event = {
+	id = HSP_spain_events.27
+	title = HSP_spain_events.27.t
+	desc = HSP_spain_events.27.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { # accept
+		name = HSP_spain_events.27.a
+		ai_chance = {
+			base = 30
+			modifier = {
+				add = -25
+				SPR = { has_army_size = { size < 40 } }
+			}
+			modifier = {
+				add = 100
+				SPR = { has_army_size = { size > 39 } }
+			}
+			modifier = {
+				add = 20
+				is_in_faction_with = SPR
+			}
+		}
+		SPR = {
+			country_event = { hours = 2 id = HSP_spain_events.28 }
+			effect_tooltip = {
+				SPR = {
+					set_autonomy = {
+						target = PREV
+						autonomy_state = autonomy_puppet
+					}
+					add_political_power = -50
+				}
+			}
+		}
+	}
+	option = { # refuse
+		name = HSP_spain_events.27.b
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0.5
+				SPR = { has_army_size = { size > 39 } }
+			}
+			modifier = {
+				factor = 2
+				SPR = { has_army_size = { size < 30 } }
+			}
+			modifier = {
+				factor = 2
+				is_in_faction = yes
+				NOT = {
+					is_in_faction_with = SPR
+				}
+			}
+			modifier = {
+				any_other_country = {
+					has_guaranteed = SWE
+				}
+				factor = 5
+			}
+		}
+		SPR = {
+			country_event = { hours = 2 id = HSP_spain_events.29 }
+		}
+	}
+}
+
+# sweden subjugated
+country_event = {
+	id = HSP_spain_events.28
+	title = HSP_spain_events.28.t
+	desc = HSP_spain_events.28.desc
+	picture = GFX_report_event_military_planning
+	
+	# trigger setting
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = { # accept
+		name = HSP_spain_events.9.a
+		random_country = {
+			limit = {
+				original_tag = SWE
+			}
+			SPR = {
+				set_autonomy = {
+					target = PREV
+					autonomy_state = autonomy_puppet
+				}
+				add_political_power = -50
+			}
+		}
+	}
+}
+
+# sweden refuses
+country_event = {
+	id = HSP_spain_events.29
+	title = HSP_spain_events.29.t
+	desc = HSP_spain_events.29.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = yes
+	# Unfortunate
+	option = {
+		name =  HSP_spain_events.29.a
+		create_wargoal = {
+			target = SWE
+			type = puppet_wargoal_focus
+		}
+	}		
+}

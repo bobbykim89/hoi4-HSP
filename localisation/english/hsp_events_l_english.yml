@@ -1,1 +1,9 @@
-﻿
+﻿l_english:
+  # events
+  HSP_spain_events.5.t:0 "[POR.GetNameDef]과의 통일을 제안한 [SPR.GetNameDef]"
+  HSP_spain_events.5.desc:0 "[SPR.GetNameDef]과 [POR.GetNameDef]는 과거 동군연합으로 전 세계의 바다를 지배한 적이 있습니다. 연합왕국을 다시 재건하여 과거의 영광을 재현하자는 제안을 받았습니다."
+  HSP_spain_events.5.a:0 "우리는 다시 뭉쳐야 한다."
+  HSP_spain_events.5.b:0 "우리는 관심이 없다."
+  # news
+  HSP_spain_news.1.title:0 "[From.GetName] 긴급회의 소집"
+  HSP_spain_news.1.desc:0 "극심한 불안정을 겪던 [From.GetName]에서 모두의 예상을 벗어나서 긴급 회의를 소집했습니다. 일부 여론은 긴급회의를 통해서 당장에 닥친 사회적 불안을 해소 할 수 있을것이라 희망적으로 보고있지만, 대부분은 부질없는 시간 끌기에 불과할거라는 비관적인 입장을 취하고 있습니다."

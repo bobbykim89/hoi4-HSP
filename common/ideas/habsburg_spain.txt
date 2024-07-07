@@ -521,5 +521,41 @@ ideas = {
 				}
 			}
 		}
+		HSP_focus_land_production_01 = {
+			picture = jap_interservice_rivalry_army_strengthened
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				industrial_capacity_dockyard = -0.2
+				industrial_capacity_factory	= 0.1
+			}
+		}
+		HSP_focus_balanced_production_01 = {
+			picture = jap_interservice_rivalry_balanced
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+		}
+		HSP_focus_naval_production_01 = {
+			picture = jap_interservice_rivalry_navy_strengthened
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				industrial_capacity_dockyard = 0.2
+				industrial_capacity_factory	= -0.1
+			}
+		}
+
 	}
 }
