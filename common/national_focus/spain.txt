@@ -15208,6 +15208,10 @@ focus_tree = {
 					NOT = {
 						has_war_with = ROOT
 					}
+					
+				}
+				HUN = {
+					set_cosmetic_tag = HUN_EMPIRE
 				}
 				every_state = {
 					limit = {
@@ -15765,6 +15769,52 @@ focus_tree = {
 			create_wargoal = {
 				target = ENG
 				type = take_core_state
+			}
+		}
+	}
+	focus = {
+		id = HSP_obtain_right_to_low_countries
+		icon = GFX_focus_hol_gateway_to_europe
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_support_paramilitary_organizations
+		prerequisite = {
+			focus = HSP_support_paramilitary_organizations
+		}
+		available = {
+			OR = {
+				any_other_country = {
+					original_tag = HOL
+					exists = yes
+				}
+				any_other_country = {
+					original_tag = BEL
+					exists = yes
+				}
+			}
+		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		completion_reward = {
+			every_state = {
+				limit = {
+					is_core_of = HOL
+				}
+				add_core_of = ROOT
+			}
+			every_state = {
+				limit = {
+					is_core_of = BEL
+				}
+				add_core_of = ROOT
+			}
+			create_wargoal = {
+				target = HOL
+				type = annex_everything
+			}
+			create_wargoal = {
+				target = BEL
+				type = annex_everything
 			}
 		}
 	}
