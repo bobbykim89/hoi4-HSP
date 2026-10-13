@@ -3,7 +3,7 @@
   HSP_pan_hispanic_federation_cat: "범 스페인어권 연합"
   HSP_pan_hispanic_federation_cat_desc: ""
   HSP_invite_to_faction: "§Y[FROM.GetNameDef]§! 초대"
-  HSP_demand_submission: "§Y[FROM.GetNameDef]§! 의 종속 요구"
+  HSP_demand_submission: "§Y[FROM.GetNameDef]§!의 종속 요구"
   # reestablish viceroyalty
   HSP_restore_viceroyalty_cat: "부왕령 복원"
   HSP_restore_viceroyalty_of_nueva_espana: "누에바 에스파냐 부왕령 복원"
@@ -23,8 +23,8 @@
   HSP_disunite_italy_cat: "이탈리아 해체"
   HSP_reestablish_papacy: "교황령 복원"
   HSP_restore_toscana: "토스카나 대공국 복원"
-  HSP_restore_sardegna: "사르데냐 피에몬테 복원"
-  HSP_restore_lombardy_venetia: "롬바르디 베네치아 복원"
+  HSP_restore_sardegna: "사르데냐-피에몬테 복원"
+  HSP_restore_lombardy_venetia: "롬바르디아-베네치아 복원"
   # allied kingdoms
   HSP_allied_kingdom_cat: "동맹 왕국 복원"
   HSP_restore_poland: "폴란드 재건"
@@ -37,9 +37,9 @@
   HSP_estonia_cession: "에스토니아 할양"
   # habsburg influence
   HSP_habsburg_influence_cat: "종속국 영향력 증대"
-  HSP_increase_habsburg_influence: "§Y[FROM.GetNameDef]§! 에 영향력 증대"
+  HSP_increase_habsburg_influence: "§Y[FROM.GetNameDef]§!에 영향력 증대"
   # production management
   HSP_production_management_cat: "국가주도 생산 관리"
   HSP_focus_land_production: "지상군 생산 집중"
-  HSP_balanced_production: "균형잡힌 생산"
+  HSP_balanced_production: "균형 잡힌 생산"
   HSP_focus_naval_production: "해군 생산 집중"
