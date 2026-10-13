@@ -28,9 +28,9 @@ from pathlib import Path
 
 MOD_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_GAME_DIR = "/mnt/games1/SteamLibrary/steamapps/common/Hearts of Iron IV"
-LANG = "english"
+LANGS = ("english", "korean")  # every language the mod ships must cover every key
 CACHE_FILE = MOD_ROOT / "tools" / ".cache" / "vanilla_index.json"
-CACHE_VERSION = 2
+CACHE_VERSION = 3
 BASELINE_FILE = MOD_ROOT / "tools" / "known_issues.txt"
 
 EVENT_TYPES = ("country_event", "news_event", "state_event",
@@ -175,22 +175,24 @@ def build_vanilla_index(gdir, overridden):
         return p.read_text(encoding="utf-8-sig", errors="replace")
 
     id_re = re.compile(r'^\s*id\s*=\s*"?([\w.\-]+)', re.M)
-    focuses, events, loc, gfx = set(), set(), set(), set()
+    focuses, events, gfx = set(), set(), set()
+    loc = {lang: set() for lang in LANGS}
     for p in files("common/national_focus", "*.txt"):
         focuses.update(id_re.findall(read(p)))
     for p in files("events", "*.txt"):
         events.update(id_re.findall(read(p)))
-    for p in files(f"localisation/{LANG}", "*.yml"):
-        for line in read(p).splitlines():
-            m = LOC_LINE.match(line)
-            if m:
-                loc.add(m.group(1))
+    for lang in LANGS:
+        for p in files(f"localisation/{lang}", "*.yml"):
+            for line in read(p).splitlines():
+                m = LOC_LINE.match(line)
+                if m:
+                    loc[lang].add(m.group(1))
     gfx_re = re.compile(r'name\s*=\s*"?(GFX_[\w\-]+)', re.I)
     for sub in ("interface", "gfx", "dlc"):
         for p in files(sub, "*.gfx"):
             gfx.update(gfx_re.findall(read(p)))
     return {"focuses": sorted(focuses), "events": sorted(events),
-            "loc": sorted(loc), "gfx": sorted(gfx)}
+            "gfx": sorted(gfx), **{f"loc_{l}": sorted(k) for l, k in loc.items()}}
 
 
 def vanilla_index(overridden):
@@ -217,6 +219,7 @@ def vanilla_index(overridden):
 # Mod checks
 
 def check_loc_file(path, rel, issues, loc_defs):
+    """loc_defs: {lang: {key: "file:line"}}, filled in as files are read."""
     raw = path.read_bytes()
     if not raw.startswith(b"\xef\xbb\xbf"):
         issues.append(Issue(rel, 1, "localisation file must start with a UTF-8 BOM"))
@@ -245,11 +248,11 @@ def check_loc_file(path, rel, issues, loc_defs):
         body = m.group(2)
         if re.search(r'(?<!\\)"', body):
             issues.append(Issue(rel, n, f"'{key}' text contains an unescaped '\"'"))
-        if key in loc_defs:
-            prev = loc_defs[key]
-            issues.append(Issue(rel, n, f"duplicate localisation key '{key}' (also {prev})"))
+        defs = loc_defs.setdefault(lang, {})
+        if key in defs:
+            issues.append(Issue(rel, n, f"duplicate localisation key '{key}' (also {defs[key]})"))
         else:
-            loc_defs[key] = f"{rel}:{n}"
+            defs[key] = f"{rel}:{n}"
 
 
 def scalar_or_text(node):
@@ -381,7 +384,8 @@ def main(argv):
 
     known_focus = set(focus_defs) | (vanilla["focuses"] if vanilla else set())
     known_event = set(event_defs) | (vanilla["events"] if vanilla else set())
-    known_loc = set(loc_defs) | (vanilla["loc"] if vanilla else set())
+    mod_langs = [l for l in LANGS if l in loc_defs]
+    known_loc = {l: set(loc_defs[l]) | (vanilla[f"loc_{l}"] if vanilla else set()) for l in mod_langs}
     known_gfx = vanilla["gfx"] if vanilla else None
 
     # Cross-references.
@@ -407,8 +411,16 @@ def main(argv):
 
     if vanilla is not None:
         for key, rel, line, what in needs_loc:
-            if key not in known_loc:
-                issues.append(Issue(rel, line, f"{what} '{key}' has no localisation key"))
+            missing = [l for l in mod_langs if key not in known_loc[l]]
+            if missing:
+                issues.append(Issue(rel, line, f"{what} '{key}' has no localisation ({', '.join(missing)})"))
+        # Every key the mod defines in one language needs the other languages too.
+        for lang in mod_langs:
+            for key, where in loc_defs[lang].items():
+                for other in mod_langs:
+                    if other != lang and key not in known_loc[other]:
+                        rel, line = where.rsplit(":", 1)
+                        issues.append(Issue(rel, int(line), f"'{key}' has no {other} translation"))
         for sprite, rel, line in gfx_refs:
             if sprite.startswith("GFX_") and sprite not in known_gfx:
                 issues.append(Issue(rel, line, f"sprite '{sprite}' is not defined in any .gfx file"))
