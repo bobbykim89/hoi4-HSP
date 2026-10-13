@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 tools/validate_mod.py)",
+      "Bash(python3 tools/validate_mod.py *)",
+      "Bash(python3 tools/mod_errors.py)",
+      "Bash(python3 tools/mod_errors.py *)",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git show *)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/validate_mod.py\" --hook",
+            "timeout": 30,
+            "statusMessage": "Validating mod files"
+          }
+        ]
+      }
+    ]
+  }
+}
