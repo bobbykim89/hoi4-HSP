@@ -1,4 +1,4 @@
-﻿l_english:
+﻿l_korean:
   # variable modifiers
   army_speed_factor_tt: " $MODIFIER_ARMY_SPEED_FACTOR$: $RIGHT|+=%1$"
   planning_speed_tt: " $MODIFIER_PLANNING_SPEED$: $RIGHT|+=%1$"
