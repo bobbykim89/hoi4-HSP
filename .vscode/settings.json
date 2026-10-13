@@ -1,0 +1,4 @@
+{
+  // Paradox localisation (key:0 "text") is not valid YAML; let CWTools check it instead.
+  "yaml.validate": false
+}

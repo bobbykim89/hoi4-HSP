@@ -5,18 +5,18 @@ Alt-history focus tree for Republican Spain (tag `SPR`; nationalist Spain is `SP
 ## Where things are
 
 - `common/national_focus/spain.txt` is a **full copy of vanilla's Spain tree** with the mod's tree appended after the `## Habsburd focus` comment (~line 13400). The mod's branches start at `\t# <name> path` / `\t# army` headers; map them with `grep -n '^\t#' common/national_focus/spain.txt`. Each mod focus is preceded by a `## <Korean name>` comment; keep that.
-- Localisation: `localisation/english/hsp_*_l_english.yml`, grouped by `# <branch> focus` comments that mirror the tree.
+- Localisation: `localisation/{english,korean}/hsp_*_l_{english,korean}.yml`. The two languages have the same files, the same keys in the same order, and the same `# <branch> focus` comments, which mirror the tree.
 
 ## Vanilla overrides
 
 A mod file with the same path as a vanilla file **replaces the vanilla file entirely**. These files do that: `common/national_focus/spain.txt`, `events/LAR_Spain.txt`, `common/scripted_effects/00_scripted_effects.txt`, `common/countries/cosmetic.txt`, `common/characters/SPR.txt`. When editing them, keep the vanilla content intact; put new content in `HSP_`-named files where possible. To see what the mod changed: `diff "$HOI4_GAME_DIR/<path>" <path>`.
 
-The overrides were copied from game 1.14 (`descriptor.mod` says `1.14.*`), but the installed game is 1.19, so their vanilla parts are stale.
+Most overrides were copied from game 1.14 (`descriptor.mod` says `1.14.*`), but the installed game is 1.19, so their vanilla parts are stale. `events/LAR_Spain.txt` is already rebuilt from 1.19, with the mod's `lar_spain.1` spliced in.
 
 ## Localisation rules
 
-- Text is written in **Korean**, inside `l_english` files (the mod predates official Korean support).
-- Files are UTF-8 **with BOM**, first line `l_english:`, entries `  KEY:0 "text"` (two-space indent). Script `.txt` files are UTF-8 without BOM. All files use LF.
+- The mod ships **English and Korean**. Every key you add goes into both files: Korean is the author's original voice; English is a faithful translation in vanilla's register (Title Case names; `_DEF` names take "the"). The validator flags a key that exists in only one language.
+- Files are UTF-8 **with BOM**, first line `l_english:` / `l_korean:`, entries `  KEY:0 "text"` (two-space indent). Script `.txt` files are UTF-8 without BOM. All files use LF.
 - A focus needs `ID` and `ID_desc` (`""` is an acceptable placeholder). An event needs its title, desc and every option `name`.
 - Inside text: `[ROOT.GetNameDef]`-style scopes, `§Y…§!` colours, `\n` newlines.
 
@@ -38,8 +38,8 @@ Before using an effect, trigger or modifier, confirm it exists in the installed 
 
 ## Known problems (don't fix unprompted; ask first)
 
-- `events/LAR_Spain.txt` contains only `lar_spain.1`, so it deletes vanilla's other ~143 La Résistance Spain events. Vanilla focuses in `spain.txt` still fire them (they appear in `known_issues.txt`). The fix is to restore the full vanilla file and re-apply the mod's changes to `lar_spain.1`.
-- The game runs in `l_korean`, but the mod only ships `l_english`, so in-game text may show raw keys. Confirm with the user before restructuring localisation.
+- Events `HSP_spain_events.6`–`.29`, `HSP_spain_news.1` options, `lar_spain.1.c` and three focus `_desc` keys have no text in either language yet. This is unwritten content: ask the user for it rather than inventing story text.
+- Some focus IDs contain typos (`HSP_convoy_escord_focus`). Renaming an ID breaks save games and references, so leave IDs as they are.
 
 ## Git
 

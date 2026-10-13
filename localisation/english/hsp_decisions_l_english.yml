@@ -1,0 +1,45 @@
+﻿l_english:
+  # pan hispanic federation
+  HSP_pan_hispanic_federation_cat: "Pan-Hispanic Federation"
+  HSP_pan_hispanic_federation_cat_desc: ""
+  HSP_invite_to_faction: "Invite §Y[FROM.GetNameDef]§!"
+  HSP_demand_submission: "Demand the Submission of §Y[FROM.GetNameDef]§!"
+  # reestablish viceroyalty
+  HSP_restore_viceroyalty_cat: "Restore the Viceroyalties"
+  HSP_restore_viceroyalty_of_nueva_espana: "Restore the Viceroyalty of New Spain"
+  HSP_restore_viceroyalty_of_nueva_granada: "Restore the Viceroyalty of New Granada"
+  HSP_restore_viceroyalty_of_peru: "Restore the Viceroyalty of Peru"
+  HSP_restore_viceroyalty_of_rio_de_la_plata: "Restore the Viceroyalty of the Río de la Plata"
+  # war decisions
+  HSP_war_decisions_cat: "War Plans"
+  HSP_war_in_america: "War Plan: United States"
+  HSP_war_france: "War Plan: France"
+  HSP_war_uk: "War Plan: Britain"
+  HSP_war_italy: "War Plan: Italy"
+  HSP_war_germany: "War Plan: Germany"
+  HSP_war_china: "War Plan: China"
+  HSP_war_sov: "War Plan: Soviet Union"
+  # disunite italy
+  HSP_disunite_italy_cat: "Disunite Italy"
+  HSP_reestablish_papacy: "Restore the Papal States"
+  HSP_restore_toscana: "Restore the Grand Duchy of Tuscany"
+  HSP_restore_sardegna: "Restore Sardinia-Piedmont"
+  HSP_restore_lombardy_venetia: "Restore Lombardy-Venetia"
+  # allied kingdoms
+  HSP_allied_kingdom_cat: "Restore the Allied Kingdoms"
+  HSP_restore_poland: "Restore Poland"
+  HSP_restore_polish_lithuanian_commonwealth: "Restore the Polish-Lithuanian Commonwealth"
+  HSP_restore_kingdom_of_bulgaria: "Restore the Kingdom of Bulgaria"
+  HSP_restore_third_bulgarian_empire: "Restore the Third Bulgarian Empire"
+  HSP_offer_protection_of_sweden: "Offer Protection to Sweden"
+  HSP_restore_scandinavia: "Restore the Kingdom of Scandinavia"
+  HSP_restore_nordic_league: "Restore the Nordic League"
+  HSP_estonia_cession: "Cession of Estonia"
+  # habsburg influence
+  HSP_habsburg_influence_cat: "Influence over Subjects"
+  HSP_increase_habsburg_influence: "Increase Influence in §Y[FROM.GetNameDef]§!"
+  # production management
+  HSP_production_management_cat: "State-Led Production Management"
+  HSP_focus_land_production: "Focus on Land Production"
+  HSP_balanced_production: "Balanced Production"
+  HSP_focus_naval_production: "Focus on Naval Production"

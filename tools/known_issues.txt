@@ -1,89 +1,89 @@
 # Pre-existing issues accepted by `validate_mod.py --write-baseline`.
 # The hook ignores these; a full run marks them [known]. Delete lines as you fix them.
-common/national_focus/spain.txt | focus description 'HSP_expand_mining_desc' has no localisation key
-common/national_focus/spain.txt | focus description 'HSP_expand_royal_arsenal_desc' has no localisation key
-common/national_focus/spain.txt | focus description 'HSP_state_led_production_management_desc' has no localisation key
-events/LAR_Spain.txt | event option 'lar_spain.1.c' has no localisation key
+common/national_focus/spain.txt | focus description 'HSP_expand_mining_desc' has no localisation (english, korean)
+common/national_focus/spain.txt | focus description 'HSP_expand_royal_arsenal_desc' has no localisation (english, korean)
+common/national_focus/spain.txt | focus description 'HSP_state_led_production_management_desc' has no localisation (english, korean)
+events/LAR_Spain.txt | event option 'lar_spain.1.c' has no localisation (english, korean)
 events/LAR_Spain.txt | sprite 'GFX_report_event_read_write' is not defined in any .gfx file
-events/hsp_events.txt | event desc 'HSP_spain_events.10.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.11.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.12.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.13.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.14.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.15.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.16.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.17.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.18.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.19.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.20.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.21.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.22.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.23.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.24.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.25.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.26.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.27.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.28.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.29.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.6.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.7.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.8.desc' has no localisation key
-events/hsp_events.txt | event desc 'HSP_spain_events.9.desc' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.10.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.11.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.12.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.12.b' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.13.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.14.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.14.b' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.15.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.15.b' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.16.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.17.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.18.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.18.b' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.19.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.20.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.21.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.21.b' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.22.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.23.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.24.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.24.b' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.25.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.26.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.27.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.27.b' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.29.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.6.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.7.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.7.b' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.8.a' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.8.b' has no localisation key
-events/hsp_events.txt | event option 'HSP_spain_events.9.a' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.10.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.11.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.12.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.13.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.14.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.15.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.16.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.17.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.18.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.19.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.20.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.21.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.22.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.23.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.24.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.25.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.26.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.27.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.28.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.29.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.6.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.7.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.8.t' has no localisation key
-events/hsp_events.txt | event title 'HSP_spain_events.9.t' has no localisation key
-events/hsp_news.txt | event option 'HSP_spain_news.1.a' has no localisation key
-events/hsp_news.txt | event option 'HSP_spain_news.1.b' has no localisation key
+events/hsp_events.txt | event desc 'HSP_spain_events.10.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.11.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.12.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.13.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.14.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.15.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.16.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.17.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.18.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.19.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.20.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.21.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.22.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.23.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.24.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.25.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.26.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.27.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.28.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.29.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.6.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.7.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.8.desc' has no localisation (english, korean)
+events/hsp_events.txt | event desc 'HSP_spain_events.9.desc' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.10.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.11.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.12.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.12.b' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.13.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.14.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.14.b' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.15.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.15.b' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.16.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.17.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.18.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.18.b' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.19.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.20.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.21.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.21.b' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.22.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.23.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.24.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.24.b' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.25.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.26.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.27.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.27.b' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.29.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.6.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.7.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.7.b' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.8.a' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.8.b' has no localisation (english, korean)
+events/hsp_events.txt | event option 'HSP_spain_events.9.a' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.10.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.11.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.12.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.13.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.14.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.15.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.16.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.17.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.18.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.19.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.20.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.21.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.22.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.23.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.24.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.25.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.26.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.27.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.28.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.29.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.6.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.7.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.8.t' has no localisation (english, korean)
+events/hsp_events.txt | event title 'HSP_spain_events.9.t' has no localisation (english, korean)
+events/hsp_news.txt | event option 'HSP_spain_news.1.a' has no localisation (english, korean)
+events/hsp_news.txt | event option 'HSP_spain_news.1.b' has no localisation (english, korean)
