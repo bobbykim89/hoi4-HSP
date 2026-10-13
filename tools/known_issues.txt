@@ -1,38 +1,10 @@
 # Pre-existing issues accepted by `validate_mod.py --write-baseline`.
 # The hook ignores these; a full run marks them [known]. Delete lines as you fix them.
-common/national_focus/spain.txt | fires unknown event 'lar_spain.10'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.100'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.2'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.22'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.25'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.30'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.33'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.34'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.36'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.39'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.42'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.45'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.48'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.51'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.56'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.59'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.62'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.64'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.67'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.68'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.7'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.71'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.74'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.8'
-common/national_focus/spain.txt | fires unknown event 'lar_spain.9'
 common/national_focus/spain.txt | focus description 'HSP_expand_mining_desc' has no localisation key
 common/national_focus/spain.txt | focus description 'HSP_expand_royal_arsenal_desc' has no localisation key
 common/national_focus/spain.txt | focus description 'HSP_state_led_production_management_desc' has no localisation key
-events/LAR_Spain.txt | 'progress =' is followed by '>' instead of a value
 events/LAR_Spain.txt | event option 'lar_spain.1.c' has no localisation key
-events/LAR_Spain.txt | fires unknown event 'lar_spain.3'
-events/LAR_Spain.txt | fires unknown event 'lar_spain.4'
-events/LAR_Spain.txt | fires unknown event 'lar_spain.5'
+events/LAR_Spain.txt | sprite 'GFX_report_event_read_write' is not defined in any .gfx file
 events/hsp_events.txt | event desc 'HSP_spain_events.10.desc' has no localisation key
 events/hsp_events.txt | event desc 'HSP_spain_events.11.desc' has no localisation key
 events/hsp_events.txt | event desc 'HSP_spain_events.12.desc' has no localisation key

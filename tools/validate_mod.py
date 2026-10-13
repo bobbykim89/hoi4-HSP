@@ -30,7 +30,7 @@ MOD_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_GAME_DIR = "/mnt/games1/SteamLibrary/steamapps/common/Hearts of Iron IV"
 LANG = "english"
 CACHE_FILE = MOD_ROOT / "tools" / ".cache" / "vanilla_index.json"
-CACHE_VERSION = 1
+CACHE_VERSION = 2
 BASELINE_FILE = MOD_ROOT / "tools" / "known_issues.txt"
 
 EVENT_TYPES = ("country_event", "news_event", "state_event",
@@ -186,7 +186,7 @@ def build_vanilla_index(gdir, overridden):
             if m:
                 loc.add(m.group(1))
     gfx_re = re.compile(r'name\s*=\s*"?(GFX_[\w\-]+)', re.I)
-    for sub in ("interface", "gfx"):
+    for sub in ("interface", "gfx", "dlc"):
         for p in files(sub, "*.gfx"):
             gfx.update(gfx_re.findall(read(p)))
     return {"focuses": sorted(focuses), "events": sorted(events),
