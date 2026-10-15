@@ -162,6 +162,7 @@ HSP_restore_viceroyalty_cat = {
 			NIC = { HSP_viceroyalty_candidate = yes }
 			CUB = { HSP_viceroyalty_candidate = yes }
 			COS = { HSP_viceroyalty_candidate = yes }
+			DOM = { HSP_viceroyalty_candidate = yes }
 		}
 		cost = 100
 		fire_only_once = yes
@@ -177,6 +178,7 @@ HSP_restore_viceroyalty_cat = {
 			NIC = { HSP_join_viceroyalty = yes }
 			CUB = { HSP_join_viceroyalty = yes }
 			COS = { HSP_join_viceroyalty = yes }
+			DOM = { HSP_join_viceroyalty = yes }
 			# British Honduras
 			every_state = {
 				limit = { OR = { state = 311 } }
