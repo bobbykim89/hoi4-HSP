@@ -1,0 +1,31 @@
+# Otto von Habsburg (vanilla HUN_otto_von_habsburg) can be crowned King of Spain:
+# Hungary or Austria hasn't taken him, and he leads no other country.
+HSP_otto_available = {
+	custom_trigger_tooltip = {
+		tooltip = HSP_otto_available_tt
+		country_exists = HUN
+		NOT = {
+			has_global_flag = HUN_otto_von_habsburg_has_joined_hungary_flag
+			has_global_flag = AUS_otto_von_habsburg_has_joined_austria_flag
+		}
+		NOT = {
+			any_other_country = {
+				has_country_leader = {
+					character = HUN_otto_von_habsburg
+					ruling_only = yes
+				}
+			}
+		}
+	}
+}
+
+# Alfonso XIII is alive and hasn't been crowned in France (vanilla FRA_the_legitimate_heir makes him Alphonse I).
+HSP_alfonso_available = {
+	custom_trigger_tooltip = {
+		tooltip = HSP_alfonso_available_tt
+		NOT = { has_global_flag = SPB_alfonso_xiii_dead }
+		NOT = {
+			FRA = { has_completed_focus = FRA_the_legitimate_heir }
+		}
+	}
+}

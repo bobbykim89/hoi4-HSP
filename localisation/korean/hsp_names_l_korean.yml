@@ -2,6 +2,10 @@
   # factions
   HSP_pan_hispanic_federation_faction:0 "범 스페인어권 연합"
   HSP_habsburg_hegemony_faction:0 "합스부르크 패권연맹"
+  # monarchy
+  HSP_alfonso_xiii:0 "알폰소 13세"
+  HSP_borbon_monarchists:0 "에스파냐 쇄신당"
+  HSP_borbon_monarchists_long:0 "에스파냐 쇄신당 (알폰소 왕당파)"
   # research
   allied_research:0 "연합국 연구"
   allied_research_name:0 "연합국 연구"

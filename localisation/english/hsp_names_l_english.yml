@@ -2,6 +2,10 @@
   # factions
   HSP_pan_hispanic_federation_faction:0 "Pan-Hispanic Federation"
   HSP_habsburg_hegemony_faction:0 "Habsburg Hegemonic League"
+  # monarchy
+  HSP_alfonso_xiii:0 "Alfonso XIII"
+  HSP_borbon_monarchists:0 "Renovación Española"
+  HSP_borbon_monarchists_long:0 "Renovación Española (Alfonsine Monarchists)"
   # research
   allied_research:0 "Allied Research"
   allied_research_name:0 "Allied Research"

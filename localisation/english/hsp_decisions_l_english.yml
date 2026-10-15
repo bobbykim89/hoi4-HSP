@@ -19,6 +19,7 @@
   HSP_war_germany: "War Plan: Germany"
   HSP_war_china: "War Plan: China"
   HSP_war_sov: "War Plan: Soviet Union"
+  HSP_crusade_against_communist_state:0 "Crusade Against §Y[From.GetNameDef]§!"
   # disunite italy
   HSP_disunite_italy_cat: "Disunite Italy"
   HSP_reestablish_papacy: "Restore the Papal States"

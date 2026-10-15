@@ -122,6 +122,7 @@ focus_tree = {
 				ideology = neutrality
 				popularity = 0.1
 			}
+			HSP_retire_communist_characters = yes
 			hidden_effect = {
 				country_lock_all_division_template = no
 			}
@@ -166,37 +167,110 @@ focus_tree = {
 		y = 1
 		relative_position_id = HSP_ensure_military_loyalty
 		search_filters = {FOCUS_FILTER_POLITICAL}
-		available = {
-			NOT = {
-				has_global_flag = HUN_invite_the_habsburg_prince
-			}
-		}
 		completion_reward = {
 			add_popularity = {
 				ideology = neutrality
 				popularity = 0.1
 			}
 			set_rule = { can_send_volunteers = yes }
-			set_party_name = {
-				ideology = neutrality
-				long_name = HSP_neutrality_habsburg_family_long
-				name = HSP_neutrality_habsburg_family
-			}
 			set_politics = {
 				ruling_party = neutrality
 				elections_allowed = no
 			}
-			create_country_leader = {
-				name = "Otto von Habsburg"
-				picture = "GFX_Portrait_hungary_otto_von_hapsburg"
-				ideology = despotism
-				traits = {
-					imperial_connections legitimate_heir
-				}
-			}
 			add_ideas = HSP_inefficient_bureaucracy_01
 			drop_cosmetic_tag = yes
 			set_cosmetic_tag = HSP_kingdom_of_spain
+			country_event = { id = HSP_spain_events.30 }
+		}
+	}
+
+	## 합스부르크 왕가
+	focus = {
+		id = HSP_house_of_habsburg
+		icon = GFX_focus_AUS_bring_back_the_habsburg_rule
+		prerequisite = {
+			focus = HSP_new_monarchy
+		}
+		mutually_exclusive = { focus = HSP_house_of_borbon }
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = HSP_new_monarchy
+		allow_branch = {
+			has_country_flag = HSP_house_habsburg_flag
+		}
+		available = {
+			has_country_flag = HSP_house_habsburg_flag
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 50
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	## 부르봉 왕가
+	focus = {
+		id = HSP_house_of_borbon
+		icon = GFX_focus_BEL_king_of_the_belgians
+		prerequisite = {
+			focus = HSP_new_monarchy
+		}
+		mutually_exclusive = { focus = HSP_house_of_habsburg }
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = HSP_new_monarchy
+		allow_branch = {
+			has_country_flag = HSP_house_borbon_flag
+		}
+		available = {
+			has_country_flag = HSP_house_borbon_flag
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 50
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	## 공산주의에 맞선 십자군
+	focus = {
+		id = HSP_crusade_against_communism
+		icon = GFX_focus_BEL_the_european_crusade
+		prerequisite = {
+			focus = HSP_house_of_habsburg
+			focus = HSP_house_of_borbon
+		}
+		cost = 10
+		x = 0
+		y = 2
+		relative_position_id = HSP_new_monarchy
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION}
+		completion_reward = {
+			every_other_country = {
+				limit = {
+					has_government = communism
+					capital_scope = { is_on_continent = europe }
+					NOT = { is_subject_of = ROOT }
+				}
+				ROOT = {
+					create_wargoal = {
+						type = puppet_wargoal_focus
+						target = PREV
+					}
+				}
+			}
+			unlock_decision_tooltip = HSP_crusade_against_communist_state
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 

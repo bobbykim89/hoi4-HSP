@@ -16,3 +16,90 @@ HSP_return_to_historical_spain = {
 		keep_completed = no
 	}
 }
+
+# Retire SPR's Stalinist, POUM and independent-communist generals and advisors (anarchists are not included).
+HSP_retire_communist_characters = {
+	custom_effect_tooltip = HSP_retire_communist_characters_tt
+	hidden_effect = {
+		if = {
+			limit = { has_character = SPR_valentin_gonzalez }
+			retire_character = SPR_valentin_gonzalez
+		}
+		if = {
+			limit = { has_character = SPR_enrique_lister }
+			retire_character = SPR_enrique_lister
+		}
+		if = {
+			limit = { has_character = SPR_juan_modesto }
+			retire_character = SPR_juan_modesto
+		}
+		if = {
+			limit = { has_character = SPR_antonio_cordon_garcia }
+			retire_character = SPR_antonio_cordon_garcia
+		}
+		if = {
+			limit = { has_character = SPR_janos_galicz }
+			retire_character = SPR_janos_galicz
+		}
+		if = {
+			limit = { has_character = SPR_mate_zalka }
+			retire_character = SPR_mate_zalka
+		}
+		if = {
+			limit = { has_character = SPR_etelvino_vega }
+			retire_character = SPR_etelvino_vega
+		}
+		if = {
+			limit = { has_character = SPR_francisco_ciutat_de_miguel }
+			retire_character = SPR_francisco_ciutat_de_miguel
+		}
+		if = {
+			limit = { has_character = SPR_antonio_ortega_gutierrez }
+			retire_character = SPR_antonio_ortega_gutierrez
+		}
+		if = {
+			limit = { has_character = SPR_wilhelm_zaisser }
+			retire_character = SPR_wilhelm_zaisser
+		}
+		if = {
+			limit = { has_character = SPR_andres_nin }
+			retire_character = SPR_andres_nin
+		}
+		if = {
+			limit = { has_character = SPR_alberto_bayo }
+			retire_character = SPR_alberto_bayo
+		}
+		if = {
+			limit = { has_character = SPR_joakin_egia_unzueta }
+			retire_character = SPR_joakin_egia_unzueta
+		}
+		if = {
+			limit = { has_character = SPR_jose_rovira }
+			retire_character = SPR_jose_rovira
+		}
+		if = {
+			limit = { has_character = SPR_carmel_rosa_baserba }
+			retire_character = SPR_carmel_rosa_baserba
+		}
+		if = {
+			limit = { has_character = SPR_dolores_ibarruri }
+			retire_character = SPR_dolores_ibarruri
+		}
+		if = {
+			limit = { has_character = SPR_jesus_hernandez_tomas }
+			retire_character = SPR_jesus_hernandez_tomas
+		}
+		if = {
+			limit = { has_character = SPR_alexander_orlov }
+			retire_character = SPR_alexander_orlov
+		}
+		if = {
+			limit = { has_character = SPR_juan_andrade }
+			retire_character = SPR_juan_andrade
+		}
+		if = {
+			limit = { has_character = SPR_antonia_adroher_i_pascual }
+			retire_character = SPR_antonia_adroher_i_pascual
+		}
+	}
+}

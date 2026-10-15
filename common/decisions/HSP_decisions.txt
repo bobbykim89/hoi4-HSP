@@ -908,6 +908,41 @@ HSP_restore_viceroyalty_cat = {
 }
 
 HSP_war_decisions_cat = {
+	# Wargoal on European countries that turn communist after HSP_crusade_against_communism
+	HSP_crusade_against_communist_state = {
+		icon = generic_operation
+		allowed = {
+			original_tag = SPR
+		}
+		target_root_trigger = {
+			has_completed_focus = HSP_crusade_against_communism
+		}
+		target_trigger = {
+			FROM = {
+				has_government = communism
+				capital_scope = { is_on_continent = europe }
+				NOT = { is_subject_of = ROOT }
+			}
+		}
+		visible = {
+			has_completed_focus = HSP_crusade_against_communism
+		}
+		available = {
+			NOT = { has_war_with = FROM }
+			NOT = { has_wargoal_against = FROM }
+		}
+		cost = 25
+		fire_only_once = no
+		complete_effect = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = FROM
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
 	HSP_war_in_america = {
 		icon = generic_operation
 		available = {

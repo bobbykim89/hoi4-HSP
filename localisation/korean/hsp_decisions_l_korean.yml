@@ -19,6 +19,7 @@
   HSP_war_germany: "대독 전쟁 계획"
   HSP_war_china: "대 중국 전쟁 계획"
   HSP_war_sov: "대 소련 전쟁 계획"
+  HSP_crusade_against_communist_state:0 "§Y[From.GetNameDef]§!에 대한 십자군"
   # disunite italy
   HSP_disunite_italy_cat: "이탈리아 해체"
   HSP_reestablish_papacy: "교황령 복원"

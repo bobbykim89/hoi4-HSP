@@ -1058,3 +1058,87 @@ country_event = {
 		}
 	}		
 }
+
+# the crown of spain: choose the new king (fired by HSP_new_monarchy)
+country_event = {
+	id = HSP_spain_events.30
+	title = HSP_spain_events.30.t
+	desc = HSP_spain_events.30.desc
+	picture = GFX_report_event_royal_parade
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	# Otto von Habsburg: Habsburg route
+	option = {
+		name = HSP_spain_events.30.a
+		trigger = { HSP_otto_available = yes }
+		ai_chance = { base = 50 }
+		set_party_name = {
+			ideology = neutrality
+			name = SPR_habsburg_legitimists
+			long_name = SPR_habsburg_legitimists
+		}
+		HUN = {
+			HUN_otto_von_habsburg = {
+				set_nationality = SPR
+				promote_character = yes
+			}
+		}
+		set_country_flag = HSP_house_habsburg_flag
+		set_country_flag = HSP_king_otto_flag
+		hidden_effect = {
+			# Hungary and Austria can no longer claim him (vanilla checks these flags)
+			set_global_flag = HUN_otto_von_habsburg_has_joined_hungary_flag
+			set_global_flag = AUS_otto_von_habsburg_has_joined_austria_flag
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+
+	# Alfonso XIII: Borbón route
+	option = {
+		name = HSP_spain_events.30.b
+		trigger = { HSP_alfonso_available = yes }
+		ai_chance = { base = 50 }
+		set_party_name = {
+			ideology = neutrality
+			name = HSP_borbon_monarchists
+			long_name = HSP_borbon_monarchists_long
+		}
+		recruit_character = HSP_alfonso_xiii
+		promote_character = HSP_alfonso_xiii
+		set_country_flag = HSP_house_borbon_flag
+		hidden_effect = {
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+
+	# Neither claimant is available: the Carlist Habsburg pretender takes the throne (Habsburg route)
+	option = {
+		name = HSP_spain_events.30.c
+		trigger = {
+			NOT = {
+				HSP_otto_available = yes
+				HSP_alfonso_available = yes
+			}
+		}
+		ai_chance = { base = 1 }
+		set_party_name = {
+			ideology = neutrality
+			name = SPR_habsburg_legitimists
+			long_name = SPR_habsburg_legitimists
+		}
+		add_country_leader_role = {
+			character = SPA_karl_pius_von_habsburg
+			promote_leader = yes
+			country_leader = {
+				ideology = despotism
+				expire = "1965.1.1.1"
+				traits = { carlist_habsburg_pretender }
+			}
+		}
+		set_country_flag = HSP_house_habsburg_flag
+		hidden_effect = {
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+}

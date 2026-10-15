@@ -5,6 +5,11 @@
   HSP_spain_events.5.a:0 "We must stand together once more."
   HSP_spain_events.5.b:0 "We are not interested."
   lar_spain.1.c:0 "Let the emergency council decide."
+  HSP_spain_events.30.t:0 "The Crown of Spain"
+  HSP_spain_events.30.desc:0 "The council has agreed to restore the monarchy, but who will wear the crown is still undecided. The House of Habsburg, which ruled Spain at the height of its empire, and the House of Borbón, which reigned until 1931, both have a claimant ready to take the throne."
+  HSP_spain_events.30.a:0 "Otto von Habsburg shall be our king."
+  HSP_spain_events.30.b:0 "Restore Alfonso XIII to the throne."
+  HSP_spain_events.30.c:0 "Crown Archduke Karl Pius."
   # news
   HSP_spain_news.1.title:0 "[From.GetName] Convenes an Emergency Council"
   HSP_spain_news.1.desc:0 "Defying all expectations, the deeply unstable [From.GetName] has convened an emergency council. Some observers hope the council can ease the social unrest the country now faces, but most take a pessimistic view, dismissing it as nothing more than a futile attempt to buy time."
