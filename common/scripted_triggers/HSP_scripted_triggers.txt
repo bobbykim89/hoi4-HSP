@@ -55,3 +55,42 @@ HSP_viceroyalty_candidate = {
 		is_in_faction_with = ROOT
 	}
 }
+
+# Scope: Hungary or Austria. AI accepts the Spanish Habsburg crown when Spain's army is stronger and
+# Spain fields more than 500k men.
+HSP_accepts_habsburg_crown = {
+	custom_trigger_tooltip = {
+		tooltip = HSP_accepts_habsburg_crown_tt
+		strength_ratio = {
+			tag = SPR
+			ratio < 1
+		}
+		SPR = {
+			has_army_manpower = { size > 500000 }
+		}
+	}
+}
+
+# Scope: any country. The Spanish-speaking American countries the Pan-Hispanic Federation targets.
+HSP_is_hispanic_american = {
+	OR = {
+		original_tag = MEX
+		original_tag = GUA
+		original_tag = HON
+		original_tag = ELS
+		original_tag = NIC
+		original_tag = COS
+		original_tag = PAN
+		original_tag = CUB
+		original_tag = DOM
+		original_tag = COL
+		original_tag = VEN
+		original_tag = ECU
+		original_tag = PRU
+		original_tag = BOL
+		original_tag = PAR
+		original_tag = CHL
+		original_tag = ARG
+		original_tag = URG
+	}
+}

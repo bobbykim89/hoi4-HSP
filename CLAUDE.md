@@ -40,7 +40,7 @@ Before using an effect, trigger or modifier, confirm it exists in the installed 
 
 ## Known problems (don't fix unprompted; ask first)
 
-- Events `HSP_spain_events.6`–`.29`, `HSP_spain_news.1` options, `lar_spain.1.c` and three focus `_desc` keys have no text in either language yet. This is unwritten content: ask the user for it rather than inventing story text.
+- Events `HSP_spain_events.6`–`.23` and `.27`–`.29` and the `HSP_spain_news.1` options have no text in either language yet (`tools/known_issues.txt` lists them). This is unwritten content: ask the user for it rather than inventing story text. Most focus `_desc` keys are `""` placeholders.
 - Some focus IDs contain typos (`HSP_convoy_escord_focus`). Renaming an ID breaks save games and references, so leave IDs as they are.
 
 ## Git

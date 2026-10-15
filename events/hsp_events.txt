@@ -260,9 +260,7 @@ country_event = {
 			base = 50
 			modifier = {
 				add = 30
-				FROM = {
-					is_in_faction_with = FROM
-				}
+				is_in_faction_with = FROM
 			}
 			modifier = {
 				add = 20
@@ -322,7 +320,7 @@ country_event = {
 		add_stability = -0.1
 		add_political_power = -150
 		hidden_effect = {
-			country_event = HSP_spain_events.14
+			FROM = { country_event = HSP_spain_events.14 }
 		}
 	}
 }
@@ -774,115 +772,82 @@ country_event = {
 	id = HSP_spain_events.24
 	title = HSP_spain_events.24.t
 	desc = HSP_spain_events.24.desc
-	picture = GFX_report_event_generic_read_write
+	picture = GFX_report_event_HUN_charles_von_habsburg_marching
 	is_triggered_only = yes
-	fire_only_once = yes
-	option = { # accept
+
+	# accept the Habsburg crown
+	option = {
 		name = HSP_spain_events.24.a
 		ai_chance = {
-			base = 30
+			base = 100
 			modifier = {
-				add = -25
-				SPR = { has_army_size = { size < 40 } }
-			}
-			modifier = {
-				add = 100
-				SPR = { has_army_size = { size > 39 } }
-			}
-			modifier = {
-				add = 20
-				is_in_faction_with = SPR
+				factor = 0
+				NOT = { HSP_accepts_habsburg_crown = yes }
 			}
 		}
-		SPR = {
-			country_event = { hours = 2 id = HSP_spain_events.25 }
-			effect_tooltip = {
-				SPR = {
+		FROM = {
+			country_event = { id = HSP_spain_events.25 hours = 2 }
+		}
+		effect_tooltip = {
+			FROM = {
 				set_autonomy = {
-					target = PREV
-					autonomy_state = autonomy_personal_union
+					target = ROOT
+					autonomy_state = HSP_autonomy_habsburg_crown
 				}
-				add_political_power = -50
-			}
 			}
 		}
 	}
-	option = { # refuse
+	# refuse
+	option = {
 		name = HSP_spain_events.24.b
 		ai_chance = {
-			base = 10
+			base = 100
 			modifier = {
-				factor = 0.5
-				SPR = { has_army_size = { size > 39 } }
-			}
-			modifier = {
-				factor = 2
-				SPR = { has_army_size = { size < 30 } }
-			}
-			modifier = {
-				factor = 2
-				is_in_faction = yes
-				NOT = {
-					is_in_faction_with = SPR
-				}
-			}
-			modifier = {
-				any_other_country = {
-					has_guaranteed = HUN
-				}
-				factor = 5
+				factor = 0
+				HSP_accepts_habsburg_crown = yes
 			}
 		}
-		SPR = {
-			country_event = { hours = 2 id = HSP_spain_events.26 }
+		FROM = {
+			country_event = { id = HSP_spain_events.26 hours = 2 }
 		}
 	}
 }
 
-# hungary subjugated
+# the crown is accepted: FROM becomes an imperial dominion of the Spanish Habsburgs
 country_event = {
 	id = HSP_spain_events.25
 	title = HSP_spain_events.25.t
 	desc = HSP_spain_events.25.desc
-	picture = GFX_report_event_military_planning
-	
-	# trigger setting
+	picture = GFX_report_event_royal_parade
 	is_triggered_only = yes
-	fire_only_once = yes
-	option = { # accept
+
+	option = {
 		name = HSP_spain_events.25.a
-		random_country = {
-			limit = {
-				original_tag = HUN
-			}
-			SPR = {
-				set_autonomy = {
-					target = PREV
-					autonomy_state = autonomy_personal_union
-				}
-				add_political_power = -50
-			}
+		set_autonomy = {
+			target = FROM
+			autonomy_state = HSP_autonomy_habsburg_crown
 		}
+		add_political_power = -50
 	}
 }
 
-# hungry refuses
+# the crown is refused
 country_event = {
 	id = HSP_spain_events.26
 	title = HSP_spain_events.26.t
 	desc = HSP_spain_events.26.desc
 	picture = GFX_report_event_generic_read_write
 	is_triggered_only = yes
-	fire_only_once = yes
-	# Unfortunate
+
 	option = {
-		name =  HSP_spain_events.26.a
+		name = HSP_spain_events.26.a
 		create_wargoal = {
-			target = HUN
+			target = FROM
 			type = puppet_wargoal_focus
 		}
-	}		
+	}
 }
+
 
 # Suggest protection of sweden
 country_event = {
@@ -965,19 +930,31 @@ country_event = {
 	is_triggered_only = yes
 	fire_only_once = yes
 	option = { # accept
-		name = HSP_spain_events.9.a
-		random_country = {
-			limit = {
-				original_tag = SWE
+		name = HSP_spain_events.28.a
+		SWE = {
+			set_politics = {
+				ruling_party = neutrality
+				elections_allowed = no
 			}
-			SPR = {
-				set_autonomy = {
-					target = PREV
-					autonomy_state = autonomy_puppet
-				}
-				add_political_power = -50
+			set_party_name = {
+				ideology = neutrality
+				name = SPR_habsburg_legitimists
+				long_name = SPR_habsburg_legitimists
+			}
+			# Otto's brother takes the Swedish throne
+			create_country_leader = {
+				name = HSP_archduke_robert
+				picture = "GFX_portrait_LBV_robert_von_habsburg"
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = { }
 			}
 		}
+		set_autonomy = {
+			target = SWE
+			autonomy_state = autonomy_puppet
+		}
+		add_political_power = -50
 	}
 }
 

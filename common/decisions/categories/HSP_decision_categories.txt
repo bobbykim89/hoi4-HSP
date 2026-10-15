@@ -80,3 +80,17 @@ HSP_production_management_cat = {
 	}
 	visible_when_empty = no
 }
+
+HSP_holy_roman_empire_cat = {
+	priority = 70
+	icon = GFX_decision_category_generic_formable_nations
+
+	allowed = {
+		original_tag = SPR
+		has_dlc = "La Resistance"
+	}
+	visible = {
+		has_completed_focus = HSP_one_crown_one_empire
+	}
+	visible_when_empty = no
+}

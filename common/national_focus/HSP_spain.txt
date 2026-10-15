@@ -1775,6 +1775,9 @@ focus_tree = {
 		prerequisite = {
 			focus = HSP_looking_outside
 		}
+		prerequisite = {
+			focus = HSP_house_of_habsburg
+		}
 		mutually_exclusive = {
 			focus = HSP_approach_uk
 			focus = HSP_approach_germany
@@ -1784,7 +1787,12 @@ focus_tree = {
 			set_rule = {
 				can_join_factions = no
 			}
-			create_faction = HSP_habsburg_hegemony_faction
+			if = {
+				limit = { is_in_faction = no }
+				create_faction_from_template = {
+					template = faction_template_HSP_habsburg_hegemony
+				}
+			}
 			GER = {
 				add_opinion_modifier = {
 					target = ROOT
@@ -1965,6 +1973,44 @@ focus_tree = {
 		}
 	}
 
+	## 오스트리아 왕관 요구
+	focus = {
+		id = HSP_demand_crown_of_austria
+		icon = GFX_focus_AUS_bring_back_the_habsburg_rule
+		cost = 5
+		x = 1
+		y = 0
+		relative_position_id = HSP_demand_crown_of_st_stephen
+		prerequisite = {
+			focus = HSP_the_empire_resurrected
+		}
+		available = {
+			AUS = {
+				exists = yes
+				is_subject = no
+			}
+			has_army_manpower = {
+				size > 500000
+			}
+		}
+		# Austria is gone (e.g. annexed by Germany): Austria-Hungary is restored without it
+		bypass = {
+			AUS = { exists = no }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			AUS = {
+				country_event = {
+					id = HSP_spain_events.24
+					hours = 1
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
 	focus = {
 		id = HSP_reclaim_austria_hungary
 		icon = GFX_focus_proclaim_the_restauration_of_Austria_Hungary
@@ -1975,69 +2021,57 @@ focus_tree = {
 		prerequisite = {
 			focus = HSP_demand_crown_of_st_stephen
 		}
+		prerequisite = {
+			focus = HSP_demand_crown_of_austria
+		}
 		available = {
-			any_other_country = {
-				original_tag = HUN
+			HUN = {
 				exists = yes
 				is_subject_of = ROOT
+			}
+			AUS = {
+				OR = {
+					exists = no
+					is_subject_of = ROOT
+				}
 			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
-			every_other_country = {
-				limit = {
-					original_tag = HUN
-					NOT = {
-						has_war_with = ROOT
+			HUN = {
+				if = {
+					limit = {
+						AUS = { exists = yes }
 					}
-					
+					annex_country = {
+						target = AUS
+						transfer_troops = yes
+					}
 				}
-				HUN = {
-					set_cosmetic_tag = HUN_EMPIRE
-				}
+				set_cosmetic_tag = HUN_EMPIRE
 				every_state = {
 					limit = {
-						is_core_of = AUS
+						OR = {
+							is_core_of = AUS
+							is_core_of = CZE
+							is_core_of = SLV
+							is_core_of = CRO
+							is_core_of = BOS
+							is_core_of = TRA
+							state = 163
+							state = 852
+							state = 736
+							state = 39
+							state = 45
+							state = 850
+						}
 					}
 					add_core_of = HUN
 				}
-				every_state = {
-					limit = {
-						is_core_of = CZE
-					}
-					add_core_of = HUN
-				}
-				every_state = {
-					limit = {
-						is_core_of = SLV
-					}
-					add_core_of = HUN
-				}
-				every_state = {
-					limit = {
-						is_core_of = CRO
-					}
-					add_core_of = HUN
-				}
-				every_state = {
-					limit = {
-						is_core_of = BOS
-					}
-					add_core_of = HUN
-				}
-				every_state = {
-					limit = {
-						is_core_of = TRA
-					}
-					add_core_of = HUN
-				}
-				163 = { add_core_of = HUN }
-				852 = { add_core_of = HUN }
-				736 = { add_core_of = HUN }
-				39 = { add_core_of = HUN }
-				45 = { add_core_of = HUN }
-				850 = { add_core_of = HUN }
 			}
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 	focus = {

@@ -6,6 +6,10 @@
   HSP_alfonso_xiii:0 "알폰소 13세"
   HSP_borbon_monarchists:0 "에스파냐 쇄신당"
   HSP_borbon_monarchists_long:0 "에스파냐 쇄신당 (알폰소 왕당파)"
+  HSP_archduke_robert:0 "로베르트 폰 합스부르크"
+  HSP_archduke_felix:0 "펠릭스 폰 합스부르크"
+  HSP_holy_roman_emperor:0 "신성 로마 황제"
+  HSP_autonomy_habsburg_crown:0 "제국 영지"
   # research
   allied_research:0 "연합국 연구"
   allied_research_name:0 "연합국 연구"

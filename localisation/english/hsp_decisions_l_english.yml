@@ -4,6 +4,7 @@
   HSP_pan_hispanic_federation_cat_desc: ""
   HSP_invite_to_faction: "Invite §Y[FROM.GetNameDef]§!"
   HSP_demand_submission: "Demand the Submission of §Y[FROM.GetNameDef]§!"
+  HSP_demand_submission_tt:0 "If they accept, they become our subject."
   # reestablish viceroyalty
   HSP_restore_viceroyalty_cat: "Restore the Viceroyalties"
   HSP_restore_viceroyalty_of_nueva_espana: "Restore the Viceroyalty of New Spain"
@@ -39,6 +40,8 @@
   HSP_restore_scandinavia: "Restore the Kingdom of Scandinavia"
   HSP_restore_nordic_league: "Restore the Nordic League"
   HSP_estonia_cession: "Cession of Estonia"
+  HSP_holy_roman_empire_cat:0 "The Holy Roman Empire"
+  HSP_form_holy_roman_empire:0 "Restore the Holy Roman Empire"
   # habsburg influence
   HSP_habsburg_influence_cat: "Influence over Subjects"
   HSP_increase_habsburg_influence: "Increase Influence in §Y[FROM.GetNameDef]§!"

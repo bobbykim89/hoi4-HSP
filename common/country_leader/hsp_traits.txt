@@ -1,12 +1,10 @@
 leader_traits = {
-	heir_of_habsburg = {
+	# Given to the Habsburg king by decision HSP_form_holy_roman_empire
+	HSP_holy_roman_emperor = {
 		random = no
-		war_support_factor = 0.05
-		stability_factor = 0.05
-		justify_war_goal_time = -0.25
-		political_power_factor = 0.15
-		political_advisor_cost_factor = -0.25
-		trade_laws_cost_factor = -0.25
-		economy_cost_factor = -0.25
+		sprite = 13
+		army_core_attack_factor = 0.1
+		army_core_defence_factor = 0.1
+		conscription_factor = 0.1
 	}
 }

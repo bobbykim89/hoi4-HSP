@@ -4,6 +4,7 @@
   HSP_pan_hispanic_federation_cat_desc: ""
   HSP_invite_to_faction: "§Y[FROM.GetNameDef]§! 초대"
   HSP_demand_submission: "§Y[FROM.GetNameDef]§!의 종속 요구"
+  HSP_demand_submission_tt:0 "수락하면 우리의 종속국이 됩니다."
   # reestablish viceroyalty
   HSP_restore_viceroyalty_cat: "부왕령 복원"
   HSP_restore_viceroyalty_of_nueva_espana: "누에바 에스파냐 부왕령 복원"
@@ -39,6 +40,8 @@
   HSP_restore_scandinavia: "스칸디나비아 왕국 재건"
   HSP_restore_nordic_league: "노르드 연맹 재건"
   HSP_estonia_cession: "에스토니아 할양"
+  HSP_holy_roman_empire_cat:0 "신성 로마 제국"
+  HSP_form_holy_roman_empire:0 "신성 로마 제국 재건"
   # habsburg influence
   HSP_habsburg_influence_cat: "종속국 영향력 증대"
   HSP_increase_habsburg_influence: "§Y[FROM.GetNameDef]§!에 영향력 증대"

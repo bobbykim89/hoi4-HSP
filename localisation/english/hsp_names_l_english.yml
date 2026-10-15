@@ -6,6 +6,10 @@
   HSP_alfonso_xiii:0 "Alfonso XIII"
   HSP_borbon_monarchists:0 "Renovación Española"
   HSP_borbon_monarchists_long:0 "Renovación Española (Alfonsine Monarchists)"
+  HSP_archduke_robert:0 "Robert von Habsburg"
+  HSP_archduke_felix:0 "Felix von Habsburg"
+  HSP_holy_roman_emperor:0 "Holy Roman Emperor"
+  HSP_autonomy_habsburg_crown:0 "Imperial Dominion"
   # research
   allied_research:0 "Allied Research"
   allied_research_name:0 "Allied Research"

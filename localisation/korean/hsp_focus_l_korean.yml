@@ -134,6 +134,8 @@
   HSP_a_bulwark_against_fascism_desc:0 ""
   HSP_imperial_intelligence_network:0 "제국 첩보망"
   HSP_imperial_intelligence_network_desc:0 ""
+  HSP_demand_crown_of_austria:0 "오스트리아 왕관 요구"
+  HSP_demand_crown_of_austria_desc:0 ""
   # allies focus
   HSP_approach_uk:0 "영국에 접근"
   HSP_approach_uk_desc:0 ""
