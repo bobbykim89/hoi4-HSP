@@ -427,7 +427,12 @@ def main(argv):
     known_event = set(event_defs) | (vanilla["events"] if vanilla else set())
     mod_langs = [l for l in LANGS if l in loc_defs]
     known_loc = {l: set(loc_defs[l]) | (vanilla[f"loc_{l}"] if vanilla else set()) for l in mod_langs}
-    known_gfx = vanilla["gfx"] if vanilla else None
+    known_gfx = None
+    if vanilla:
+        mod_gfx = set()
+        for gp in MOD_ROOT.glob("interface/**/*.gfx"):
+            mod_gfx.update(re.findall(r'name\s*=\s*"?(GFX_[\w\-]+)', gp.read_text(encoding="utf-8-sig", errors="replace"), re.I))
+        known_gfx = vanilla["gfx"] | mod_gfx
 
     # Cross-references.
     for rel, root in trees.items():

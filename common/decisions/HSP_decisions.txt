@@ -1559,10 +1559,13 @@ HSP_holy_roman_empire_cat = {
 			HUN = {
 				set_cosmetic_tag = HUN_EMPIRE
 				set_country_flag = HSP_austria_hungary_flag
-				every_state = {
-					limit = { HSP_is_former_austria_hungary = yes }
-					add_core_of = HUN
-				}
+			}
+			# Every former Austro-Hungarian state is held by Spain, Austria or Hungary at this point:
+			# Hungary takes them all and cores them.
+			every_state = {
+				limit = { HSP_is_former_austria_hungary = yes }
+				HUN = { transfer_state = PREV }
+				add_core_of = HUN
 			}
 		}
 		ai_will_do = {

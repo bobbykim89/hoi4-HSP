@@ -1,0 +1,8 @@
+spriteTypes = {
+	# Subject-type icons are looked up as GFX_<autonomy id>_icon.
+	# Imperial Dominion (HSP_autonomy_habsburg_crown) reuses vanilla's Austro-Hungarian vassal icon.
+	spriteType = {
+		name = "GFX_HSP_autonomy_habsburg_crown_icon"
+		textureFile = "gfx/interface/autonomy/autonomy_austro_hungarian_vassal_icon.dds"
+	}
+}
