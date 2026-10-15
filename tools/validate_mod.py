@@ -303,10 +303,23 @@ def main(argv):
 
     # Collect definitions.
     focus_defs, event_defs, namespaces = {}, {}, set()
+    focus_pos = {}  # tree id -> {focus id: (x, y, relative_position_id, rel, line)}
     needs_loc = []  # (key, rel, line, what)
     gfx_refs = []   # (sprite, rel, line)
     for rel, root in trees.items():
         if rel.startswith("common/national_focus/"):
+            for tree in root.children("focus_tree"):
+                tid = tree.get("id")
+                tpos = focus_pos.setdefault(tid.value if tid is not None else rel, {})
+                for f in tree.children("focus"):
+                    fid, x, y = f.get("id"), f.get("x"), f.get("y")
+                    if fid is None or x is None or y is None or fid.is_block:
+                        continue
+                    rp = f.get("relative_position_id")
+                    try:
+                        tpos[fid.value] = (int(x.value), int(y.value), rp.value if rp else None, rel, fid.line)
+                    except ValueError:
+                        pass  # computed position; skip layout check
             for n in root.walk():
                 if n.key in ("focus", "shared_focus") and n.is_block:
                     fid = n.get("id")
@@ -381,6 +394,34 @@ def main(argv):
                 for m in om.children():
                     if m.is_block and m.key:
                         needs_loc.append((m.key, rel, m.line, "opinion modifier"))
+
+    # Layout: resolve relative positions and flag focuses that sit on the same tile.
+    for tpos in focus_pos.values():
+        absolute = {}
+
+        def resolve(fid, seen=()):
+            if fid in absolute:
+                return absolute[fid]
+            x, y, rp, rel, line = tpos[fid]
+            if rp:
+                if rp not in tpos or rp in seen:
+                    return None
+                base = resolve(rp, seen + (fid,))
+                if base is None:
+                    return None
+                x, y = x + base[0], y + base[1]
+            absolute[fid] = (x, y)
+            return absolute[fid]
+
+        tiles = {}
+        for fid in tpos:
+            xy = resolve(fid)
+            if xy is not None:
+                tiles.setdefault(xy, []).append(fid)
+        for (x, y), fids in tiles.items():
+            for fid in fids[1:]:
+                _, _, _, rel, line = tpos[fid]
+                issues.append(Issue(rel, line, f"focus '{fid}' overlaps '{fids[0]}' at x={x} y={y}"))
 
     known_focus = set(focus_defs) | (vanilla["focuses"] if vanilla else set())
     known_event = set(event_defs) | (vanilla["events"] if vanilla else set())

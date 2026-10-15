@@ -42,6 +42,7 @@
   HSP_barcelona_steel:0 "바르셀로나 제철소"
   HSP_barcelona_steel_desc:0 ""
   HSP_expand_mining:0 "광업 확장"
+  HSP_expand_mining_desc:0 ""
   HSP_national_mining_company:0 "국립 광업회사"
   HSP_national_mining_company_desc:0 ""
   HSP_expand_mineral_extraction:0 "광물 추출 확대"
@@ -53,6 +54,7 @@
   HSP_madrid_royal_arsenal:0 "마드리드 왕립 조병창"
   HSP_madrid_royal_arsenal_desc:0 ""
   HSP_expand_royal_arsenal:0 "왕립 조병창 확대"
+  HSP_expand_royal_arsenal_desc:0 ""
   HSP_secret_weapon:0 "비밀무기"
   HSP_secret_weapon_desc:0 ""
   # government focus
@@ -204,6 +206,7 @@
   HSP_focus_naval_bombing_desc:0 ""
   ## production management
   HSP_state_led_production_management:0 "국가주도 생산 관리"
+  HSP_state_led_production_management_desc:0 ""
   ## navy
   HSP_spanish_naval_academy:0 "스페인 해군 사관학교"
   HSP_spanish_naval_academy_desc:0 ""

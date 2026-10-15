@@ -27,7 +27,7 @@ focus_tree = {
 		id = HSP_historical_spain
 		icon = GFX_goal_generic_political_pressure
 		cost = 1
-		x = 33
+		x = 30
 		y = 0
 		available = {
 			NOT = {
@@ -65,7 +65,7 @@ focus_tree = {
 		icon = GFX_goal_generic_national_unity
 		cost = 5
 		mutually_exclusive = { focus = HSP_historical_spain }
-		x = 8
+		x = 10
 		y = 0
 		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
 		completion_reward = {
@@ -202,16 +202,9 @@ focus_tree = {
 
 	focus = {
 		id = HSP_national_industrialization
-		available = {
-		}
-		bypass = {
-		}
-		prerequisite = { focus = HSP_new_monarchy }
-		
 		icon = GFX_goal_generic_construct_civ_factory
-		x = -4
-		y = 1
-		relative_position_id = HSP_new_monarchy
+		x = 4
+		y = 0
 		cost = 10
 
 		available_if_capitulated = yes
@@ -286,9 +279,9 @@ focus_tree = {
 						size > 0
 					}
 					is_core_of = ROOT
-					NOT = { has_state_flag = SPA_encourage_local_industrialization_1civ }
+					NOT = { has_state_flag = HSP_national_industrialization_2civ }
 				}
-				set_state_flag = SPA_encourage_local_industrialization_1civ
+				set_state_flag = HSP_national_industrialization_2civ
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
@@ -2503,12 +2496,8 @@ focus_tree = {
 		id = HSP_military_reform
 		icon = GFX_focus_generic_limited_social_mobilization
 		cost = 5
-		x = 15
-		y = 1
-		relative_position_id = HSP_new_monarchy
-		prerequisite = {
-			focus = HSP_new_monarchy
-		}
+		x = 40
+		y = 0
 		completion_reward = {
 			swap_ideas = {
 				remove_idea = HSP_old_fashioned_army_01
@@ -3046,7 +3035,7 @@ focus_tree = {
 					is_core_of = ROOT
 					NOT = { has_state_flag = HSP_expansion_of_production_capacity_2mil }
 				}
-				set_state_flag = HSP_invest_on_military_industry_2mil
+				set_state_flag = HSP_expansion_of_production_capacity_2mil
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
@@ -3130,7 +3119,7 @@ focus_tree = {
 					is_core_of = ROOT
 					NOT = { has_state_flag = HSP_lightweight_design_2mil }
 				}
-				set_state_flag = HSP_invest_on_military_industry_2mil
+				set_state_flag = HSP_lightweight_design_2mil
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
@@ -3330,6 +3319,9 @@ focus_tree = {
 		prerequisite = {
 			focus = HSP_military_reform
 		}
+		available = {
+			NOT = { has_government = democratic }
+		}
 		completion_reward = {
 			unlock_decision_category_tooltip = HSP_production_management_cat
 			add_ideas = HSP_focus_balanced_production_01
@@ -3491,7 +3483,7 @@ focus_tree = {
 					level = 2
 					instant_build = yes
 				}
-				set_state_flag = HSP_expand_naval_production_2DY
+				set_state_flag = HSP_secure_naval_supply_line_2DY
 			}
 			random_owned_controlled_state = {
 				limit = {
@@ -3501,7 +3493,7 @@ focus_tree = {
 						include_locked = yes
 					}
 					is_core_of = ROOT
-					NOT = { has_state_flag = HSP_expand_naval_production_2DY }
+					NOT = { has_state_flag = HSP_secure_naval_supply_line_2DY }
 				}
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
@@ -3509,7 +3501,7 @@ focus_tree = {
 					level = 2
 					instant_build = yes
 				}
-				set_state_flag = HSP_expand_naval_production_2DY
+				set_state_flag = HSP_secure_naval_supply_line_2DY
 			}
 		}
 	}
@@ -3536,7 +3528,7 @@ focus_tree = {
 				name = HSP_convoy_escord_focus
 				bonus = 0.75
 				uses = 2
-				category = cl_tech
+				category = ca_tech
 			}
 			add_doctrine_cost_reduction = {
 				cost_reduction = 0.25

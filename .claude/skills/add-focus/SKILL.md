@@ -9,7 +9,7 @@ description: Add or rework a national focus in the Habsburg Spain tree end to en
 
 2. **Find the branch.** `grep -n '^\t#' common/national_focus/HSP_spain.txt` maps the tree's branches. Read two or three neighbouring focuses and copy their shape: field order, `search_filters`, `ai_will_do`, and the `## <Korean name>` comment above each focus.
 
-3. **Place it.** Use `relative_position_id` + `x`/`y` like its neighbours. Find every focus sharing that `relative_position_id` (grep) and make sure none sits at the same `x`/`y`.
+3. **Place it.** Use `relative_position_id` + `x`/`y` like its neighbours. The validator resolves positions and flags any two focuses on the same tile.
 
 4. **Write the rewards.** Check every effect, trigger and modifier name against `$HOI4_GAME_DIR/documentation/` (`grep -n -A15 '^## name$'`) or a vanilla usage. Pick an icon that exists in `$HOI4_GAME_DIR/interface/*.gfx` (`GFX_goal_*`, `GFX_focus_*`).
 

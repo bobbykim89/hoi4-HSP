@@ -42,6 +42,7 @@
   HSP_barcelona_steel:0 "Barcelona Steelworks"
   HSP_barcelona_steel_desc:0 ""
   HSP_expand_mining:0 "Expand Mining"
+  HSP_expand_mining_desc:0 ""
   HSP_national_mining_company:0 "National Mining Company"
   HSP_national_mining_company_desc:0 ""
   HSP_expand_mineral_extraction:0 "Expand Mineral Extraction"
@@ -53,6 +54,7 @@
   HSP_madrid_royal_arsenal:0 "Royal Arsenal of Madrid"
   HSP_madrid_royal_arsenal_desc:0 ""
   HSP_expand_royal_arsenal:0 "Expand the Royal Arsenal"
+  HSP_expand_royal_arsenal_desc:0 ""
   HSP_secret_weapon:0 "Secret Weapons"
   HSP_secret_weapon_desc:0 ""
   # government focus
@@ -204,6 +206,7 @@
   HSP_focus_naval_bombing_desc:0 ""
   ## production management
   HSP_state_led_production_management:0 "State-Led Production Management"
+  HSP_state_led_production_management_desc:0 ""
   ## navy
   HSP_spanish_naval_academy:0 "Spanish Naval Academy"
   HSP_spanish_naval_academy_desc:0 ""

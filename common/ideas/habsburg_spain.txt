@@ -189,6 +189,7 @@ ideas = {
 			}
 			modifier = {
 				local_resources_factor = 0.1
+				local_resources_coal_factor = 0.2
 			}
 		}
 		HSP_madrid_royal_arsenal_01 = {

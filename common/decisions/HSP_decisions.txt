@@ -1856,6 +1856,7 @@ HSP_production_management_cat = {
 		}
 		available = {
 			has_completed_focus = HSP_state_led_production_management
+			NOT = { has_government = democratic }
 			OR = {
 				has_idea = HSP_focus_balanced_production_01
 				has_idea = HSP_focus_naval_production_01
@@ -1901,6 +1902,7 @@ HSP_production_management_cat = {
 		}
 		available = {
 			has_completed_focus = HSP_state_led_production_management
+			NOT = { has_government = democratic }
 			OR = {
 				has_idea = HSP_focus_land_production_01
 				has_idea = HSP_focus_naval_production_01
@@ -1946,6 +1948,7 @@ HSP_production_management_cat = {
 		}
 		available = {
 			has_completed_focus = HSP_state_led_production_management
+			NOT = { has_government = democratic }
 			OR = {
 				has_idea = HSP_focus_land_production_01
 				has_idea = HSP_focus_balanced_production_01
