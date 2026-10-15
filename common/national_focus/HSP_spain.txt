@@ -2060,27 +2060,15 @@ focus_tree = {
 						transfer_troops = yes
 					}
 				}
-				set_cosmetic_tag = HUN_EMPIRE
 				every_state = {
 					limit = {
-						OR = {
-							is_core_of = AUS
-							is_core_of = CZE
-							is_core_of = SLV
-							is_core_of = CRO
-							is_core_of = BOS
-							is_core_of = TRA
-							state = 163
-							state = 852
-							state = 736
-							state = 39
-							state = 45
-							state = 850
-						}
+						HSP_is_former_austria_hungary = yes
+						NOT = { is_core_of = HUN }
 					}
-					add_core_of = HUN
+					add_claim_by = HUN
 				}
 			}
+			unlock_decision_tooltip = HSP_form_austria_hungary
 		}
 		ai_will_do = {
 			base = 1
@@ -2097,10 +2085,10 @@ focus_tree = {
 			focus = HSP_reclaim_austria_hungary
 		}
 		available = {
-			any_other_country = {
-				original_tag = HUN
+			HUN = {
 				exists = yes
 				is_subject_of = ROOT
+				has_country_flag = HSP_austria_hungary_flag
 			}
 		}
 		search_filters = {FOCUS_FILTER_ANNEXATION}

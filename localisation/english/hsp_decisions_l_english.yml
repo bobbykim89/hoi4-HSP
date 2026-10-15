@@ -42,8 +42,10 @@
   HSP_restore_scandinavia: "Restore the Kingdom of Scandinavia"
   HSP_restore_nordic_league: "Restore the Nordic League"
   HSP_estonia_cession: "Cession of Estonia"
-  HSP_holy_roman_empire_cat:0 "The Holy Roman Empire"
+  HSP_holy_roman_empire_cat:0 "The Habsburg Empire"
   HSP_form_holy_roman_empire:0 "Restore the Holy Roman Empire"
+  HSP_form_austria_hungary:0 "Proclaim the Austro-Hungarian Empire"
+  HSP_former_austria_hungary_held_tt:0 "Hungary, Austria or Spain controls every state of the former Austro-Hungarian Empire (highlighted on the map)"
   # habsburg influence
   HSP_habsburg_influence_cat: "Influence over Subjects"
   HSP_increase_habsburg_influence: "Increase Influence in §Y[FROM.GetNameDef]§!"

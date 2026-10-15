@@ -90,7 +90,7 @@ HSP_holy_roman_empire_cat = {
 		has_dlc = "La Resistance"
 	}
 	visible = {
-		has_completed_focus = HSP_one_crown_one_empire
+		has_completed_focus = HSP_reclaim_austria_hungary
 	}
 	visible_when_empty = no
 }

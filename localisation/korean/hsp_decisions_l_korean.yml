@@ -42,8 +42,10 @@
   HSP_restore_scandinavia: "스칸디나비아 왕국 재건"
   HSP_restore_nordic_league: "노르드 연맹 재건"
   HSP_estonia_cession: "에스토니아 할양"
-  HSP_holy_roman_empire_cat:0 "신성 로마 제국"
+  HSP_holy_roman_empire_cat:0 "합스부르크 제국"
   HSP_form_holy_roman_empire:0 "신성 로마 제국 재건"
+  HSP_form_austria_hungary:0 "오스트리아-헝가리 제국 수립"
+  HSP_former_austria_hungary_held_tt:0 "헝가리, 오스트리아 또는 스페인이 옛 오스트리아-헝가리 제국의 모든 주를 장악 (지도에 표시됨)"
   # habsburg influence
   HSP_habsburg_influence_cat: "종속국 영향력 증대"
   HSP_increase_habsburg_influence: "§Y[FROM.GetNameDef]§!에 영향력 증대"
