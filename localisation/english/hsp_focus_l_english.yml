@@ -40,7 +40,7 @@
   HSP_demand_louisiana_desc:0 ""
   HSP_royalist_support_start_tt:0 "Royalist support in §YFrance§! starts at §Y10%§!."
   HSP_royalist_support_80_tt:0 "Royalist support in France is at least §Y80%§! (now §Y[?FRA.HSP_royalist_support|0]%§!)"
-  HSP_claim_crown_of_france_tt:0 "§YFrance§! is asked to accept our king. It accepts if Spain's army is stronger. Otherwise the royalists rise in a civil war, become our subject, and we go to war with the French government."
+  HSP_claim_crown_of_france_tt:0 "§YFrance§! is asked to accept our king. It accepts if Spain's army is stronger. Otherwise the royalists rise in a civil war, become our subject, and we join the civil war on their side."
   # industry focus
   HSP_national_industrialization:0 "National Industrialization"
   HSP_national_industrialization_desc:0 ""

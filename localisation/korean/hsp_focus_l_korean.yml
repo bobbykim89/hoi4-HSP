@@ -40,7 +40,7 @@
   HSP_demand_louisiana_desc:0 ""
   HSP_royalist_support_start_tt:0 "§Y프랑스§!의 왕당파 지지율이 §Y10%§!에서 시작합니다."
   HSP_royalist_support_80_tt:0 "프랑스의 왕당파 지지율이 §Y80%§! 이상 (현재 §Y[?FRA.HSP_royalist_support|0]%§!)"
-  HSP_claim_crown_of_france_tt:0 "§Y프랑스§!에 우리 국왕을 받아들일 것을 요구합니다. 스페인의 군사력이 더 강하면 수락하며, 그렇지 않으면 왕당파가 내전을 일으켜 우리의 종속국이 되고, 우리는 프랑스 정부와 전쟁에 돌입합니다."
+  HSP_claim_crown_of_france_tt:0 "§Y프랑스§!에 우리 국왕을 받아들일 것을 요구합니다. 스페인의 군사력이 더 강하면 수락하며, 그렇지 않으면 왕당파가 내전을 일으켜 우리의 종속국이 되며, 우리는 그들 편에서 내전에 참전합니다."
   # industry focus
   HSP_national_industrialization:0 "국가주도 산업화"
   HSP_national_industrialization_desc:0 ""

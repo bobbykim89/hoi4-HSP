@@ -1890,6 +1890,70 @@ HSP_french_royalists_cat = {
 			base = 10
 		}
 	}
+	# Vanilla POL_sway_lithuanian_generals: a swayed general defects to the royalists in a civil war
+	HSP_sway_french_generals = {
+		icon = generic_army_support
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_support_french_royalists
+		}
+		available = {
+			NOT = { has_war_with = FRA }
+			FRA = {
+				exists = yes
+				custom_trigger_tooltip = {
+					tooltip = HSP_royalist_support_25_tt
+					check_variable = { HSP_royalist_support > 24 }
+				}
+				any_unit_leader = {
+					NOT = { has_unit_leader_flag = HSP_royalist_sympathies_flag }
+				}
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 24
+			has_political_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25_pp_25
+		days_remove = 25
+		fire_only_once = no
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -25
+				add_political_power = -25
+			}
+		}
+		remove_effect = {
+			FRA = {
+				add_to_variable = {
+					var = HSP_royalist_support
+					value = 10
+				}
+				clamp_variable = {
+					var = HSP_royalist_support
+					min = 0
+					max = 100
+				}
+			}
+			custom_effect_tooltip = HSP_royalist_support_10_tt
+			custom_effect_tooltip = HSP_sway_french_general_tt
+			hidden_effect = {
+				FRA = {
+					random_unit_leader = {
+						limit = {
+							NOT = { has_unit_leader_flag = HSP_royalist_sympathies_flag }
+						}
+						set_unit_leader_flag = HSP_royalist_sympathies_flag
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
 	HSP_arm_french_royalists = {
 		icon = generic_prepare_civil_war
 		allowed = {

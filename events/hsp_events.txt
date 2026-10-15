@@ -1251,7 +1251,7 @@ country_event = {
 }
 
 # France refuses: royalist civil war. The royalist side becomes Spain's subject and Spain joins
-# the war against the French government (vanilla CHL_initiate_a_revolution pattern).
+# the civil war on its side.
 # ROOT = Spain, FROM = France.
 country_event = {
 	id = HSP_spain_events.36
@@ -1275,6 +1275,10 @@ country_event = {
 				ideology = neutrality
 				size = HSP_civil_war_size
 				keep_political_leader = yes
+				# generals swayed by HSP_sway_french_generals defect to the royalists
+				keep_unit_leaders_trigger = {
+					NOT = { has_unit_leader_flag = HSP_royalist_sympathies_flag }
+				}
 				set_country_flag = HSP_french_royalists_flag
 				create_country_leader = {
 					name = HSP_alphonse_i
@@ -1283,15 +1287,18 @@ country_event = {
 					ideology = despotism
 					traits = { the_legitimist }
 				}
+				# Join the civil war on the royalist side (vanilla lar_spain.49 pattern). A declared war
+				# would end in a peace conference; a civil war ends with the winner annexing the loser.
 				ROOT = {
+					add_to_war = {
+						targeted_alliance = PREV
+						enemy = FROM
+						hostility_reason = asked_to_join
+					}
 					puppet = {
 						target = PREV
 						end_wars = no
 						end_civil_wars = no
-					}
-					declare_war_on = {
-						target = FROM
-						type = puppet_wargoal_focus
 					}
 				}
 			}
