@@ -11,7 +11,7 @@ Alt-history focus tree for Republican Spain (tag `SPR`; nationalist Spain is `SP
 
 A mod file with the same path as a vanilla file **replaces the vanilla file entirely**. These files do that: `common/national_focus/spain.txt`, `events/LAR_Spain.txt`, `common/scripted_effects/00_scripted_effects.txt`, `common/countries/cosmetic.txt`, `common/characters/SPR.txt`. When editing them, keep the vanilla content intact; put new content in `HSP_`-named files where possible. To see what the mod changed: `diff "$HOI4_GAME_DIR/<path>" <path>`.
 
-Most overrides were copied from game 1.14 (`descriptor.mod` says `1.14.*`), but the installed game is 1.19, so their vanilla parts are stale. `events/LAR_Spain.txt` is already rebuilt from 1.19, with the mod's `lar_spain.1` spliced in.
+All overrides except `spain.txt` are rebased on game 1.19 (`descriptor.mod` says `1.19.*`): each is the vanilla 1.19 file plus a small, deliberate mod diff. When the game updates, re-copy the new vanilla file and re-apply that diff rather than editing the old copy. `spain.txt` is a stale 1.14 copy that is being replaced by the mod's own tree.
 
 ## Localisation rules
 

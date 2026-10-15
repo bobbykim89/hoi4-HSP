@@ -747,6 +747,7 @@ characters={
 			name=SPA_emilio_mola_vidal
 			portraits={
 				army={
+					large="GFX_portrait_SPA_emilio_mola"
 					small="GFX_idea_generic_army_europe_5"
 				}
 			}
@@ -1119,6 +1120,21 @@ characters={
 				}
 			}
 		}
+	}
+
+	SPA_karl_pius_von_habsburg = {
+		name = SPA_karl_pius_von_habsburg
+		portraits = {
+			civilian = {
+				large = GFX_portrait_SPR_karl_pius_von_habsburg
+			}
+		}
+		#country_leader = {
+		#	ideology = despotism
+		#	traits = { carlist_habsburg_pretender }
+		#	expire="1965.1.1.1"
+		#	id = -1
+		#}
 	}
 
 	SPA_miguel_cabanellas={ # Carlist
@@ -2263,7 +2279,8 @@ characters={
 		name=SPR_mate_zalka
 		portraits={
 			army={
-				small="GFX_idea_SPR_mate_zalka"
+				large = GFX_portrait_SPR_mate_zalka
+				small = GFX_idea_SPR_mate_zalka
 			}
 		}
 		advisor={
@@ -2292,6 +2309,19 @@ characters={
 			}
 			traits = { army_chief_offensive_2 }
 			cost = 100
+		}
+		field_marshal={
+			traits={ trickster }
+			skill=2
+			attack_skill=2
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=2
+			legacy_id= -1
+			visible = {
+				has_completed_focus = SPR_international_brigades
+				has_completed_focus = SPR_the_anti_fascist_workers_revolution
+			}
 		}
 	}
 
@@ -4659,7 +4689,7 @@ characters={
 			available = {
 				OR = {
 					has_completed_focus = SPA_supremacy_of_the_communion
-					has_completed_focus = HSP_new_monarchy
+					has_completed_focus = HSP_ensure_military_loyalty
 				}
 				custom_trigger_tooltip = {
 					tooltip = SPA_not_republican_spain_tt
@@ -4701,7 +4731,7 @@ characters={
 			available = {
 				OR = {
 					has_completed_focus = SPA_supremacy_of_the_communion
-					has_completed_focus = HSP_new_monarchy
+					has_completed_focus = HSP_ensure_military_loyalty
 					original_tag = CHL
 				}
 				custom_trigger_tooltip = {
@@ -4739,7 +4769,10 @@ characters={
 			}
 
 			available = {
-				has_completed_focus = SPA_supremacy_of_the_communion
+				OR = {
+					has_completed_focus = SPA_supremacy_of_the_communion
+					has_completed_focus = HSP_ensure_military_loyalty
+				}
 				custom_trigger_tooltip = {
 					tooltip = SPA_not_republican_spain_tt
 					NOT = { tag = SPD }

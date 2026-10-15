@@ -4,4 +4,4 @@ tags={
 	"National Focuses"
 }
 name="Habsburg Spain"
-supported_version="1.14.*"
+supported_version="1.19.*"
