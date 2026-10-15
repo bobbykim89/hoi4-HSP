@@ -1112,6 +1112,15 @@ country_event = {
 			add_to_faction = ROOT
 			country_event = { id = HSP_spain_events.32 hours = 6 }
 		}
+		# Keep the AI in the federation: without this its faction desire (other ideology, not at war
+		# together) is negative and it leaves at once. Vanilla does the same in Generic.txt faction joins.
+		hidden_effect = {
+			add_ai_strategy = {
+				type = alliance
+				id = FROM
+				value = 200
+			}
+		}
 	}
 	# refuse
 	option = {
