@@ -339,9 +339,12 @@ country_event = {
 		name = HSP_spain_events.13.a
 		
 		puppet = FROM
-		remove_wargoal = {
-			target = FROM
-			type = all
+		if = {
+			limit = { has_wargoal_against = FROM }
+			remove_wargoal = {
+				target = FROM
+				type = all
+			}
 		}
 	}
 }
@@ -1041,8 +1044,14 @@ country_event = {
 			name = HSP_borbon_monarchists
 			long_name = HSP_borbon_monarchists_long
 		}
-		recruit_character = HSP_alfonso_xiii
-		promote_character = HSP_alfonso_xiii
+		create_country_leader = {
+			name = HSP_alfonso_xiii
+			desc = "POLITICS_ALFONSO_XIII_DESC"
+			picture = "GFX_portrait_SPA_alfonso_xiii"
+			expire = "1965.1.1"
+			ideology = despotism
+			traits = { the_legitimist }
+		}
 		set_country_flag = HSP_house_borbon_flag
 		hidden_effect = {
 			mark_focus_tree_layout_dirty = yes

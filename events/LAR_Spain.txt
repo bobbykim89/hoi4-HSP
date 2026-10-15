@@ -11799,6 +11799,7 @@ country_event = {
 		tag = SPR
 		date > 1936.4.20
 		NOT = { has_global_flag = spanish_civil_war }
+		NOT = { has_completed_focus = HSP_assemble_emergency_council } # HSP: no 1936 republic to dismiss a president from
 	}
 
 	mean_time_to_happen = {
