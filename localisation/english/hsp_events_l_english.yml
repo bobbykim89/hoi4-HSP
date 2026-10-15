@@ -4,6 +4,7 @@
   HSP_spain_events.5.desc:0 "[SPR.GetNameDef] and [POR.GetNameDef] once ruled the oceans of the world together as a personal union. We have received a proposal to rebuild that united kingdom and revive the glory of the past."
   HSP_spain_events.5.a:0 "We must stand together once more."
   HSP_spain_events.5.b:0 "We are not interested."
+  lar_spain.1.c:0 "Let the emergency council decide."
   # news
   HSP_spain_news.1.title:0 "[From.GetName] Convenes an Emergency Council"
   HSP_spain_news.1.desc:0 "Defying all expectations, the deeply unstable [From.GetName] has convened an emergency council. Some observers hope the council can ease the social unrest the country now faces, but most take a pessimistic view, dismissing it as nothing more than a futile attempt to buy time."

@@ -1,0 +1,18 @@
+# Switch SPR from the HSP tree back to vanilla's Spain tree (vanilla election and civil war).
+# Restores the starting spirits that HSP_on_actions.txt removed at game start.
+HSP_return_to_historical_spain = {
+	add_ideas = {
+		SPA_carlism_1
+		SPR_military_disloyalty
+		SPR_political_violence
+	}
+	remove_ideas = {
+		HSP_old_fashioned_army_01
+		HSP_old_fashioned_army_02
+		HSP_old_fashioned_army_03
+	}
+	load_focus_tree = {
+		tree = spanish_focus
+		keep_completed = no
+	}
+}

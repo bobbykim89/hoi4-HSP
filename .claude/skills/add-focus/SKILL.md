@@ -7,7 +7,7 @@ description: Add or rework a national focus in the Habsburg Spain tree end to en
 
 1. **Pin the design.** Settle these in chat: the id (`HSP_` + English snake_case), the name and description (the user writes Korean; you translate to English), the branch, prerequisites, mutually exclusive focuses, cost, the `completion_reward`, `available` and `bypass` conditions, and `ai_will_do`. Propose defaults from the neighbouring focuses and ask only about what you can't infer. Done when every item has a value the user agreed to or didn't contest.
 
-2. **Find the branch.** `grep -n '^\t#' common/national_focus/spain.txt` maps the mod's branches (everything after `## Habsburd focus`). Read two or three neighbouring focuses and copy their shape: field order, `search_filters`, `ai_will_do`, and the `## <Korean name>` comment above each focus.
+2. **Find the branch.** `grep -n '^\t#' common/national_focus/HSP_spain.txt` maps the tree's branches. Read two or three neighbouring focuses and copy their shape: field order, `search_filters`, `ai_will_do`, and the `## <Korean name>` comment above each focus.
 
 3. **Place it.** Use `relative_position_id` + `x`/`y` like its neighbours. Find every focus sharing that `relative_position_id` (grep) and make sure none sits at the same `x`/`y`.
 

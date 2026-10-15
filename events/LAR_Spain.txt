@@ -125,6 +125,10 @@ country_event = {
 					has_completed_focus = SPR_the_popular_front
 				}
 			}
+			if = {
+				limit = { has_focus_tree = HSP_spanish_focus } # no HSP root chosen before the election
+				HSP_return_to_historical_spain = yes
+			}
 			complete_national_focus = SPR_the_popular_front
 			add_political_power = -35
 			activate_mission = SPR_military_plot_republicans
@@ -162,6 +166,10 @@ country_event = {
 					has_completed_focus = SPA_a_great_spain
 				}
 			}
+			if = {
+				limit = { has_focus_tree = HSP_spanish_focus } # no HSP root chosen before the election
+				HSP_return_to_historical_spain = yes
+			}
 			complete_national_focus = SPA_a_great_spain
 			add_political_power = -35
 			activate_mission = SPA_military_plot_nationalists
@@ -196,8 +204,16 @@ country_event = {
 	option = {
 		name = lar_spain.1.c
 		trigger = {
+			has_focus_tree = HSP_spanish_focus
 			NOT = {
 				has_completed_focus = SPR_the_popular_front has_completed_focus = SPA_a_great_spain
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
 			}
 		}
 		add_popularity = {

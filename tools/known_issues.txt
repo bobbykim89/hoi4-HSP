@@ -1,9 +1,8 @@
 # Pre-existing issues accepted by `validate_mod.py --write-baseline`.
 # The hook ignores these; a full run marks them [known]. Delete lines as you fix them.
-common/national_focus/spain.txt | focus description 'HSP_expand_mining_desc' has no localisation (english, korean)
-common/national_focus/spain.txt | focus description 'HSP_expand_royal_arsenal_desc' has no localisation (english, korean)
-common/national_focus/spain.txt | focus description 'HSP_state_led_production_management_desc' has no localisation (english, korean)
-events/LAR_Spain.txt | event option 'lar_spain.1.c' has no localisation (english, korean)
+common/national_focus/HSP_spain.txt | focus description 'HSP_expand_mining_desc' has no localisation (english, korean)
+common/national_focus/HSP_spain.txt | focus description 'HSP_expand_royal_arsenal_desc' has no localisation (english, korean)
+common/national_focus/HSP_spain.txt | focus description 'HSP_state_led_production_management_desc' has no localisation (english, korean)
 events/LAR_Spain.txt | sprite 'GFX_report_event_read_write' is not defined in any .gfx file
 events/hsp_events.txt | event desc 'HSP_spain_events.10.desc' has no localisation (english, korean)
 events/hsp_events.txt | event desc 'HSP_spain_events.11.desc' has no localisation (english, korean)

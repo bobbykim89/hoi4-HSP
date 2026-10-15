@@ -4,14 +4,16 @@ Alt-history focus tree for Republican Spain (tag `SPR`; nationalist Spain is `SP
 
 ## Where things are
 
-- `common/national_focus/spain.txt` is a **full copy of vanilla's Spain tree** with the mod's tree appended after the `## Habsburd focus` comment (~line 13400). The mod's branches start at `\t# <name> path` / `\t# army` headers; map them with `grep -n '^\t#' common/national_focus/spain.txt`. Each mod focus is preceded by a `## <Korean name>` comment; keep that.
+- `common/national_focus/HSP_spain.txt` is the mod's own tree, `HSP_spanish_focus`. SPR gets it on the 1936 start, replacing vanilla's `spanish_focus`; the 1939 start keeps vanilla. Branches start at `\t# <name> path` / `\t# army` headers; map them with `grep -n '^\t#' common/national_focus/HSP_spain.txt`. Each focus is preceded by a `## <Korean name>` comment; keep that.
+- **Two roots at the start.** `HSP_assemble_emergency_council` leads to the monarchy and cancels the election, so there is no civil war. `HSP_historical_spain` runs `HSP_return_to_historical_spain` (`common/scripted_effects/HSP_scripted_effects.txt`), which loads vanilla's tree with its election and civil war. If neither root is taken before the 16 Feb 1936 election, `lar_spain.1` options a/b do the same hand-off. Until the HSP Republican and Fascist paths exist, they are vanilla's.
+- At game start, `common/on_actions/HSP_on_actions.txt` strips SPR's vanilla spirits down to 전국 파업 plus 구식 군대. Anything that sends Spain back to vanilla must restore them.
 - Localisation: `localisation/{english,korean}/hsp_*_l_{english,korean}.yml`. The two languages have the same files, the same keys in the same order, and the same `# <branch> focus` comments, which mirror the tree.
 
 ## Vanilla overrides
 
-A mod file with the same path as a vanilla file **replaces the vanilla file entirely**. These files do that: `common/national_focus/spain.txt`, `events/LAR_Spain.txt`, `common/scripted_effects/00_scripted_effects.txt`, `common/countries/cosmetic.txt`, `common/characters/SPR.txt`. When editing them, keep the vanilla content intact; put new content in `HSP_`-named files where possible. To see what the mod changed: `diff "$HOI4_GAME_DIR/<path>" <path>`.
+A mod file with the same path as a vanilla file **replaces the vanilla file entirely**. These files do that: `events/LAR_Spain.txt`, `common/scripted_effects/00_scripted_effects.txt`, `common/countries/cosmetic.txt`, `common/characters/SPR.txt`. When editing them, keep the vanilla content intact; put new content in `HSP_`-named files where possible. To see what the mod changed: `diff "$HOI4_GAME_DIR/<path>" <path>`.
 
-All overrides except `spain.txt` are rebased on game 1.19 (`descriptor.mod` says `1.19.*`): each is the vanilla 1.19 file plus a small, deliberate mod diff. When the game updates, re-copy the new vanilla file and re-apply that diff rather than editing the old copy. `spain.txt` is a stale 1.14 copy that is being replaced by the mod's own tree.
+All overrides are rebased on game 1.19 (`descriptor.mod` says `1.19.*`): each is the vanilla 1.19 file plus a small, deliberate mod diff. When the game updates, re-copy the new vanilla file and re-apply that diff rather than editing the old copy. The mod does **not** override vanilla `spain.txt`.
 
 ## Localisation rules
 

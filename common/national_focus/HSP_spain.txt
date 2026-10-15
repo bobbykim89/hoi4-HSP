@@ -1,0 +1,3772 @@
+focus_tree = {
+	id = HSP_spanish_focus
+
+	# Replaces vanilla spanish_focus (weight 10) for the 1936 start; 1939 keeps vanilla.
+	country = {
+		factor = 0
+		modifier = {
+			add = 100
+			tag = SPR
+			has_dlc = "La Resistance"
+			date < 1936.6.1
+		}
+	}
+
+	default = no
+
+	continuous_focus_position = { x = 50 y = 2500 }
+
+	initial_show_position = {
+		x = 16
+		y = 0
+	}
+
+	## 역사적 스페인
+	# Hand-off to vanilla's tree until the HSP Republican and Fascist paths exist.
+	focus = {
+		id = HSP_historical_spain
+		icon = GFX_goal_generic_political_pressure
+		cost = 1
+		x = 33
+		y = 0
+		available = {
+			NOT = {
+				has_country_flag = SPR_spanish_elections_flag
+			}
+		}
+		mutually_exclusive = { focus = HSP_assemble_emergency_council }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			custom_effect_tooltip = HSP_historical_spain_tt
+			HSP_return_to_historical_spain = yes
+		}
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 10
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	## Habsburd focus
+
+	## 긴급 의회 소집
+	focus = {
+		id = HSP_assemble_emergency_council
+		available = {
+			NOT = {
+				has_country_flag = SPR_spanish_elections_flag
+			}
+		}
+		bypass = {
+			has_global_flag = spanish_civil_war
+		}
+		icon = GFX_goal_generic_national_unity
+		cost = 5
+		mutually_exclusive = { focus = HSP_historical_spain }
+		x = 8
+		y = 0
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
+		completion_reward = {
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.15
+			}
+			add_stability = 0.1
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = no
+			}
+			hidden_effect = {
+				set_global_flag = scw_over
+			}
+			news_event = HSP_spain_news.1
+		}
+	}
+
+	## 대중의 지원 확보
+	focus = {
+		id = HSP_gain_public_support
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = {
+			focus = HSP_assemble_emergency_council
+		}
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = HSP_assemble_emergency_council
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_political_power = 100
+			remove_ideas = SPR_national_strikes_3
+		}
+	}
+
+	## 군의 충성심 확보
+	focus = {
+		id = HSP_ensure_military_loyalty
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = {
+			focus = HSP_gain_public_support
+		}
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = HSP_gain_public_support
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+		completion_reward = {
+			add_stability = 0.1
+			add_war_support = 0.1
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.1
+			}
+			hidden_effect = {
+				country_lock_all_division_template = no
+			}
+		}
+	}
+
+	## 안정을 위한 계엄령
+	focus = {
+		id = HSP_martial_law_for_stability
+		icon = GFX_focus_generic_support_the_left_right
+		prerequisite = {
+			focus = HSP_gain_public_support
+		}
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = HSP_gain_public_support
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT}
+		completion_reward = {
+			add_stability = 0.1
+			add_war_support = 0.1
+			add_political_power = 50
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.1
+			}
+		}
+	}
+
+	## 새로운 왕조
+	focus = {
+		id = HSP_new_monarchy
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties
+		prerequisite = {
+			focus = HSP_ensure_military_loyalty 
+		}
+		prerequisite = {
+			focus = HSP_martial_law_for_stability
+		}
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = HSP_ensure_military_loyalty
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		available = {
+			NOT = {
+				has_global_flag = HUN_invite_the_habsburg_prince
+			}
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.1
+			}
+			set_rule = { can_send_volunteers = yes }
+			set_party_name = {
+				ideology = neutrality
+				long_name = HSP_neutrality_habsburg_family_long
+				name = HSP_neutrality_habsburg_family
+			}
+			set_politics = {
+				ruling_party = neutrality
+				elections_allowed = no
+			}
+			create_country_leader = {
+				name = "Otto von Habsburg"
+				picture = "GFX_Portrait_hungary_otto_von_hapsburg"
+				ideology = despotism
+				traits = {
+					imperial_connections legitimate_heir
+				}
+			}
+			add_ideas = HSP_inefficient_bureaucracy_01
+			drop_cosmetic_tag = yes
+			set_cosmetic_tag = HSP_kingdom_of_spain
+		}
+	}
+
+	focus = {
+		id = HSP_national_industrialization
+		available = {
+		}
+		bypass = {
+		}
+		prerequisite = { focus = HSP_new_monarchy }
+		
+		icon = GFX_goal_generic_construct_civ_factory
+		x = -4
+		y = 1
+		relative_position_id = HSP_new_monarchy
+		cost = 10
+
+		available_if_capitulated = yes
+
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_national_industrialization_2civ }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_national_industrialization_2civ
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_national_industrialization_2civ }
+				}
+				set_state_flag = HSP_national_industrialization_2civ
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_national_industrialization_2civ }
+				}
+				set_state_flag = HSP_national_industrialization_2civ
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = SPA_encourage_local_industrialization_1civ }
+				}
+				set_state_flag = SPA_encourage_local_industrialization_1civ
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = HSP_modern_construction
+		icon = GFX_goal_generic_construction
+		cost = 10
+		x = -3
+		y = 1
+		prerequisite = {
+			focus = HSP_national_industrialization
+		}
+		relative_position_id = HSP_national_industrialization
+		available_if_capitulated = yes
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_modern_construction
+				bonus = 1.0
+				uses = 1
+				category = industry
+			}
+			add_ideas = HSP_industrialization_01
+		}
+	}
+
+	focus = { # modernize production method
+		id = HSP_modern_production_method
+		icon = GFX_focus_generic_industry_1
+		cost = 10
+		x = 1
+		y = 1
+		prerequisite = {
+			focus = HSP_modern_construction
+		}
+		relative_position_id = HSP_modern_construction
+		available_if_capitulated = no
+		mutually_exclusive = { focus = HSP_obtain_foreign_investment }
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_modern_production_method_1civ }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_modern_production_method_1civ
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			swap_ideas = {
+				remove_idea = HSP_industrialization_01
+				add_idea = HSP_industrialization_02
+			}
+		}
+	}
+	focus = { # obtain foreign investment
+		id = HSP_obtain_foreign_investment
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 10
+		x = -1
+		y = 1
+		prerequisite = {
+			focus = HSP_modern_construction
+		}
+		relative_position_id = HSP_modern_construction
+		available_if_capitulated = no
+		mutually_exclusive = { focus = HSP_modern_production_method }
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_obtain_foreign_investment_1civ }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_obtain_foreign_investment_1civ
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_ideas = HSP_foreign_investment_01
+		}
+	}
+	focus = {
+		id = HSP_worker_training
+		icon = GFX_focus_research
+		cost = 10
+		x = 1
+		y = 1
+		prerequisite = {
+			focus = HSP_modern_production_method focus = HSP_obtain_foreign_investment
+		}
+		relative_position_id = HSP_obtain_foreign_investment
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = HSP_industry_investments
+		icon = GFX_focus_generic_industry_2
+		cost = 10
+		x = 0
+		y = 2
+		prerequisite = {
+			focus = HSP_modern_production_method
+		}
+		relative_position_id = HSP_modern_production_method
+		available_if_capitulated = no
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_industry_investments_1civ }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_industry_investments_1civ
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			swap_ideas = {
+				remove_idea = HSP_industrialization_02
+				add_idea = HSP_industrialization_03
+			}
+		}
+	}
+	focus = {
+		id = HSP_encourage_heavy_industry
+		icon = GFX_focus_generic_industry_3
+		cost = 10
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = HSP_industry_investments
+		}
+		relative_position_id = HSP_industry_investments
+		available_if_capitulated = no
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_encourage_heavy_industry_1civ }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_encourage_heavy_industry_1civ
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			swap_ideas = {
+				remove_idea = HSP_industrialization_03
+				add_idea = HSP_industrialization_04
+			}
+		}
+	}
+	focus = {
+		id = HSP_expand_agriculture_economy
+		icon = GFX_focus_generic_agricultural_subsidies
+		cost = 10
+		x = 0
+		y = 2
+		prerequisite = {
+			focus = HSP_obtain_foreign_investment
+		}
+		relative_position_id = HSP_obtain_foreign_investment
+		available_if_capitulated = no
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_expand_agriculture_economy_1civ }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_expand_agriculture_economy_1civ
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			swap_ideas = {
+				remove_idea = HSP_foreign_investment_01
+				add_idea = HSP_foreign_investment_02
+			}
+		}
+	}
+	focus = {
+		id = HSP_focus_on_export
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 10
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = HSP_expand_agriculture_economy
+		}
+		relative_position_id = HSP_expand_agriculture_economy
+		available_if_capitulated = no
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_focus_on_export_1civ }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_focus_on_export_1civ
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			swap_ideas = {
+				remove_idea = HSP_foreign_investment_02
+				add_idea = HSP_foreign_investment_03
+			}
+		}
+	}
+	focus = {
+		id = HSP_mass_production
+		icon = GFX_goal_generic_production2
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_focus_on_export
+		available_if_capitulated = yes
+		mutually_exclusive = {
+			focus = HSP_optimized_production
+		}
+		prerequisite = {
+			focus = HSP_focus_on_export focus = HSP_encourage_heavy_industry
+		}
+		completion_reward = {
+			add_ideas = HSP_mass_production_01
+		}
+	}
+	focus = {
+		id = HSP_optimized_production
+		icon = GFX_goal_generic_production
+		cost = 10
+		x = 2
+		y = 0
+		relative_position_id = HSP_mass_production
+		available_if_capitulated = yes
+		mutually_exclusive = {
+			focus = HSP_mass_production
+		}
+		prerequisite = {
+			focus = HSP_focus_on_export focus = HSP_encourage_heavy_industry
+		}
+		completion_reward = {
+			add_ideas = HSP_optimized_production_01
+		}
+	}
+	# resource path
+	focus = {
+		id = HSP_improve_infrastructure
+		icon = GFX_goal_generic_construct_infrastructure
+		cost = 5
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = HSP_national_industrialization
+		}
+		relative_position_id = HSP_national_industrialization
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+					}
+				}
+				set_state_flag = HSP_national_industrialization_1inf
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_national_industrialization_1inf }
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+					}
+				}
+				set_state_flag = HSP_national_industrialization_1inf
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_national_industrialization_1inf }
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+					}
+				}
+				set_state_flag = HSP_national_industrialization_1inf
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_national_industrialization_1inf }
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+					}
+				}
+				set_state_flag = HSP_national_industrialization_1inf
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_national_industrialization_1inf }
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+					}
+				}
+				set_state_flag = HSP_national_industrialization_1inf
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_national_industrialization_1inf }
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+					}
+				}
+				set_state_flag = HSP_national_industrialization_1inf
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = HSP_barcelona_steel
+		icon = GFX_focus_generic_steel
+		cost = 10
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = HSP_improve_infrastructure
+		}
+		relative_position_id = HSP_improve_infrastructure
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			165 = {
+				add_resource = {
+					type = steel
+					amount = 48
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = HSP_expand_mining
+		icon = GFX_focus_generic_mining_industry
+		cost = 10
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = HSP_barcelona_steel
+		}
+		relative_position_id = HSP_barcelona_steel
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			41 = {
+				add_resource = {
+					type = aluminium
+					amount = 20
+				}
+			}
+			176 = {
+				add_resource = {
+					type = chromium
+					amount = 15
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_expand_mining_1civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = HSP_national_mining_company
+		icon = GFX_focus_generic_resource_extraction
+		cost = 10
+		x = 0
+		y = 2
+		prerequisite = {
+			focus = HSP_expand_mining
+		}
+		relative_position_id = HSP_expand_mining
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			add_ideas = HSP_national_mining_company_01
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_national_mining_company_1civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = HSP_expand_mineral_extraction
+		icon = GFX_goal_generic_construction2
+		cost = 10
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = HSP_national_mining_company
+		}
+		relative_position_id = HSP_national_mining_company
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			41 = {
+				add_resource = {
+					type = aluminium
+					amount = 15
+				}
+			}
+			176 = {
+				add_resource = {
+					type = chromium
+					amount = 15
+				}
+			}
+			add_tech_bonus = {
+				name = HSP_expand_mineral_extraction
+				bonus = 1
+				uses = 2
+				category = excavation_tech
+			}
+		}
+	}
+	focus = {
+		id = HSP_invest_on_military_industry
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 5
+		x = 2
+		y = 1
+		prerequisite = {
+			focus = HSP_national_industrialization
+		}
+		relative_position_id = HSP_national_industrialization
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		available_if_capitulated = yes
+
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_invest_on_military_industry_2mil }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_invest_on_military_industry_2mil
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_invest_on_military_industry_2mil }
+				}
+				set_state_flag = HSP_invest_on_military_industry_2mil
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = HSP_strengthen_the_defense_industry
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 10
+		x = 0
+		y = 2
+		prerequisite = {
+			focus = HSP_invest_on_military_industry
+		}
+		relative_position_id = HSP_invest_on_military_industry
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		available_if_capitulated = yes
+
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_strengthen_the_defense_industry_2mil }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_strengthen_the_defense_industry_2mil
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_strengthen_the_defense_industry_2mil }
+				}
+				set_state_flag = HSP_strengthen_the_defense_industry_2mil
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_strengthen_the_defense_industry_2mil }
+				}
+				set_state_flag = HSP_strengthen_the_defense_industry_2mil
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_strengthen_the_defense_industry_2mil }
+				}
+				set_state_flag = HSP_strengthen_the_defense_industry_2mil
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = HSP_madrid_royal_arsenal
+		icon = GFX_goal_generic_small_arms
+		cost = 10
+		x = 0
+		y = 2
+		prerequisite = {
+			focus = HSP_strengthen_the_defense_industry
+		}
+		relative_position_id = HSP_strengthen_the_defense_industry
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		available_if_capitulated = yes
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_madrid_royal_arsenal_1mil }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_madrid_royal_arsenal_1mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_ideas = HSP_madrid_royal_arsenal_01
+		}
+	}
+	focus = {
+		id = HSP_expand_royal_arsenal
+		icon = GFX_focus_generic_reorient_production
+		cost = 10
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = HSP_madrid_royal_arsenal
+		}
+		relative_position_id = HSP_madrid_royal_arsenal
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		available_if_capitulated = yes
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_expand_royal_arsenal_1mil }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_expand_royal_arsenal_1mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			swap_ideas = {
+				remove_idea = HSP_madrid_royal_arsenal_01
+				add_idea = HSP_madrid_royal_arsenal_02
+			}
+		}
+	}
+	focus = {
+		id = HSP_secret_weapon
+		icon = GFX_goal_generic_secret_weapon
+		cost = 10
+		x = -3
+		y = 1
+		relative_position_id = HSP_expand_royal_arsenal
+		prerequisite = {
+			focus = HSP_expand_royal_arsenal
+		}
+		prerequisite = {
+			focus = HSP_expand_mineral_extraction
+		}
+		prerequisite = {
+			focus = HSP_mass_production focus = HSP_optimized_production
+		}
+		available_if_capitulated = yes
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_secret_weapon
+				bonus = 1.0
+				uses = 2
+				category = rocketry
+			}
+			add_tech_bonus = {
+				name = HSP_secret_weapon
+				bonus = 1.0
+				uses = 2
+				category = nuclear
+			}
+		}
+	}
+	focus = {
+		id = HSP_reorganize_administration
+		icon = GFX_focus_generic_improve_the_administration
+		cost = 10
+		x = 3
+		y = 1
+		relative_position_id = HSP_new_monarchy
+		prerequisite = {
+			focus = HSP_new_monarchy
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_political_power = 100
+			swap_ideas = {
+				remove_idea = HSP_inefficient_bureaucracy_01
+				add_idea = HSP_efficient_bureaucracy_01
+			}
+		}
+	}
+	focus = {
+		id = HSP_a_unified_government
+		icon = GFX_goal_generic_improve_relations
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_reorganize_administration
+		prerequisite = {
+			focus = HSP_reorganize_administration
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 165
+						state = 171
+						state = 792
+					}
+				}
+				remove_dynamic_modifier = { modifier = autonomous_state }
+			}
+			every_state = {
+				limit	= {
+					is_core_of = ROOT
+					is_in_home_area = yes
+					is_controlled_by = ROOT
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = HSP_restore_royal_authority
+		icon = GFX_focus_generic_monarchy_2
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_a_unified_government
+		prerequisite = {
+			focus = HSP_a_unified_government
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_ideas = HSP_habsburg_pluralism_01
+		}
+	}
+	focus = {
+		id = HSP_integration_of_public_opinion
+		icon = GFX_goal_generic_propaganda
+		cost = 5
+		x = 0
+		y = 2
+		relative_position_id = HSP_reorganize_administration
+		prerequisite = {
+			focus = HSP_reorganize_administration
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_political_power = 100
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.1
+			}
+		}
+	}
+	focus = {
+		id = HSP_royal_university_of_madrid
+		icon = GFX_goal_tfv_generic_tech_sharing
+		cost = 10
+		x = 1
+		y = 2
+		relative_position_id = HSP_restore_royal_authority
+		prerequisite = {
+			focus = HSP_restore_royal_authority
+		}
+		prerequisite = {
+			focus = HSP_integration_of_public_opinion
+		}
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			add_research_slot = 1
+			add_ideas = HSP_royal_university_of_madrid_01
+		}
+	}
+	focus = {
+		id = HSP_restore_iberian_commonwealth
+		icon = GFX_focus_generic_befriend_portugal
+		cost = 5
+		x = 2
+		y = 1
+		available = {
+			any_other_country = {
+				original_tag = POR
+				exists = yes
+				is_subject = no
+			}
+			has_army_manpower = {
+				size > 200000
+			}
+		}
+		relative_position_id = HSP_reorganize_administration
+		prerequisite = {
+			focus = HSP_reorganize_administration
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
+		completion_reward = {
+			custom_effect_tooltip = HSP_restore_iberian_commonwealth_tt
+			POR = {
+				country_event = {
+					id = HSP_spain_events.5
+					hours = 1
+				}
+			}
+		}
+	}
+	focus = {
+		id = HSP_subjugate_brazil
+		icon = GFX_focus_por_recover_brazil
+		cost = 10
+		x = 0
+		y = 2
+		available = {
+			any_other_country = {
+				original_tag = BRA
+				exists = yes
+				is_subject = no
+			}
+			has_army_manpower = {
+				size > 500000
+			}
+		}
+		relative_position_id = HSP_restore_iberian_commonwealth
+		prerequisite = {
+			focus = HSP_restore_iberian_commonwealth
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			BRA = {
+				country_event = {
+					id = HSP_spain_events.8
+				}
+			}
+		}
+	}
+	focus = {
+		id = HSP_merge_personal_union
+		icon = GFX_focus_por_the_kingdom_reunited
+		cost = 10
+		x = 0
+		y = 2
+		relative_position_id = HSP_subjugate_brazil
+		prerequisite = {
+			focus = HSP_subjugate_brazil
+		}
+		available = {
+			any_other_country = {
+				original_tag = BRA
+				exists = yes
+				is_subject_of = ROOT
+			}
+		}
+		completion_reward = {
+			BRA = {
+				every_owned_state = {
+					limit = {
+						is_core_of = BRA
+					}
+					add_core_of = ROOT
+				}
+				every_unit_leader = {
+					set_nationality = SPR
+				}
+			}
+			annex_country = { 
+				target = BRA
+				transfer_troops = yes
+			}
+		}
+	}
+	focus = {
+		id = HSP_looking_outside
+		icon = GFX_goal_generic_territory_or_war
+		cost = 5
+		x = 0
+		y = 2
+		relative_position_id = HSP_royal_university_of_madrid
+		prerequisite = {
+			focus = HSP_royal_university_of_madrid
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_war_support = 0.1
+			set_rule = {
+				can_create_factions = yes
+			}
+
+		}
+	}
+	focus = {
+		id = HSP_hispanic_unity
+		icon = GFX_goal_generic_alliance
+		cost = 5
+		x = -3
+		y = 1
+		relative_position_id = HSP_looking_outside
+		prerequisite = {
+			focus = HSP_looking_outside
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL }
+		available = {
+				has_government = neutrality
+				is_subject = no
+		}
+
+		completion_reward = {
+			if = {
+				limit = { 
+					is_in_faction = no
+				}
+				create_faction = HSP_pan_hispanic_federation_faction
+			}
+			every_other_country = {
+				limit = {
+					OR = {
+						original_tag = MEX
+						capital_scope = {
+							is_on_continent = south_america
+						}
+					}
+					NOT = {
+						has_war_with = ROOT
+						original_tag = BRA
+					}
+				}
+				country_event = {
+					id = HSP_spain_events.11
+					hours = 1
+				}
+				event_option_tooltip = HSP_spain_events.11.a
+			}
+		}
+	}
+	focus = {
+		id = HSP_purchase_latin_american_territory
+		icon = GFX_focus_generic_british_trade
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = HSP_hispanic_unity
+		prerequisite = {
+			focus = HSP_hispanic_unity
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		available = {
+				is_subject = no
+				any_other_country = {
+					original_tag = ENG
+					exists = yes
+					is_subject = no
+				}
+		}
+		bypass = {
+			OR = {
+				any_other_country = {
+					original_tag = ENG
+					exists = no
+				}
+				has_war_with = ENG
+			}
+		}
+		completion_reward = {
+			every_other_country = {
+				limit = {
+					original_tag = ENG
+					NOT = {
+						has_war_with = ROOT
+					}
+				}
+				country_event = {
+					id = HSP_spain_events.15
+					hours = 1
+				}
+			}
+		}
+	}
+	focus = {
+		id = HSP_latin_american_dominance
+		icon = GFX_goal_generic_political_pressure
+		cost = 5
+		x = 1
+		y = 2
+		relative_position_id = HSP_hispanic_unity
+		prerequisite = {
+			focus = HSP_hispanic_unity
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			unlock_decision_tooltip = HSP_demand_submission
+		}
+	}
+	focus = {
+		id = HSP_purchase_dutch_territory
+		icon = GFX_focus_hol_oranje_boven
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = HSP_purchase_latin_american_territory
+		prerequisite = {
+			focus = HSP_purchase_latin_american_territory
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		available = {
+				is_subject = no
+				any_other_country = {
+					original_tag = HOL
+					exists = yes
+					is_subject = no
+				}
+		}
+		bypass = {
+			OR = {
+				any_other_country = {
+					original_tag = HOL
+					exists = no
+				}
+				has_war_with = HOL
+			}
+		}
+		completion_reward = {
+			every_other_country = {
+				limit = {
+					original_tag = HOL
+					NOT = {
+						has_war_with = ROOT
+					}
+				}
+				country_event = {
+					id = HSP_spain_events.18
+					hours = 1
+				}
+			}
+		}
+	}
+	focus = {
+		id = HSP_reestablish_viceroyalty
+		icon = GFX_focus_ARG_align_with_the_monroe_doctrine
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = HSP_purchase_dutch_territory
+		prerequisite = {
+			focus = HSP_purchase_dutch_territory
+		}
+		prerequisite = {
+			focus = HSP_latin_american_dominance
+		}
+		available = {
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			unlock_decision_tooltip = HSP_restore_viceroyalty_of_nueva_granada
+		}
+	}
+	focus = {
+		id = HSP_restore_lost_territories
+		icon = GFX_focus_generic_attack_usa
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_reestablish_viceroyalty
+		prerequisite = {
+			focus = HSP_reestablish_viceroyalty
+		}
+		bypass = {
+			any_other_country = {
+				original_tag = USA
+				exists = no
+			}
+		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		completion_reward = {
+			378 = { add_core_of = ROOT }
+			377 = { add_core_of = ROOT }
+			376 = { add_core_of = ROOT }
+			375 = { add_core_of = ROOT }
+			366 = { add_core_of = ROOT }
+			367 = { add_core_of = ROOT }
+			370 = { add_core_of = ROOT }
+			371 = { add_core_of = ROOT }
+			374 = { add_core_of = ROOT }
+			379 = { add_core_of = ROOT }
+			380 = { add_core_of = ROOT }
+			382 = { add_core_of = ROOT }
+			383 = { add_core_of = ROOT }
+			384 = { add_core_of = ROOT }
+			381 = { add_core_of = ROOT }
+			387 = { add_core_of = ROOT }
+			388 = { add_core_of = ROOT }
+			389 = { add_core_of = ROOT }
+			390 = { add_core_of = ROOT }
+			391 = { add_core_of = ROOT }
+			686 = { add_core_of = ROOT }
+			every_other_country = {
+				limit = {
+					original_tag = USA
+					NOT = {
+						has_war_with = ROOT
+					}
+				}
+				country_event = {
+					id = HSP_spain_events.21
+					hours = 1
+				}
+			}
+		}
+	}
+	# standalone path - habsburg empire focus
+	focus = {
+		id = HSP_the_empire_resurrected
+		icon = GFX_focus_POL_habsburg
+		cost = 5
+		x = 2
+		y = 1
+		relative_position_id = HSP_looking_outside
+		prerequisite = {
+			focus = HSP_looking_outside
+		}
+		mutually_exclusive = {
+			focus = HSP_approach_uk
+			focus = HSP_approach_germany
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			set_rule = {
+				can_join_factions = no
+			}
+			create_faction = HSP_habsburg_hegemony_faction
+			GER = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_habsburg_hegemony_opinion
+				}
+			}
+			ENG = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_habsburg_hegemony_opinion
+				}
+			}
+			FRA = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_habsburg_hegemony_opinion
+				}
+			}
+			ITA = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_habsburg_hegemony_opinion
+				}
+			}
+			add_ideas = HSP_reconquista_01
+			drop_cosmetic_tag = yes
+			set_cosmetic_tag = HSP_habsburg_empire
+		}
+	}
+	focus = {
+		id = HSP_demand_crown_of_low_countries
+		icon = GFX_focus_hol_the_zuiderzee_works
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_the_empire_resurrected
+		prerequisite = {
+			focus = HSP_the_empire_resurrected
+		}
+		available = {
+			OR = {
+				any_other_country = {
+					original_tag = HOL
+					exists = yes
+				}
+				any_other_country = {
+					original_tag = BEL
+					exists = yes
+				}
+				any_other_country = {
+					original_tag = LUX
+					exists = yes
+				}
+			}
+		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		completion_reward = {
+			every_state = {
+				limit = {
+					is_core_of = HOL
+				}
+				add_core_of = ROOT
+			}
+			every_state = {
+				limit = {
+					is_core_of = BEL
+				}
+				add_core_of = ROOT
+			}
+			every_state = {
+				limit = {
+					is_core_of = LUX
+				}
+				add_core_of = ROOT
+			}
+			create_wargoal = {
+				target = HOL
+				type = annex_everything
+			}
+			create_wargoal = {
+				target = BEL
+				type = annex_everything
+			}
+			create_wargoal = {
+				target = LUX
+				type = annex_everything
+			}
+		}
+	}
+
+	focus = {
+		id = HSP_claim_on_elsass_lothringen
+		icon = GFX_focus_attack_france
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_demand_crown_of_low_countries
+		prerequisite = {
+			focus = HSP_demand_crown_of_low_countries
+		}
+		available = {
+			any_other_country = {
+				original_tag = FRA
+				exists = yes
+			}
+		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		completion_reward = {
+			28 = { add_core_of = ROOT }
+			create_wargoal = {
+				target = FRA
+				type = take_core_state
+			}
+			unlock_decision_tooltip = HSP_war_france
+		}
+	}
+
+	focus = {
+		id = HSP_treating_the_root_of_all_problems
+		icon = GFX_focus_attack_britain
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_claim_on_elsass_lothringen
+		prerequisite = {
+			focus = HSP_claim_on_elsass_lothringen
+		}
+		bypass = {
+			any_other_country = {
+				original_tag = ENG
+				exists = no
+			}
+		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		completion_reward = {
+			118 = { add_core_of = ROOT }
+			create_wargoal = {
+				target = ENG
+				type = puppet_wargoal_focus
+			}
+			unlock_decision_tooltip = HSP_war_uk
+		}
+	}
+
+	focus = {
+		id = HSP_demand_crown_of_st_stephen
+		icon = GFX_focus_hun_elect_a_king
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = HSP_the_empire_resurrected
+		prerequisite = {
+			focus = HSP_the_empire_resurrected
+		}
+		available = {
+			any_other_country = {
+				original_tag = HUN
+				exists = yes
+			}
+			has_army_manpower = {
+				size > 500000
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			every_other_country = {
+				limit = {
+					original_tag = HUN
+					NOT = {
+						has_war_with = ROOT
+					}
+				}
+				country_event = {
+					id = HSP_spain_events.24
+					hours = 1
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = HSP_reclaim_austria_hungary
+		icon = GFX_focus_proclaim_the_restauration_of_Austria_Hungary
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_demand_crown_of_st_stephen
+		prerequisite = {
+			focus = HSP_demand_crown_of_st_stephen
+		}
+		available = {
+			any_other_country = {
+				original_tag = HUN
+				exists = yes
+				is_subject_of = ROOT
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			every_other_country = {
+				limit = {
+					original_tag = HUN
+					NOT = {
+						has_war_with = ROOT
+					}
+					
+				}
+				HUN = {
+					set_cosmetic_tag = HUN_EMPIRE
+				}
+				every_state = {
+					limit = {
+						is_core_of = AUS
+					}
+					add_core_of = HUN
+				}
+				every_state = {
+					limit = {
+						is_core_of = CZE
+					}
+					add_core_of = HUN
+				}
+				every_state = {
+					limit = {
+						is_core_of = SLV
+					}
+					add_core_of = HUN
+				}
+				every_state = {
+					limit = {
+						is_core_of = CRO
+					}
+					add_core_of = HUN
+				}
+				every_state = {
+					limit = {
+						is_core_of = BOS
+					}
+					add_core_of = HUN
+				}
+				every_state = {
+					limit = {
+						is_core_of = TRA
+					}
+					add_core_of = HUN
+				}
+				163 = { add_core_of = HUN }
+				852 = { add_core_of = HUN }
+				736 = { add_core_of = HUN }
+				39 = { add_core_of = HUN }
+				45 = { add_core_of = HUN }
+				850 = { add_core_of = HUN }
+			}
+		}
+	}
+	focus = {
+		id = HSP_one_crown_one_empire
+		icon = GFX_focus_generic_monarchy_1
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_reclaim_austria_hungary
+		prerequisite = {
+			focus = HSP_reclaim_austria_hungary
+		}
+		available = {
+			any_other_country = {
+				original_tag = HUN
+				exists = yes
+				is_subject_of = ROOT
+			}
+		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		completion_reward = {
+			HUN = {
+				every_unit_leader = {
+					set_nationality = SPR
+				}
+			}
+			annex_country = {
+				target = HUN
+				transfer_troops = yes
+			}
+			every_state = {
+				limit = {
+					is_core_of = HUN
+				}
+				add_core_of = SPR
+			}
+		}
+	}
+	focus = {
+		id = HSP_habsburg_academy_of_science_and_technology
+		icon = GFX_focus_research2
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_one_crown_one_empire
+		prerequisite = {
+			focus = HSP_one_crown_one_empire
+		}
+		available = {
+			
+		}
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			add_to_tech_sharing_group = habsburg_research
+			every_country = {
+				limit = {
+					is_in_faction_with = ROOT
+				}
+				add_to_tech_sharing_group = habsburg_research
+			}
+		}
+	}
+	focus = {
+		id = HSP_restore_allied_kingdoms
+		icon = GFX_focus_generic_home_defense
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_one_crown_one_empire
+		prerequisite = {
+			focus = HSP_one_crown_one_empire
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = HSP_allied_kingdom_cat
+			unlock_decision_category_tooltip = HSP_habsburg_influence_cat
+		}
+	}
+	focus = {
+		id = HSP_claim_crown_of_napoli
+		icon = GFX_focus_attack_italy
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_the_empire_resurrected
+		prerequisite = {
+			focus = HSP_the_empire_resurrected
+		}
+		available = {
+			any_other_country = {
+				original_tag = ITA
+				exists = yes
+			}
+		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		completion_reward = {
+			every_state = {
+				limit = {
+					is_core_of = TTS
+				}
+				add_core_of = SPR
+			}
+			create_wargoal = {
+				target = ITA
+				type = take_core_state
+			}
+			unlock_decision_tooltip = HSP_war_italy
+		}
+	}
+	focus = {
+		id = HSP_disunite_italia
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = HSP_claim_crown_of_napoli
+		prerequisite = {
+			focus = HSP_claim_crown_of_napoli
+		}
+		available = {
+			OR = {
+				ITA = {
+					exists = no
+				}
+				any_other_country = {
+					original_tag = ITA
+					OR = {
+						has_capitulated = yes
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			unlock_decision_tooltip = HSP_restore_toscana
+			unlock_decision_tooltip = HSP_restore_sardegna
+			unlock_decision_tooltip = HSP_restore_lombardy_venetia
+		}
+	}
+	focus = {
+		id = HSP_restoration_of_papal_states
+		icon = GFX_focus_generic_vatican_state
+		cost = 5
+		x = 2
+		y = 1
+		relative_position_id = HSP_disunite_italia
+		prerequisite = {
+			focus = HSP_disunite_italia
+		}
+		available = {
+			has_government = neutrality
+			controls_state = 2
+			controls_state = 157
+			controls_state = 161
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = HSP_protector_of_catholicism_01
+			unlock_decision_tooltip = HSP_reestablish_papacy
+		}
+	}
+	focus = {
+		id = HSP_a_bulwark_against_fascism
+		icon = GFX_focus_attack_germany
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_disunite_italia
+		prerequisite = {
+			focus = HSP_disunite_italia
+		}
+		bypass = {
+			GER = {
+				exists = no
+			}
+		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		completion_reward = {
+			create_wargoal = {
+				target = GER
+				type = puppet_wargoal_focus
+			}
+			unlock_decision_tooltip = HSP_war_germany
+		}
+	}
+	focus = {
+		id = HSP_imperial_intelligence_network
+		icon = GFX_goal_generic_intelligence_exchange
+		cost = 10
+		x = 4
+		y = 1
+		relative_position_id = HSP_the_empire_resurrected
+		prerequisite = {
+			focus = HSP_the_empire_resurrected
+		}
+		completion_reward = {
+			add_ideas = HSP_imperial_intelligence_network_01
+		}
+	}
+
+
+	# allies path
+	focus = {
+		id = HSP_approach_uk
+		icon = GFX_focus_chi_british_cooperation
+		cost = 5
+		x = 14
+		y = 1
+		relative_position_id = HSP_looking_outside
+		prerequisite = {
+			focus = HSP_looking_outside
+		}
+		mutually_exclusive = {
+			focus = HSP_the_empire_resurrected
+			focus = HSP_approach_germany
+		}
+		completion_reward = {
+			GER = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_approach_uk_decrease
+				}
+			}
+			ITA = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_approach_uk_decrease
+				}
+			}
+			ENG = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_approach_uk_increase
+				}
+			}
+			FRA = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_approach_uk_increase
+				}
+			}
+			add_stability = 0.1
+			army_experience = 25
+			air_experience = 25
+			navy_experience = 25
+		}
+	}
+	focus = {
+		id = HSP_join_allies
+		icon = GFX_focus_ARG_join_the_allies
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_approach_uk
+		prerequisite = {
+			focus = HSP_approach_uk
+		}
+		bypass = {
+			OR = {
+				ENG = {
+					exists = no
+					NOT = { has_government = fascism}
+				}
+				is_in_faction_with = ENG
+			}
+		}
+		available = {
+			threat > 0.35
+			OR = {
+				ENG = { is_faction_leader = yes}
+				USA = { is_faction_leader = yes}
+			}
+			is_in_faction = no
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			ENG = { country_event = { id = generic.2 hours = 4 random_hours = 2 } }
+		}
+	}
+	focus = {
+		id = HSP_allies_economic_support
+		icon = GFX_goal_generic_major_alliance
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_join_allies
+		prerequisite = {
+			focus = HSP_join_allies
+		}
+		completion_reward = {
+			add_ideas = HSP_access_ally_economy_01
+		}
+	}
+	focus = {
+		id = HSP_join_allies_research_group
+		icon = GFX_goal_generic_scientific_exchange
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_join_allies
+		prerequisite = {
+			focus = HSP_join_allies
+		}
+		available = {
+			is_in_faction_with = ENG
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			ENG = { add_to_tech_sharing_group = allied_research }
+			add_to_tech_sharing_group = allied_research
+		}
+	}
+	focus = {
+		id = HSP_invite_scientists_in_exile
+		icon = GFX_focus_research2
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_join_allies_research_group
+		prerequisite = {
+			focus = HSP_join_allies_research_group
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_ideas = HSP_scientists_in_exile_01
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = HSP_obtaining_rights_to_austria
+		icon = GFX_focus_generic_court
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_allies_economic_support
+		prerequisite = {
+			focus = HSP_allies_economic_support
+		}
+		completion_reward = {
+			every_state = {
+				limit = {
+					is_core_of = AUS
+				}
+				add_core_of = ROOT
+			}
+			every_state = {
+				limit = {
+					is_core_of = SLV
+				}
+				add_core_of = ROOT
+			}
+			69 = { add_core_of = ROOT }
+			39 = { add_core_of = ROOT }
+			850 = { add_core_of = ROOT }
+			736 = { add_core_of = ROOT }
+			852 = { add_core_of = ROOT }
+			103 = { add_core_of = ROOT }
+			163 = { add_core_of = ROOT }
+			create_wargoal = {
+				target = ITA
+				type = take_core_state
+			}
+			create_wargoal = {
+				target = GER
+				type = take_core_state
+			}
+		}
+	}
+	# axis path
+	focus = {
+		id = HSP_approach_germany
+		icon = GFX_focus_chi_mission_to_germany
+		cost = 5
+		x = 10
+		y = 1
+		relative_position_id = HSP_looking_outside
+		prerequisite = {
+			focus = HSP_looking_outside
+		}
+		mutually_exclusive = {
+			focus = HSP_the_empire_resurrected
+			focus = HSP_approach_uk
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			GER = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_approach_germany_increase
+				}
+			}
+			ITA = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_approach_germany_increase
+				}
+			}
+			ENG = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_approach_germany_decrease
+				}
+			}
+			FRA = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_approach_germany_decrease
+				}
+			}
+			add_war_support = 0.1
+			army_experience = 25
+			air_experience = 25
+			navy_experience = 25
+		}
+	}
+	focus = {
+		id = HSP_join_axis
+		icon = GFX_goal_support_fascism
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_approach_germany
+		prerequisite = {
+			focus = HSP_approach_germany
+		}
+		bypass = {
+			OR = {
+				GER = {
+					exists = no
+					NOT = { has_government = fascism}
+				}
+				is_in_faction_with = GER
+			}
+		}
+		available = {
+			threat > 0.35
+			GER = { is_faction_leader = yes}
+			is_in_faction = no
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			GER = { country_event = { id = generic.2 hours = 4 random_hours = 2 } }
+		}
+	}
+	focus = {
+		id = HSP_join_axis_research_group
+		icon = GFX_goal_generic_scientific_exchange
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_join_axis
+		prerequisite = {
+			focus = HSP_join_axis
+		}
+		available = {
+			is_in_faction_with = GER
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			GER = { add_to_tech_sharing_group = axis_research }
+			add_to_tech_sharing_group = axis_research
+		}
+	}
+	focus = {
+		id = HSP_invite_german_scientists
+		icon = GFX_focus_ARG_fascist_researchers
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_join_axis_research_group
+		prerequisite = {
+			focus = HSP_join_axis_research_group
+		}
+		completion_reward = {
+			add_ideas = HSP_german_scientists_01
+			add_tech_bonus = {
+				name = HSP_invite_german_scientists
+				bonus = 0.75
+				uses = 1
+				category = armor
+			}
+		}
+	}
+	focus = {
+		id = HSP_support_paramilitary_organizations
+		icon = GFX_focus_ITA_generic_fascist_workers
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_join_axis
+		prerequisite = {
+			focus = HSP_join_axis
+		}
+		completion_reward = {
+			add_ideas = HSP_fascist_paramilitary_organization_01
+		}
+	}
+	focus = {
+		id = HSP_completed_iberia
+		icon = GFX_focus_generic_free_iberia
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_support_paramilitary_organizations
+		prerequisite = {
+			focus = HSP_support_paramilitary_organizations
+		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		completion_reward = {
+			118 = { add_core_of = ROOT }
+			create_wargoal = {
+				target = ENG
+				type = take_core_state
+			}
+		}
+	}
+	focus = {
+		id = HSP_obtain_right_to_low_countries
+		icon = GFX_focus_hol_gateway_to_europe
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_support_paramilitary_organizations
+		prerequisite = {
+			focus = HSP_support_paramilitary_organizations
+		}
+		available = {
+			OR = {
+				any_other_country = {
+					original_tag = HOL
+					exists = yes
+				}
+				any_other_country = {
+					original_tag = BEL
+					exists = yes
+				}
+			}
+		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		completion_reward = {
+			every_state = {
+				limit = {
+					is_core_of = HOL
+				}
+				add_core_of = ROOT
+			}
+			every_state = {
+				limit = {
+					is_core_of = BEL
+				}
+				add_core_of = ROOT
+			}
+			create_wargoal = {
+				target = HOL
+				type = annex_everything
+			}
+			create_wargoal = {
+				target = BEL
+				type = annex_everything
+			}
+		}
+	}
+	# shared war planning focus
+	focus = {
+		id = HSP_war_planning
+		icon = GFX_focus_generic_total_war
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_join_axis
+		prerequisite = {
+			focus = HSP_join_axis focus = HSP_join_allies
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = HSP_war_decisions_cat
+		}
+	}
+	# shared wargoal focus
+	focus = {
+		id = HSP_securing_a_base_in_asia
+		icon = GFX_focus_attack_china
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_restoration_of_papal_states
+		prerequisite = {
+			focus = HSP_one_crown_one_empire
+			focus = HSP_completed_iberia
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = CHI
+				type = puppet_wargoal_focus
+			}
+			unlock_decision_tooltip = HSP_war_china
+		}
+	}
+	focus = {
+		id = HSP_the_true_enemy
+		icon = GFX_goal_generic_war_with_comintern
+		cost = 10
+		x = 0
+		y = 2
+		relative_position_id = HSP_war_planning
+		prerequisite = {
+			focus = HSP_one_crown_one_empire
+			focus = HSP_completed_iberia
+			focus = HSP_obtaining_rights_to_austria
+		}
+		completion_reward = {
+			create_wargoal = {
+				target = SOV
+				type = puppet_wargoal_focus
+			}
+			unlock_decision_tooltip = HSP_war_sov
+		}
+	}
+	# military focus
+	focus = {
+		id = HSP_military_reform
+		icon = GFX_focus_generic_limited_social_mobilization
+		cost = 5
+		x = 15
+		y = 1
+		relative_position_id = HSP_new_monarchy
+		prerequisite = {
+			focus = HSP_new_monarchy
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = HSP_old_fashioned_army_01
+				add_idea = HSP_old_fashioned_army_02
+			}
+			army_experience = 25
+			air_experience = 25
+			navy_experience = 25
+		}
+	}
+	focus = {
+		id = HSP_military_intelligence
+		icon = GFX_focus_generic_secret_service_agency
+		cost = 10
+		x = -8
+		y = 1
+		relative_position_id = HSP_military_reform
+		prerequisite = {
+			focus = HSP_military_reform
+		}
+		completion_reward = {
+			add_ideas = HSP_military_intelligence_01
+		}
+	}
+	# army
+	focus = {
+		id = HSP_spanish_army_military_academy
+		icon = GFX_focus_generic_full_social_mobilization
+		cost = 10
+		x = -6
+		y = 1
+		relative_position_id = HSP_military_reform
+		prerequisite = {
+			focus = HSP_military_reform
+		}
+		completion_reward = {
+			army_experience = 25
+			show_mio_tooltip = HSP_toledo_royal_tank_production_department
+			swap_ideas = {
+				remove_idea = HSP_old_fashioned_army_02
+				add_idea = HSP_old_fashioned_army_03
+			}
+			add_dynamic_modifier = {
+				modifier = HSP_army_modifier_01
+			}
+			add_tech_bonus = {
+				name = HSP_spanish_army_military_academy
+				bonus = 0.75
+				uses = 1
+				category = infantry_weapons
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				name = HSP_spanish_army_military_academy
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_focus_on_mobility
+		icon = GFX_focus_generic_self_propelled_gun
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_spanish_army_military_academy
+		prerequisite = {
+			focus = HSP_spanish_army_military_academy
+		}
+		mutually_exclusive = {
+			focus = HSP_focus_firepower
+			focus = HSP_focus_infantry
+		}
+		completion_reward = {
+			remove_ideas = HSP_old_fashioned_army_03
+			add_tech_bonus = {
+				name = HSP_focus_on_mobility
+				bonus = 0.75
+				uses = 1
+				category = armor
+			}
+			add_to_variable = {
+				HSP_army_army_org_factor = 0.1
+				tooltip = army_org_factor_tt
+			}
+			add_to_variable = {
+				HSP_army_army_speed_factor = 0.05
+				tooltip = army_speed_factor_tt
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.15
+				name = HSP_focus_on_mobility
+				uses = 1
+				category = land_doctrine
+			}
+			show_ideas_tooltip = SPA_wilhelm_ritter_von_thoma
+		}
+	}
+	focus = {
+		id = HSP_main_tank
+		icon = GFX_focus_generic_tank_production
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_focus_on_mobility
+		prerequisite = {
+			focus = HSP_focus_on_mobility
+		}
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_main_tank_1mil }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			show_mio_tooltip = HSP_barcelona_national_arsenal
+			mio:HSP_barcelona_national_arsenal = {
+				add_mio_size = 2
+			}
+			add_tech_bonus = {
+				name = HSP_main_tank
+				bonus = 0.75
+				uses = 1
+				category = armor
+			}
+			
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_main_tank_1mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_to_variable = {
+				HSP_army_breakthrough_factor = 0.05
+				tooltip = breakthrough_factor_tt
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.15
+				name = HSP_main_tank
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_focus_firepower
+		icon = GFX_goal_generic_army_artillery
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_spanish_army_military_academy
+		prerequisite = {
+			focus = HSP_spanish_army_military_academy
+		}
+		mutually_exclusive = {
+			focus = HSP_focus_on_mobility
+			focus = HSP_focus_infantry
+		}
+		completion_reward = {
+			remove_ideas = HSP_old_fashioned_army_03
+			add_tech_bonus = {
+				name = HSP_focus_firepower
+				bonus = 0.75
+				uses = 1
+				category = artillery
+			}
+			add_to_variable = {
+				HSP_army_army_attack_factor = 0.05
+				tooltip = army_attack_factor_tt
+			}
+			add_to_variable = {
+				HSP_army_army_defence_factor = 0.05
+				tooltip = army_defence_factor_tt
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.15
+				name = HSP_focus_firepower
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_overwhelming_firepower
+		icon = GFX_goal_generic_army_artillery2
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_focus_firepower
+		prerequisite = {
+			focus = HSP_focus_firepower
+		}
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_overwhelming_firepower_1mil }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_overwhelming_firepower
+				bonus = 0.75
+				uses = 2
+				category = artillery
+			}
+			add_to_variable = {
+				HSP_army_army_morale_factor = 0.05
+				tooltip = army_morale_factor_tt
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_overwhelming_firepower_1mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.15
+				name = HSP_overwhelming_firepower
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_focus_infantry
+		icon = GFX_goal_generic_allies_build_infantry
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_spanish_army_military_academy
+		prerequisite = {
+			focus = HSP_spanish_army_military_academy
+		}
+		mutually_exclusive = {
+			focus = HSP_focus_firepower
+			focus = HSP_focus_on_mobility
+		}
+		completion_reward = {
+			remove_ideas = HSP_old_fashioned_army_03
+			add_tech_bonus = {
+				name = HSP_focus_infantry
+				bonus = 0.5
+				uses = 2
+				category = support_tech
+			}
+			add_to_variable = {
+				HSP_army_max_planning_factor = 0.1
+				tooltip = max_planning_factor_tt
+			}
+			add_to_variable = {
+				HSP_army_planning_speed = 0.1
+				tooltip = planning_speed_tt
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.15
+				name = HSP_focus_infantry
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_efficient_training
+		icon = GFX_focus_generic_women_in_military
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_focus_infantry
+		prerequisite = {
+			focus = HSP_focus_infantry
+		}
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_efficient_training_1mil }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_efficient_training
+				bonus = 0.5
+				uses = 2
+				category = infantry_weapons
+			}
+			add_to_variable = {
+				HSP_army_training_time_army_factor = -0.1
+				tooltip = training_time_army_factor_tt
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_efficient_training_1mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.15
+				name = HSP_efficient_training
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_strengthen_special_forces
+		icon = GFX_goal_generic_special_forces
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_overwhelming_firepower
+		prerequisite = {
+			focus = HSP_main_tank
+			focus = HSP_overwhelming_firepower
+			focus = HSP_efficient_training
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_army_special_forces_cap = 0.15
+				tooltip = special_forces_cap_tt
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				name = HSP_strengthen_special_forces
+				uses = 2
+				category = special_forces_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_motorized_army
+		icon = GFX_goal_generic_army_motorized
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_strengthen_special_forces
+		prerequisite = {
+			focus = HSP_strengthen_special_forces
+		}
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_motorized_army_1mil }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_efficient_training
+				bonus = 0.5
+				uses = 2
+				category = motorized_equipment
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_motorized_army_1mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.2
+				name = HSP_motorized_army
+				uses = 2
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_spirit_of_conquistador
+		icon = GFX_focus_spa_no_compromise_on_carlist_ideals
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_strengthen_special_forces
+		prerequisite = {
+			focus = HSP_strengthen_special_forces
+		}
+		completion_reward = {
+			add_ideas = HSP_spirit_of_conquistador_01
+		}
+	}
+	focus = {
+		id = HSP_military_promotion
+		icon = GFX_focus_generic_military_mission
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_strengthen_special_forces
+		prerequisite = {
+			focus = HSP_strengthen_special_forces
+		}
+		completion_reward = {
+			every_army_leader = {
+				add_planning = 1
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.2
+				name = HSP_motorized_army
+				uses = 2
+				category = land_doctrine
+			}
+		}
+	}
+	# airforce
+	focus = {
+		id = HSP_spanish_airforce_academy
+		icon = GFX_goal_generic_build_airforce
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_military_reform
+		prerequisite = {
+			focus = HSP_military_reform
+		}
+		completion_reward = {
+			add_dynamic_modifier = {
+				modifier = HSP_airforce_modifier_01
+			}
+			add_tech_bonus = {
+				name = HSP_spanish_airforce_academy
+				bonus = 0.75
+				uses = 1
+				category = light_air
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				name = HSP_spanish_airforce_academy
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_expansion_of_production_capacity
+		icon = GFX_focus_generic_aircraft_production
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_spanish_airforce_academy
+		prerequisite = {
+			focus = HSP_spanish_airforce_academy
+		}
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_expansion_of_production_capacity_2mil }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_ideas = HSP_air_production_01
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+				}
+				set_state_flag = HSP_expansion_of_production_capacity_2mil
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_expansion_of_production_capacity_2mil }
+				}
+				set_state_flag = HSP_invest_on_military_industry_2mil
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = HSP_modernization_of_aviation_laws
+		icon = GFX_goal_continuous_air_production
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_expansion_of_production_capacity
+		prerequisite = {
+			focus = HSP_expansion_of_production_capacity
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_modernization_of_aviation_laws
+				bonus = 0.5
+				uses = 1
+				category = air_equipment
+			}
+			add_to_variable = {
+				HSP_airforce_air_accidents_factor = -0.2
+				tooltip = air_accidents_factor_tt
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.3
+				name = HSP_modernization_of_aviation_laws
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_lightweight_design
+		icon = GFX_goal_generic_air_production
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_spanish_airforce_academy
+		prerequisite = {
+			focus = HSP_spanish_airforce_academy
+		}
+		complete_tooltip = {
+			every_state = {
+				limit	= {	has_state_flag = HSP_lightweight_design_2mil }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_airforce_air_range_factor = 0.1
+				tooltip = air_range_factor_tt
+			}
+			add_to_variable = {
+				HSP_airforce_air_agility_factor = 0.05
+				tooltip = air_agility_factor_tt
+			}
+			add_tech_bonus = {
+				name = HSP_lightweight_design
+				bonus = 0.5
+				uses = 2
+				category = air_equipment
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_lightweight_design_2mil }
+				}
+				set_state_flag = HSP_invest_on_military_industry_2mil
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = HSP_pilot_training
+		icon = GFX_focus_generic_air_defense
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_lightweight_design
+		prerequisite = {
+			focus = HSP_lightweight_design
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_airforce_air_weather_penalty = -0.10
+				tooltip = air_weather_penalty_tt
+			}
+			add_to_variable = {
+				HSP_airforce_air_untrained_pilots_penalty_factor = -0.1
+				tooltip = air_untrained_pilots_penalty_factor_tt
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.2
+				name = HSP_pilot_training
+				uses = 2
+				category = air_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_multi_role_fighters
+		icon = GFX_focus_generic_multi_role_aircraft
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_spanish_airforce_academy
+		prerequisite = {
+			focus = HSP_spanish_airforce_academy
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_multi_role_fighters
+				bonus = 0.75
+				uses = 2
+				category = medium_air
+			}
+		}
+	}
+	focus = {
+		id = HSP_airspace_defense
+		icon = GFX_goal_generic_radar
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_multi_role_fighters
+		prerequisite = {
+			focus = HSP_multi_role_fighters
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_multi_role_fighters
+				bonus = 0.75
+				uses = 2
+				category = radar_tech
+			}
+		}
+	}
+	focus = {
+		id = HSP_knights_of_the_sky
+		icon = GFX_focus_eng_special_air_service
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_pilot_training
+		prerequisite = {
+			focus = HSP_pilot_training
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_airforce_air_ace_generation_chance_factor = 0.2
+				tooltip = air_ace_generation_chance_factor_tt
+			}
+			add_to_variable = {
+				HSP_airforce_ace_effectiveness_factor = 0.3
+				tooltip = ace_effectiveness_factor_tt
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				name = HSP_knights_of_the_sky
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_focus_air_superiority
+		icon = GFX_goal_generic_air_fighter
+		cost = 5
+		x = -2
+		y = 1
+		relative_position_id = HSP_knights_of_the_sky
+		prerequisite = {
+			focus = HSP_knights_of_the_sky
+		}
+		mutually_exclusive = {
+			focus = HSP_focus_strategic_bombing
+			focus = HSP_focus_naval_bombing
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_airforce_air_superiority_efficiency = 0.1
+				tooltip = air_superiority_efficiency_tt
+			}
+		}
+	}
+	focus = {
+		id = HSP_focus_strategic_bombing
+		icon = GFX_focus_generic_long_range_aircraft
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_knights_of_the_sky
+		prerequisite = {
+			focus = HSP_knights_of_the_sky
+		}
+		mutually_exclusive = {
+			focus = HSP_focus_air_superiority
+			focus = HSP_focus_naval_bombing
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_airforce_air_strategic_bomber_bombing_factor = 0.05
+				tooltip = air_strategic_bomber_bombing_factor_tt
+			}
+			add_tech_bonus = {
+				name = HSP_multi_role_fighters
+				bonus = 0.5
+				uses = 1
+				category = heavy_air
+			}
+			show_mio_tooltip = HSP_national_bomber_production_division
+			mio:HSP_national_bomber_production_division = {
+				add_mio_size = 2
+			}
+		}
+	}
+	focus = {
+		id = HSP_focus_naval_bombing
+		icon = GFX_goal_generic_air_naval_bomber
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_knights_of_the_sky
+		prerequisite = {
+			focus = HSP_knights_of_the_sky
+		}
+		mutually_exclusive = {
+			focus = HSP_focus_air_superiority
+			focus = HSP_focus_strategic_bombing
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_airforce_naval_strike_targetting_factor = 0.05
+				tooltip = naval_strike_targetting_factor_tt
+			}
+			add_to_variable = {
+				HSP_airforce_air_nav_efficiency = 0.05
+				tooltip = air_nav_efficiency_tt
+			}
+			add_tech_bonus = {
+				name = HSP_multi_role_fighters
+				bonus = 0.5
+				uses = 1
+				category = naval_air
+			}
+			show_mio_tooltip = HSP_national_naval_defense_division
+			mio:HSP_national_naval_defense_division = {
+				add_mio_size = 2
+			}
+		}
+	}
+	# production management
+	focus = {
+		id = HSP_state_led_production_management
+		icon = GFX_goal_generic_neutrality_focus
+		cost = 5
+		x = 3
+		y = 0
+		relative_position_id = HSP_spanish_airforce_academy
+		prerequisite = {
+			focus = HSP_military_reform
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = HSP_production_management_cat
+			add_ideas = HSP_focus_balanced_production_01
+		}
+	}
+	# navy
+	focus = {
+		id = HSP_spanish_naval_academy
+		icon = GFX_goal_generic_navy_cruiser
+		cost = 10
+		x = 6
+		y = 1
+		relative_position_id = HSP_military_reform
+		prerequisite = {
+			focus = HSP_military_reform
+		}
+		completion_reward = {
+			add_dynamic_modifier = {
+				modifier = HSP_navy_modifier_01
+			}
+			add_tech_bonus = {
+				name = HSP_spanish_naval_academy
+				bonus = 0.75
+				uses = 1
+				category = dd_tech
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				name = HSP_spanish_naval_academy
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_expand_naval_production
+		icon = GFX_goal_generic_construct_naval_dockyard
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_spanish_naval_academy
+		prerequisite = {
+			focus = HSP_spanish_naval_academy
+		}
+		complete_tooltip = {
+			every_state = {
+				limit = { has_state_flag = HSP_expand_naval_production_2DY }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = HSP_expand_naval_production_2DY
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_expand_naval_production_2DY }
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = HSP_expand_naval_production_2DY
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_expand_naval_production_2DY }
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = HSP_expand_naval_production_2DY
+			}
+		}
+	}
+	focus = {
+		id = HSP_secure_naval_supply_line
+		icon = GFX_focus_generic_refit_civilian_ships
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_expand_naval_production
+		prerequisite = {
+			focus = HSP_expand_naval_production
+		}
+		complete_tooltip = {
+			every_state = {
+				limit = { has_state_flag = HSP_secure_naval_supply_line_2DY }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_ideas = HSP_convoy_production_01
+			add_tech_bonus = {
+				name = HSP_secure_naval_supply_line
+				bonus = 0.75
+				uses = 1
+				category = dd_tech
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.25
+				name = HSP_secure_naval_supply_line
+				uses = 1
+				category = naval_doctrine
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = HSP_expand_naval_production_2DY
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_expand_naval_production_2DY }
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = HSP_expand_naval_production_2DY
+			}
+		}
+	}
+	focus = {
+		id = HSP_convoy_escord_focus
+		icon = GFX_focus_generic_cruiser2
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_spanish_naval_academy
+		prerequisite = {
+			focus = HSP_spanish_naval_academy
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_navy_industrial_capacity_dockyard = 0.05
+				tooltip = industrial_capacity_dockyard_tt
+			}
+			add_to_variable = {
+				HSP_navy_repair_speed_factor = 0.2
+				tooltip = repair_speed_factor_tt
+			}
+			add_tech_bonus = {
+				name = HSP_convoy_escord_focus
+				bonus = 0.75
+				uses = 2
+				category = cl_tech
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.25
+				name = HSP_convoy_escord_focus
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_new_armada
+		icon = GFX_focus_generic_navy_battleship2
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_convoy_escord_focus
+		prerequisite = {
+			focus = HSP_convoy_escord_focus
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_navy_navy_max_range_factor = 0.1
+				tooltip = navy_max_range_factor_tt
+			}
+			add_to_variable = {
+				HSP_navy_navy_weather_penalty = -0.15
+				tooltip = navy_weather_penalty_tt
+			}
+			show_mio_tooltip = HSP_bilbio_royal_shipyard
+			mio:HSP_bilbio_royal_shipyard = {
+				add_mio_size = 2
+			}
+			add_tech_bonus = {
+				name = HSP_convoy_escord_focus
+				bonus = 0.5
+				uses = 2
+				category = cv_tech
+			}
+		}
+	}
+	focus = {
+		id = HSP_hunters_under_the_water
+		icon = GFX_goal_generic_navy_submarine
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_spanish_naval_academy
+		prerequisite = {
+			focus = HSP_spanish_naval_academy
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_hunters_under_the_water
+				bonus = 0.5
+				uses = 2
+				category = ss_tech
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.25
+				name = HSP_hunters_under_the_water
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+	}
+	focus = {
+		id = HSP_unlimited_submarine_operations
+		icon = GFX_goal_generic_navy_anti_submarine
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_hunters_under_the_water
+		prerequisite = {
+			focus = HSP_hunters_under_the_water
+		}
+		complete_tooltip = {
+			every_state = {
+				limit = { has_state_flag = HSP_unlimited_submarine_operations_2DY }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_ideas = HSP_submarine_mass_production_01
+			add_tech_bonus = {
+				name = HSP_hunters_under_the_water
+				bonus = 0.5
+				uses = 2
+				category = ss_tech
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.25
+				name = HSP_hunters_under_the_water
+				uses = 1
+				category = naval_doctrine
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_unlimited_submarine_operations_2DY }
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = HSP_unlimited_submarine_operations_2DY
+			}
+		}
+	}
+	focus = {
+		id = HSP_flagship_production
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_new_armada
+		prerequisite = {
+			focus = HSP_new_armada
+		}
+		complete_tooltip = {
+			every_state = {
+				limit = { has_state_flag = HSP_flagship_production }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		completion_reward = {
+			add_ideas = HSP_flagship_production_01
+			add_tech_bonus = {
+				name = HSP_hunters_under_the_water
+				bonus = 0.5
+				uses = 2
+				category = bb_tech
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+					is_core_of = ROOT
+					NOT = { has_state_flag = HSP_flagship_production }
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = HSP_flagship_production
+			}
+		}
+	}
+	focus = {
+		id = HSP_modern_fleet_warfare
+		icon = GFX_goal_generic_navy_carrier
+		cost = 5
+		x = -2
+		y = 1
+		relative_position_id = HSP_flagship_production
+		prerequisite = {
+			focus = HSP_flagship_production
+		}
+		mutually_exclusive = {
+			focus = HSP_king_of_sea
+			focus = HSP_way_of_wolf
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_navy_sortie_efficiency = 0.05
+				tooltip = sortie_efficiency_tt
+			}
+		}
+	}
+	focus = {
+		id = HSP_king_of_sea
+		icon = GFX_goal_generic_navy_battleship
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = HSP_flagship_production
+		prerequisite = {
+			focus = HSP_flagship_production
+		}
+		mutually_exclusive = {
+			focus = HSP_modern_fleet_warfare
+			focus = HSP_way_of_wolf
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_navy_navy_capital_ship_attack_factor = 0.05
+				tooltip = navy_capital_ship_attack_factor_tt
+			}
+		}
+	}
+	focus = {
+		id = HSP_way_of_wolf
+		icon = GFX_goal_generic_wolf_pack
+		cost = 5
+		x = 2
+		y = 1
+		relative_position_id = HSP_flagship_production
+		prerequisite = {
+			focus = HSP_flagship_production
+		}
+		mutually_exclusive = {
+			focus = HSP_modern_fleet_warfare
+			focus = HSP_king_of_sea
+		}
+		completion_reward = {
+			add_to_variable = {
+				HSP_navy_convoy_raiding_efficiency_factor = 0.05
+				tooltip = convoy_raiding_efficiency_factor_tt
+			}
+		}
+	}
+}

@@ -1,4 +1,8 @@
 ﻿l_korean:
+  # historical hand-off
+  HSP_historical_spain:0 "역사적 스페인"
+  HSP_historical_spain_desc:0 ""
+  HSP_historical_spain_tt:0 "§Y스페인은 역사적 경로를 따릅니다:§! 기존 스페인 국가중점 트리가 적용되며, 1936년 선거와 내전의 위협도 그대로 진행됩니다. 이 트리에서의 진행 상황은 사라집니다."
   # starting focus
   HSP_assemble_emergency_council:0 "긴급 의회 소집"
   HSP_assemble_emergency_council_desc:0 "국내의 여러 세력들은 반목하고 있고, 이대로 선거를 그대로 진행한다면 불만 세력의 반발은 불 보듯 뻔합니다. 현재의 정부는 이를 조율할 능력이 없습니다. 내키지는 않지만, 긴급 회의를 소집해서 각계 각층의 의견과 요구를 조율해야 합니다."

@@ -1,0 +1,23 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			# 1936 start on the HSP tree: only 전국 파업 (SPR_national_strikes_3) and 구식 군대 remain.
+			# HSP_return_to_historical_spain puts the vanilla spirits back if the player leaves the HSP tree.
+			# Same conditions as HSP_spanish_focus's country weight; the tree may not be assigned yet here.
+			SPR = {
+				if = {
+					limit = {
+						date < 1936.1.2
+						has_dlc = "La Resistance"
+					}
+					remove_ideas = {
+						SPA_carlism_1
+						SPR_military_disloyalty
+						SPR_political_violence
+					}
+					add_ideas = HSP_old_fashioned_army_01
+				}
+			}
+		}
+	}
+}
