@@ -149,3 +149,18 @@ HSP_annex_viceroyalty = {
 		}
 	}
 }
+
+# Scope: the overlord. Makes event_target:HSP_union_target its personal union (No Step Back),
+# or a regular puppet without that DLC.
+HSP_make_personal_union = {
+	if = {
+		limit = { has_dlc = "No Step Back" }
+		set_autonomy = {
+			target = event_target:HSP_union_target
+			autonomy_state = autonomy_personal_union
+		}
+	}
+	else = {
+		puppet = event_target:HSP_union_target
+	}
+}

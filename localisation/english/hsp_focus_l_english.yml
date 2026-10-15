@@ -23,6 +23,11 @@
   HSP_retire_communist_characters_tt:0 "Communist and POUM generals and advisors are §Rretired§!."
   HSP_otto_available_tt:0 "Otto von Habsburg has not been claimed by Hungary or Austria and leads no other country"
   HSP_alfonso_available_tt:0 "Alfonso XIII is alive and has not been crowned elsewhere"
+  HSP_royal_guard_cavalry:0 "Raise the Royal Guard Cavalry"
+  HSP_royal_guard_cavalry_desc:0 ""
+  HSP_legacy_of_the_conquistadores:0 "Legacy of the Conquistadores"
+  HSP_legacy_of_the_conquistadores_desc:0 ""
+  HSP_restore_iberian_commonwealth_tt:0 "§YPortugal§! is offered union with Spain. It accepts if Spain's army is stronger and its opinion of Spain is above 50; if it refuses, we may press our claim by force."
   # industry focus
   HSP_national_industrialization:0 "National Industrialization"
   HSP_national_industrialization_desc:0 ""

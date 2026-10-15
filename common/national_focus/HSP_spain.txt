@@ -193,7 +193,7 @@ focus_tree = {
 		}
 		mutually_exclusive = { focus = HSP_house_of_borbon }
 		cost = 5
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = HSP_new_monarchy
 		allow_branch = {
@@ -221,7 +221,7 @@ focus_tree = {
 		}
 		mutually_exclusive = { focus = HSP_house_of_habsburg }
 		cost = 5
-		x = 1
+		x = 7
 		y = 1
 		relative_position_id = HSP_new_monarchy
 		allow_branch = {
@@ -1294,13 +1294,82 @@ focus_tree = {
 		cost = 10
 		x = 0
 		y = 1
-		relative_position_id = HSP_a_unified_government
+		relative_position_id = HSP_house_of_habsburg
 		prerequisite = {
-			focus = HSP_a_unified_government
+			focus = HSP_house_of_habsburg
 		}
 		search_filters = {FOCUS_FILTER_POLITICAL}
 		completion_reward = {
 			add_ideas = HSP_habsburg_pluralism_01
+		}
+	}
+
+	## 근위기병대 창설
+	focus = {
+		id = HSP_royal_guard_cavalry
+		icon = GFX_focus_HABSBURG_bring_back_royal_and_imperial_hussars
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = HSP_house_of_habsburg
+		prerequisite = {
+			focus = HSP_house_of_habsburg
+		}
+		search_filters = {FOCUS_FILTER_MANPOWER}
+		completion_reward = {
+			add_ideas = HSP_royal_guard_cavalry_01
+			division_template = {
+				name = "Guardia Real"
+				priority = 2
+				regiments = {
+					cavalry = { x = 0 y = 0 }
+					cavalry = { x = 0 y = 1 }
+					cavalry = { x = 0 y = 2 }
+					cavalry = { x = 1 y = 0 }
+					cavalry = { x = 1 y = 1 }
+					cavalry = { x = 1 y = 2 }
+					cavalry = { x = 2 y = 0 }
+					cavalry = { x = 2 y = 1 }
+					cavalry = { x = 2 y = 2 }
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"1ª División de la Guardia Real\" division_template = \"Guardia Real\" start_experience_factor = 1 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = ROOT
+				}
+				create_unit = {
+					division = "name = \"2ª División de la Guardia Real\" division_template = \"Guardia Real\" start_experience_factor = 1 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = ROOT
+				}
+				create_unit = {
+					division = "name = \"3ª División de la Guardia Real\" division_template = \"Guardia Real\" start_experience_factor = 1 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = ROOT
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	## 콩키스타도르의 유산
+	focus = {
+		id = HSP_legacy_of_the_conquistadores
+		icon = GFX_focus_ITA_cavalry_charge
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = HSP_royal_guard_cavalry
+		prerequisite = {
+			focus = HSP_royal_guard_cavalry
+		}
+		search_filters = {FOCUS_FILTER_MANPOWER}
+		completion_reward = {
+			add_ideas = HSP_legacy_of_the_conquistadores_01
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 	focus = {
@@ -1326,11 +1395,12 @@ focus_tree = {
 		id = HSP_royal_university_of_madrid
 		icon = GFX_goal_tfv_generic_tech_sharing
 		cost = 10
-		x = 1
-		y = 2
-		relative_position_id = HSP_restore_royal_authority
+		x = -1
+		y = 4
+		relative_position_id = HSP_reorganize_administration
 		prerequisite = {
 			focus = HSP_restore_royal_authority
+			focus = HSP_house_of_borbon
 		}
 		prerequisite = {
 			focus = HSP_integration_of_public_opinion
@@ -1345,7 +1415,7 @@ focus_tree = {
 		id = HSP_restore_iberian_commonwealth
 		icon = GFX_focus_generic_befriend_portugal
 		cost = 5
-		x = 2
+		x = 1
 		y = 1
 		available = {
 			any_other_country = {
@@ -1357,9 +1427,9 @@ focus_tree = {
 				size > 200000
 			}
 		}
-		relative_position_id = HSP_reorganize_administration
+		relative_position_id = HSP_house_of_habsburg
 		prerequisite = {
-			focus = HSP_reorganize_administration
+			focus = HSP_house_of_habsburg
 		}
 		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
@@ -1377,7 +1447,7 @@ focus_tree = {
 		icon = GFX_focus_por_recover_brazil
 		cost = 10
 		x = 0
-		y = 2
+		y = 1
 		available = {
 			any_other_country = {
 				original_tag = BRA
@@ -1406,7 +1476,7 @@ focus_tree = {
 		icon = GFX_focus_por_the_kingdom_reunited
 		cost = 10
 		x = 0
-		y = 2
+		y = 1
 		relative_position_id = HSP_subjugate_brazil
 		prerequisite = {
 			focus = HSP_subjugate_brazil

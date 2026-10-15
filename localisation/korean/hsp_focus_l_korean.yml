@@ -23,6 +23,11 @@
   HSP_retire_communist_characters_tt:0 "공산주의 및 POUM 계열 장군과 고문들이 §R퇴역§!합니다."
   HSP_otto_available_tt:0 "오토 폰 합스부르크가 헝가리나 오스트리아에 영입되지 않았고 다른 나라의 지도자가 아님"
   HSP_alfonso_available_tt:0 "알폰소 13세가 생존해 있고 다른 나라에서 즉위하지 않았음"
+  HSP_royal_guard_cavalry:0 "근위기병대 창설"
+  HSP_royal_guard_cavalry_desc:0 ""
+  HSP_legacy_of_the_conquistadores:0 "콩키스타도르의 유산"
+  HSP_legacy_of_the_conquistadores_desc:0 ""
+  HSP_restore_iberian_commonwealth_tt:0 "§Y포르투갈§!에 스페인과의 통합을 제안합니다. 스페인의 군사력이 더 강하고 스페인에 대한 우호도가 50을 넘으면 수락하며, 거절할 경우 무력으로 요구를 관철할 수 있습니다."
   # industry focus
   HSP_national_industrialization:0 "국가주도 산업화"
   HSP_national_industrialization_desc:0 ""

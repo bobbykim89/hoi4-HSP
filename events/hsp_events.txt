@@ -12,38 +12,10 @@ country_event = {
 	option = {
 		name =  HSP_spain_events.5.a
 		ai_chance = {
-			base = 30
+			base = 100
 			modifier = {
-				add = 100
-				OR = {
-					has_stability < 50
-					has_war = yes
-				}
-			}
-			modifier = {
-				add = -30
-				has_war_with = FROM
-			}
-			modifier = {
-				add = -30
-				OR = {
-					has_government = fascism
-					has_government = communism
-				}
-			}
-			modifier = {
-				add = 30
-				has_government = neutrality
-			}
-			modifier = {
-				add = 100
-				OR = {
-					has_opinion = {
-						target = FROM
-						value > 80
-					}
-					is_in_faction_with = SPR
-				}
+				factor = 0
+				NOT = { HSP_accepts_spanish_leadership = yes }
 			}
 		}
 		FROM = {
@@ -65,13 +37,10 @@ country_event = {
 	option = {
 		name =  HSP_spain_events.5.b
 		ai_chance = {
-			base = 10
+			base = 100
 			modifier = {
-				add = -10
-				AND = {
-					is_in_faction = yes
-					NOT = { is_in_faction_with = ROOT }
-				}
+				factor = 0
+				HSP_accepts_spanish_leadership = yes
 			}
 		}
 		FROM = {
@@ -187,57 +156,31 @@ country_event = {
 	option = { # accept
 		name = HSP_spain_events.8.a
 		ai_chance = {
-			base = 30
+			base = 100
 			modifier = {
-				add = -25
-				SPR = { has_army_size = { size < 40 } }
-			}
-			modifier = {
-				add = 100
-				SPR = { has_army_size = { size > 39 } }
-			}
-			modifier = {
-				add = 20
-				is_in_faction_with = SPR
+				factor = 0
+				NOT = { HSP_accepts_spanish_leadership = yes }
 			}
 		}
 		SPR = {
 			country_event = { hours = 2 id = HSP_spain_events.9 }
-			effect_tooltip = {
-				SPR = {
+		}
+		effect_tooltip = {
+			SPR = {
 				set_autonomy = {
-					target = PREV
+					target = ROOT
 					autonomy_state = autonomy_personal_union
 				}
-				add_political_power = -50
-			}
 			}
 		}
 	}
 	option = { # refuse
 		name = HSP_spain_events.8.b
 		ai_chance = {
-			base = 10
+			base = 100
 			modifier = {
-				factor = 0.5
-				SPR = { has_army_size = { size > 39 } }
-			}
-			modifier = {
-				factor = 2
-				SPR = { has_army_size = { size < 30 } }
-			}
-			modifier = {
-				factor = 2
-				is_in_faction = yes
-				NOT = {
-					is_in_faction_with = SPR
-				}
-			}
-			modifier = {
-				any_other_country = {
-					has_guaranteed = BRA
-				}
-				factor = 5
+				factor = 0
+				HSP_accepts_spanish_leadership = yes
 			}
 		}
 		SPR = {
@@ -258,18 +201,9 @@ country_event = {
 	fire_only_once = yes
 	option = { # accept
 		name = HSP_spain_events.9.a
-		random_country = {
-			limit = {
-				original_tag = BRA
-			}
-			SPR = {
-				set_autonomy = {
-					target = PREV
-					autonomy_state = autonomy_personal_union
-				}
-				add_political_power = -50
-			}
-		}
+		BRA = { save_event_target_as = HSP_union_target }
+		HSP_make_personal_union = yes
+		add_political_power = -50
 	}
 }
 
