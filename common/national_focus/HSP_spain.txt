@@ -240,6 +240,170 @@ focus_tree = {
 		}
 	}
 
+	## 왕실 정통성 회복
+	focus = {
+		id = HSP_restore_royal_legitimacy
+		icon = GFX_focus_generic_monarchist_sentiment
+		cost = 10
+		x = -1
+		y = 1
+		relative_position_id = HSP_house_of_borbon
+		prerequisite = {
+			focus = HSP_house_of_borbon
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_MANPOWER}
+		completion_reward = {
+			add_ideas = HSP_royal_legitimacy_01
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	## 프랑스 왕당파 지원
+	focus = {
+		id = HSP_support_french_royalists
+		icon = GFX_focus_generic_monarchist_workers
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = HSP_house_of_borbon
+		prerequisite = {
+			focus = HSP_house_of_borbon
+		}
+		available = {
+			FRA = {
+				exists = yes
+				is_subject = no
+			}
+			NOT = { has_war_with = FRA }
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			FRA = {
+				set_variable = {
+					var = HSP_royalist_support
+					value = 10
+				}
+			}
+			custom_effect_tooltip = HSP_royalist_support_start_tt
+			unlock_decision_category_tooltip = HSP_french_royalists_cat
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	## 프랑스 왕관 요구
+	focus = {
+		id = HSP_claim_crown_of_france
+		icon = GFX_focus_focus_fra_orleans_restoration
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_support_french_royalists
+		prerequisite = {
+			focus = HSP_support_french_royalists
+		}
+		available = {
+			FRA = {
+				exists = yes
+				is_subject = no
+				custom_trigger_tooltip = {
+					tooltip = HSP_royalist_support_80_tt
+					check_variable = { HSP_royalist_support > 79 }
+				}
+			}
+			NOT = { has_war_with = FRA }
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION}
+		completion_reward = {
+			custom_effect_tooltip = HSP_claim_crown_of_france_tt
+			FRA = {
+				country_event = { id = HSP_spain_events.34 hours = 1 }
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	## 프랑스-스페인 연방
+	focus = {
+		id = HSP_franco_spanish_union
+		icon = GFX_focus_generic_monarchy_1
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_claim_crown_of_france
+		prerequisite = {
+			focus = HSP_claim_crown_of_france
+		}
+		available = {
+			any_other_country = {
+				original_tag = FRA
+				exists = yes
+				is_subject_of = ROOT
+			}
+		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		completion_reward = {
+			every_state = {
+				limit = { is_core_of = FRA }
+				add_core_of = ROOT
+			}
+			every_other_country = {
+				limit = {
+					original_tag = FRA
+					is_subject_of = ROOT
+				}
+				every_unit_leader = {
+					set_nationality = ROOT
+				}
+				ROOT = {
+					annex_country = {
+						target = PREV
+						transfer_troops = yes
+					}
+				}
+			}
+			set_cosmetic_tag = HSP_franco_spanish_commonwealth
+			unlock_decision_tooltip = HSP_move_capital_to_paris
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	## 루이지애나 반환 요구
+	focus = {
+		id = HSP_demand_louisiana
+		icon = GFX_focus_generic_attack_usa
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_franco_spanish_union
+		prerequisite = {
+			focus = HSP_franco_spanish_union
+		}
+		available = {
+			NOT = { has_war_with = USA }
+		}
+		bypass = {
+			USA = { exists = no }
+		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		completion_reward = {
+			USA = {
+				country_event = { id = HSP_spain_events.37 hours = 1 }
+			}
+			unlock_decision_tooltip = HSP_form_viceroyalty_of_louisiana
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
 	## 공산주의에 맞선 십자군
 	focus = {
 		id = HSP_crusade_against_communism
@@ -1400,7 +1564,7 @@ focus_tree = {
 		relative_position_id = HSP_reorganize_administration
 		prerequisite = {
 			focus = HSP_restore_royal_authority
-			focus = HSP_house_of_borbon
+			focus = HSP_restore_royal_legitimacy
 		}
 		prerequisite = {
 			focus = HSP_integration_of_public_opinion
@@ -2285,6 +2449,9 @@ focus_tree = {
 		prerequisite = {
 			focus = HSP_looking_outside
 		}
+		prerequisite = {
+			focus = HSP_house_of_borbon
+		}
 		mutually_exclusive = {
 			focus = HSP_the_empire_resurrected
 			focus = HSP_approach_germany
@@ -2451,6 +2618,9 @@ focus_tree = {
 		relative_position_id = HSP_looking_outside
 		prerequisite = {
 			focus = HSP_looking_outside
+		}
+		prerequisite = {
+			focus = HSP_house_of_borbon
 		}
 		mutually_exclusive = {
 			focus = HSP_the_empire_resurrected

@@ -48,3 +48,12 @@
   HSP_viceroyalty_peru_fascism_DEF:0 "the Viceroyalty of Peru"
   HSP_viceroyalty_peru_communism:0 "Viceroyalty of Peru"
   HSP_viceroyalty_peru_communism_DEF:0 "the Viceroyalty of Peru"
+  # borbón route
+  HSP_franco_spanish_commonwealth_neutrality:0 "Franco-Spanish Commonwealth"
+  HSP_franco_spanish_commonwealth_neutrality_DEF:0 "the Franco-Spanish Commonwealth"
+  HSP_franco_spanish_commonwealth_democratic:0 "Franco-Spanish Commonwealth"
+  HSP_franco_spanish_commonwealth_democratic_DEF:0 "the Franco-Spanish Commonwealth"
+  HSP_franco_spanish_commonwealth_fascism:0 "Franco-Spanish Commonwealth"
+  HSP_franco_spanish_commonwealth_fascism_DEF:0 "the Franco-Spanish Commonwealth"
+  HSP_franco_spanish_commonwealth_communism:0 "Franco-Spanish Commonwealth"
+  HSP_franco_spanish_commonwealth_communism_DEF:0 "the Franco-Spanish Commonwealth"

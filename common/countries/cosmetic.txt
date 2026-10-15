@@ -1965,3 +1965,9 @@ HSP_viceroyalty_peru = {
 	color = rgb { 196 189 204 }
 	color_ui = rgb { 196 189 204 }
 }
+
+# Borbón route: Spain after annexing France (HSP_franco_spanish_union)
+HSP_franco_spanish_commonwealth = {
+	color = rgb { 242 205 94 }
+	color_ui = rgb { 255 255 122 }
+}

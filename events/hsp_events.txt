@@ -1174,3 +1174,208 @@ country_event = {
 		name = HSP_spain_events.33.a
 	}
 }
+
+# Spain's Borbón king claims the French crown (HSP_claim_crown_of_france). ROOT = France, FROM = Spain.
+country_event = {
+	id = HSP_spain_events.34
+	title = HSP_spain_events.34.t
+	desc = HSP_spain_events.34.desc
+	picture = GFX_report_event_generic_parliament
+	is_triggered_only = yes
+
+	# accept: personal union with Spain
+	option = {
+		name = HSP_spain_events.34.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = {
+					strength_ratio = {
+						tag = SPR
+						ratio < 1
+					}
+				}
+			}
+		}
+		FROM = {
+			country_event = { id = HSP_spain_events.35 hours = 2 }
+		}
+	}
+	# refuse: the royalists rise
+	option = {
+		name = HSP_spain_events.34.b
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				strength_ratio = {
+					tag = SPR
+					ratio < 1
+				}
+			}
+		}
+		custom_effect_tooltip = HSP_french_royalist_uprising_tt
+		FROM = {
+			country_event = { id = HSP_spain_events.36 hours = 2 }
+		}
+	}
+}
+
+# France accepts the Borbón crown. ROOT = Spain, FROM = France.
+country_event = {
+	id = HSP_spain_events.35
+	title = HSP_spain_events.35.t
+	desc = HSP_spain_events.35.desc
+	picture = GFX_report_event_royal_parade
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_events.35.a
+		FROM = {
+			save_event_target_as = HSP_union_target
+			set_politics = {
+				ruling_party = neutrality
+				elections_allowed = no
+			}
+			create_country_leader = {
+				name = HSP_alphonse_i
+				picture = "GFX_portrait_SPA_alfonso_xiii"
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = { the_legitimist }
+			}
+		}
+		HSP_make_personal_union = yes
+	}
+}
+
+# France refuses: royalist civil war. The royalist side becomes Spain's subject and Spain joins
+# the war against the French government (vanilla CHL_initiate_a_revolution pattern).
+# ROOT = Spain, FROM = France.
+country_event = {
+	id = HSP_spain_events.36
+	title = HSP_spain_events.36.t
+	desc = HSP_spain_events.36.desc
+	picture = GFX_report_event_generic_rally
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_events.36.a
+		FROM = {
+			set_variable = {
+				var = HSP_civil_war_size
+				value = HSP_royalist_support
+			}
+			divide_variable = {
+				var = HSP_civil_war_size
+				value = 100
+			}
+			start_civil_war = {
+				ideology = neutrality
+				size = HSP_civil_war_size
+				keep_political_leader = yes
+				set_country_flag = HSP_french_royalists_flag
+				create_country_leader = {
+					name = HSP_alphonse_i
+					picture = "GFX_portrait_SPA_alfonso_xiii"
+					expire = "1965.1.1"
+					ideology = despotism
+					traits = { the_legitimist }
+				}
+				ROOT = {
+					puppet = {
+						target = PREV
+						end_wars = no
+						end_civil_wars = no
+					}
+					declare_war_on = {
+						target = FROM
+						type = puppet_wargoal_focus
+					}
+				}
+			}
+		}
+	}
+}
+
+# Spain demands the old French Louisiana (HSP_demand_louisiana). ROOT = USA, FROM = Spain.
+country_event = {
+	id = HSP_spain_events.37
+	title = HSP_spain_events.37.t
+	desc = HSP_spain_events.37.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+
+	# accept: hand the states over
+	option = {
+		name = HSP_spain_events.37.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = {
+					strength_ratio = {
+						tag = SPR
+						ratio < 0.5
+					}
+				}
+			}
+		}
+		every_owned_state = {
+			limit = { HSP_is_louisiana_purchase = yes }
+			FROM = { transfer_state = PREV }
+		}
+		FROM = {
+			country_event = { id = HSP_spain_events.38 hours = 2 }
+		}
+	}
+	# refuse
+	option = {
+		name = HSP_spain_events.37.b
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				strength_ratio = {
+					tag = SPR
+					ratio < 0.5
+				}
+			}
+		}
+		FROM = {
+			country_event = { id = HSP_spain_events.39 hours = 2 }
+		}
+	}
+}
+
+# The USA hands over Louisiana. ROOT = Spain, FROM = USA.
+country_event = {
+	id = HSP_spain_events.38
+	title = HSP_spain_events.38.t
+	desc = HSP_spain_events.38.desc
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_events.38.a
+	}
+}
+
+# The USA refuses: Spain gets a wargoal for the Louisiana states. ROOT = Spain, FROM = USA.
+country_event = {
+	id = HSP_spain_events.39
+	title = HSP_spain_events.39.t
+	desc = HSP_spain_events.39.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_events.39.a
+		create_wargoal = {
+			type = take_state_focus
+			target = FROM
+			generator = { 371 372 373 381 383 384 388 389 390 391 392 394 }
+		}
+	}
+}

@@ -158,3 +158,23 @@ HSP_former_austria_hungary_held = {
 		}
 	}
 }
+
+# Scope: a state. The Louisiana Purchase states of the Borbón Viceroyalty of Louisiana:
+# Louisiana, Arkansas, Missouri, Wyoming, Kansas, Nebraska, Montana, North Dakota, South Dakota,
+# Minnesota, Iowa, Wisconsin.
+HSP_is_louisiana_purchase = {
+	OR = {
+		state = 371
+		state = 372
+		state = 373
+		state = 381
+		state = 383
+		state = 384
+		state = 388
+		state = 389
+		state = 390
+		state = 391
+		state = 392
+		state = 394
+	}
+}

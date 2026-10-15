@@ -1849,3 +1849,185 @@ HSP_holy_roman_empire_cat = {
 		}
 	}
 }
+
+# Borbón route: build royalist support in France before HSP_claim_crown_of_france
+# (vanilla POL_propagandise_monarchist_sentiment / POL_arm_monarchist_militants pattern).
+HSP_french_royalists_cat = {
+	HSP_royalist_propaganda_in_france = {
+		icon = generic_political_rally
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_support_french_royalists
+		}
+		available = {
+			NOT = { has_war_with = FRA }
+			FRA = {
+				exists = yes
+				check_variable = { HSP_royalist_support < 100 }
+			}
+		}
+		cost = 25
+		days_remove = 30
+		fire_only_once = no
+		remove_effect = {
+			FRA = {
+				add_to_variable = {
+					var = HSP_royalist_support
+					value = 10
+				}
+				clamp_variable = {
+					var = HSP_royalist_support
+					min = 0
+					max = 100
+				}
+				add_stability = -0.02
+			}
+			custom_effect_tooltip = HSP_royalist_support_10_tt
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	HSP_arm_french_royalists = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_support_french_royalists
+		}
+		available = {
+			NOT = { has_war_with = FRA }
+			FRA = {
+				exists = yes
+				check_variable = { HSP_royalist_support < 100 }
+			}
+		}
+		custom_cost_trigger = {
+			has_equipment = { infantry_equipment > 999 }
+		}
+		custom_cost_text = decision_cost_ie_1000
+		days_remove = 30
+		fire_only_once = no
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -1000
+			}
+		}
+		remove_effect = {
+			FRA = {
+				add_to_variable = {
+					var = HSP_royalist_support
+					value = 15
+				}
+				clamp_variable = {
+					var = HSP_royalist_support
+					min = 0
+					max = 100
+				}
+				add_stability = -0.03
+			}
+			custom_effect_tooltip = HSP_royalist_support_15_tt
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+}
+
+# Borbón route: the French capital, Quebec and Louisiana.
+HSP_borbon_crown_cat = {
+	HSP_move_capital_to_paris = {
+		icon = generic_civil_support
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_franco_spanish_union
+			NOT = { capital_scope = { state = 16 } }
+		}
+		available = {
+			owns_state = 16
+			controls_state = 16
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			set_capital = { state = 16 }
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	HSP_claim_quebec = {
+		icon = generic_civil_support
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			OR = {
+				controls_state = 468
+				controls_state = 466
+				controls_state = 860
+				controls_state = 861
+				controls_state = 862
+				controls_state = 863
+			}
+		}
+		available = {
+			controls_state = 468
+			controls_state = 466
+			controls_state = 860
+			controls_state = 861
+			controls_state = 862
+			controls_state = 863
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			every_state = {
+				limit = { OR = { state = 468 state = 466 state = 860 state = 861 state = 862 state = 863 } }
+				add_core_of = ROOT
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	# For now the Louisiana states stay Spanish; a separate subject country is on the roadmap.
+	HSP_form_viceroyalty_of_louisiana = {
+		icon = generic_form_nation
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_demand_louisiana
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = HSP_owns_louisiana_purchase_tt
+				NOT = {
+					any_state = {
+						HSP_is_louisiana_purchase = yes
+						NOT = { is_owned_by = ROOT }
+					}
+				}
+			}
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			every_state = {
+				limit = { HSP_is_louisiana_purchase = yes }
+				add_core_of = ROOT
+			}
+			set_country_flag = HSP_viceroyalty_of_louisiana_flag
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+}

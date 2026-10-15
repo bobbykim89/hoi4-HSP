@@ -94,3 +94,32 @@ HSP_holy_roman_empire_cat = {
 	}
 	visible_when_empty = no
 }
+
+HSP_french_royalists_cat = {
+	priority = 60
+	icon = GFX_decision_category_generic_monarchism
+
+	allowed = {
+		original_tag = SPR
+		has_dlc = "La Resistance"
+	}
+	visible = {
+		has_completed_focus = HSP_support_french_royalists
+		NOT = { has_completed_focus = HSP_claim_crown_of_france }
+	}
+	visible_when_empty = no
+}
+
+HSP_borbon_crown_cat = {
+	priority = 60
+	icon = GFX_decision_category_generic
+
+	allowed = {
+		original_tag = SPR
+		has_dlc = "La Resistance"
+	}
+	visible = {
+		has_country_flag = HSP_house_borbon_flag
+	}
+	visible_when_empty = no
+}
