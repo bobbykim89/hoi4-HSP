@@ -10,6 +10,10 @@
   HSP_archduke_felix:0 "펠릭스 폰 합스부르크"
   HSP_holy_roman_emperor:0 "신성 로마 황제"
   HSP_autonomy_habsburg_crown:0 "제국 영지"
+  HSP_otto_crowned:0 "오토 폰 합스부르크"
+  HSP_karl_pius_crowned:0 "카를 피우스 폰 합스부르크"
+  HSP_saint_petersburg:0 "상트페테르부르크"
+  HSP_tsaritsyn:0 "차리친"
   # research
   allied_research:0 "연합국 연구"
   allied_research_name:0 "연합국 연구"

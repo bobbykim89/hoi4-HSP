@@ -1832,22 +1832,6 @@ focus_tree = {
 		prerequisite = {
 			focus = HSP_the_empire_resurrected
 		}
-		available = {
-			OR = {
-				any_other_country = {
-					original_tag = HOL
-					exists = yes
-				}
-				any_other_country = {
-					original_tag = BEL
-					exists = yes
-				}
-				any_other_country = {
-					original_tag = LUX
-					exists = yes
-				}
-			}
-		}
 		search_filters = {FOCUS_FILTER_ANNEXATION}
 		completion_reward = {
 			every_state = {
@@ -1868,17 +1852,41 @@ focus_tree = {
 				}
 				add_core_of = ROOT
 			}
-			create_wargoal = {
-				target = HOL
-				type = annex_everything
+			if = {
+				limit = {
+					HOL = {
+						exists = yes
+						NOT = { is_subject_of = ROOT }
+					}
+				}
+				create_wargoal = {
+					target = HOL
+					type = annex_everything
+				}
 			}
-			create_wargoal = {
-				target = BEL
-				type = annex_everything
+			if = {
+				limit = {
+					BEL = {
+						exists = yes
+						NOT = { is_subject_of = ROOT }
+					}
+				}
+				create_wargoal = {
+					target = BEL
+					type = annex_everything
+				}
 			}
-			create_wargoal = {
-				target = LUX
-				type = annex_everything
+			if = {
+				limit = {
+					LUX = {
+						exists = yes
+						NOT = { is_subject_of = ROOT }
+					}
+				}
+				create_wargoal = {
+					target = LUX
+					type = annex_everything
+				}
 			}
 		}
 	}
@@ -1893,18 +1901,20 @@ focus_tree = {
 		prerequisite = {
 			focus = HSP_demand_crown_of_low_countries
 		}
-		available = {
-			any_other_country = {
-				original_tag = FRA
-				exists = yes
-			}
-		}
 		search_filters = {FOCUS_FILTER_ANNEXATION}
 		completion_reward = {
 			28 = { add_core_of = ROOT }
-			create_wargoal = {
-				target = FRA
-				type = take_core_state
+			if = {
+				limit = {
+					FRA = {
+						exists = yes
+						NOT = { is_subject_of = ROOT }
+					}
+				}
+				create_wargoal = {
+					target = FRA
+					type = take_core_state
+				}
 			}
 			unlock_decision_tooltip = HSP_war_france
 		}
@@ -1920,18 +1930,20 @@ focus_tree = {
 		prerequisite = {
 			focus = HSP_claim_on_elsass_lothringen
 		}
-		bypass = {
-			any_other_country = {
-				original_tag = ENG
-				exists = no
-			}
-		}
 		search_filters = {FOCUS_FILTER_ANNEXATION}
 		completion_reward = {
 			118 = { add_core_of = ROOT }
-			create_wargoal = {
-				target = ENG
-				type = puppet_wargoal_focus
+			if = {
+				limit = {
+					ENG = {
+						exists = yes
+						NOT = { is_subject_of = ROOT }
+					}
+				}
+				create_wargoal = {
+					target = ENG
+					type = puppet_wargoal_focus
+				}
 			}
 			unlock_decision_tooltip = HSP_war_uk
 		}
@@ -2159,12 +2171,6 @@ focus_tree = {
 		prerequisite = {
 			focus = HSP_the_empire_resurrected
 		}
-		available = {
-			any_other_country = {
-				original_tag = ITA
-				exists = yes
-			}
-		}
 		search_filters = {FOCUS_FILTER_ANNEXATION}
 		completion_reward = {
 			every_state = {
@@ -2173,9 +2179,17 @@ focus_tree = {
 				}
 				add_core_of = SPR
 			}
-			create_wargoal = {
-				target = ITA
-				type = take_core_state
+			if = {
+				limit = {
+					ITA = {
+						exists = yes
+						NOT = { is_subject_of = ROOT }
+					}
+				}
+				create_wargoal = {
+					target = ITA
+					type = take_core_state
+				}
 			}
 			unlock_decision_tooltip = HSP_war_italy
 		}
@@ -2225,7 +2239,6 @@ focus_tree = {
 			has_government = neutrality
 			controls_state = 2
 			controls_state = 157
-			controls_state = 161
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {

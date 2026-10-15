@@ -828,6 +828,40 @@ country_event = {
 			autonomy_state = HSP_autonomy_habsburg_crown
 		}
 		add_political_power = -50
+		# The Spanish king also reigns there. One character can lead only one country,
+		# so the crowned country gets its own leader with the king's name and portrait.
+		FROM = {
+			set_politics = {
+				ruling_party = neutrality
+				elections_allowed = no
+			}
+			set_party_name = {
+				ideology = neutrality
+				name = SPR_habsburg_legitimists
+				long_name = SPR_habsburg_legitimists
+			}
+			if = {
+				limit = {
+					ROOT = { has_country_flag = HSP_king_otto_flag }
+				}
+				create_country_leader = {
+					name = HSP_otto_crowned
+					picture = "GFX_Portrait_hungary_otto_von_hapsburg"
+					expire = "1965.1.1"
+					ideology = despotism
+					traits = { HUN_the_habsburg_prince }
+				}
+			}
+			else = {
+				create_country_leader = {
+					name = HSP_karl_pius_crowned
+					picture = "GFX_portrait_SPR_karl_pius_von_habsburg"
+					expire = "1965.1.1"
+					ideology = despotism
+					traits = { carlist_habsburg_pretender }
+				}
+			}
+		}
 	}
 }
 

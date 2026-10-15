@@ -10,6 +10,10 @@
   HSP_archduke_felix:0 "Felix von Habsburg"
   HSP_holy_roman_emperor:0 "Holy Roman Emperor"
   HSP_autonomy_habsburg_crown:0 "Imperial Dominion"
+  HSP_otto_crowned:0 "Otto von Habsburg"
+  HSP_karl_pius_crowned:0 "Karl Pius von Habsburg"
+  HSP_saint_petersburg:0 "Saint Petersburg"
+  HSP_tsaritsyn:0 "Tsaritsyn"
   # research
   allied_research:0 "Allied Research"
   allied_research_name:0 "Allied Research"
