@@ -29,3 +29,29 @@ HSP_alfonso_available = {
 		}
 	}
 }
+
+# Scope: a Latin American country. AI accepts Spanish leadership (faction invite) when Spain's army is
+# stronger and it likes Spain.
+HSP_accepts_spanish_leadership = {
+	custom_trigger_tooltip = {
+		tooltip = HSP_accepts_spanish_leadership_tt
+		strength_ratio = {
+			tag = SPR
+			ratio < 1
+		}
+		has_opinion = {
+			target = SPR
+			value > 50
+		}
+	}
+}
+
+# Scope: a country named in a viceroyalty decision. ROOT = Spain.
+# It must be in Spain's faction or Spain's subject; a country that no longer exists is skipped.
+HSP_viceroyalty_candidate = {
+	OR = {
+		exists = no
+		is_subject_of = ROOT
+		is_in_faction_with = ROOT
+	}
+}

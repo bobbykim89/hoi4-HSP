@@ -1476,7 +1476,9 @@ focus_tree = {
 				limit = { 
 					is_in_faction = no
 				}
-				create_faction = HSP_pan_hispanic_federation_faction
+				create_faction_from_template = {
+					template = faction_template_HSP_pan_hispanic_federation
+				}
 			}
 			every_other_country = {
 				limit = {
@@ -1614,11 +1616,12 @@ focus_tree = {
 		prerequisite = {
 			focus = HSP_latin_american_dominance
 		}
-		available = {
-		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			unlock_decision_tooltip = HSP_restore_viceroyalty_of_nueva_espana
 			unlock_decision_tooltip = HSP_restore_viceroyalty_of_nueva_granada
+			unlock_decision_tooltip = HSP_restore_viceroyalty_of_rio_de_la_plata
+			unlock_decision_tooltip = HSP_restore_viceroyalty_of_peru
 		}
 	}
 	focus = {
@@ -1639,26 +1642,23 @@ focus_tree = {
 		}
 		search_filters = {FOCUS_FILTER_ANNEXATION}
 		completion_reward = {
-			378 = { add_core_of = ROOT }
-			377 = { add_core_of = ROOT }
-			376 = { add_core_of = ROOT }
-			375 = { add_core_of = ROOT }
+			# The former Spanish Southwest belongs to Nueva España once it is formed, otherwise to Spain.
+			if = {
+				limit = {
+					MEX = { has_country_flag = HSP_nueva_espana_flag }
+				}
+				every_state = {
+					limit = { OR = { state = 374 state = 375 state = 376 state = 377 state = 378 state = 379 state = 380 } }
+					add_core_of = MEX
+				}
+			}
+			else = {
+				every_state = {
+					limit = { OR = { state = 374 state = 375 state = 376 state = 377 state = 378 state = 379 state = 380 } }
+					add_core_of = ROOT
+				}
+			}
 			366 = { add_core_of = ROOT }
-			367 = { add_core_of = ROOT }
-			370 = { add_core_of = ROOT }
-			371 = { add_core_of = ROOT }
-			374 = { add_core_of = ROOT }
-			379 = { add_core_of = ROOT }
-			380 = { add_core_of = ROOT }
-			382 = { add_core_of = ROOT }
-			383 = { add_core_of = ROOT }
-			384 = { add_core_of = ROOT }
-			381 = { add_core_of = ROOT }
-			387 = { add_core_of = ROOT }
-			388 = { add_core_of = ROOT }
-			389 = { add_core_of = ROOT }
-			390 = { add_core_of = ROOT }
-			391 = { add_core_of = ROOT }
 			686 = { add_core_of = ROOT }
 			every_other_country = {
 				limit = {
@@ -1674,6 +1674,26 @@ focus_tree = {
 			}
 		}
 	}
+	## 부왕령 통합
+	focus = {
+		id = HSP_integration_of_viceroyalties
+		icon = GFX_goal_generic_major_alliance
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = HSP_reestablish_viceroyalty
+		prerequisite = {
+			focus = HSP_reestablish_viceroyalty
+		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		completion_reward = {
+			unlock_decision_tooltip = HSP_integrate_viceroyalty
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
 	# standalone path - habsburg empire focus
 	focus = {
 		id = HSP_the_empire_resurrected

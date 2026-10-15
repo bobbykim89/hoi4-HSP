@@ -780,31 +780,34 @@ country_event = {
 	is_triggered_only = yes
 	fire_only_once = yes
 
-	# congrats!
+	# congrats! Florida and Puerto Rico return to Spain; the Southwest goes to Nueva España if it exists.
 	option = {
 		name = HSP_spain_events.22.a
-
-		transfer_state = 378
-		transfer_state = 377
-		transfer_state = 376
-		transfer_state = 375
 		transfer_state = 366
-		transfer_state = 367
-		transfer_state = 370
-		transfer_state = 371
-		transfer_state = 374
-		transfer_state = 379
-		transfer_state = 380
-		transfer_state = 382
-		transfer_state = 383
-		transfer_state = 384
-		transfer_state = 381
-		transfer_state = 387
-		transfer_state = 388
-		transfer_state = 389
-		transfer_state = 390
-		transfer_state = 391
 		transfer_state = 686
+		if = {
+			limit = {
+				MEX = { has_country_flag = HSP_nueva_espana_flag }
+			}
+			MEX = {
+				transfer_state = 374
+				transfer_state = 375
+				transfer_state = 376
+				transfer_state = 377
+				transfer_state = 378
+				transfer_state = 379
+				transfer_state = 380
+			}
+		}
+		else = {
+			transfer_state = 374
+			transfer_state = 375
+			transfer_state = 376
+			transfer_state = 377
+			transfer_state = 378
+			transfer_state = 379
+			transfer_state = 380
+		}
 	}
 }
 
@@ -1140,5 +1143,71 @@ country_event = {
 		hidden_effect = {
 			mark_focus_tree_layout_dirty = yes
 		}
+	}
+}
+
+
+# Spain invites a Latin American country to the Pan-Hispanic Federation (decision HSP_invite_to_faction)
+country_event = {
+	id = HSP_spain_events.31
+	title = HSP_spain_events.31.t
+	desc = HSP_spain_events.31.desc
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+
+	# join
+	option = {
+		name = HSP_spain_events.31.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { HSP_accepts_spanish_leadership = yes }
+			}
+		}
+		FROM = {
+			add_to_faction = ROOT
+			country_event = { id = HSP_spain_events.32 hours = 6 }
+		}
+	}
+	# refuse
+	option = {
+		name = HSP_spain_events.31.b
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				HSP_accepts_spanish_leadership = yes
+			}
+		}
+		FROM = {
+			country_event = { id = HSP_spain_events.33 hours = 6 }
+		}
+	}
+}
+
+# invitation accepted
+country_event = {
+	id = HSP_spain_events.32
+	title = HSP_spain_events.32.t
+	desc = HSP_spain_events.32.desc
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_events.32.a
+	}
+}
+
+# invitation refused
+country_event = {
+	id = HSP_spain_events.33
+	title = HSP_spain_events.33.t
+	desc = HSP_spain_events.33.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_events.33.a
 	}
 }

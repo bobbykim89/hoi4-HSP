@@ -98,6 +98,8 @@
   HSP_reestablish_viceroyalty_desc:0 ""
   HSP_restore_lost_territories:0 "Reclaim Lost Territories"
   HSP_restore_lost_territories_desc:0 ""
+  HSP_integration_of_viceroyalties:0 "Integration of the Viceroyalties"
+  HSP_integration_of_viceroyalties_desc:0 ""
   # habsburg empire focus
   HSP_the_empire_resurrected:0 "The Empire Resurrected"
   HSP_the_empire_resurrected_desc:0 ""

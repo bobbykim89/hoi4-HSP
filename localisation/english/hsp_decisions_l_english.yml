@@ -10,6 +10,9 @@
   HSP_restore_viceroyalty_of_nueva_granada: "Restore the Viceroyalty of New Granada"
   HSP_restore_viceroyalty_of_peru: "Restore the Viceroyalty of Peru"
   HSP_restore_viceroyalty_of_rio_de_la_plata: "Restore the Viceroyalty of the Río de la Plata"
+  HSP_invite_to_faction_tt:0 "They will accept if Spain's army is stronger than theirs and their opinion of Spain is above 50."
+  HSP_accepts_spanish_leadership_tt:0 "Spain's army is stronger, and opinion of Spain is above 50"
+  HSP_integrate_viceroyalty:0 "Integrate §Y[From.GetNameDef]§!"
   # war decisions
   HSP_war_decisions_cat: "War Plans"
   HSP_war_in_america: "War Plan: United States"

@@ -1948,3 +1948,20 @@ HSP_habsburg_empire_neutrality = {
 	color = rgb { 128 128 128 }
 	color_ui = rgb { 128 128 128 }
 }
+# viceroyalties (HSP_restore_viceroyalty_cat); colours of the local country
+HSP_viceroyalty_nueva_espana = {
+	color = rgb { 104 152 83 }
+	color_ui = rgb { 104 152 83 }
+}
+HSP_viceroyalty_nueva_granada = {
+	color = rgb { 222 187 91 }
+	color_ui = rgb { 222 187 91 }
+}
+HSP_viceroyalty_rio_de_la_plata = {
+	color = rgb { 145 157 236 }
+	color_ui = rgb { 145 157 236 }
+}
+HSP_viceroyalty_peru = {
+	color = rgb { 196 189 204 }
+	color_ui = rgb { 196 189 204 }
+}

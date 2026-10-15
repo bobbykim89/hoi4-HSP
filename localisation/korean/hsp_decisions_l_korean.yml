@@ -10,6 +10,9 @@
   HSP_restore_viceroyalty_of_nueva_granada: "누에바 그라나다 부왕령 복원"
   HSP_restore_viceroyalty_of_peru: "페루 부왕령 복원"
   HSP_restore_viceroyalty_of_rio_de_la_plata: "리오 데 라 플라타 부왕령 복원"
+  HSP_invite_to_faction_tt:0 "스페인의 군사력이 더 강하고 스페인에 대한 우호도가 50을 넘으면 초대를 수락합니다."
+  HSP_accepts_spanish_leadership_tt:0 "스페인의 군사력이 더 강하고, 스페인에 대한 우호도가 50 이상"
+  HSP_integrate_viceroyalty:0 "§Y[From.GetNameDef]§! 통합"
   # war decisions
   HSP_war_decisions_cat: "전쟁 계획"
   HSP_war_in_america: "대미 전쟁 계획"

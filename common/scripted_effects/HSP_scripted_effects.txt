@@ -103,3 +103,49 @@ HSP_retire_communist_characters = {
 		}
 	}
 }
+
+# Scope: the country that becomes the viceroyalty. ROOT = Spain.
+# Becomes Spain's subject; call HSP_join_viceroyalty on each country it absorbs afterwards.
+HSP_form_viceroyalty = {
+	save_event_target_as = HSP_viceroy
+	set_country_flag = HSP_viceroyalty_flag
+	if = {
+		limit = { NOT = { is_subject_of = ROOT } }
+		ROOT = { puppet = PREV }
+	}
+}
+
+# Scope: a country joining the viceroyalty saved as event_target:HSP_viceroy.
+# The viceroyalty gets cores on all its core states and annexes it if it still exists.
+HSP_join_viceroyalty = {
+	every_state = {
+		limit = { is_core_of = PREV }
+		add_core_of = event_target:HSP_viceroy
+	}
+	if = {
+		limit = { exists = yes }
+		event_target:HSP_viceroy = {
+			annex_country = {
+				target = PREV
+				transfer_troops = yes
+			}
+		}
+	}
+}
+
+# Scope: a viceroyalty. ROOT = Spain. Its generals change nationality, then Spain annexes it and takes its cores.
+HSP_annex_viceroyalty = {
+	every_state = {
+		limit = { is_core_of = PREV }
+		add_core_of = ROOT
+	}
+	every_unit_leader = {
+		set_nationality = ROOT
+	}
+	ROOT = {
+		annex_country = {
+			target = PREV
+			transfer_troops = yes
+		}
+	}
+}
