@@ -160,8 +160,8 @@
   HSP_join_allies_research_group_desc:0 ""
   HSP_invite_scientists_in_exile:0 "Invite Exiled Scientists"
   HSP_invite_scientists_in_exile_desc:0 ""
-  HSP_obtaining_rights_to_austria:0 "Obtain Rights to Austria"
-  HSP_obtaining_rights_to_austria_desc:0 ""
+  HSP_bourbon_claims_in_italy:0 "Bourbon Claims in Italy"
+  HSP_bourbon_claims_in_italy_desc:0 ""
   # axis focus
   HSP_approach_germany:0 "Approach Germany"
   HSP_approach_germany_desc:0 ""
@@ -175,8 +175,8 @@
   HSP_support_paramilitary_organizations_desc:0 ""
   HSP_completed_iberia:0 "A Complete Iberia"
   HSP_completed_iberia_desc:0 ""
-  HSP_obtain_right_to_low_countries:0 "Obtain Rights to the Low Countries"
-  HSP_obtain_right_to_low_countries_desc:0 ""
+  HSP_spanish_north_africa:0 "Spanish North Africa"
+  HSP_spanish_north_africa_desc:0 ""
   # shared axis/allies
   HSP_war_planning:0 "War Planning"
   HSP_war_planning_desc:0 ""

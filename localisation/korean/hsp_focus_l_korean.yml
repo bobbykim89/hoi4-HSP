@@ -160,8 +160,8 @@
   HSP_join_allies_research_group_desc:0 ""
   HSP_invite_scientists_in_exile:0 "망명 중인 과학자 초대"
   HSP_invite_scientists_in_exile_desc:0 ""
-  HSP_obtaining_rights_to_austria:0 "오스트리아에 대한 권리 획득"
-  HSP_obtaining_rights_to_austria_desc:0 ""
+  HSP_bourbon_claims_in_italy:0 "이탈리아의 부르봉 왕가 계승권"
+  HSP_bourbon_claims_in_italy_desc:0 ""
   # axis focus
   HSP_approach_germany:0 "독일에 접근"
   HSP_approach_germany_desc:0 ""
@@ -175,8 +175,8 @@
   HSP_support_paramilitary_organizations_desc:0 ""
   HSP_completed_iberia:0 "완성된 이베리아"
   HSP_completed_iberia_desc:0 ""
-  HSP_obtain_right_to_low_countries:0 "저지대에 대한 권리 획득"
-  HSP_obtain_right_to_low_countries_desc:0 ""
+  HSP_spanish_north_africa:0 "스페인령 북아프리카"
+  HSP_spanish_north_africa_desc:0 ""
   # shared axis/allies
   HSP_war_planning:0 "전쟁 계획"
   HSP_war_planning_desc:0 ""
