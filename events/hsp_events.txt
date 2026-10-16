@@ -662,27 +662,16 @@ country_event = {
 		add_stability = -0.1
 		effect_tooltip = {
 			FROM = {
-				transfer_state = 378
-				transfer_state = 377
-				transfer_state = 376
-				transfer_state = 375
 				transfer_state = 366
-				transfer_state = 367
-				transfer_state = 370
-				transfer_state = 371
+				transfer_state = 686
 				transfer_state = 374
+				transfer_state = 375
+				transfer_state = 376
+				transfer_state = 377
+				transfer_state = 378
 				transfer_state = 379
 				transfer_state = 380
 				transfer_state = 382
-				transfer_state = 383
-				transfer_state = 384
-				transfer_state = 381
-				transfer_state = 387
-				transfer_state = 388
-				transfer_state = 389
-				transfer_state = 390
-				transfer_state = 391
-				transfer_state = 686
 			}
 		}
 		hidden_effect = {
@@ -732,6 +721,7 @@ country_event = {
 				transfer_state = 378
 				transfer_state = 379
 				transfer_state = 380
+				transfer_state = 382
 			}
 		}
 		else = {
@@ -742,6 +732,7 @@ country_event = {
 			transfer_state = 378
 			transfer_state = 379
 			transfer_state = 380
+			transfer_state = 382
 		}
 	}
 }

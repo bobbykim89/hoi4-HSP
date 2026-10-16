@@ -1882,13 +1882,13 @@ focus_tree = {
 					MEX = { has_country_flag = HSP_nueva_espana_flag }
 				}
 				every_state = {
-					limit = { OR = { state = 374 state = 375 state = 376 state = 377 state = 378 state = 379 state = 380 } }
+					limit = { OR = { state = 374 state = 375 state = 376 state = 377 state = 378 state = 379 state = 380 state = 382 } }
 					add_core_of = MEX
 				}
 			}
 			else = {
 				every_state = {
-					limit = { OR = { state = 374 state = 375 state = 376 state = 377 state = 378 state = 379 state = 380 } }
+					limit = { OR = { state = 374 state = 375 state = 376 state = 377 state = 378 state = 379 state = 380 state = 382 } }
 					add_core_of = ROOT
 				}
 			}
