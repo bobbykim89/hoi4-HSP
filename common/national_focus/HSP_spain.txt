@@ -788,6 +788,37 @@ focus_tree = {
 		}
 	}
 
+	## 연합국 연구 협력
+	# Vanilla research groups: commonwealth_research (ENG faction), us_research (USA faction)
+	focus = {
+		id = HSP_allied_research_cooperation
+		icon = GFX_focus_research2
+		prerequisite = { focus = HSP_join_the_allies }
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = HSP_join_the_allies
+		available = {
+			OR = {
+				is_in_faction_with = ENG
+				is_in_faction_with = USA
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			if = {
+				limit = { is_in_faction_with = ENG }
+				add_to_tech_sharing_group = commonwealth_research
+			}
+			else = {
+				add_to_tech_sharing_group = us_research
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
 	## 라틴 권역 창설
 	focus = {
 		id = HSP_found_the_latin_sphere
