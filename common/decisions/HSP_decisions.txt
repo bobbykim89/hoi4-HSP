@@ -582,6 +582,9 @@ HSP_disunite_italy_cat = {
 			2 = { remove_core_of = ITA}
 			157 = { remove_core_of = ITA}
 		}
+		ai_will_do = {
+			base = 1
+		}
 	}
 	HSP_restore_toscana = {
 		icon = generic_operation
@@ -604,6 +607,9 @@ HSP_disunite_italy_cat = {
 				autonomy_state = autonomy_integrated_puppet
 			}
 			162 = { remove_core_of = ITA}
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 	HSP_restore_sardegna = {
@@ -631,6 +637,9 @@ HSP_disunite_italy_cat = {
 			158 = { remove_core_of = ITA}
 			114 = { remove_core_of = ITA}
 		}
+		ai_will_do = {
+			base = 1
+		}
 	}
 	HSP_restore_lombardy_venetia = {
 		icon = generic_operation
@@ -656,6 +665,9 @@ HSP_disunite_italy_cat = {
 			}
 			159 = { remove_core_of = ITA}
 			160 = { remove_core_of = ITA}
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 }
@@ -732,6 +744,9 @@ HSP_allied_kingdom_cat = {
 				target = POL
 				autonomy_state = autonomy_puppet
 			}
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 	HSP_restore_polish_lithuanian_commonwealth = {
@@ -920,6 +935,9 @@ HSP_allied_kingdom_cat = {
 				add_core_of = POL
 			}
 		}
+		ai_will_do = {
+			base = 1
+		}
 	}
 	HSP_restore_kingdom_of_bulgaria = {
 		icon = generic_operation
@@ -975,6 +993,9 @@ HSP_allied_kingdom_cat = {
 				target = BUL
 				autonomy_state = autonomy_puppet
 			}
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 	HSP_restore_third_bulgarian_empire = {
@@ -1096,6 +1117,9 @@ HSP_allied_kingdom_cat = {
 				add_core_of = BUL
 			}
 		}
+		ai_will_do = {
+			base = 1
+		}
 	}
 	HSP_offer_protection_of_sweden = {
 		icon = generic_operation
@@ -1123,6 +1147,9 @@ HSP_allied_kingdom_cat = {
 					hours = 1
 				}
 			}
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 	HSP_restore_scandinavia = {
@@ -1204,6 +1231,9 @@ HSP_allied_kingdom_cat = {
 				add_core_of = SWE
 			}
 		}
+		ai_will_do = {
+			base = 1
+		}
 	}
 	HSP_restore_nordic_league = {
 		icon = generic_operation
@@ -1275,6 +1305,9 @@ HSP_allied_kingdom_cat = {
 				add_core_of = SWE
 			}
 		}
+		ai_will_do = {
+			base = 1
+		}
 	}
 	HSP_estonia_cession = {
 		icon = generic_operation
@@ -1329,6 +1362,9 @@ HSP_allied_kingdom_cat = {
 				}
 				add_core_of = SWE
 			}
+		}
+		ai_will_do = {
+			base = 1
 		}
 	}
 }
@@ -1413,6 +1449,9 @@ HSP_production_management_cat = {
 				}
 			}
 		}
+		ai_will_do = {
+			base = 0
+		}
 	}
 	HSP_balanced_production = {
 		icon = GFX_decision_eng_trade_unions_demand
@@ -1459,6 +1498,9 @@ HSP_production_management_cat = {
 				}
 			}
 		}
+		ai_will_do = {
+			base = 0
+		}
 	}
 	HSP_focus_naval_production = {
 		icon = GFX_decision_eng_trade_unions_demand
@@ -1504,6 +1546,9 @@ HSP_production_management_cat = {
 					}
 				}
 			}
+		}
+		ai_will_do = {
+			base = 0
 		}
 	}
 }

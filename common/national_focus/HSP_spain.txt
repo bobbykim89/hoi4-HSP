@@ -84,6 +84,13 @@ focus_tree = {
 			}
 			news_event = HSP_spain_news.1
 		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0.1
+				is_historical_focus_on = yes
+			}
+		}
 	}
 
 	## 대중의 지원 확보
@@ -101,6 +108,9 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 100
 			remove_ideas = SPR_national_strikes_3
+		}
+		ai_will_do = {
+			factor = 10
 		}
 	}
 
@@ -128,6 +138,9 @@ focus_tree = {
 				country_lock_all_division_template = no
 			}
 		}
+		ai_will_do = {
+			factor = 10
+		}
 	}
 
 	## 안정을 위한 계엄령
@@ -150,6 +163,9 @@ focus_tree = {
 				ideology = neutrality
 				popularity = 0.1
 			}
+		}
+		ai_will_do = {
+			factor = 10
 		}
 	}
 
@@ -182,6 +198,9 @@ focus_tree = {
 			set_cosmetic_tag = HSP_kingdom_of_spain
 			country_event = { id = HSP_spain_events.30 }
 		}
+		ai_will_do = {
+			factor = 10
+		}
 	}
 
 	## 합스부르크 왕가
@@ -208,7 +227,7 @@ focus_tree = {
 			add_political_power = 50
 		}
 		ai_will_do = {
-			base = 1
+			factor = 10
 		}
 	}
 
@@ -236,7 +255,7 @@ focus_tree = {
 			add_political_power = 50
 		}
 		ai_will_do = {
-			base = 1
+			factor = 10
 		}
 	}
 
@@ -604,6 +623,9 @@ focus_tree = {
 				}
 			}
 		}
+		ai_will_do = {
+			factor = 2
+		}
 	}
 
 	focus = {
@@ -625,6 +647,9 @@ focus_tree = {
 				category = industry
 			}
 			add_ideas = HSP_industrialization_01
+		}
+		ai_will_do = {
+			factor = 2
 		}
 	}
 
@@ -674,6 +699,9 @@ focus_tree = {
 				add_idea = HSP_industrialization_02
 			}
 		}
+		ai_will_do = {
+			factor = 2
+		}
 	}
 	focus = { # obtain foreign investment
 		id = HSP_obtain_foreign_investment
@@ -718,6 +746,9 @@ focus_tree = {
 			}
 			add_ideas = HSP_foreign_investment_01
 		}
+		ai_will_do = {
+			factor = 2
+		}
 	}
 	focus = {
 		id = HSP_worker_training
@@ -733,6 +764,9 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_RESEARCH}
 		completion_reward = {
 			add_research_slot = 1
+		}
+		ai_will_do = {
+			factor = 2
 		}
 	}
 	focus = {
@@ -780,6 +814,9 @@ focus_tree = {
 				add_idea = HSP_industrialization_03
 			}
 		}
+		ai_will_do = {
+			factor = 2
+		}
 	}
 	focus = {
 		id = HSP_encourage_heavy_industry
@@ -825,6 +862,9 @@ focus_tree = {
 				remove_idea = HSP_industrialization_03
 				add_idea = HSP_industrialization_04
 			}
+		}
+		ai_will_do = {
+			factor = 2
 		}
 	}
 	focus = {
@@ -872,6 +912,9 @@ focus_tree = {
 				add_idea = HSP_foreign_investment_02
 			}
 		}
+		ai_will_do = {
+			factor = 2
+		}
 	}
 	focus = {
 		id = HSP_focus_on_export
@@ -918,6 +961,9 @@ focus_tree = {
 				add_idea = HSP_foreign_investment_03
 			}
 		}
+		ai_will_do = {
+			factor = 2
+		}
 	}
 	focus = {
 		id = HSP_mass_production
@@ -936,6 +982,9 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = HSP_mass_production_01
 		}
+		ai_will_do = {
+			factor = 2
+		}
 	}
 	focus = {
 		id = HSP_optimized_production
@@ -953,6 +1002,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = HSP_optimized_production_01
+		}
+		ai_will_do = {
+			factor = 2
 		}
 	}
 	# resource path
@@ -1064,6 +1116,9 @@ focus_tree = {
 				}
 			}
 		}
+		ai_will_do = {
+			factor = 2
+		}
 	}
 	focus = {
 		id = HSP_barcelona_steel
@@ -1089,6 +1144,9 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+		}
+		ai_will_do = {
+			factor = 2
 		}
 	}
 	focus = {
@@ -1132,6 +1190,9 @@ focus_tree = {
 				}
 			}
 		}
+		ai_will_do = {
+			factor = 2
+		}
 	}
 	focus = {
 		id = HSP_national_mining_company
@@ -1162,6 +1223,9 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+		}
+		ai_will_do = {
+			factor = 2
 		}
 	}
 	focus = {
@@ -1194,6 +1258,9 @@ focus_tree = {
 				uses = 2
 				category = excavation_tech
 			}
+		}
+		ai_will_do = {
+			factor = 2
 		}
 	}
 	focus = {
@@ -1254,6 +1321,9 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+		}
+		ai_will_do = {
+			factor = 2
 		}
 	}
 	focus = {
@@ -1350,6 +1420,9 @@ focus_tree = {
 				}
 			}
 		}
+		ai_will_do = {
+			factor = 2
+		}
 	}
 	focus = {
 		id = HSP_madrid_royal_arsenal
@@ -1392,6 +1465,9 @@ focus_tree = {
 				}
 			}
 			add_ideas = HSP_madrid_royal_arsenal_01
+		}
+		ai_will_do = {
+			factor = 2
 		}
 	}
 	focus = {
@@ -1439,6 +1515,9 @@ focus_tree = {
 				add_idea = HSP_madrid_royal_arsenal_02
 			}
 		}
+		ai_will_do = {
+			factor = 2
+		}
 	}
 	focus = {
 		id = HSP_secret_weapon
@@ -1472,6 +1551,9 @@ focus_tree = {
 				category = nuclear
 			}
 		}
+		ai_will_do = {
+			factor = 2
+		}
 	}
 	focus = {
 		id = HSP_reorganize_administration
@@ -1490,6 +1572,9 @@ focus_tree = {
 				remove_idea = HSP_inefficient_bureaucracy_01
 				add_idea = HSP_efficient_bureaucracy_01
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -1527,6 +1612,9 @@ focus_tree = {
 				}
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_restore_royal_authority
@@ -1541,6 +1629,9 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_POLITICAL}
 		completion_reward = {
 			add_ideas = HSP_habsburg_pluralism_01
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 
@@ -1630,6 +1721,9 @@ focus_tree = {
 				popularity = 0.1
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_royal_university_of_madrid
@@ -1649,6 +1743,9 @@ focus_tree = {
 		completion_reward = {
 			add_research_slot = 1
 			add_ideas = HSP_royal_university_of_madrid_01
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -1681,6 +1778,9 @@ focus_tree = {
 				}
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_subjugate_brazil
@@ -1709,6 +1809,9 @@ focus_tree = {
 					id = HSP_spain_events.8
 				}
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -1745,6 +1848,9 @@ focus_tree = {
 				transfer_troops = yes
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_looking_outside
@@ -1763,6 +1869,9 @@ focus_tree = {
 				can_create_factions = yes
 			}
 
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -1810,6 +1919,9 @@ focus_tree = {
 				event_option_tooltip = HSP_spain_events.11.a
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_purchase_latin_american_territory
@@ -1852,6 +1964,9 @@ focus_tree = {
 					hours = 1
 				}
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 
@@ -1897,6 +2012,9 @@ focus_tree = {
 				}
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_reestablish_viceroyalty
@@ -1915,6 +2033,9 @@ focus_tree = {
 			unlock_decision_tooltip = HSP_restore_viceroyalty_of_nueva_granada
 			unlock_decision_tooltip = HSP_restore_viceroyalty_of_rio_de_la_plata
 			unlock_decision_tooltip = HSP_restore_viceroyalty_of_peru
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -1965,6 +2086,9 @@ focus_tree = {
 					hours = 1
 				}
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	## 부왕령 통합
@@ -2044,6 +2168,9 @@ focus_tree = {
 			drop_cosmetic_tag = yes
 			set_cosmetic_tag = HSP_habsburg_empire
 		}
+		ai_will_do = {
+			factor = 3
+		}
 	}
 	focus = {
 		id = HSP_demand_crown_of_low_countries
@@ -2112,6 +2239,9 @@ focus_tree = {
 				}
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 
 	focus = {
@@ -2141,6 +2271,9 @@ focus_tree = {
 			}
 			unlock_decision_tooltip = HSP_war_france
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 
 	focus = {
@@ -2169,6 +2302,9 @@ focus_tree = {
 				}
 			}
 			unlock_decision_tooltip = HSP_war_uk
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 
@@ -2205,6 +2341,9 @@ focus_tree = {
 					hours = 1
 				}
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 
@@ -2332,6 +2471,9 @@ focus_tree = {
 				add_core_of = SPR
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_habsburg_academy_of_science_and_technology
@@ -2356,6 +2498,9 @@ focus_tree = {
 				add_to_tech_sharing_group = habsburg_research
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_restore_allied_kingdoms
@@ -2370,6 +2515,9 @@ focus_tree = {
 		completion_reward = {
 			unlock_decision_category_tooltip = HSP_allied_kingdom_cat
 			unlock_decision_category_tooltip = HSP_habsburg_influence_cat
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -2404,6 +2552,9 @@ focus_tree = {
 			}
 			unlock_decision_tooltip = HSP_war_italy
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_disunite_italia
@@ -2435,6 +2586,9 @@ focus_tree = {
 			unlock_decision_tooltip = HSP_restore_sardegna
 			unlock_decision_tooltip = HSP_restore_lombardy_venetia
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_restoration_of_papal_states
@@ -2455,6 +2609,9 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = HSP_protector_of_catholicism_01
 			unlock_decision_tooltip = HSP_reestablish_papacy
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -2480,6 +2637,9 @@ focus_tree = {
 			}
 			unlock_decision_tooltip = HSP_war_germany
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_imperial_intelligence_network
@@ -2493,6 +2653,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = HSP_imperial_intelligence_network_01
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 
@@ -2542,6 +2705,16 @@ focus_tree = {
 			air_experience = 25
 			navy_experience = 25
 		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_war_with = ENG
+					has_war_with = FRA
+				}
+			}
+		}
 	}
 	focus = {
 		id = HSP_join_allies
@@ -2574,6 +2747,9 @@ focus_tree = {
 		completion_reward = {
 			ENG = { country_event = { id = generic.2 hours = 4 random_hours = 2 } }
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_allies_economic_support
@@ -2587,6 +2763,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = HSP_access_ally_economy_01
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -2607,6 +2786,9 @@ focus_tree = {
 			ENG = { add_to_tech_sharing_group = allied_research }
 			add_to_tech_sharing_group = allied_research
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_invite_scientists_in_exile
@@ -2622,6 +2804,9 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = HSP_scientists_in_exile_01
 			add_research_slot = 1
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	## 오스트리아에 대한 권리 획득
@@ -2682,6 +2867,9 @@ focus_tree = {
 					type = take_core_state
 				}
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	## 이탈리아의 부르봉 왕가 계승권
@@ -2774,6 +2962,13 @@ focus_tree = {
 			air_experience = 25
 			navy_experience = 25
 		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_war_with = GER
+			}
+		}
 	}
 	focus = {
 		id = HSP_join_axis
@@ -2803,6 +2998,9 @@ focus_tree = {
 		completion_reward = {
 			GER = { country_event = { id = generic.2 hours = 4 random_hours = 2 } }
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_join_axis_research_group
@@ -2821,6 +3019,9 @@ focus_tree = {
 		completion_reward = {
 			GER = { add_to_tech_sharing_group = axis_research }
 			add_to_tech_sharing_group = axis_research
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -2842,6 +3043,9 @@ focus_tree = {
 				category = armor
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_support_paramilitary_organizations
@@ -2855,6 +3059,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = HSP_fascist_paramilitary_organization_01
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -2874,6 +3081,9 @@ focus_tree = {
 				target = ENG
 				type = take_core_state
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	## 저지대에 대한 권리 획득
@@ -2929,6 +3139,9 @@ focus_tree = {
 				}
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	## 스페인령 북아프리카
 	# Borbón Axis branch: French Morocco and Oran
@@ -2983,6 +3196,9 @@ focus_tree = {
 		completion_reward = {
 			unlock_decision_category_tooltip = HSP_war_decisions_cat
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	# shared wargoal focus
 	focus = {
@@ -3002,6 +3218,9 @@ focus_tree = {
 				type = puppet_wargoal_focus
 			}
 			unlock_decision_tooltip = HSP_war_china
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 
@@ -3056,6 +3275,9 @@ focus_tree = {
 			air_experience = 25
 			navy_experience = 25
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_military_intelligence
@@ -3069,6 +3291,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = HSP_military_intelligence_01
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	# army
@@ -3104,6 +3329,9 @@ focus_tree = {
 				uses = 1
 				category = land_doctrine
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -3143,6 +3371,9 @@ focus_tree = {
 				category = land_doctrine
 			}
 			show_ideas_tooltip = SPA_wilhelm_ritter_von_thoma
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -3205,6 +3436,9 @@ focus_tree = {
 				category = land_doctrine
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_focus_firepower
@@ -3242,6 +3476,9 @@ focus_tree = {
 				uses = 1
 				category = land_doctrine
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -3299,6 +3536,9 @@ focus_tree = {
 				category = land_doctrine
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_focus_infantry
@@ -3336,6 +3576,9 @@ focus_tree = {
 				uses = 1
 				category = land_doctrine
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -3393,6 +3636,9 @@ focus_tree = {
 				category = land_doctrine
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_strengthen_special_forces
@@ -3417,6 +3663,9 @@ focus_tree = {
 				uses = 2
 				category = special_forces_doctrine
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -3470,6 +3719,9 @@ focus_tree = {
 				category = land_doctrine
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_spirit_of_conquistador
@@ -3483,6 +3735,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = HSP_spirit_of_conquistador_01
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -3505,6 +3760,9 @@ focus_tree = {
 				uses = 2
 				category = land_doctrine
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	# airforce
@@ -3534,6 +3792,9 @@ focus_tree = {
 				uses = 1
 				category = air_doctrine
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -3593,6 +3854,9 @@ focus_tree = {
 				}
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_modernization_of_aviation_laws
@@ -3621,6 +3885,9 @@ focus_tree = {
 				uses = 1
 				category = air_doctrine
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -3677,6 +3944,9 @@ focus_tree = {
 				}
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_pilot_training
@@ -3704,6 +3974,9 @@ focus_tree = {
 				category = air_doctrine
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_multi_role_fighters
@@ -3723,6 +3996,9 @@ focus_tree = {
 				category = medium_air
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_airspace_defense
@@ -3741,6 +4017,9 @@ focus_tree = {
 				uses = 2
 				category = radar_tech
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -3769,6 +4048,9 @@ focus_tree = {
 				category = air_doctrine
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_focus_air_superiority
@@ -3789,6 +4071,9 @@ focus_tree = {
 				HSP_airforce_air_superiority_efficiency = 0.1
 				tooltip = air_superiority_efficiency_tt
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -3820,6 +4105,9 @@ focus_tree = {
 			mio:HSP_national_bomber_production_division = {
 				add_mio_size = 2
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -3856,6 +4144,9 @@ focus_tree = {
 				add_mio_size = 2
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	# production management
 	focus = {
@@ -3874,6 +4165,9 @@ focus_tree = {
 		completion_reward = {
 			unlock_decision_category_tooltip = HSP_production_management_cat
 			add_ideas = HSP_focus_balanced_production_01
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	# navy
@@ -3903,6 +4197,9 @@ focus_tree = {
 				uses = 1
 				category = naval_doctrine
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -3981,6 +4278,9 @@ focus_tree = {
 				set_state_flag = HSP_expand_naval_production_2DY
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_secure_naval_supply_line
@@ -4053,6 +4353,9 @@ focus_tree = {
 				set_state_flag = HSP_secure_naval_supply_line_2DY
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_convoy_escord_focus
@@ -4086,6 +4389,9 @@ focus_tree = {
 				category = naval_doctrine
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_new_armada
@@ -4117,6 +4423,9 @@ focus_tree = {
 				category = cv_tech
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_hunters_under_the_water
@@ -4141,6 +4450,9 @@ focus_tree = {
 				uses = 1
 				category = naval_doctrine
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -4197,6 +4509,9 @@ focus_tree = {
 				set_state_flag = HSP_unlimited_submarine_operations_2DY
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_flagship_production
@@ -4246,6 +4561,9 @@ focus_tree = {
 				set_state_flag = HSP_flagship_production
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_modern_fleet_warfare
@@ -4266,6 +4584,9 @@ focus_tree = {
 				HSP_navy_sortie_efficiency = 0.05
 				tooltip = sortie_efficiency_tt
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 	focus = {
@@ -4288,6 +4609,9 @@ focus_tree = {
 				tooltip = navy_capital_ship_attack_factor_tt
 			}
 		}
+		ai_will_do = {
+			factor = 1
+		}
 	}
 	focus = {
 		id = HSP_way_of_wolf
@@ -4308,6 +4632,9 @@ focus_tree = {
 				HSP_navy_convoy_raiding_efficiency_factor = 0.05
 				tooltip = convoy_raiding_efficiency_factor_tt
 			}
+		}
+		ai_will_do = {
+			factor = 1
 		}
 	}
 }
