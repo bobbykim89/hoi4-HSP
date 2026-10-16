@@ -135,6 +135,7 @@ HSP_republican_order_cat = {
 	}
 	visible = {
 		has_completed_focus = HSP_defend_the_republic
+		NOT = { has_country_flag = HSP_fascists_defeated_flag }
 	}
 	visible_when_empty = no
 }
