@@ -197,7 +197,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = HSP_new_monarchy
 		allow_branch = {
-			has_country_flag = HSP_house_habsburg_flag
+			NOT = { has_country_flag = HSP_house_borbon_flag }
 		}
 		available = {
 			has_country_flag = HSP_house_habsburg_flag
@@ -225,7 +225,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = HSP_new_monarchy
 		allow_branch = {
-			has_country_flag = HSP_house_borbon_flag
+			NOT = { has_country_flag = HSP_house_habsburg_flag }
 		}
 		available = {
 			has_country_flag = HSP_house_borbon_flag
@@ -404,39 +404,7 @@ focus_tree = {
 		}
 	}
 
-	## 공산주의에 맞선 십자군
-	focus = {
-		id = HSP_crusade_against_communism
-		icon = GFX_focus_BEL_the_european_crusade
-		prerequisite = {
-			focus = HSP_house_of_habsburg
-			focus = HSP_house_of_borbon
-		}
-		cost = 10
-		x = 0
-		y = 2
-		relative_position_id = HSP_new_monarchy
-		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION}
-		completion_reward = {
-			every_other_country = {
-				limit = {
-					has_government = communism
-					capital_scope = { is_on_continent = europe }
-					NOT = { is_subject_of = ROOT }
-				}
-				ROOT = {
-					create_wargoal = {
-						type = puppet_wargoal_focus
-						target = PREV
-					}
-				}
-			}
-			unlock_decision_tooltip = HSP_crusade_against_communist_state
-		}
-		ai_will_do = {
-			base = 1
-		}
-	}
+
 
 	focus = {
 		id = HSP_national_industrialization
@@ -2945,28 +2913,43 @@ focus_tree = {
 			unlock_decision_tooltip = HSP_war_china
 		}
 	}
+
+	## 공산주의에 맞선 십자군
 	focus = {
-		id = HSP_the_true_enemy
-		icon = GFX_goal_generic_war_with_comintern
-		cost = 10
-		x = 0
-		y = 2
-		relative_position_id = HSP_war_planning
+		id = HSP_crusade_against_communism
+		icon = GFX_focus_BEL_the_european_crusade
 		prerequisite = {
 			focus = HSP_one_crown_one_empire
 			focus = HSP_completed_iberia
 			focus = HSP_obtaining_rights_to_austria
 			focus = HSP_bourbon_claims_in_italy
 		}
+		cost = 10
+		x = 0
+		y = 2
+		relative_position_id = HSP_war_planning
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION}
 		completion_reward = {
-			create_wargoal = {
-				target = SOV
-				type = puppet_wargoal_focus
+			every_other_country = {
+				limit = {
+					has_government = communism
+					capital_scope = { is_on_continent = europe }
+					NOT = { is_subject_of = ROOT }
+				}
+				ROOT = {
+					create_wargoal = {
+						type = puppet_wargoal_focus
+						target = PREV
+					}
+				}
 			}
+			unlock_decision_tooltip = HSP_crusade_against_communist_state
 			unlock_decision_tooltip = HSP_war_sov
 		}
-	}
-	# military focus
+		ai_will_do = {
+			base = 1
+		}
+	}	# military focus
 	focus = {
 		id = HSP_military_reform
 		icon = GFX_focus_generic_limited_social_mobilization
