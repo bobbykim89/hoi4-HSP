@@ -139,3 +139,18 @@ HSP_republican_order_cat = {
 	}
 	visible_when_empty = no
 }
+
+HSP_latin_sphere_cat = {
+	priority = 60
+	icon = GFX_decision_category_generic_democracy
+	picture = GFX_decision_cat_generic_gran_colombia
+
+	allowed = {
+		original_tag = SPR
+		has_dlc = "La Resistance"
+	}
+	visible = {
+		has_completed_focus = HSP_found_the_latin_sphere
+	}
+	visible_when_empty = no
+}

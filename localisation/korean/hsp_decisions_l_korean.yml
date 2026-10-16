@@ -81,3 +81,8 @@
   HSP_negotiate_with_the_unions_desc:0 ""
   HSP_eliminate_the_fascists:0 "파시스트 척결"
   HSP_eliminate_the_fascists_desc:0 ""
+  # latin sphere
+  HSP_latin_sphere_cat:0 "라틴 권역"
+  HSP_latin_sphere_cat_desc:0 ""
+  HSP_invite_to_latin_sphere:0 "§Y[FROM.GetNameDef]§! 초대"
+  HSP_annex_latin_sphere_member:0 "§Y[FROM.GetNameDef]§!와(과) 통합"

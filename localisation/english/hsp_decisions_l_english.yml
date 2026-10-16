@@ -81,3 +81,8 @@
   HSP_negotiate_with_the_unions_desc:0 ""
   HSP_eliminate_the_fascists:0 "Eliminate the Fascists"
   HSP_eliminate_the_fascists_desc:0 ""
+  # latin sphere
+  HSP_latin_sphere_cat:0 "The Latin Sphere"
+  HSP_latin_sphere_cat_desc:0 ""
+  HSP_invite_to_latin_sphere:0 "Invite §Y[FROM.GetNameDef]§!"
+  HSP_annex_latin_sphere_member:0 "Unite with §Y[FROM.GetNameDef]§!"

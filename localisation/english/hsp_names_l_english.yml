@@ -1,6 +1,7 @@
 ﻿l_english:
   # factions
   HSP_pan_hispanic_federation_faction:0 "Pan-Hispanic Federation"
+  HSP_latin_sphere_faction:0 "Latin Sphere"
   HSP_habsburg_hegemony_faction:0 "Habsburg Hegemonic League"
   # monarchy
   HSP_alfonso_xiii:0 "Alfonso XIII"

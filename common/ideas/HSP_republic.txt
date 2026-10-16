@@ -15,5 +15,50 @@ ideas = {
 				fascism_drift = 0.03
 			}
 		}
+		# democracy path: HSP_republican_economic_plan, HSP_attract_foreign_capital, HSP_spanish_economic_miracle
+		HSP_republican_economy_1 = {
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.1
+			}
+		}
+		HSP_republican_economy_2 = {
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.15
+				industrial_capacity_factory = 0.05
+				consumer_goods_factor = -0.05
+			}
+		}
+		HSP_republican_economy_3 = {
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.2
+				industrial_capacity_factory = 0.1
+				consumer_goods_factor = -0.1
+				research_speed_factor = 0.05
+			}
+		}
 	}
 }

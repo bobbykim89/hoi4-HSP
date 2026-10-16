@@ -268,6 +268,616 @@ focus_tree = {
 		}
 	}
 
+	# democracy path
+	# After the fascists are dealt with (HSP_fascists_defeated_flag). Economy first, little military.
+
+	## 민주 공화국
+	focus = {
+		id = HSP_the_democratic_republic
+		icon = GFX_goal_support_democracy
+		prerequisite = { focus = HSP_purge_the_conspirators focus = HSP_no_pasaran }
+		cost = 10
+		x = 57
+		y = 4
+		available = {
+			has_country_flag = HSP_fascists_defeated_flag
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.1
+			}
+			add_stability = 0.05
+			HSP_retire_communist_characters = yes
+		}
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 2
+				has_government = democratic
+			}
+		}
+	}
+
+	## 공화국 경제 계획
+	focus = {
+		id = HSP_republican_economic_plan
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = HSP_the_democratic_republic }
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_the_democratic_republic
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = HSP_republican_economy_1
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 공공사업
+	focus = {
+		id = HSP_public_works
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = HSP_republican_economic_plan }
+		cost = 10
+		x = -1
+		y = 1
+		relative_position_id = HSP_republican_economic_plan
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_public_works_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_public_works_civ }
+				}
+				set_state_flag = HSP_public_works_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_public_works_civ }
+				}
+				set_state_flag = HSP_public_works_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					infrastructure < 5
+				}
+				set_state_flag = HSP_public_works_infra
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					infrastructure < 5
+					NOT = { has_state_flag = HSP_public_works_infra }
+				}
+				set_state_flag = HSP_public_works_infra
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					infrastructure < 5
+					NOT = { has_state_flag = HSP_public_works_infra }
+				}
+				set_state_flag = HSP_public_works_infra
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 외국 자본 유치
+	focus = {
+		id = HSP_attract_foreign_capital
+		icon = GFX_focus_generic_industry_2
+		prerequisite = { focus = HSP_republican_economic_plan }
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = HSP_republican_economic_plan
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = HSP_republican_economy_1
+				add_idea = HSP_republican_economy_2
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_foreign_capital_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_foreign_capital_civ }
+				}
+				set_state_flag = HSP_foreign_capital_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 산업 확장
+	focus = {
+		id = HSP_industrial_expansion
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = HSP_public_works }
+		prerequisite = { focus = HSP_attract_foreign_capital }
+		cost = 10
+		x = 0
+		y = 2
+		relative_position_id = HSP_republican_economic_plan
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_industrial_expansion_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_industrial_expansion_civ }
+				}
+				set_state_flag = HSP_industrial_expansion_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_industrial_expansion_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_industrial_expansion_mil }
+				}
+				set_state_flag = HSP_industrial_expansion_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_industrial_expansion_mil }
+				}
+				set_state_flag = HSP_industrial_expansion_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 스페인 경제 기적
+	focus = {
+		id = HSP_spanish_economic_miracle
+		icon = GFX_focus_generic_industry_3
+		prerequisite = { focus = HSP_industrial_expansion }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_industrial_expansion
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = HSP_republican_economy_2
+				add_idea = HSP_republican_economy_3
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 민주주의 원칙 확립
+	focus = {
+		id = HSP_secure_democratic_principles
+		icon = GFX_focus_generic_diplomatic_treaty
+		prerequisite = { focus = HSP_the_democratic_republic }
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_the_democratic_republic
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.1
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.1
+			}
+			add_political_power = 50
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 교육 개혁
+	focus = {
+		id = HSP_education_reform
+		icon = GFX_focus_research
+		prerequisite = { focus = HSP_secure_democratic_principles }
+		cost = 10
+		x = -1
+		y = 1
+		relative_position_id = HSP_secure_democratic_principles
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_research_slot = 1
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 과학 연구소 설립
+	focus = {
+		id = HSP_scientific_institutes
+		icon = GFX_focus_research2
+		prerequisite = { focus = HSP_education_reform }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_education_reform
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_scientific_institutes
+				bonus = 1.0
+				uses = 2
+				category = industry
+			}
+			add_tech_bonus = {
+				name = HSP_scientific_institutes
+				bonus = 1.0
+				uses = 1
+				category = electronics
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 민주 진영과의 협력
+	focus = {
+		id = HSP_approach_the_democracies
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = HSP_secure_democratic_principles }
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = HSP_secure_democratic_principles
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			every_country = {
+				limit = {
+					OR = {
+						tag = ENG
+						tag = FRA
+						tag = USA
+					}
+					exists = yes
+					has_government = democratic
+				}
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_democratic_solidarity
+				}
+				ROOT = {
+					add_opinion_modifier = {
+						target = PREV
+						modifier = HSP_democratic_solidarity
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 연합국 가입
+	focus = {
+		id = HSP_join_the_allies
+		icon = GFX_focus_chi_british_cooperation
+		prerequisite = { focus = HSP_approach_the_democracies }
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = HSP_approach_the_democracies
+		mutually_exclusive = { focus = HSP_found_the_latin_sphere }
+		available = {
+			is_in_faction = no
+			any_other_country = {
+				has_government = democratic
+				is_faction_leader = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			if = {
+				limit = {
+					ENG = {
+						has_government = democratic
+						is_faction_leader = yes
+						NOT = { has_war_with = ROOT }
+					}
+				}
+				ENG = { country_event = generic.2 }
+			}
+			else_if = {
+				limit = {
+					USA = {
+						has_government = democratic
+						is_faction_leader = yes
+						NOT = { has_war_with = ROOT }
+					}
+				}
+				USA = { country_event = generic.2 }
+			}
+			else_if = {
+				limit = {
+					FRA = {
+						has_government = democratic
+						is_faction_leader = yes
+						NOT = { has_war_with = ROOT }
+					}
+				}
+				FRA = { country_event = generic.2 }
+			}
+			else = {
+				random_country = {
+					limit = {
+						has_government = democratic
+						is_faction_leader = yes
+						NOT = { has_war_with = ROOT }
+					}
+					country_event = generic.2
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	## 라틴 권역 창설
+	focus = {
+		id = HSP_found_the_latin_sphere
+		icon = GFX_goal_generic_alliance
+		prerequisite = { focus = HSP_approach_the_democracies }
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = HSP_approach_the_democracies
+		mutually_exclusive = { focus = HSP_join_the_allies }
+		available = {
+			is_in_faction = no
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			create_faction_from_template = {
+				template = faction_template_HSP_latin_sphere
+			}
+			custom_effect_tooltip = HSP_found_the_latin_sphere_tt
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	## 히스패닉 통합
+	focus = {
+		id = HSP_republican_hispanic_unity
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = HSP_found_the_latin_sphere }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_found_the_latin_sphere
+		available = {
+			is_faction_leader = yes
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			set_cosmetic_tag = HSP_latin_union
+			add_political_power = 50
+			custom_effect_tooltip = HSP_republican_hispanic_unity_tt
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 공화국군 개혁
+	focus = {
+		id = HSP_republican_army_reform
+		icon = GFX_goal_generic_army_artillery2
+		prerequisite = { focus = HSP_the_democratic_republic }
+		cost = 10
+		x = -4
+		y = 1
+		relative_position_id = HSP_the_democratic_republic
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			add_ideas = SPR_professional_military_1
+			army_experience = 15
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 공화국 방위 교리
+	focus = {
+		id = HSP_doctrine_of_republican_defence
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = HSP_republican_army_reform }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_republican_army_reform
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			army_experience = 25
+			add_doctrine_cost_reduction = {
+				name = HSP_doctrine_of_republican_defence
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
 	## Habsburd focus
 
 	## 긴급 의회 소집

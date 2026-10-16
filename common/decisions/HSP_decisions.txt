@@ -2320,3 +2320,85 @@ HSP_republican_order_cat = {
 		}
 	}
 }
+
+HSP_latin_sphere_cat = {
+	# Template: HSP_invite_to_faction (Pan-Hispanic Federation)
+	HSP_invite_to_latin_sphere = {
+		icon = GFX_decision_eng_trade_unions_support
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_found_the_latin_sphere
+		}
+		target_root_trigger = {
+			has_completed_focus = HSP_found_the_latin_sphere
+			is_faction_leader = yes
+		}
+		target_trigger = {
+			FROM = {
+				exists = yes
+				HSP_is_latin_sphere_candidate = yes
+				NOT = { is_in_faction_with = ROOT }
+				OR = {
+					is_subject = no
+					is_subject_of = ROOT
+				}
+			}
+		}
+		available = {
+			NOT = { has_war_with = FROM }
+		}
+		on_map_mode = map_and_decisions_view
+		cost = 25
+		fire_only_once = no
+		days_remove = 10
+		complete_effect = {
+			custom_effect_tooltip = HSP_invite_to_faction_tt
+		}
+		remove_effect = {
+			FROM = {
+				country_event = { id = HSP_spain_events.40 hours = 1 }
+			}
+		}
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				FROM = { NOT = { HSP_accepts_spanish_leadership = yes } }
+			}
+		}
+	}
+
+	# Unlocked by HSP_republican_hispanic_unity: a member joins the Latin Union, with cores
+	HSP_annex_latin_sphere_member = {
+		icon = GFX_decision_eng_trade_unions_demand
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_republican_hispanic_unity
+		}
+		target_root_trigger = {
+			has_completed_focus = HSP_republican_hispanic_unity
+		}
+		target_trigger = {
+			FROM = {
+				HSP_is_latin_sphere_candidate = yes
+				is_in_faction_with = ROOT
+			}
+		}
+		available = {
+			NOT = { has_war_with = FROM }
+		}
+		on_map_mode = map_and_decisions_view
+		cost = 50
+		fire_only_once = no
+		complete_effect = {
+			FROM = { HSP_annex_viceroyalty = yes }
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+}

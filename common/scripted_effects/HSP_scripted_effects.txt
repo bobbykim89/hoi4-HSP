@@ -134,7 +134,7 @@ HSP_join_viceroyalty = {
 	}
 }
 
-# Scope: a viceroyalty. ROOT = Spain. Its generals change nationality, then Spain annexes it and takes its cores.
+# Scope: a viceroyalty or a Latin Sphere member. ROOT = Spain. Its generals change nationality, then Spain annexes it and takes its cores.
 HSP_annex_viceroyalty = {
 	every_state = {
 		limit = { is_core_of = PREV }

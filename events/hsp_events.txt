@@ -1378,3 +1378,77 @@ country_event = {
 		}
 	}
 }
+
+# The Spanish Republic invites a Latin American country to the Latin Sphere (decision HSP_invite_to_latin_sphere).
+# ROOT = the invited country, FROM = Spain. Same as .31 for the Pan-Hispanic Federation.
+country_event = {
+	id = HSP_spain_events.40
+	title = HSP_spain_events.40.t
+	desc = HSP_spain_events.40.desc
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+
+	# join
+	option = {
+		name = HSP_spain_events.40.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { HSP_accepts_spanish_leadership = yes }
+			}
+		}
+		FROM = {
+			add_to_faction = ROOT
+			country_event = { id = HSP_spain_events.41 hours = 6 }
+		}
+		# keep the AI in the faction (see .31)
+		hidden_effect = {
+			add_ai_strategy = {
+				type = alliance
+				id = FROM
+				value = 200
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = HSP_spain_events.40.b
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				HSP_accepts_spanish_leadership = yes
+			}
+		}
+		FROM = {
+			country_event = { id = HSP_spain_events.42 hours = 6 }
+		}
+	}
+}
+
+# invitation accepted
+country_event = {
+	id = HSP_spain_events.41
+	title = HSP_spain_events.41.t
+	desc = HSP_spain_events.41.desc
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_events.41.a
+	}
+}
+
+# invitation refused
+country_event = {
+	id = HSP_spain_events.42
+	title = HSP_spain_events.42.t
+	desc = HSP_spain_events.42.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_events.42.a
+	}
+}
