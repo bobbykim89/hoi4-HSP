@@ -21,6 +21,7 @@ Status as of 2026-10-16. The full design is the author's plan; this file records
   - French royalists → the French crown, by acceptance or royalist civil war → the Franco-Spanish union
   - Louisiana and Quebec
   - capital to Paris, Belgian border forts
+  - the French colonial empire: compliance, cores on Algeria, investment in West Africa and Indochina, colonial industry (investment only; colonies are not released as subjects)
 - **Both houses:**
   - the Pan-Hispanic Federation and the four viceroyalties, with integration
   - Allies and Axis branches with house-specific claims
@@ -66,8 +67,8 @@ Requires a civil war. It has two sub-routes.
 ## Deferred and future ideas
 
 - **The Viceroyalty of Louisiana as a separate subject country.** Today it's only Spanish states with cores (`HSP_form_viceroyalty_of_louisiana`). The future version releases a dynamic subject country, like the Latin American viceroyalties.
-- **Borbón expansion.** Its late game is thinner than the Habsburg route's (8 house focuses against 22). Ideas:
-  - integrating the French colonies after the Franco-Spanish union
+- **Borbón expansion.** Its late game is still thinner than the Habsburg route's (13 house focuses against 22). Remaining ideas:
+  - releasing colonies (Indochina, Syria-Lebanon, Madagascar) as Spanish subjects
   - restoring the Bourbon kingdoms in Italy (Two Sicilies, Parma) by decision
   - a Bourbon "family compact" faction, the counterpart to the Habsburg Hegemonic League
 - **AI tuning beyond the base weights.** For example, steering the Borbón AI between the Allies and the Axis by world situation, and AI strategies for the federation and the crown events. This needs an observer run to judge.

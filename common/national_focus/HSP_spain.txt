@@ -499,6 +499,162 @@ focus_tree = {
 		}
 	}
 
+	## 프랑스 식민제국 계승
+	# Borbón: the French colonial empire after the Franco-Spanish union (vanilla FRA colonial focuses)
+	focus = {
+		id = HSP_heir_to_the_french_empire
+		icon = GFX_focus_fra_french_union
+		cost = 10
+		x = 12
+		y = 1
+		relative_position_id = HSP_franco_spanish_union
+		prerequisite = {
+			focus = HSP_franco_spanish_union
+		}
+		search_filters = {FOCUS_FILTER_STABILITY}
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					NOT = { is_core_of = ROOT }
+					NOT = { is_on_continent = europe }
+					has_resistance = yes
+				}
+				add_compliance = 10
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	## 알제리 통합
+	# Algeria was legally part of metropolitan France
+	focus = {
+		id = HSP_integrate_algeria
+		icon = GFX_focus_generic_africa_infrastructure
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_heir_to_the_french_empire
+		prerequisite = {
+			focus = HSP_heir_to_the_french_empire
+		}
+		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_ANNEXATION}
+		completion_reward = {
+			every_state = {
+				limit = { OR = { state = 459 state = 460 state = 513 state = 514 } }
+				add_core_of = ROOT
+			}
+			random_owned_state = {
+				limit = {
+					OR = { state = 459 state = 460 state = 513 state = 514 }
+					NOT = { has_state_flag = HSP_colonial_industry_target }
+				}
+				add_extra_state_shared_building_slots = 2
+				set_state_flag = HSP_colonial_industry_target
+			}
+			random_owned_state = {
+				limit = {
+					OR = { state = 459 state = 460 state = 513 state = 514 }
+					NOT = { has_state_flag = HSP_colonial_industry_target }
+				}
+				add_extra_state_shared_building_slots = 2
+				set_state_flag = HSP_colonial_industry_target
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	## 서아프리카 투자
+	focus = {
+		id = HSP_invest_in_west_africa
+		icon = GFX_focus_generic_africa_factory
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_heir_to_the_french_empire
+		prerequisite = {
+			focus = HSP_heir_to_the_french_empire
+		}
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			random_owned_state = {
+				limit = {
+					OR = { state = 272 state = 780 state = 556 state = 779 state = 778 state = 781 state = 776 state = 777 }
+					NOT = { has_state_flag = HSP_colonial_industry_target }
+				}
+				add_extra_state_shared_building_slots = 2
+				set_state_flag = HSP_colonial_industry_target
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	## 인도차이나 투자
+	focus = {
+		id = HSP_invest_in_indochina
+		icon = GFX_focus_generic_industry_1
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_heir_to_the_french_empire
+		prerequisite = {
+			focus = HSP_heir_to_the_french_empire
+		}
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			random_owned_state = {
+				limit = {
+					OR = { state = 741 state = 286 state = 671 state = 670 state = 1017 state = 1066 state = 1067 state = 1068 state = 1069 }
+					NOT = { has_state_flag = HSP_colonial_industry_target }
+				}
+				add_extra_state_shared_building_slots = 2
+				set_state_flag = HSP_colonial_industry_target
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	## 식민지 산업화
+	focus = {
+		id = HSP_colonial_industry
+		icon = GFX_focus_generic_industry_3
+		cost = 10
+		x = 0
+		y = 2
+		relative_position_id = HSP_heir_to_the_french_empire
+		prerequisite = {
+			focus = HSP_integrate_algeria
+		}
+		prerequisite = {
+			focus = HSP_invest_in_west_africa
+		}
+		prerequisite = {
+			focus = HSP_invest_in_indochina
+		}
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			custom_effect_tooltip = HSP_colonial_industry_tt
+			every_owned_state = {
+				limit = { has_state_flag = HSP_colonial_industry_target }
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
 	## 루이지애나 반환 요구
 	focus = {
 		id = HSP_demand_louisiana
