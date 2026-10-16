@@ -198,5 +198,48 @@ ideas = {
 				experience_gain_air = 0.1
 			}
 		}
+		# democracy domestic reforms
+		HSP_agrarian_reform_idea = {
+			picture = generic_agrarian_reform
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				conscription_factor = 0.05
+				consumer_goods_factor = -0.03
+			}
+		}
+		HSP_labour_code_idea = {
+			picture = generic_central_management
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.05
+				stability_factor = 0.03
+			}
+		}
+		HSP_secular_education_idea = {
+			picture = generic_research_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.05
+			}
+		}
 	}
 }

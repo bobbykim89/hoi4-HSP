@@ -49,6 +49,9 @@
   HSP_latin_customs_union_1:0 "Latin Customs Union"
   HSP_latin_customs_union_2:0 "Integrated Latin Economies"
   HSP_joint_military_training_idea:0 "Joint Military Training"
+  HSP_agrarian_reform_idea:0 "Agrarian Reform"
+  HSP_labour_code_idea:0 "The Labour Code"
+  HSP_secular_education_idea:0 "Secular Education"
   # temporary
   HSP_british_latin_american_territory_purchase_01:0 "Purchase of British Latin America"
   HSP_dutch_latin_american_territory_purchase_01:0 "Purchase of Dutch Latin America"

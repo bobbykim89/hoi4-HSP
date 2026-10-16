@@ -1402,6 +1402,10 @@ country_event = {
 			add_to_faction = ROOT
 			country_event = { id = HSP_spain_events.41 hours = 6 }
 		}
+		if = {
+			limit = { FROM = { has_completed_focus = HSP_latin_research_cooperation } }
+			add_to_tech_sharing_group = HSP_latin_sphere_research
+		}
 		# keep the AI in the faction (see .31)
 		hidden_effect = {
 			add_ai_strategy = {
