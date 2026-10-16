@@ -450,3 +450,115 @@ HSP_start_fascist_uprising = {
 		news_event = { id = HSP_spain_news.2 hours = 6 }
 	}
 }
+
+# Scope: a region released as Spain's puppet (democracy split: GLC, NAV, CAT, MOR).
+# Development spirit, a civilian factory and infrastructure, and an AI that builds industry.
+HSP_setup_regional_puppet = {
+	add_ideas = HSP_regional_development
+	capital_scope = {
+		add_extra_state_shared_building_slots = 1
+		add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+		}
+	}
+	every_owned_state = {
+		limit = { infrastructure < 5 }
+		add_building_construction = {
+			type = infrastructure
+			level = 1
+			instant_build = yes
+		}
+	}
+	add_ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 50
+	}
+	add_ai_strategy = {
+		type = building_target
+		id = infrastructure
+		value = 25
+	}
+	add_ai_strategy = {
+		type = alliance
+		id = ROOT
+		value = 200
+	}
+}
+
+# Scope: a regional puppet. ROOT = Spain. Spain takes cores on the land it owns, its generals and its states.
+HSP_reunite_regional_puppet = {
+	every_owned_state = {
+		add_core_of = ROOT
+	}
+	every_unit_leader = {
+		set_nationality = ROOT
+	}
+	ROOT = {
+		annex_country = {
+			target = PREV
+			transfer_troops = yes
+		}
+	}
+}
+
+# Scope: Spain. Like Yugoslavia's split route: once all of Morocco or all of the Basque lands are held,
+# all of them become Spanish cores (French Morocco, French Basque Country).
+HSP_claim_conquered_regions = {
+	custom_effect_tooltip = HSP_claim_conquered_regions_tt
+	hidden_effect = {
+		if = {
+			limit = {
+				all_state = {
+					OR = {
+						NOT = { is_core_of = MOR }
+						is_controlled_by = ROOT
+					}
+				}
+			}
+			every_state = {
+				limit = { is_core_of = MOR }
+				add_core_of = ROOT
+			}
+		}
+		if = {
+			limit = {
+				all_state = {
+					OR = {
+						NOT = { is_core_of = NAV }
+						is_controlled_by = ROOT
+					}
+				}
+			}
+			every_state = {
+				limit = { is_core_of = NAV }
+				add_core_of = ROOT
+			}
+		}
+	}
+}
+
+# Scope: a country joining Spain's faction. ROOT = Spain. If Spain is not the leader (the Allies),
+# its faction leader adds the country.
+HSP_join_spanish_faction = {
+	if = {
+		limit = { ROOT = { is_faction_leader = yes } }
+		ROOT = { add_to_faction = PREV }
+	}
+	else = {
+		random_country = {
+			limit = {
+				is_faction_leader = yes
+				is_in_faction_with = ROOT
+			}
+			add_to_faction = PREV
+		}
+	}
+	add_ai_strategy = {
+		type = alliance
+		id = ROOT
+		value = 200
+	}
+}

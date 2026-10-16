@@ -58,7 +58,7 @@ focus_tree = {
 		id = HSP_defend_the_republic
 		icon = GFX_focus_spr_maintain_the_republic
 		cost = 10
-		x = 66
+		x = 72
 		y = 0
 		available = {
 			NOT = {
@@ -277,7 +277,7 @@ focus_tree = {
 		icon = GFX_goal_support_democracy
 		prerequisite = { focus = HSP_purge_the_conspirators focus = HSP_no_pasaran }
 		cost = 10
-		x = 57
+		x = 61
 		y = 4
 		available = {
 			has_country_flag = HSP_fascists_defeated_flag
@@ -310,7 +310,7 @@ focus_tree = {
 		icon = GFX_goal_generic_production
 		prerequisite = { focus = HSP_the_democratic_republic }
 		cost = 10
-		x = -2
+		x = -7
 		y = 1
 		relative_position_id = HSP_the_democratic_republic
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -619,7 +619,7 @@ focus_tree = {
 		icon = GFX_focus_generic_diplomatic_treaty
 		prerequisite = { focus = HSP_the_democratic_republic }
 		cost = 10
-		x = 2
+		x = -3
 		y = 1
 		relative_position_id = HSP_the_democratic_republic
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
@@ -733,6 +733,7 @@ focus_tree = {
 		mutually_exclusive = { focus = HSP_found_the_latin_sphere }
 		available = {
 			is_in_faction = no
+			NOT = { has_completed_focus = HSP_join_the_comintern }
 			any_other_country = {
 				has_government = democratic
 				is_faction_leader = yes
@@ -799,6 +800,7 @@ focus_tree = {
 		mutually_exclusive = { focus = HSP_join_the_allies }
 		available = {
 			is_in_faction = no
+			NOT = { has_completed_focus = HSP_join_the_comintern }
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
@@ -816,11 +818,11 @@ focus_tree = {
 	focus = {
 		id = HSP_republican_hispanic_unity
 		icon = GFX_goal_generic_major_alliance
-		prerequisite = { focus = HSP_found_the_latin_sphere }
+		prerequisite = { focus = HSP_latin_customs_union }
 		cost = 10
 		x = 0
-		y = 1
-		relative_position_id = HSP_found_the_latin_sphere
+		y = 2
+		relative_position_id = HSP_latin_customs_union
 		available = {
 			is_faction_leader = yes
 		}
@@ -841,7 +843,7 @@ focus_tree = {
 		icon = GFX_goal_generic_army_artillery2
 		prerequisite = { focus = HSP_the_democratic_republic }
 		cost = 10
-		x = -4
+		x = -10
 		y = 1
 		relative_position_id = HSP_the_democratic_republic
 		search_filters = { FOCUS_FILTER_ARMY_XP }
@@ -871,6 +873,642 @@ focus_tree = {
 				cost_reduction = 0.5
 				uses = 2
 				category = land_doctrine
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	# democracy: federal split
+	# Galicia, the Basque Country, Catalonia and Morocco become puppets, then are reunited or set free.
+
+	## 갈리시아 자치권 부여
+	# Vanilla's autonomous_state leaves with the state; its remove_trigger misses NAV, so it is removed by hand
+	focus = {
+		id = HSP_galician_autonomy
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = HSP_the_democratic_republic }
+		cost = 5
+		x = 3
+		y = 1
+		relative_position_id = HSP_the_democratic_republic
+		available = {
+			has_full_control_of_state = 171
+			NOT = { country_exists = GLC }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			release_puppet = GLC
+			171 = {
+				remove_dynamic_modifier = { modifier = autonomous_state }
+				remove_dynamic_modifier = { modifier = semi_autonomous_state }
+			}
+			GLC = { HSP_setup_regional_puppet = yes }
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 바스크 자치권 부여
+	focus = {
+		id = HSP_basque_autonomy
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = HSP_galician_autonomy }
+		cost = 5
+		x = -1
+		y = 1
+		relative_position_id = HSP_galician_autonomy
+		available = {
+			has_full_control_of_state = 792
+			NOT = { country_exists = NAV }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			release_puppet = NAV
+			792 = {
+				remove_dynamic_modifier = { modifier = autonomous_state }
+				remove_dynamic_modifier = { modifier = semi_autonomous_state }
+			}
+			NAV = { HSP_setup_regional_puppet = yes }
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 카탈루냐 자치권 부여
+	focus = {
+		id = HSP_catalan_autonomy
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = HSP_galician_autonomy }
+		cost = 5
+		x = 1
+		y = 1
+		relative_position_id = HSP_galician_autonomy
+		available = {
+			has_full_control_of_state = 165
+			NOT = { country_exists = CAT }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			release_puppet = CAT
+			165 = {
+				remove_dynamic_modifier = { modifier = autonomous_state }
+				remove_dynamic_modifier = { modifier = semi_autonomous_state }
+			}
+			CAT = { HSP_setup_regional_puppet = yes }
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 모로코 자치권 부여
+	focus = {
+		id = HSP_moroccan_autonomy
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = HSP_basque_autonomy }
+		prerequisite = { focus = HSP_catalan_autonomy }
+		cost = 5
+		x = 0
+		y = 2
+		relative_position_id = HSP_galician_autonomy
+		available = {
+			has_full_control_of_state = 290
+			NOT = { country_exists = MOR }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			release_puppet = MOR
+			MOR = { HSP_setup_regional_puppet = yes }
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 스페인 재통일
+	# Yugoslavia-style: French Morocco and French Basque become cores once all of that land is held
+	focus = {
+		id = HSP_reunite_spain
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = HSP_moroccan_autonomy }
+		cost = 10
+		x = -1
+		y = 1
+		relative_position_id = HSP_moroccan_autonomy
+		mutually_exclusive = { focus = HSP_iberian_defense_council }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = HSP_regional_puppets_are_ours_tt
+				NOT = {
+					any_country = {
+						OR = {
+							original_tag = GLC
+							original_tag = NAV
+							original_tag = CAT
+							original_tag = MOR
+						}
+						NOT = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = GLC
+						original_tag = NAV
+						original_tag = CAT
+						original_tag = MOR
+					}
+					is_subject_of = ROOT
+				}
+				HSP_reunite_regional_puppet = yes
+			}
+			add_ideas = HSP_reunification_strain
+			HSP_claim_conquered_regions = yes
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 지방 자치 보장
+	focus = {
+		id = HSP_guarantee_of_local_autonomy
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = HSP_reunite_spain }
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = HSP_reunite_spain
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = HSP_reunification_strain
+				add_idea = HSP_local_autonomy
+			}
+			HSP_claim_conquered_regions = yes
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 이베리아 방위 협의회
+	# The regions go free and join our faction (the Allies or the Latin Sphere if we are in one)
+	focus = {
+		id = HSP_iberian_defense_council
+		icon = GFX_goal_generic_alliance
+		prerequisite = { focus = HSP_moroccan_autonomy }
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = HSP_moroccan_autonomy
+		mutually_exclusive = { focus = HSP_reunite_spain }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = HSP_regional_puppets_are_ours_tt
+				NOT = {
+					any_country = {
+						OR = {
+							original_tag = GLC
+							original_tag = NAV
+							original_tag = CAT
+							original_tag = MOR
+						}
+						NOT = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = GLC
+						original_tag = NAV
+						original_tag = CAT
+						original_tag = MOR
+					}
+					is_subject_of = ROOT
+				}
+				ROOT = { end_puppet = PREV }
+			}
+			if = {
+				limit = { is_in_faction = no }
+				create_faction_from_template = {
+					template = faction_template_HSP_iberian_defense_council
+				}
+			}
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = GLC
+						original_tag = NAV
+						original_tag = CAT
+						original_tag = MOR
+					}
+					is_in_faction = no
+				}
+				HSP_join_spanish_faction = yes
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 포르투갈 초청
+	# Portugal refuses while we are in the Allies (HSP_spain_events.43)
+	focus = {
+		id = HSP_invite_portugal_to_the_pact
+		icon = GFX_focus_generic_attack_portugal
+		prerequisite = { focus = HSP_iberian_defense_council }
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = HSP_iberian_defense_council
+		available = {
+			is_in_faction = yes
+			POR = {
+				exists = yes
+				is_in_faction = no
+			}
+			NOT = { has_war_with = POR }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			POR = { country_event = { id = HSP_spain_events.43 hours = 6 } }
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	# democracy: popular front with the communists
+
+	## 인민전선 연정
+	focus = {
+		id = HSP_popular_front_coalition
+		icon = GFX_focus_generic_support_the_left_right
+		prerequisite = { focus = HSP_the_democratic_republic }
+		cost = 10
+		x = 8
+		y = 1
+		relative_position_id = HSP_the_democratic_republic
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = HSP_popular_front_productivity
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 소련 군사 고문단 초청
+	focus = {
+		id = HSP_invite_soviet_military_advisors
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = HSP_popular_front_coalition }
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_popular_front_coalition
+		available = {
+			country_exists = SOV
+			NOT = { has_war_with = SOV }
+		}
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			SOV = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_soviet_cooperation
+				}
+			}
+			add_opinion_modifier = {
+				target = SOV
+				modifier = HSP_soviet_cooperation
+			}
+			add_ideas = HSP_soviet_military_advisors_idea
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 소련의 산업 투자
+	focus = {
+		id = HSP_soviet_industrial_investment
+		icon = GFX_focus_generic_join_comintern
+		prerequisite = { focus = HSP_invite_soviet_military_advisors }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_invite_soviet_military_advisors
+		available = {
+			country_exists = SOV
+			NOT = { has_war_with = SOV }
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_soviet_investment_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_soviet_investment_civ }
+				}
+				set_state_flag = HSP_soviet_investment_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_timed_idea = {
+				idea = HSP_soviet_industrial_investment_idea
+				days = 365
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 인민 공화국
+	# Peaceful switch: a communist election win, or 50%+ communist support
+	focus = {
+		id = HSP_peoples_republic
+		icon = GFX_focus_generic_soviet_politics
+		prerequisite = { focus = HSP_popular_front_coalition }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_popular_front_coalition
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = HSP_peoples_republic_available_tt
+				OR = {
+					has_government = communism
+					communism > 0.5
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			if = {
+				limit = { NOT = { has_government = communism } }
+				set_politics = {
+					ruling_party = communism
+					elections_allowed = no
+				}
+			}
+			add_stability = 0.05
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	## 코민테른 가입
+	focus = {
+		id = HSP_join_the_comintern
+		icon = GFX_focus_generic_join_comintern
+		prerequisite = { focus = HSP_peoples_republic }
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = HSP_peoples_republic
+		available = {
+			has_government = communism
+			is_in_faction = no
+			NOT = {
+				has_completed_focus = HSP_join_the_allies
+				has_completed_focus = HSP_found_the_latin_sphere
+			}
+			SOV = {
+				is_faction_leader = yes
+				has_government = communism
+				NOT = { has_war_with = ROOT }
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			SOV = { country_event = generic.2 }
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	## 카탈루냐 방어선
+	# province ids from vanilla SPR_fortify_the_pyrenees
+	focus = {
+		id = HSP_catalan_defensive_line
+		icon = GFX_goal_generic_fortify_city
+		prerequisite = { focus = HSP_popular_front_coalition }
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_popular_front_coalition
+		available = {
+			has_full_control_of_state = 165
+		}
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			custom_effect_tooltip = HSP_catalan_defensive_line_tt
+			hidden_effect = {
+				165 = {
+					add_building_construction = {
+						type = bunker
+						province = {
+							id = 3899
+							id = 3898
+							id = 11779
+							id = 9824
+						}
+						level = 2
+						instant_build = yes
+					}
+				}
+				165 = {
+					add_building_construction = {
+						type = coastal_bunker
+						province = {
+							all_provinces = yes
+							limit_to_coastal = yes
+						}
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 피레네 산맥 요새화
+	focus = {
+		id = HSP_fortify_the_pyrenees
+		icon = GFX_goal_generic_fortify_city
+		prerequisite = { focus = HSP_catalan_defensive_line }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_catalan_defensive_line
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			custom_effect_tooltip = HSP_fortify_the_pyrenees_tt
+			hidden_effect = {
+				if = {
+					limit = { 792 = { is_controlled_by = ROOT } }
+					792 = {
+						add_building_construction = {
+							type = bunker
+							province = {
+								id = 6756
+							}
+							level = 2
+							instant_build = yes
+						}
+					}
+				}
+				if = {
+					limit = { 172 = { is_controlled_by = ROOT } }
+					172 = {
+						add_building_construction = {
+							type = bunker
+							province = {
+								id = 3737
+								id = 3931
+							}
+							level = 2
+							instant_build = yes
+						}
+					}
+				}
+				if = {
+					limit = { 166 = { is_controlled_by = ROOT } }
+					166 = {
+						add_building_construction = {
+							type = bunker
+							province = {
+								id = 11838
+							}
+							level = 2
+							instant_build = yes
+						}
+					}
+				}
+				if = {
+					limit = { 794 = { is_controlled_by = ROOT } }
+					794 = {
+						add_building_construction = {
+							type = bunker
+							province = {
+								id = 915
+								id = 899
+							}
+							level = 2
+							instant_build = yes
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	# democracy: Latin Sphere customs union
+
+	## 라틴 관세 동맹
+	focus = {
+		id = HSP_latin_customs_union
+		icon = GFX_focus_generic_diplomatic_treaty
+		prerequisite = { focus = HSP_found_the_latin_sphere }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_found_the_latin_sphere
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = HSP_latin_customs_union_1
+			set_country_flag = HSP_customs_union_member_flag
+			custom_effect_tooltip = HSP_latin_customs_union_tt
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 경제 통합
+	focus = {
+		id = HSP_integrated_economies
+		icon = GFX_focus_generic_industry_2
+		prerequisite = { focus = HSP_latin_customs_union }
+		cost = 10
+		x = -1
+		y = 1
+		relative_position_id = HSP_latin_customs_union
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			custom_effect_tooltip = HSP_integrated_economies_tt
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 합동 군사 훈련
+	focus = {
+		id = HSP_joint_military_training
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = HSP_latin_customs_union }
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = HSP_latin_customs_union
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			every_country = {
+				limit = { has_country_flag = HSP_customs_union_member_flag }
+				add_timed_idea = {
+					idea = HSP_joint_military_training_idea
+					days = 180
+				}
 			}
 		}
 		ai_will_do = {
@@ -4247,7 +4885,7 @@ focus_tree = {
 		id = HSP_military_reform
 		icon = GFX_focus_generic_limited_social_mobilization
 		cost = 5
-		x = 95
+		x = 104
 		y = 0
 		completion_reward = {
 			swap_ideas = {
