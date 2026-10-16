@@ -56,6 +56,17 @@ country_event = {
 			}
 			if = {
 				limit = {
+					focus_progress = {
+						focus = HSP_defend_the_republic
+						progress > 0
+					}
+					NOT = { has_completed_focus = HSP_defend_the_republic }
+				}
+				complete_national_focus = HSP_defend_the_republic
+				add_political_power = -35
+			}
+			if = {
+				limit = {
 					has_completed_focus = SPR_the_popular_front
 				}
 				activate_mission = SPA_hand_over_the_ceda_campaign_chest_mission
@@ -92,7 +103,10 @@ country_event = {
 			}
 			if = {
 				limit = {
-					has_completed_focus = HSP_assemble_emergency_council
+					OR = {
+						has_completed_focus = HSP_assemble_emergency_council
+						has_completed_focus = HSP_defend_the_republic
+					}
 				}
 				remove_mission = SPR_military_plot_republicans
 				remove_mission = SPA_military_plot_nationalists
@@ -120,6 +134,10 @@ country_event = {
 		}
 		add_political_power = 5
 		if = {
+			limit = { has_completed_focus = HSP_defend_the_republic } # HSP republican path: the HSP countdown replaces vanilla's
+			activate_mission = HSP_fascist_plot_mission
+		}
+		else_if = {
 			limit = {
 				NOT = {
 					has_completed_focus = SPR_the_popular_front
@@ -144,8 +162,11 @@ country_event = {
 				}
 			}
 		}
-		effect_tooltip = { add_ideas = SPR_government_power_struggle }
-		custom_effect_tooltip = SPR_republican_garrison_control_decisions_tt
+		if = {
+			limit = { NOT = { has_completed_focus = HSP_defend_the_republic } }
+			effect_tooltip = { add_ideas = SPR_government_power_struggle }
+			custom_effect_tooltip = SPR_republican_garrison_control_decisions_tt
+		}
 	}
 
 	# Falange
@@ -154,6 +175,7 @@ country_event = {
 		trigger = {
 			NOT = {
 				has_completed_focus = SPR_the_popular_front has_completed_focus = HSP_assemble_emergency_council
+				has_completed_focus = HSP_defend_the_republic
 			}
 		}
 		add_popularity = {
@@ -207,6 +229,7 @@ country_event = {
 			has_focus_tree = HSP_spanish_focus
 			NOT = {
 				has_completed_focus = SPR_the_popular_front has_completed_focus = SPA_a_great_spain
+				has_completed_focus = HSP_defend_the_republic
 			}
 		}
 		ai_chance = {

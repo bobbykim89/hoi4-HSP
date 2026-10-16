@@ -1,0 +1,19 @@
+ideas = {
+	country = {
+		# HSP_defend_the_republic until the fascists are dealt with (HSP_fascists_defeated)
+		HSP_fascist_conspiracy = {
+			picture = SPR_political_violence
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.05
+				fascism_drift = 0.03
+			}
+		}
+	}
+}

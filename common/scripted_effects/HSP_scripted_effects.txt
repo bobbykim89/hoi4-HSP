@@ -164,3 +164,288 @@ HSP_make_personal_union = {
 		puppet = event_target:HSP_union_target
 	}
 }
+
+# Retire the Nationalist generals (Franco and those with trait_SPA_nationalist_sympathies) and the
+# Francoist, Falangist and Carlist advisors.
+HSP_retire_fascist_characters = {
+	custom_effect_tooltip = HSP_retire_fascist_characters_tt
+	hidden_effect = {
+		if = {
+			limit = { has_character = SPA_francisco_franco }
+			retire_character = SPA_francisco_franco
+		}
+		if = {
+			limit = { has_character = SPA_emilio_mola }
+			retire_character = SPA_emilio_mola
+		}
+		if = {
+			limit = { has_character = SPA_juan_yague }
+			retire_character = SPA_juan_yague
+		}
+		if = {
+			limit = { has_character = SPA_agustin_munoz_grandes }
+			retire_character = SPA_agustin_munoz_grandes
+		}
+		if = {
+			limit = { has_character = SPA_jose_enrique_varela }
+			retire_character = SPA_jose_enrique_varela
+		}
+		if = {
+			limit = { has_character = SPA_miguel_cabanellas }
+			retire_character = SPA_miguel_cabanellas
+		}
+		if = {
+			limit = { has_character = SPR_mohamed_meziane }
+			retire_character = SPR_mohamed_meziane
+		}
+		if = {
+			limit = { has_character = SPR_gonzalo_queipo_de_llano }
+			retire_character = SPR_gonzalo_queipo_de_llano
+		}
+		if = {
+			limit = { has_character = SPR_jose_millan_astray }
+			retire_character = SPR_jose_millan_astray
+		}
+		if = {
+			limit = { has_character = SPA_luis_carrero_blanco }
+			retire_character = SPA_luis_carrero_blanco
+		}
+		if = {
+			limit = { has_character = SPA_rafael_garcia_valino }
+			retire_character = SPA_rafael_garcia_valino
+		}
+		if = {
+			limit = { has_character = SPA_heli_rolando_de_tella }
+			retire_character = SPA_heli_rolando_de_tella
+		}
+		if = {
+			limit = { has_character = SPA_miguel_ponte }
+			retire_character = SPA_miguel_ponte
+		}
+		if = {
+			limit = { has_character = SPA_joaquin_garcia_morato }
+			retire_character = SPA_joaquin_garcia_morato
+		}
+		if = {
+			limit = { has_character = SPA_juan_vigon_suero_diaz }
+			retire_character = SPA_juan_vigon_suero_diaz
+		}
+		if = {
+			limit = { has_character = SPA_ricardo_rada }
+			retire_character = SPA_ricardo_rada
+		}
+		if = {
+			limit = { has_character = SPA_enrique_canovas_lacruz }
+			retire_character = SPA_enrique_canovas_lacruz
+		}
+		if = {
+			limit = { has_character = SPA_jose_antonio_primo_de_rivera }
+			retire_character = SPA_jose_antonio_primo_de_rivera
+		}
+		if = {
+			limit = { has_character = SPA_jose_antonio_giron }
+			retire_character = SPA_jose_antonio_giron
+		}
+		if = {
+			limit = { has_character = SPA_manuel_hedilla }
+			retire_character = SPA_manuel_hedilla
+		}
+		if = {
+			limit = { has_character = SPA_raimundo_fernandez_cuesta }
+			retire_character = SPA_raimundo_fernandez_cuesta
+		}
+		if = {
+			limit = { has_character = SPA_ramon_serrano_suner }
+			retire_character = SPA_ramon_serrano_suner
+		}
+		if = {
+			limit = { has_character = SPA_diego_hidalgo_y_duran }
+			retire_character = SPA_diego_hidalgo_y_duran
+		}
+		if = {
+			limit = { has_character = SPR_manuel_fal_conde }
+			retire_character = SPR_manuel_fal_conde
+		}
+		if = {
+			limit = { has_character = SPA_tomas_dominguez_arevalo }
+			retire_character = SPA_tomas_dominguez_arevalo
+		}
+		if = {
+			limit = { has_character = SPA_luis_hernando_de_larramendi }
+			retire_character = SPA_luis_hernando_de_larramendi
+		}
+		if = {
+			limit = { has_character = SPA_martin_de_riquer }
+			retire_character = SPA_martin_de_riquer
+		}
+		if = {
+			limit = { has_character = SPA_mauricio_de_sivatte }
+			retire_character = SPA_mauricio_de_sivatte
+		}
+		every_unit_leader = {
+			limit = { has_trait = trait_SPA_nationalist_sympathies }
+			retire = yes
+		}
+	}
+}
+
+# Retire the loyal Republican generals and the democratic and moderate PSOE advisors.
+# Counterpart of HSP_retire_communist_characters, used by the communist and anarchist paths.
+HSP_retire_republican_characters = {
+	custom_effect_tooltip = HSP_retire_republican_characters_tt
+	hidden_effect = {
+		if = {
+			limit = { has_character = SPR_jose_asensio_torrado }
+			retire_character = SPR_jose_asensio_torrado
+		}
+		if = {
+			limit = { has_character = SPR_vicente_rojo_lluch }
+			retire_character = SPR_vicente_rojo_lluch
+		}
+		if = {
+			limit = { has_character = SPR_jose_miaja }
+			retire_character = SPR_jose_miaja
+		}
+		if = {
+			limit = { has_character = SPR_miguel_buiza_fernandez_palacios }
+			retire_character = SPR_miguel_buiza_fernandez_palacios
+		}
+		if = {
+			limit = { has_character = SPR_nicolas_molero }
+			retire_character = SPR_nicolas_molero
+		}
+		if = {
+			limit = { has_character = SPR_domenec_batet }
+			retire_character = SPR_domenec_batet
+		}
+		if = {
+			limit = { has_character = SPR_ignacio_hidalgo_de_cisneros }
+			retire_character = SPR_ignacio_hidalgo_de_cisneros
+		}
+		if = {
+			limit = { has_character = SPR_andres_garcia_la_calle }
+			retire_character = SPR_andres_garcia_la_calle
+		}
+		if = {
+			limit = { has_character = SPR_luis_gonzalez_de_ubieta }
+			retire_character = SPR_luis_gonzalez_de_ubieta
+		}
+		if = {
+			limit = { has_character = SPR_toribio_martinez_cabrera }
+			retire_character = SPR_toribio_martinez_cabrera
+		}
+		if = {
+			limit = { has_character = SPR_antonio_azarola_y_gresillon }
+			retire_character = SPR_antonio_azarola_y_gresillon
+		}
+		if = {
+			limit = { has_character = SPR_antonio_escobar_huerta }
+			retire_character = SPR_antonio_escobar_huerta
+		}
+		if = {
+			limit = { has_character = SPR_felipe_diaz_sandino }
+			retire_character = SPR_felipe_diaz_sandino
+		}
+		if = {
+			limit = { has_character = SPR_augusto_barcia_trelles }
+			retire_character = SPR_augusto_barcia_trelles
+		}
+		if = {
+			limit = { has_character = SPR_diego_martinez_barrio }
+			retire_character = SPR_diego_martinez_barrio
+		}
+		if = {
+			limit = { has_character = SPR_juan_negrin }
+			retire_character = SPR_juan_negrin
+		}
+		if = {
+			limit = { has_character = SPR_indalecio_prieto }
+			retire_character = SPR_indalecio_prieto
+		}
+	}
+}
+
+# The fascist plot is over, by HSP_eliminate_the_fascists or by winning the uprising (HSP_on_actions).
+# Unlocks the choice between democracy, communism and anarchism.
+HSP_fascists_defeated = {
+	custom_effect_tooltip = HSP_fascists_defeated_tt
+	hidden_effect = {
+		set_country_flag = HSP_fascists_defeated_flag
+		set_global_flag = scw_over
+		if = {
+			limit = { has_idea = HSP_fascist_conspiracy }
+			remove_ideas = HSP_fascist_conspiracy
+		}
+		if = {
+			limit = { has_active_mission = HSP_fascist_plot_mission }
+			remove_mission = HSP_fascist_plot_mission
+		}
+	}
+}
+
+# Timeout of HSP_fascist_plot_mission. The historical Nationalist states rise, except those where
+# HSP_maintain_order was taken. Template: vanilla events/Spain.txt spain.1 option b.
+HSP_start_fascist_uprising = {
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 171
+				state = 172
+				state = 174
+				state = 176
+				state = 791
+				state = 788
+				state = 166
+				state = 169
+				state = 170
+				state = 789
+				state = 177
+				state = 178
+				state = 290
+				state = 297
+				state = 699
+			}
+			is_controlled_by = ROOT
+			NOT = { has_state_flag = HSP_order_maintained_flag }
+		}
+		set_state_flag = HSP_fascist_state_flag
+	}
+	if = {
+		limit = {
+			NOT = {
+				any_owned_state = { has_state_flag = HSP_fascist_state_flag }
+			}
+		}
+		# every state was pacified: the plot collapses without a war
+		HSP_fascists_defeated = yes
+		news_event = { id = HSP_spain_news.3 hours = 6 }
+	}
+	else = {
+		set_country_flag = HSP_fascist_uprising_flag
+		set_variable = { HSP_uprising_size = 0.1 }
+		every_owned_state = {
+			limit = { has_state_flag = HSP_fascist_state_flag }
+			ROOT = { add_to_variable = { HSP_uprising_size = 0.03 } }
+		}
+		start_civil_war = {
+			ideology = fascism
+			size = var:HSP_uprising_size
+			states = all
+			states_filter = { has_state_flag = HSP_fascist_state_flag }
+			# Franco (legacy id 1108) has no sympathies trait
+			keep_unit_leaders_trigger = {
+				NOT = { has_trait = trait_SPA_nationalist_sympathies }
+				NOT = { has_id = 1108 }
+			}
+			set_cosmetic_tag = SPR_civil_war
+			set_country_flag = HSP_fascist_rebels_flag
+			set_stability = 0.7
+			set_war_support = 0.8
+		}
+		if = {
+			limit = { has_idea = HSP_fascist_conspiracy }
+			remove_ideas = HSP_fascist_conspiracy
+		}
+		news_event = { id = HSP_spain_news.2 hours = 6 }
+	}
+}

@@ -22,7 +22,7 @@ focus_tree = {
 	}
 
 	## 역사적 스페인
-	# Hand-off to vanilla's tree until the HSP Republican and Fascist paths exist.
+	# Hand-off to vanilla's tree (its fascist path) until the HSP Fascist path exists.
 	focus = {
 		id = HSP_historical_spain
 		icon = GFX_goal_generic_political_pressure
@@ -34,7 +34,7 @@ focus_tree = {
 				has_country_flag = SPR_spanish_elections_flag
 			}
 		}
-		mutually_exclusive = { focus = HSP_assemble_emergency_council }
+		mutually_exclusive = { focus = HSP_assemble_emergency_council focus = HSP_defend_the_republic }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			custom_effect_tooltip = HSP_historical_spain_tt
@@ -46,6 +46,223 @@ focus_tree = {
 				factor = 10
 				is_historical_focus_on = yes
 			}
+		}
+	}
+
+	# republican path
+	# Common part: deal with the fascist plot (HSP_republican_order_cat decisions), by suppression or by civil war.
+
+	## 공화국 수호
+	focus = {
+		id = HSP_defend_the_republic
+		icon = GFX_focus_spr_maintain_the_republic
+		cost = 5
+		x = 66
+		y = 0
+		available = {
+			NOT = {
+				has_country_flag = SPR_spanish_elections_flag
+			}
+		}
+		mutually_exclusive = { focus = HSP_assemble_emergency_council focus = HSP_historical_spain }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+			add_stability = 0.05
+			add_ideas = HSP_fascist_conspiracy
+			custom_effect_tooltip = HSP_defend_the_republic_tt
+		}
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	## 공공질서 유지
+	focus = {
+		id = HSP_maintain_public_order
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = HSP_defend_the_republic }
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = HSP_defend_the_republic
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.03
+			custom_effect_tooltip = HSP_maintain_public_order_tt
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 노동조합의 지지
+	focus = {
+		id = HSP_seek_union_support
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		prerequisite = { focus = HSP_maintain_public_order }
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = HSP_maintain_public_order
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			if = {
+				limit = { has_idea = SPR_national_strikes_3 }
+				remove_ideas = SPR_national_strikes_3
+			}
+			custom_effect_tooltip = HSP_seek_union_support_tt
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 음모자 숙청
+	focus = {
+		id = HSP_purge_the_conspirators
+		icon = GFX_focus_spr_crush_the_revolution
+		prerequisite = { focus = HSP_seek_union_support }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_seek_union_support
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.05
+			}
+			custom_effect_tooltip = HSP_purge_the_conspirators_tt
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 민병대 무장
+	# Only during the uprising (HSP_start_fascist_uprising)
+	focus = {
+		id = HSP_arm_the_militias
+		icon = GFX_goal_generic_military_sphere
+		prerequisite = { focus = HSP_defend_the_republic }
+		cost = 5
+		x = 2
+		y = 1
+		relative_position_id = HSP_defend_the_republic
+		available = {
+			has_country_flag = HSP_fascist_uprising_flag
+			has_war = yes
+		}
+		bypass = {
+			has_country_flag = HSP_fascists_defeated_flag
+		}
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_war_support = 0.1
+			add_manpower = 30000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 3000
+				producer = SPR
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+
+	## 노 파사란
+	focus = {
+		id = HSP_no_pasaran
+		icon = GFX_focus_spr_no_pasaran
+		prerequisite = { focus = HSP_arm_the_militias }
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = HSP_arm_the_militias
+		available = {
+			has_country_flag = HSP_fascist_uprising_flag
+			has_war = yes
+		}
+		bypass = {
+			has_country_flag = HSP_fascists_defeated_flag
+		}
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_war_support = 0.1
+			# vanilla SPR_no_pasaran: bunkers on every victory point, more on the bigger ones
+			custom_effect_tooltip = HSP_no_pasaran_tt
+			hidden_effect = {
+				every_state = {
+					limit = {
+						is_controlled_by = ROOT
+					}
+					add_building_construction = {
+						type = bunker
+						province = {
+							all_provinces = yes
+							limit_to_victory_point = yes
+						}
+						level = 1
+						instant_build = yes
+					}
+				}
+				every_state = {
+					limit = {
+						is_controlled_by = ROOT
+					}
+					add_building_construction = {
+						type = bunker
+						province = {
+							all_provinces = yes
+							limit_to_victory_point > 2
+						}
+						level = 1
+						instant_build = yes
+					}
+				}
+				every_state = {
+					limit = {
+						is_controlled_by = ROOT
+					}
+					add_building_construction = {
+						type = bunker
+						province = {
+							all_provinces = yes
+							limit_to_victory_point > 9
+						}
+						level = 1
+						instant_build = yes
+					}
+				}
+				every_state = {
+					limit = {
+						is_controlled_by = ROOT
+					}
+					add_building_construction = {
+						type = bunker
+						province = {
+							all_provinces = yes
+							limit_to_victory_point > 29
+						}
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
 		}
 	}
 
@@ -64,7 +281,7 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_national_unity
 		cost = 5
-		mutually_exclusive = { focus = HSP_historical_spain }
+		mutually_exclusive = { focus = HSP_historical_spain focus = HSP_defend_the_republic }
 		x = 24
 		y = 0
 		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
@@ -3420,7 +3637,7 @@ focus_tree = {
 		id = HSP_military_reform
 		icon = GFX_focus_generic_limited_social_mobilization
 		cost = 5
-		x = 59
+		x = 95
 		y = 0
 		completion_reward = {
 			swap_ideas = {

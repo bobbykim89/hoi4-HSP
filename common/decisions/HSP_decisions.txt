@@ -2158,3 +2158,138 @@ HSP_borbon_crown_cat = {
 		}
 	}
 }
+
+HSP_republican_order_cat = {
+	# Starts at the 1936 election (lar_spain.1 option a). Completes once the fascists are dealt with;
+	# on timeout the Nationalist states rise (HSP_start_fascist_uprising).
+	HSP_fascist_plot_mission = {
+		priority = 10
+		icon = generic_ignite_civil_war
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_defend_the_republic
+		}
+		activation = {
+			has_completed_focus = HSP_defend_the_republic
+			has_country_flag = SPR_spanish_elections_flag
+			NOT = { has_country_flag = HSP_fascists_defeated_flag }
+			NOT = { has_country_flag = HSP_fascist_uprising_flag }
+		}
+		available = {
+			has_country_flag = HSP_fascists_defeated_flag
+		}
+		days_mission_timeout = 180
+		fire_only_once = yes
+		is_good = no
+		timeout_effect = {
+			HSP_start_fascist_uprising = yes
+		}
+	}
+
+	# Unlocked by HSP_maintain_public_order. A pacified state stays loyal if the uprising comes.
+	HSP_maintain_order = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = SPR
+		}
+		state_target = yes
+		targets = { 171 172 174 176 791 788 166 169 170 789 177 178 290 }
+		target_root_trigger = {
+			has_completed_focus = HSP_maintain_public_order
+			has_active_mission = HSP_fascist_plot_mission
+		}
+		target_trigger = {
+			FROM = {
+				is_owned_by = ROOT
+				is_controlled_by = ROOT
+				NOT = { has_state_flag = HSP_order_maintained_flag }
+			}
+		}
+		visible = {
+			has_completed_focus = HSP_maintain_public_order
+		}
+		available = {
+			divisions_in_state = {
+				state = FROM
+				size > 0
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		cost = 15
+		fire_only_once = no
+		complete_effect = {
+			add_stability = 0.05
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.03
+			}
+			add_days_mission_timeout = {
+				mission = HSP_fascist_plot_mission
+				days = 35
+			}
+			FROM = {
+				set_state_flag = HSP_order_maintained_flag
+				custom_effect_tooltip = HSP_maintain_order_tt
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	# Unlocked by HSP_seek_union_support. Template: vanilla improved_worker_conditions.
+	HSP_negotiate_with_the_unions = {
+		icon = GFX_decision_eng_trade_unions_support
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_seek_union_support
+		}
+		cost = 50
+		days_remove = 30
+		days_re_enable = 30
+		fire_only_once = no
+		modifier = {
+			stability_weekly = 0.015
+			fascism_drift = -0.015
+			consumer_goods_factor = -0.10
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 3
+				has_active_mission = HSP_fascist_plot_mission
+			}
+		}
+	}
+
+	# Unlocked by HSP_purge_the_conspirators: ends the plot without a war.
+	HSP_eliminate_the_fascists = {
+		icon = GFX_decision_generic_assassination
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_purge_the_conspirators
+			NOT = { has_country_flag = HSP_fascists_defeated_flag }
+			NOT = { has_country_flag = HSP_fascist_uprising_flag }
+		}
+		available = {
+			has_stability > 0.74
+			fascism < 0.05
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			HSP_retire_fascist_characters = yes
+			HSP_fascists_defeated = yes
+			news_event = { id = HSP_spain_news.3 hours = 6 }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+}

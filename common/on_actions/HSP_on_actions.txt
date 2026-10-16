@@ -20,4 +20,25 @@ on_actions = {
 			}
 		}
 	}
+
+	# ROOT = winner, FROM = loser
+	on_civil_war_end = {
+		effect = {
+			# The Republic wins against the fascist uprising (HSP_start_fascist_uprising)
+			if = {
+				limit = {
+					original_tag = SPR
+					has_country_flag = HSP_fascist_uprising_flag
+					NOT = { has_country_flag = HSP_fascists_defeated_flag }
+					NOT = { has_government = fascism }
+					FROM = {
+						original_tag = SPR
+						has_government = fascism
+					}
+				}
+				HSP_fascists_defeated = yes
+				news_event = { id = HSP_spain_news.4 hours = 6 }
+			}
+		}
+	}
 }
