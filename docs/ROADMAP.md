@@ -75,7 +75,7 @@ Requires a civil war. It has two sub-routes.
 
 ## Content the author needs to supply
 
-- **Event text.** `HSP_spain_events.6`–`.23` and `.27`–`.29`, and the `HSP_spain_news.1` options. `tools/known_issues.txt` lists every missing key. The author writes Korean, and the English is translated from it.
+- **Event text review.** Every event now has a functional draft in both languages (2026-10-16). The author reviews and rewrites the Korean; keep the English as a faithful translation.
 - **Focus descriptions.** Most `_desc` keys are still the `""` placeholder.
 - **Flags.** These currently use placeholders:
   - the four viceroyalties (`HSP_viceroyalty_*`, copied from vanilla's Carlist Cross of Burgundy)
