@@ -293,7 +293,6 @@ focus_tree = {
 				popularity = 0.1
 			}
 			add_stability = 0.05
-			HSP_retire_communist_characters = yes
 		}
 		ai_will_do = {
 			base = 10

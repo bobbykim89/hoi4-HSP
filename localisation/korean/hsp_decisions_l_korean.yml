@@ -86,6 +86,7 @@
   HSP_latin_sphere_cat_desc:0 ""
   HSP_invite_to_latin_sphere:0 "§Y[FROM.GetNameDef]§! 초대"
   HSP_annex_latin_sphere_member:0 "§Y[FROM.GetNameDef]§!와(과) 통합"
+  HSP_annex_latin_sphere_one_at_a_time_tt:0 "다른 회원국과의 통합이 진행 중이지 않음"
   HSP_invite_to_customs_union:0 "§Y[FROM.GetNameDef]§!을(를) 관세 동맹에 초대"
   HSP_invite_to_customs_union_desc:0 ""
   HSP_integrate_customs_union_economies:0 "관세 동맹 경제 통합"

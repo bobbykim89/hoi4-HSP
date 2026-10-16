@@ -452,9 +452,14 @@ HSP_start_fascist_uprising = {
 }
 
 # Scope: a region released as Spain's puppet (democracy split: GLC, NAV, CAT, MOR).
-# Development spirit, a civilian factory and infrastructure, and an AI that builds industry.
+# Development spirit, a civilian factory and infrastructure, the HSP_regional_focus development tree
+# (common/national_focus/HSP_regional.txt), and an AI that builds industry.
 HSP_setup_regional_puppet = {
 	add_ideas = HSP_regional_development
+	load_focus_tree = {
+		tree = HSP_regional_focus
+		keep_completed = no
+	}
 	capital_scope = {
 		add_extra_state_shared_building_slots = 1
 		add_building_construction = {

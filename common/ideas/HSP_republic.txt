@@ -241,5 +241,17 @@ ideas = {
 				research_speed_factor = 0.05
 			}
 		}
+		# HSP_reg_modern_economy (regional development tree)
+		HSP_regional_modern_economy = {
+			picture = generic_economic_increase
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.1
+				consumer_goods_factor = -0.05
+			}
+		}
 	}
 }
