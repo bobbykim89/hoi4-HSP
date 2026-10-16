@@ -11,6 +11,7 @@ HSP_return_to_historical_spain = {
 		HSP_old_fashioned_army_02
 		HSP_old_fashioned_army_03
 	}
+	country_lock_all_division_template = yes # vanilla's startup lock, lifted by its civil war events
 	load_focus_tree = {
 		tree = spanish_focus
 		keep_completed = no

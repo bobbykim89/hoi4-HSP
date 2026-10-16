@@ -2173,7 +2173,7 @@ HSP_republican_order_cat = {
 		}
 		activation = {
 			has_completed_focus = HSP_defend_the_republic
-			has_country_flag = SPR_spanish_elections_flag
+			has_country_flag = HSP_spanish_elections_held_flag
 			NOT = { has_country_flag = HSP_fascists_defeated_flag }
 			NOT = { has_country_flag = HSP_fascist_uprising_flag }
 		}
@@ -2188,7 +2188,8 @@ HSP_republican_order_cat = {
 		}
 	}
 
-	# Unlocked by HSP_maintain_public_order. A pacified state stays loyal if the uprising comes.
+	# Unlocked by HSP_maintain_public_order. 30 days with troops in the state, one state at a time.
+	# A pacified state stays loyal if the uprising comes.
 	HSP_maintain_order = {
 		icon = GFX_decision_generic_police_action
 		allowed = {
@@ -2211,28 +2212,49 @@ HSP_republican_order_cat = {
 			has_completed_focus = HSP_maintain_public_order
 		}
 		available = {
+			custom_trigger_tooltip = {
+				tooltip = HSP_maintain_order_one_at_a_time_tt
+				NOT = { has_country_flag = HSP_maintaining_order_flag }
+			}
 			divisions_in_state = {
 				state = FROM
 				size > 0
 			}
 		}
+		cancel_trigger = {
+			divisions_in_state = {
+				state = FROM
+				size < 1
+			}
+		}
 		on_map_mode = map_and_decisions_view
 		cost = 15
+		days_remove = 30
 		fire_only_once = no
 		complete_effect = {
+			set_country_flag = HSP_maintaining_order_flag
+		}
+		remove_effect = {
+			clr_country_flag = HSP_maintaining_order_flag
 			add_stability = 0.05
 			add_popularity = {
 				ideology = fascism
 				popularity = -0.03
 			}
-			add_days_mission_timeout = {
-				mission = HSP_fascist_plot_mission
-				days = 35
+			if = {
+				limit = { has_active_mission = HSP_fascist_plot_mission }
+				add_days_mission_timeout = {
+					mission = HSP_fascist_plot_mission
+					days = 35
+				}
 			}
 			FROM = {
 				set_state_flag = HSP_order_maintained_flag
 				custom_effect_tooltip = HSP_maintain_order_tt
 			}
+		}
+		cancel_effect = {
+			clr_country_flag = HSP_maintaining_order_flag
 		}
 		ai_will_do = {
 			base = 10
@@ -2254,8 +2276,8 @@ HSP_republican_order_cat = {
 		fire_only_once = no
 		modifier = {
 			stability_weekly = 0.015
-			fascism_drift = -0.015
-			consumer_goods_factor = -0.10
+			fascism_drift = -0.1
+			consumer_goods_factor = 0.10
 		}
 		ai_will_do = {
 			base = 5

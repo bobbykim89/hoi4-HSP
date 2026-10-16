@@ -76,6 +76,7 @@
   HSP_maintain_order:0 "Maintain Order in §Y[FROM.GetName]§!"
   HSP_maintain_order_desc:0 ""
   HSP_maintain_order_tt:0 "This state §Gstays loyal§! if the uprising comes."
+  HSP_maintain_order_one_at_a_time_tt:0 "Not already maintaining order in another state"
   HSP_negotiate_with_the_unions:0 "Negotiate with the Unions"
   HSP_negotiate_with_the_unions_desc:0 ""
   HSP_eliminate_the_fascists:0 "Eliminate the Fascists"

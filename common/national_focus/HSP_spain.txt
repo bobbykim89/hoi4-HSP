@@ -32,6 +32,7 @@ focus_tree = {
 		available = {
 			NOT = {
 				has_country_flag = SPR_spanish_elections_flag
+				has_country_flag = HSP_spanish_elections_held_flag
 			}
 		}
 		mutually_exclusive = { focus = HSP_assemble_emergency_council focus = HSP_defend_the_republic }
@@ -56,12 +57,13 @@ focus_tree = {
 	focus = {
 		id = HSP_defend_the_republic
 		icon = GFX_focus_spr_maintain_the_republic
-		cost = 5
+		cost = 10
 		x = 66
 		y = 0
 		available = {
 			NOT = {
 				has_country_flag = SPR_spanish_elections_flag
+				has_country_flag = HSP_spanish_elections_held_flag
 			}
 		}
 		mutually_exclusive = { focus = HSP_assemble_emergency_council focus = HSP_historical_spain }
@@ -274,6 +276,7 @@ focus_tree = {
 		available = {
 			NOT = {
 				has_country_flag = SPR_spanish_elections_flag
+				has_country_flag = HSP_spanish_elections_held_flag
 			}
 		}
 		bypass = {
@@ -351,9 +354,6 @@ focus_tree = {
 				popularity = 0.1
 			}
 			HSP_retire_communist_characters = yes
-			hidden_effect = {
-				country_lock_all_division_template = no
-			}
 		}
 		ai_will_do = {
 			factor = 10

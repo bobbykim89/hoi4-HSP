@@ -19,6 +19,7 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			set_country_flag = SPR_spanish_elections_flag
+			set_country_flag = HSP_spanish_elections_held_flag
 			if = {
 				limit = {
 					focus_progress = {
@@ -110,6 +111,9 @@ country_event = {
 				}
 				remove_mission = SPR_military_plot_republicans
 				remove_mission = SPA_military_plot_nationalists
+				# HSP: vanilla's flag shows the Inevitable Civil War tab and its decisions; the HSP paths
+				# use HSP_spanish_elections_held_flag instead
+				clr_country_flag = SPR_spanish_elections_flag
 			}
 			every_state = {
 				limit = {

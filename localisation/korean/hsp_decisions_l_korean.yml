@@ -76,6 +76,7 @@
   HSP_maintain_order:0 "§Y[FROM.GetName]§!의 질서 유지"
   HSP_maintain_order_desc:0 ""
   HSP_maintain_order_tt:0 "봉기가 일어나도 이 주는 §G공화국에 충성§!합니다."
+  HSP_maintain_order_one_at_a_time_tt:0 "다른 주에서 질서 유지가 진행 중이지 않음"
   HSP_negotiate_with_the_unions:0 "노동조합과의 협상"
   HSP_negotiate_with_the_unions_desc:0 ""
   HSP_eliminate_the_fascists:0 "파시스트 척결"
