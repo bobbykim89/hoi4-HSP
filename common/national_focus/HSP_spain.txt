@@ -69,6 +69,7 @@ focus_tree = {
 		y = 0
 		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
 		completion_reward = {
+			add_ideas = HSP_inefficient_bureaucracy_01
 			add_popularity = {
 				ideology = neutrality
 				popularity = 0.15
@@ -177,7 +178,6 @@ focus_tree = {
 				ruling_party = neutrality
 				elections_allowed = no
 			}
-			add_ideas = HSP_inefficient_bureaucracy_01
 			drop_cosmetic_tag = yes
 			set_cosmetic_tag = HSP_kingdom_of_spain
 			country_event = { id = HSP_spain_events.30 }
@@ -375,6 +375,111 @@ focus_tree = {
 		}
 	}
 
+	## 근위대 확충
+	focus = {
+		id = HSP_expand_royal_guard
+		icon = GFX_goal_generic_special_forces
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_restore_royal_legitimacy
+		prerequisite = {
+			focus = HSP_restore_royal_legitimacy
+		}
+		search_filters = {FOCUS_FILTER_MANPOWER}
+		completion_reward = {
+			add_ideas = HSP_expanded_royal_guard_01
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	## 벨기에·룩셈부르크 국경 요새화
+	# Bunkers on the French-Belgian border, as vanilla's france.2 (Extend the Maginot Line)
+	focus = {
+		id = HSP_fortify_belgian_border
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = HSP_franco_spanish_union
+		prerequisite = {
+			focus = HSP_franco_spanish_union
+		}
+		available = {
+			owns_state = 18
+			owns_state = 29
+			owns_state = 785
+		}
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = {
+			18 = {
+				add_building_construction = {
+					type = bunker
+					province = 5291
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 3560
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 9472
+					level = 2
+					instant_build = yes
+				}
+			}
+			29 = {
+				add_building_construction = {
+					type = bunker
+					province = 11606
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 11483
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 575
+					level = 2
+					instant_build = yes
+				}
+			}
+			785 = {
+				add_building_construction = {
+					type = bunker
+					province = 3447
+					level = 2
+					instant_build = yes
+				}
+			}
+			BEL = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_fortified_border
+				}
+			}
+			LUX = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_fortified_border
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
 	## 루이지애나 반환 요구
 	focus = {
 		id = HSP_demand_louisiana
@@ -385,6 +490,9 @@ focus_tree = {
 		relative_position_id = HSP_franco_spanish_union
 		prerequisite = {
 			focus = HSP_franco_spanish_union
+		}
+		prerequisite = {
+			focus = HSP_looking_outside
 		}
 		available = {
 			NOT = { has_war_with = USA }
@@ -1746,22 +1854,7 @@ focus_tree = {
 			}
 		}
 	}
-	focus = {
-		id = HSP_latin_american_dominance
-		icon = GFX_goal_generic_political_pressure
-		cost = 5
-		x = 1
-		y = 2
-		relative_position_id = HSP_hispanic_unity
-		prerequisite = {
-			focus = HSP_hispanic_unity
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
 
-		completion_reward = {
-			unlock_decision_tooltip = HSP_demand_submission
-		}
-	}
 	focus = {
 		id = HSP_purchase_dutch_territory
 		icon = GFX_focus_hol_oranje_boven
@@ -1810,16 +1903,14 @@ focus_tree = {
 		icon = GFX_focus_ARG_align_with_the_monroe_doctrine
 		cost = 10
 		x = 1
-		y = 1
-		relative_position_id = HSP_purchase_dutch_territory
+		y = 2
+		relative_position_id = HSP_hispanic_unity
 		prerequisite = {
-			focus = HSP_purchase_dutch_territory
-		}
-		prerequisite = {
-			focus = HSP_latin_american_dominance
+			focus = HSP_hispanic_unity
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			unlock_decision_tooltip = HSP_demand_submission
 			unlock_decision_tooltip = HSP_restore_viceroyalty_of_nueva_espana
 			unlock_decision_tooltip = HSP_restore_viceroyalty_of_nueva_granada
 			unlock_decision_tooltip = HSP_restore_viceroyalty_of_rio_de_la_plata

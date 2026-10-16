@@ -612,6 +612,7 @@ country_event = {
 		
 		transfer_state = 309
 		transfer_state = 695
+		set_country_flag = HSP_dutch_territory_purchased_flag
 		
 		add_timed_idea = {
 			idea = HSP_dutch_latin_american_territory_purchase_01

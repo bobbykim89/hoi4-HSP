@@ -8,4 +8,5 @@ opinion_modifiers = {
 	HSP_approach_germany_decrease = { value = -25 }
 	HSP_approach_uk_increase = { value = 25 }
 	HSP_approach_uk_decrease = { value = -25 }
+	HSP_fortified_border = { value = -50 }
 }

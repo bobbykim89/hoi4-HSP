@@ -50,7 +50,7 @@ HSP_pan_hispanic_federation_cat = {
 			original_tag = SPR
 		}
 		target_root_trigger = {
-			has_completed_focus = HSP_latin_american_dominance
+			has_completed_focus = HSP_reestablish_viceroyalty
 		}
 		target_trigger = {
 			FROM = {
@@ -60,7 +60,7 @@ HSP_pan_hispanic_federation_cat = {
 			}
 		}
 		visible = {
-			has_completed_focus = HSP_latin_american_dominance
+			has_completed_focus = HSP_reestablish_viceroyalty
 		}
 		available = {
 			FROM = {
@@ -186,6 +186,24 @@ HSP_restore_viceroyalty_cat = {
 				if = {
 					limit = { is_owned_by = ROOT }
 					COL = { transfer_state = PREV }
+				}
+			}
+			# Suriname, if bought from the Netherlands
+			if = {
+				limit = { has_country_flag = HSP_dutch_territory_purchased_flag }
+				309 = { add_core_of = COL }
+				if = {
+					limit = { 309 = { is_owned_by = ROOT } }
+					COL = { transfer_state = 309 }
+				}
+			}
+			# French Guiana, on the Borbón route
+			if = {
+				limit = { has_country_flag = HSP_house_borbon_flag }
+				310 = { add_core_of = COL }
+				if = {
+					limit = { 310 = { is_owned_by = ROOT } }
+					COL = { transfer_state = 310 }
 				}
 			}
 		}

@@ -489,6 +489,19 @@ ideas = {
 				conscription_factor = 0.1
 			}
 		}
+		HSP_expanded_royal_guard_01 = {
+			picture = generic_special_forces
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				special_forces_cap = 0.1
+				special_forces_training_time_factor = -0.1
+			}
+		}
 		HSP_air_production_01 = {
 			picture = man_five_year_plan_air
 			allowed = {
