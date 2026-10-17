@@ -4636,7 +4636,7 @@ focus_tree = {
 		id = HSP_ana_anarchism_knows_no_borders
 		icon = GFX_focus_spr_anarchism_knows_no_borders
 		prerequisite = { focus = HSP_ana_militarize_the_people }
-		cost = 10
+		cost = 5
 		x = 2
 		y = 11
 		relative_position_id = HSP_the_cnt_fai
@@ -4739,7 +4739,7 @@ focus_tree = {
 		id = HSP_ana_seeds_of_revolution
 		icon = GFX_focus_prc_infiltration
 		prerequisite = { focus = HSP_ana_anarchism_knows_no_borders }
-		cost = 10
+		cost = 5
 		x = 1
 		y = 12
 		relative_position_id = HSP_the_cnt_fai
