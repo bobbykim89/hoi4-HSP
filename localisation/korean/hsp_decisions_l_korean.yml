@@ -98,3 +98,10 @@
   HSP_support_latin_communists_desc:0 "그 나라의 공산주의 지지율이 10% 오릅니다. 50%를 넘으면 공산주의 국가가 됩니다."
   HSP_invite_communist_country:0 "§Y[FROM.GetNameDef]§! 초대"
   HSP_invite_communist_country_desc:0 ""
+  # anarchist revolution
+  HSP_anarchist_revolution_cat:0 "아나키스트 혁명"
+  HSP_anarchist_revolution_cat_desc:0 ""
+  HSP_ignite_anarchist_uprising:0 "§Y[FROM.GetNameDef]§!에서 봉기 선동"
+  HSP_ignite_anarchist_uprising_desc:0 "보병 장비 §Y10,000§!개가 소모됩니다. 우리와 가장 가까운 주들이 아나키스트 코뮌으로 봉기하며, 우리는 그들의 전쟁에 참전합니다."
+  HSP_integrate_commune:0 "§Y[FROM.GetName]§! 코뮌 통합"
+  HSP_integrate_commune_desc:0 ""

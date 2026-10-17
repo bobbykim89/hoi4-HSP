@@ -98,3 +98,10 @@
   HSP_support_latin_communists_desc:0 "Communist support in the country rises by 10%. At more than 50%, it turns communist."
   HSP_invite_communist_country:0 "Invite §Y[FROM.GetNameDef]§!"
   HSP_invite_communist_country_desc:0 ""
+  # anarchist revolution
+  HSP_anarchist_revolution_cat:0 "The Anarchist Revolution"
+  HSP_anarchist_revolution_cat_desc:0 ""
+  HSP_ignite_anarchist_uprising:0 "Ignite an Uprising in §Y[FROM.GetNameDef]§!"
+  HSP_ignite_anarchist_uprising_desc:0 "Costs §Y10,000§! infantry equipment. The states nearest us rise as an anarchist commune, and we join their war."
+  HSP_integrate_commune:0 "Integrate the Commune of §Y[FROM.GetName]§!"
+  HSP_integrate_commune_desc:0 ""

@@ -621,3 +621,118 @@ HSP_start_french_revolution = {
 		news_event = { id = HSP_spain_news.6 hours = 6 }
 	}
 }
+
+# HSP_ana_masters_of_our_own_fate. Spain becomes anarchist (vanilla lar_spain.10's Anarchist Commune) and the
+# Republic revolts with every state outside the anarchist heartland. The player keeps the HSP tree.
+HSP_start_anarchist_revolution = {
+	set_country_flag = HSP_anarchist_revolution_flag
+	HSP_retire_republican_characters = yes
+	set_politics = {
+		ruling_party = neutrality
+		elections_allowed = no
+	}
+	create_country_leader = {
+		name = "Anarchist Commune"
+		desc = "POLITICS_ANARCHIST_COMMUNE_DESC"
+		picture = "GFX_portrait_SPR_anarchist_commune"
+		expire = "1965.1.1"
+		ideology = anarchism
+		traits = {
+			our_right_to_survive
+		}
+	}
+	set_cosmetic_tag = SPR_anarchist_spain
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 41
+				state = 165
+				state = 166
+				state = 167
+				state = 168
+				state = 794
+			}
+		}
+		set_state_flag = HSP_anarchist_state_flag
+	}
+	if = {
+		limit = { democratic < 0.05 }
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.1
+		}
+	}
+	start_civil_war = {
+		ideology = democratic
+		size = 0.35
+		states = all
+		states_filter = {
+			NOT = { has_state_flag = HSP_anarchist_state_flag }
+		}
+		keep_unit_leaders_trigger = {
+			always = yes
+		}
+		set_cosmetic_tag = SPR_republican_spain
+		set_country_flag = HSP_republican_rebels_flag
+	}
+	news_event = { id = HSP_spain_news.7 hours = 6 }
+}
+
+# Scope: the country that rises. ROOT = Spain. An anarchist uprising in the states nearest Spain;
+# Spain joins the rebels and makes them its puppet (Portuguese anarchism, HSP_ignite_anarchist_uprising).
+HSP_start_anarchist_uprising = {
+	save_event_target_as = HSP_revolution_target
+	if = {
+		limit = {
+			any_controlled_state = {
+				is_capital = no
+				any_neighbor_state = { is_controlled_by = ROOT }
+			}
+		}
+		every_controlled_state = {
+			limit = {
+				is_capital = no
+				any_neighbor_state = { is_controlled_by = ROOT }
+			}
+			set_state_flag = HSP_anarchist_uprising_state
+		}
+	}
+	else = {
+		random_controlled_state = {
+			limit = {
+				is_capital = no
+				is_in_home_area = yes
+			}
+			set_state_flag = HSP_anarchist_uprising_state
+		}
+	}
+	start_civil_war = {
+		ideology = neutrality
+		size = 0.3
+		states = all
+		states_filter = { has_state_flag = HSP_anarchist_uprising_state }
+		set_country_flag = HSP_anarchist_commune_flag
+		create_country_leader = {
+			name = "Anarchist Commune"
+			desc = "POLITICS_ANARCHIST_COMMUNE_DESC"
+			picture = "GFX_portrait_SPR_anarchist_commune"
+			expire = "1965.1.1"
+			ideology = anarchism
+			traits = {
+				our_right_to_survive
+			}
+		}
+		ROOT = {
+			add_to_war = {
+				targeted_alliance = PREV
+				enemy = event_target:HSP_revolution_target
+				hostility_reason = asked_to_join
+			}
+			puppet = {
+				target = PREV
+				end_wars = no
+				end_civil_wars = no
+			}
+		}
+	}
+}

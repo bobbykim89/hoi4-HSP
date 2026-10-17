@@ -2591,3 +2591,96 @@ HSP_red_revolution_cat = {
 		}
 	}
 }
+
+HSP_anarchist_revolution_cat = {
+	# Unlocked by HSP_ana_seeds_of_revolution (vanilla SPR_ignite_uprising): an anarchist uprising in a neighbour
+	# or an enemy, in the states nearest Spain (HSP_start_anarchist_uprising)
+	HSP_ignite_anarchist_uprising = {
+		icon = GFX_decision_generic_ignite_civil_war
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_ana_seeds_of_revolution
+		}
+		target_root_trigger = {
+			has_completed_focus = HSP_ana_seeds_of_revolution
+		}
+		target_trigger = {
+			FROM = {
+				exists = yes
+				OR = {
+					is_neighbor_of = ROOT
+					has_war_with = ROOT
+				}
+				NOT = { has_country_flag = HSP_anarchist_commune_flag }
+				NOT = { is_subject_of = ROOT }
+				NOT = { is_in_faction_with = ROOT }
+			}
+		}
+		available = {
+			FROM = { has_civil_war = no }
+			has_equipment = { infantry_equipment > 9999 }
+		}
+		on_map_mode = map_and_decisions_view
+		cost = 150
+		days_remove = 60
+		fire_only_once = no
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -10000
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = { FROM = { has_civil_war = no } }
+				FROM = { HSP_start_anarchist_uprising = yes }
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	# Unlocked by HSP_ana_global_defense_council (vanilla SPR_integrate_commune): a compliant occupied state next
+	# to our cores becomes a core and ours
+	HSP_integrate_commune = {
+		icon = GFX_decision_generic_civil_support
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_ana_global_defense_council
+		}
+		state_target = yes
+		target_array = controlled_states
+		target_root_trigger = {
+			has_completed_focus = HSP_ana_global_defense_council
+		}
+		target_trigger = {
+			FROM = {
+				NOT = { is_core_of = ROOT }
+				compliance > 35
+				OR = {
+					is_island_state = yes
+					any_neighbor_state = { is_core_of = ROOT }
+				}
+			}
+		}
+		available = {
+			FROM = { compliance > 50 }
+		}
+		on_map_mode = map_only
+		cost = 50
+		days_remove = 60
+		fire_only_once = no
+		remove_effect = {
+			FROM = { add_core_of = ROOT }
+			transfer_state = FROM
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+}
