@@ -3431,9 +3431,12 @@ focus_tree = {
 		x = -1
 		y = 1
 		relative_position_id = HSP_the_cnt_fai
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
-			add_political_power = 75
+			swap_ideas = {
+				remove_idea = HSP_anarchist_society_1
+				add_idea = HSP_anarchist_society_2
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -3471,8 +3474,8 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			swap_ideas = {
-				remove_idea = HSP_anarchist_society_1
-				add_idea = HSP_anarchist_society_2
+				remove_idea = HSP_anarchist_society_2
+				add_idea = HSP_anarchist_society_3
 			}
 		}
 		ai_will_do = {
@@ -3701,8 +3704,8 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			swap_ideas = {
-				remove_idea = HSP_anarchist_society_2
-				add_idea = HSP_anarchist_society_3
+				remove_idea = HSP_anarchist_society_3
+				add_idea = HSP_anarchist_society_4
 			}
 		}
 		ai_will_do = {
@@ -3940,7 +3943,7 @@ focus_tree = {
 		id = HSP_ana_maintaining_the_fire
 		icon = GFX_goal_generic_propaganda
 		prerequisite = { focus = HSP_ana_all_must_bear_the_torch }
-		cost = 10
+		cost = 5
 		x = 2
 		y = 6
 		relative_position_id = HSP_the_cnt_fai
@@ -4039,24 +4042,6 @@ focus_tree = {
 		}
 	}
 
-	## 자유로운 사상
-	focus = {
-		id = HSP_ana_freedom_of_thought
-		icon = GFX_focus_research2
-		prerequisite = { focus = HSP_ana_maintaining_the_fire }
-		cost = 10
-		x = 2
-		y = 7
-		relative_position_id = HSP_the_cnt_fai
-		search_filters = { FOCUS_FILTER_RESEARCH }
-		completion_reward = {
-			add_research_slot = 1
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
 	## 집단 재건
 	focus = {
 		id = HSP_ana_collective_recovery
@@ -4069,8 +4054,8 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			swap_ideas = {
-				remove_idea = HSP_anarchist_society_3
-				add_idea = HSP_anarchist_society_4
+				remove_idea = HSP_anarchist_society_4
+				add_idea = HSP_anarchist_society_5
 			}
 			add_ideas = SPR_collective_recovery_efforts
 			every_owned_state = {
@@ -4293,7 +4278,7 @@ focus_tree = {
 		id = HSP_ana_faith_in_the_cause
 		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
 		prerequisite = { focus = HSP_ana_torchbearers_of_tomorrow }
-		cost = 10
+		cost = 5
 		x = 2
 		y = 9
 		relative_position_id = HSP_the_cnt_fai

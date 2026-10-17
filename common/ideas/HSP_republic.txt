@@ -379,7 +379,7 @@ ideas = {
 				justify_war_goal_time = -0.5
 			}
 		}
-		# anarchism path: the society spirit, upgraded at HSP_ana_autogestion, _workers_control and _collective_recovery
+		# anarchism path: the society spirit, upgraded at HSP_ana_appropriate_the_means, _autogestion, _workers_control and _collective_recovery
 		HSP_anarchist_society_1 = {
 			picture = generic_local_self_management
 			allowed = {
@@ -405,8 +405,9 @@ ideas = {
 			removal_cost = -1
 			modifier = {
 				stability_weekly = -0.01
-				production_speed_buildings_factor = 0.1
+				production_speed_buildings_factor = 0.05
 				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
 			}
 		}
 		HSP_anarchist_society_3 = {
@@ -419,10 +420,10 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				stability_weekly = -0.005
-				production_speed_buildings_factor = 0.15
+				stability_weekly = -0.01
+				production_speed_buildings_factor = 0.1
 				industrial_capacity_factory = 0.1
-				consumer_goods_factor = -0.05
+				industrial_capacity_dockyard = 0.1
 			}
 		}
 		HSP_anarchist_society_4 = {
@@ -435,8 +436,26 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
+				stability_weekly = -0.005
+				production_speed_buildings_factor = 0.15
+				industrial_capacity_factory = 0.15
+				industrial_capacity_dockyard = 0.15
+				consumer_goods_factor = -0.05
+			}
+		}
+		HSP_anarchist_society_5 = {
+			picture = generic_local_self_management
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
 				production_speed_buildings_factor = 0.2
-				industrial_capacity_factory = 0.1
+				industrial_capacity_factory = 0.15
+				industrial_capacity_dockyard = 0.15
 				consumer_goods_factor = -0.1
 				conscription_factor = 0.03
 			}
@@ -464,7 +483,7 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				conscription_factor = 0.03
+				conscription = 0.02
 				production_speed_buildings_factor = 0.05
 			}
 		}
