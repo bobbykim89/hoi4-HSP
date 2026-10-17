@@ -3794,7 +3794,7 @@ focus_tree = {
 	}
 
 	## 모두가 횃불을
-	# vanilla SPR_all_must_bear_the_torch, without its forced volunteer-only army
+	# vanilla SPR_all_must_bear_the_torch: Collectivized Society, closed economy, volunteers only
 	focus = {
 		id = HSP_ana_all_must_bear_the_torch
 		icon = GFX_focus_spr_torchbearers_of_tomorrow
@@ -3814,6 +3814,16 @@ focus_tree = {
 			if = {
 				limit = { NOT = { has_idea = closed_economy } }
 				add_ideas = closed_economy
+			}
+			# volunteers only from here on: common/ideas/_manpower.txt blocks the higher laws, as for vanilla's focus
+			if = {
+				limit = {
+					NOT = {
+						has_idea = disarmed_nation
+						has_idea = volunteer_only
+					}
+				}
+				add_ideas = volunteer_only
 			}
 			every_owned_state = {
 				remove_dynamic_modifier = { modifier = autonomous_state }
@@ -3925,7 +3935,7 @@ focus_tree = {
 		id = HSP_ana_the_threats_abound
 		icon = GFX_goal_generic_defence
 		prerequisite = { focus = HSP_ana_all_must_bear_the_torch }
-		cost = 10
+		cost = 5
 		x = 0
 		y = 6
 		relative_position_id = HSP_the_cnt_fai
@@ -4018,7 +4028,7 @@ focus_tree = {
 		id = HSP_ana_new_way_of_warfare
 		icon = GFX_goal_generic_army_tanks
 		prerequisite = { focus = HSP_ana_the_threats_abound }
-		cost = 10
+		cost = 5
 		x = 0
 		y = 7
 		relative_position_id = HSP_the_cnt_fai
