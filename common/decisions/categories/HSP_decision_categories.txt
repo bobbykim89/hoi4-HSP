@@ -154,3 +154,21 @@ HSP_latin_sphere_cat = {
 	}
 	visible_when_empty = no
 }
+
+HSP_red_revolution_cat = {
+	priority = 60
+	icon = GFX_decision_category_spr_the_seeds_of_revolution
+	picture = GFX_decision_cat_picture_spreading_the_red_flame
+
+	allowed = {
+		original_tag = SPR
+		has_dlc = "La Resistance"
+	}
+	visible = {
+		OR = {
+			has_completed_focus = HSP_com_export_the_revolution
+			has_completed_focus = HSP_com_workers_front
+		}
+	}
+	visible_when_empty = no
+}

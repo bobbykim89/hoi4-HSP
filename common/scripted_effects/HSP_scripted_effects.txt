@@ -567,3 +567,57 @@ HSP_join_spanish_faction = {
 		value = 200
 	}
 }
+
+# Scope: the country that rises. ROOT = Spain. A communist uprising sized by communist support (25-60%);
+# Spain joins the rebels and makes them its puppet (vanilla lar_spain.49 and HSP_spain_events.36 pattern).
+HSP_start_communist_uprising = {
+	save_event_target_as = HSP_revolution_target
+	set_temp_variable = { HSP_revolt_size = party_popularity@communism }
+	clamp_temp_variable = {
+		var = HSP_revolt_size
+		min = 0.25
+		max = 0.6
+	}
+	start_civil_war = {
+		ideology = communism
+		size = var:HSP_revolt_size
+		ROOT = {
+			add_to_war = {
+				targeted_alliance = PREV
+				enemy = event_target:HSP_revolution_target
+				hostility_reason = asked_to_join
+			}
+			puppet = {
+				target = PREV
+				end_wars = no
+				end_civil_wars = no
+			}
+		}
+	}
+}
+
+# HSP_com_portuguese_revolution. A communist Portugal is offered a union instead (HSP_spain_events.46).
+HSP_start_portuguese_revolution = {
+	random_country = {
+		limit = {
+			original_tag = POR
+			NOT = { is_subject_of = ROOT }
+		}
+		if = {
+			limit = { has_government = communism }
+			country_event = { id = HSP_spain_events.46 hours = 6 }
+		}
+		else = {
+			HSP_start_communist_uprising = yes
+			news_event = { id = HSP_spain_news.5 hours = 6 }
+		}
+	}
+}
+
+# HSP_com_french_revolution
+HSP_start_french_revolution = {
+	FRA = {
+		HSP_start_communist_uprising = yes
+		news_event = { id = HSP_spain_news.6 hours = 6 }
+	}
+}

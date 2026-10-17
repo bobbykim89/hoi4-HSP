@@ -11,4 +11,5 @@ opinion_modifiers = {
 	HSP_fortified_border = { value = -50 }
 	HSP_democratic_solidarity = { value = 25 }
 	HSP_soviet_cooperation = { value = 25 }
+	HSP_soviet_suspicion = { value = -25 }
 }

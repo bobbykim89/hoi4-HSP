@@ -279,6 +279,7 @@ focus_tree = {
 		cost = 10
 		x = 63
 		y = 4
+		mutually_exclusive = { focus = HSP_the_workers_republic }
 		available = {
 			has_country_flag = HSP_fascists_defeated_flag
 		}
@@ -2114,6 +2115,1303 @@ focus_tree = {
 				add_timed_idea = {
 					idea = HSP_joint_military_training_idea
 					days = 180
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	# communism path
+	# Close to vanilla's Stalinist route; Stalinist and independent lines are mutually exclusive.
+
+	## 노동자 공화국
+	focus = {
+		id = HSP_the_workers_republic
+		icon = GFX_focus_spr_the_anti_fascist_workers_revolution
+		prerequisite = { focus = HSP_purge_the_conspirators focus = HSP_no_pasaran }
+		cost = 10
+		x = 85
+		y = 4
+		available = {
+			has_country_flag = HSP_fascists_defeated_flag
+		}
+		mutually_exclusive = { focus = HSP_the_democratic_republic }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.15
+			}
+			HSP_retire_republican_characters = yes
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 3
+				communism > 0.3
+			}
+		}
+	}
+
+	## 공산당 각료 요구
+	# Unlocks Ibárruri and Hernández (common/characters/SPR.txt hooks)
+	focus = {
+		id = HSP_com_ministerial_positions
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		prerequisite = { focus = HSP_the_workers_republic }
+		cost = 10
+		x = -6
+		y = 1
+		relative_position_id = HSP_the_workers_republic
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = HSP_com_ministerial_positions_idea
+			add_political_power = 50
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 노동자 민병대 무장
+	focus = {
+		id = HSP_com_arm_the_workers
+		icon = GFX_goal_generic_military_sphere
+		prerequisite = { focus = HSP_the_workers_republic }
+		cost = 10
+		x = -4
+		y = 1
+		relative_position_id = HSP_the_workers_republic
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_war_support = 0.1
+			add_manpower = 20000
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 공산주의 공화국
+	# Template: vanilla YUG_abolish_the_monarchy (communism > 0.4)
+	focus = {
+		id = HSP_com_communist_republic
+		icon = GFX_focus_generic_soviet_politics
+		prerequisite = { focus = HSP_com_ministerial_positions }
+		prerequisite = { focus = HSP_com_arm_the_workers }
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = HSP_com_ministerial_positions
+		available = {
+			OR = {
+				has_government = communism
+				communism > 0.4
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			if = {
+				limit = { NOT = { has_government = communism } }
+				set_politics = {
+					ruling_party = communism
+					elections_allowed = no
+				}
+			}
+			add_stability = 0.05
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 국가 세속화
+	focus = {
+		id = HSP_com_secularize_the_state
+		icon = GFX_focus_mex_triumph_over_the_cristeros
+		prerequisite = { focus = HSP_com_communist_republic }
+		cost = 10
+		x = -1
+		y = 1
+		relative_position_id = HSP_com_communist_republic
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_stability = -0.1
+			add_political_power = 150
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 교회 재산 몰수
+	focus = {
+		id = HSP_com_church_riches
+		icon = GFX_goal_generic_construct_civilian
+		prerequisite = { focus = HSP_com_secularize_the_state }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_com_secularize_the_state
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_timed_idea = {
+				idea = SPR_appropriate_church_riches
+				days = 730
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 부르주아 재교육
+	focus = {
+		id = HSP_com_reeducate_the_bourgeoisie
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = HSP_com_communist_republic }
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = HSP_com_communist_republic
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 60
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 혁명 수출
+	focus = {
+		id = HSP_com_export_the_revolution
+		icon = GFX_focus_generic_support_the_left_right
+		prerequisite = { focus = HSP_com_reeducate_the_bourgeoisie }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_com_reeducate_the_bourgeoisie
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			custom_effect_tooltip = HSP_com_export_the_revolution_tt
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 산업 국유화
+	focus = {
+		id = HSP_com_nationalize_industry
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = HSP_the_workers_republic }
+		cost = 10
+		x = -1
+		y = 1
+		relative_position_id = HSP_the_workers_republic
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_stability = -0.05
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_com_nationalize_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_com_nationalize_civ }
+				}
+				set_state_flag = HSP_com_nationalize_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_com_nationalize_civ }
+				}
+				set_state_flag = HSP_com_nationalize_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 집단 농장
+	focus = {
+		id = HSP_com_collective_farms
+		icon = GFX_focus_prc_agrarian_socialism
+		prerequisite = { focus = HSP_com_nationalize_industry }
+		cost = 10
+		x = -1
+		y = 1
+		relative_position_id = HSP_com_nationalize_industry
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = HSP_com_collective_farms_idea
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 5개년 계획
+	focus = {
+		id = HSP_com_five_year_plan
+		icon = GFX_goal_generic_production2
+		prerequisite = { focus = HSP_com_nationalize_industry }
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = HSP_com_nationalize_industry
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = HSP_com_five_year_plan_1
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 국토 연결
+	focus = {
+		id = HSP_com_connect_the_country
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = HSP_com_collective_farms }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_com_collective_farms
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					infrastructure < 5
+				}
+				set_state_flag = HSP_com_connect_infra
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					infrastructure < 5
+					NOT = { has_state_flag = HSP_com_connect_infra }
+				}
+				set_state_flag = HSP_com_connect_infra
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					infrastructure < 5
+					NOT = { has_state_flag = HSP_com_connect_infra }
+				}
+				set_state_flag = HSP_com_connect_infra
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					infrastructure < 5
+					NOT = { has_state_flag = HSP_com_connect_infra }
+				}
+				set_state_flag = HSP_com_connect_infra
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					infrastructure < 5
+					NOT = { has_state_flag = HSP_com_connect_infra }
+				}
+				set_state_flag = HSP_com_connect_infra
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 군수 생산 증대
+	focus = {
+		id = HSP_com_arms_production
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = HSP_com_five_year_plan }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_com_five_year_plan
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_com_arms_production_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_com_arms_production_mil }
+				}
+				set_state_flag = HSP_com_arms_production_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_com_arms_production_mil }
+				}
+				set_state_flag = HSP_com_arms_production_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 자원 개발
+	focus = {
+		id = HSP_com_exploit_resources
+		icon = GFX_goal_generic_construction2
+		prerequisite = { focus = HSP_com_connect_the_country }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_com_connect_the_country
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = HSP_com_exploit_resources_idea
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 제2차 5개년 계획
+	focus = {
+		id = HSP_com_second_five_year_plan
+		icon = GFX_focus_generic_industry_3
+		prerequisite = { focus = HSP_com_arms_production }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_com_arms_production
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = HSP_com_five_year_plan_1
+				add_idea = HSP_com_five_year_plan_2
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 사회주의 과학
+	focus = {
+		id = HSP_com_socialist_science
+		icon = GFX_focus_generic_socialist_science
+		prerequisite = { focus = HSP_com_exploit_resources }
+		prerequisite = { focus = HSP_com_second_five_year_plan }
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = HSP_com_exploit_resources
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_research_slot = 1
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 스페인 적군
+	focus = {
+		id = HSP_com_spanish_red_army
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = HSP_the_workers_republic }
+		cost = 10
+		x = 3
+		y = 1
+		relative_position_id = HSP_the_workers_republic
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			army_experience = 25
+			add_doctrine_cost_reduction = {
+				name = HSP_com_spanish_red_army
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 정치위원 제도
+	focus = {
+		id = HSP_com_political_commissars
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = HSP_com_spanish_red_army }
+		cost = 10
+		x = -1
+		y = 1
+		relative_position_id = HSP_com_spanish_red_army
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			add_ideas = HSP_com_commissars_idea
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 만인의 군대
+	# vanilla's Army of All Classes spirit
+	focus = {
+		id = HSP_com_army_of_all_classes
+		icon = GFX_focus_YUG_pan_slavic_congress
+		prerequisite = { focus = HSP_com_spanish_red_army }
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = HSP_com_spanish_red_army
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_ideas = SPR_an_army_of_all_classes_1
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 피레네의 붉은 방벽
+	# province ids from vanilla SPR_fortify_the_pyrenees
+	focus = {
+		id = HSP_com_red_bulwark
+		icon = GFX_goal_generic_construct_military
+		prerequisite = { focus = HSP_com_political_commissars }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_com_political_commissars
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			custom_effect_tooltip = HSP_com_red_bulwark_tt
+			hidden_effect = {
+				if = {
+					limit = { 165 = { is_controlled_by = ROOT } }
+					165 = {
+						add_building_construction = {
+							type = bunker
+							province = {
+							id = 3899
+							id = 3898
+							id = 11779
+							id = 9824
+							}
+							level = 3
+							instant_build = yes
+						}
+					}
+				}
+				if = {
+					limit = { 792 = { is_controlled_by = ROOT } }
+					792 = {
+						add_building_construction = {
+							type = bunker
+							province = {
+							id = 6756
+							}
+							level = 3
+							instant_build = yes
+						}
+					}
+				}
+				if = {
+					limit = { 172 = { is_controlled_by = ROOT } }
+					172 = {
+						add_building_construction = {
+							type = bunker
+							province = {
+							id = 3737
+							id = 3931
+							}
+							level = 3
+							instant_build = yes
+						}
+					}
+				}
+				if = {
+					limit = { 166 = { is_controlled_by = ROOT } }
+					166 = {
+						add_building_construction = {
+							type = bunker
+							province = {
+							id = 11838
+							}
+							level = 3
+							instant_build = yes
+						}
+					}
+				}
+				if = {
+					limit = { 794 = { is_controlled_by = ROOT } }
+					794 = {
+						add_building_construction = {
+							type = bunker
+							province = {
+							id = 915
+							id = 899
+							}
+							level = 3
+							instant_build = yes
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 적색 함대
+	focus = {
+		id = HSP_com_red_fleet
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		prerequisite = { focus = HSP_com_army_of_all_classes }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_com_army_of_all_classes
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_com_red_fleet_dock
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_com_red_fleet_dock }
+				}
+				set_state_flag = HSP_com_red_fleet_dock
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_com_red_fleet_dock }
+				}
+				set_state_flag = HSP_com_red_fleet_dock
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			navy_experience = 25
+			add_tech_bonus = {
+				name = HSP_com_red_fleet
+				bonus = 1.0
+				uses = 1
+				category = dd_tech
+			}
+			add_tech_bonus = {
+				name = HSP_com_red_fleet
+				bonus = 1.0
+				uses = 1
+				category = ca_tech
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 인민 공군
+	focus = {
+		id = HSP_com_peoples_air_force
+		icon = GFX_goal_generic_air_doctrine
+		prerequisite = { focus = HSP_com_red_bulwark focus = HSP_com_red_fleet }
+		cost = 10
+		x = -1
+		y = 1
+		relative_position_id = HSP_com_red_fleet
+		search_filters = { FOCUS_FILTER_AIR_XP }
+		completion_reward = {
+			air_experience = 25
+			add_tech_bonus = {
+				name = HSP_com_peoples_air_force
+				bonus = 1.0
+				uses = 2
+				category = light_fighter
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 스탈린주의 노선
+	# Unlocks Zaisser (common/characters/SPR.txt hook)
+	focus = {
+		id = HSP_com_stalinist_doctrine
+		icon = GFX_focus_generic_soviet_politics
+		prerequisite = { focus = HSP_the_workers_republic }
+		cost = 10
+		x = 6
+		y = 1
+		relative_position_id = HSP_the_workers_republic
+		mutually_exclusive = { focus = HSP_com_independent_line }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 120
+			SOV = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = HSP_soviet_cooperation
+				}
+			}
+			add_opinion_modifier = {
+				target = SOV
+				modifier = HSP_soviet_cooperation
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 소련 군사 고문단
+	focus = {
+		id = HSP_com_soviet_advisors
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = HSP_com_stalinist_doctrine }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_com_stalinist_doctrine
+		available = {
+			country_exists = SOV
+			NOT = { has_war_with = SOV }
+		}
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			add_ideas = SPR_soviet_military_advisors
+			army_experience = 25
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 소련의 기술 지원
+	focus = {
+		id = HSP_com_soviet_technology
+		icon = GFX_focus_generic_socialist_science
+		prerequisite = { focus = HSP_com_soviet_advisors }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_com_soviet_advisors
+		available = {
+			country_exists = SOV
+			NOT = { has_war_with = SOV }
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_com_soviet_technology
+				bonus = 1.0
+				uses = 1
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				name = HSP_com_soviet_technology
+				bonus = 1.0
+				uses = 1
+				category = armor
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 코민테른 가입
+	focus = {
+		id = HSP_com_join_the_comintern
+		icon = GFX_focus_generic_join_comintern
+		prerequisite = { focus = HSP_com_soviet_technology }
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = HSP_com_soviet_technology
+		available = {
+			is_in_faction = no
+			SOV = {
+				is_faction_leader = yes
+				has_government = communism
+				NOT = { has_war_with = ROOT }
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			SOV = { country_event = generic.2 }
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 코민테른 연구 협력
+	focus = {
+		id = HSP_com_comintern_research
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = HSP_com_join_the_comintern }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_com_join_the_comintern
+		available = {
+			is_in_faction_with = SOV
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_to_tech_sharing_group = comintern_research
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 3000
+				producer = SOV
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 500
+				producer = SOV
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 독자 노선
+	# vanilla POUM route; unlocks Andreu Nin (common/characters/SPR.txt hook)
+	focus = {
+		id = HSP_com_independent_line
+		icon = GFX_focus_generic_support_the_left_right
+		prerequisite = { focus = HSP_the_workers_republic }
+		cost = 10
+		x = 9
+		y = 1
+		relative_position_id = HSP_the_workers_republic
+		mutually_exclusive = { focus = HSP_com_stalinist_doctrine }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = HSP_com_independent_communism_idea
+			if = {
+				limit = { country_exists = SOV }
+				SOV = {
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = HSP_soviet_suspicion
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 국제 노동자 전선
+	focus = {
+		id = HSP_com_workers_front
+		icon = GFX_goal_generic_alliance
+		prerequisite = { focus = HSP_com_independent_line }
+		cost = 10
+		x = -1
+		y = 1
+		relative_position_id = HSP_com_independent_line
+		available = {
+			is_in_faction = no
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			create_faction_from_template = {
+				template = faction_template_HSP_workers_front
+			}
+			custom_effect_tooltip = HSP_com_workers_front_tt
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 자력갱생
+	focus = {
+		id = HSP_com_self_reliance
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = HSP_com_independent_line }
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = HSP_com_independent_line
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = HSP_com_self_reliance_idea
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 노동자 과학 평의회
+	focus = {
+		id = HSP_com_workers_research
+		icon = GFX_focus_research2
+		prerequisite = { focus = HSP_com_workers_front }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_com_workers_front
+		available = {
+			is_faction_leader = yes
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_to_tech_sharing_group = HSP_workers_front_research
+			every_country = {
+				limit = { is_in_faction_with = ROOT }
+				add_to_tech_sharing_group = HSP_workers_front_research
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 스탈린주의에 맞서
+	# vanilla SPR_against_trotskyism_and_stalinism
+	focus = {
+		id = HSP_com_against_stalinism
+		icon = GFX_focus_attack_soviet
+		prerequisite = { focus = HSP_com_workers_research }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_com_workers_research
+		available = {
+			country_exists = SOV
+			NOT = { is_in_faction_with = SOV }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			SOV = {
+				ROOT = {
+					create_wargoal = {
+						target = PREV
+						type = puppet_wargoal_focus
+						expire = 0
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 포르투갈 공산주의자 지원
+	focus = {
+		id = HSP_com_support_portuguese_communists
+		icon = GFX_focus_generic_attack_portugal
+		prerequisite = { focus = HSP_com_communist_republic }
+		cost = 10
+		x = 0
+		y = 3
+		relative_position_id = HSP_com_communist_republic
+		available = {
+			any_country = {
+				original_tag = POR
+				NOT = { is_subject_of = ROOT }
+				NOT = { has_government = communism }
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			random_country = {
+				limit = { original_tag = POR }
+				add_popularity = {
+					ideology = communism
+					popularity = 0.15
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 포르투갈 혁명
+	# A communist civil war that Spain joins (HSP_start_portuguese_revolution); a communist Portugal is offered a union instead
+	focus = {
+		id = HSP_com_portuguese_revolution
+		icon = GFX_focus_spr_the_anti_fascist_workers_revolution
+		prerequisite = { focus = HSP_com_support_portuguese_communists }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_com_support_portuguese_communists
+		available = {
+			any_country = {
+				original_tag = POR
+				NOT = { is_subject_of = ROOT }
+			}
+			NOT = { has_war_with = POR }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			HSP_start_portuguese_revolution = yes
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 붉은 이베리아
+	# Fallback if the revolution fails
+	focus = {
+		id = HSP_com_red_iberia
+		icon = GFX_focus_generic_attack_portugal
+		prerequisite = { focus = HSP_com_portuguese_revolution }
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = HSP_com_portuguese_revolution
+		available = {
+			any_country = {
+				original_tag = POR
+				NOT = { is_subject_of = ROOT }
+				NOT = { is_in_faction_with = ROOT }
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			random_country = {
+				limit = {
+					original_tag = POR
+					NOT = { is_subject_of = ROOT }
+				}
+				ROOT = {
+					create_wargoal = {
+						target = PREV
+						type = annex_everything
+						expire = 0
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 이베리아 사회주의 연방
+	focus = {
+		id = HSP_com_iberian_socialist_union
+		icon = GFX_goal_generic_alliance
+		prerequisite = { focus = HSP_com_portuguese_revolution }
+		cost = 10
+		x = -1
+		y = 1
+		relative_position_id = HSP_com_red_iberia
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = HSP_com_portugal_is_ours_tt
+				NOT = {
+					any_country = {
+						original_tag = POR
+						NOT = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			every_country = {
+				limit = {
+					original_tag = POR
+					is_subject_of = ROOT
+				}
+				HSP_annex_viceroyalty = yes
+			}
+			every_state = {
+				limit = { is_core_of = POR }
+				add_core_of = ROOT
+			}
+			set_cosmetic_tag = HSP_iberian_socialist_republic
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 프랑스 공산주의자 지원
+	focus = {
+		id = HSP_com_support_french_communists
+		icon = GFX_focus_attack_france
+		prerequisite = { focus = HSP_com_iberian_socialist_union }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_com_iberian_socialist_union
+		available = {
+			country_exists = FRA
+			FRA = { NOT = { has_government = communism } }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			FRA = {
+				add_popularity = {
+					ideology = communism
+					popularity = 0.15
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 프랑스 혁명
+	# Same mechanism as the Portuguese revolution
+	focus = {
+		id = HSP_com_french_revolution
+		icon = GFX_focus_attack_france
+		prerequisite = { focus = HSP_com_support_french_communists }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_com_support_french_communists
+		available = {
+			country_exists = FRA
+			FRA = {
+				NOT = { has_government = communism }
+				NOT = { is_in_faction_with = ROOT }
+				communism > 0.15
+			}
+			NOT = { has_war_with = FRA }
+		}
+		bypass = {
+			FRA = { has_government = communism }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			HSP_start_french_revolution = yes
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 반파시스트 전쟁
+	focus = {
+		id = HSP_com_anti_fascist_war
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		prerequisite = { focus = HSP_com_peoples_air_force }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_com_peoples_air_force
+		available = {
+			threat > 0.5
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = SPR_the_anti_fascist_crusade
+			every_country = {
+				limit = {
+					has_government = fascism
+					NOT = { is_in_faction_with = ROOT }
+					OR = {
+						is_major = yes
+						is_neighbor_of = ROOT
+					}
+				}
+				ROOT = {
+					create_wargoal = {
+						target = PREV
+						type = topple_government
+						expire = 0
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 세계 혁명
+	focus = {
+		id = HSP_com_world_revolution
+		icon = GFX_focus_spr_anarchism_knows_no_borders
+		prerequisite = { focus = HSP_com_anti_fascist_war }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_com_anti_fascist_war
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = HSP_com_world_revolution_idea
+			every_neighbor_country = {
+				limit = {
+					NOT = { has_government = communism }
+					NOT = { is_in_faction_with = ROOT }
+					NOT = { is_subject_of = ROOT }
+				}
+				ROOT = {
+					create_wargoal = {
+						target = PREV
+						type = topple_government
+						expire = 0
+					}
 				}
 			}
 		}
@@ -5491,7 +6789,7 @@ focus_tree = {
 		id = HSP_military_reform
 		icon = GFX_focus_generic_limited_social_mobilization
 		cost = 5
-		x = 104
+		x = 128
 		y = 0
 		completion_reward = {
 			swap_ideas = {

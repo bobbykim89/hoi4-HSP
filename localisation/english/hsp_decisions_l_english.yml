@@ -91,3 +91,10 @@
   HSP_invite_to_customs_union_desc:0 ""
   HSP_integrate_customs_union_economies:0 "Integrate the Customs Union Economies"
   HSP_integrate_customs_union_economies_desc:0 ""
+  # red revolution
+  HSP_red_revolution_cat:0 "The Red Revolution"
+  HSP_red_revolution_cat_desc:0 ""
+  HSP_support_latin_communists:0 "Support the Communists of §Y[FROM.GetNameDef]§!"
+  HSP_support_latin_communists_desc:0 "Communist support in the country rises by 10%. At more than 50%, it turns communist."
+  HSP_invite_communist_country:0 "Invite §Y[FROM.GetNameDef]§!"
+  HSP_invite_communist_country_desc:0 ""

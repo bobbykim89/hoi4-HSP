@@ -91,3 +91,10 @@
   HSP_invite_to_customs_union_desc:0 ""
   HSP_integrate_customs_union_economies:0 "관세 동맹 경제 통합"
   HSP_integrate_customs_union_economies_desc:0 ""
+  # red revolution
+  HSP_red_revolution_cat:0 "붉은 혁명"
+  HSP_red_revolution_cat_desc:0 ""
+  HSP_support_latin_communists:0 "§Y[FROM.GetNameDef]§!의 공산주의자 지원"
+  HSP_support_latin_communists_desc:0 "그 나라의 공산주의 지지율이 10% 오릅니다. 50%를 넘으면 공산주의 국가가 됩니다."
+  HSP_invite_communist_country:0 "§Y[FROM.GetNameDef]§! 초대"
+  HSP_invite_communist_country_desc:0 ""

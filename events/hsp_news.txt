@@ -97,3 +97,53 @@ news_event = {
 		}
 	}
 }
+
+# Communist revolution in Portugal, backed by Spain (HSP_start_portuguese_revolution)
+news_event = {
+	id = HSP_spain_news.5
+	title = HSP_spain_news.5.title
+	desc = HSP_spain_news.5.desc
+	picture = GFX_news_event_generic_rally
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_news.5.a
+		trigger = {
+			original_tag = SPR
+		}
+	}
+	option = {
+		name = HSP_spain_news.5.b
+		trigger = {
+			NOT = {
+				original_tag = SPR
+			}
+		}
+	}
+}
+
+# Communist revolution in France, backed by Spain (HSP_start_french_revolution)
+news_event = {
+	id = HSP_spain_news.6
+	title = HSP_spain_news.6.title
+	desc = HSP_spain_news.6.desc
+	picture = GFX_news_event_generic_rally
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_news.6.a
+		trigger = {
+			original_tag = SPR
+		}
+	}
+	option = {
+		name = HSP_spain_news.6.b
+		trigger = {
+			NOT = {
+				original_tag = SPR
+			}
+		}
+	}
+}

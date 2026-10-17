@@ -2088,7 +2088,10 @@ characters={
 				}
 			}
 			available = {
-				has_completed_focus = SPR_masters_of_our_own_fate
+				OR = {
+					has_completed_focus = SPR_masters_of_our_own_fate
+					has_completed_focus = HSP_com_independent_line # HSP
+				}
 				NOT = { has_completed_focus = SPR_regional_defense_council_of_aragon }
 				custom_trigger_tooltip = {
 					tooltip = SPR_not_nationalist_spain_tt
@@ -3236,6 +3239,7 @@ characters={
 				OR = {
 					has_completed_focus = SPR_the_stalinist_doctrine
 					has_completed_focus = SPR_communists_in_the_government
+					has_completed_focus = HSP_com_stalinist_doctrine # HSP
 				}
 				custom_trigger_tooltip = {
 					tooltip = SPR_not_nationalist_spain_tt
@@ -3736,6 +3740,7 @@ characters={
 							OR = {
 								has_completed_focus = SPR_demand_ministerial_positions 
 								has_completed_focus = SPR_communists_in_the_government 
+								has_completed_focus = HSP_com_ministerial_positions # HSP
 							}
 							NOT = {
 								has_completed_focus = SPR_masters_of_our_own_fate 
@@ -4223,6 +4228,7 @@ characters={
 				OR = {
 					has_completed_focus = SPR_demand_ministerial_positions 
 					has_completed_focus = SPR_new_leadership 
+					has_completed_focus = HSP_com_ministerial_positions # HSP
 				}
 				NOT = {
 					has_completed_focus = SPR_crush_the_revolution 

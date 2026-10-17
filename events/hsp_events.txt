@@ -1539,3 +1539,156 @@ country_event = {
 		name = HSP_spain_events.45.a
 	}
 }
+
+# Spain offers communist Portugal a socialist union (HSP_start_portuguese_revolution). ROOT = Portugal, FROM = Spain.
+country_event = {
+	id = HSP_spain_events.46
+	title = HSP_spain_events.46.t
+	desc = HSP_spain_events.46.desc
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+
+	# accept: Portugal becomes Spain's puppet, to be annexed by HSP_com_iberian_socialist_union
+	option = {
+		name = HSP_spain_events.46.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { HSP_accepts_spanish_leadership = yes }
+			}
+		}
+		FROM = {
+			puppet = ROOT
+			country_event = { id = HSP_spain_events.47 hours = 6 }
+		}
+	}
+	# refuse
+	option = {
+		name = HSP_spain_events.46.b
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				HSP_accepts_spanish_leadership = yes
+			}
+		}
+		FROM = {
+			country_event = { id = HSP_spain_events.48 hours = 6 }
+		}
+	}
+}
+
+# Portugal accepts the union
+country_event = {
+	id = HSP_spain_events.47
+	title = HSP_spain_events.47.t
+	desc = HSP_spain_events.47.desc
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_events.47.a
+	}
+}
+
+# Portugal refuses the union
+country_event = {
+	id = HSP_spain_events.48
+	title = HSP_spain_events.48.t
+	desc = HSP_spain_events.48.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_events.48.a
+	}
+}
+
+# Communist Spain invites a communist country into its faction (HSP_invite_communist_country). ROOT = invited, FROM = Spain.
+country_event = {
+	id = HSP_spain_events.49
+	title = HSP_spain_events.49.t
+	desc = HSP_spain_events.49.desc
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+
+	# join (through the faction leader if Spain is not the leader)
+	option = {
+		name = HSP_spain_events.49.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { HSP_accepts_spanish_leadership = yes }
+			}
+		}
+		FROM = {
+			if = {
+				limit = { is_faction_leader = yes }
+				add_to_faction = ROOT
+			}
+			else = {
+				random_country = {
+					limit = {
+						is_faction_leader = yes
+						is_in_faction_with = FROM
+					}
+					add_to_faction = ROOT
+				}
+			}
+			country_event = { id = HSP_spain_events.50 hours = 6 }
+		}
+		if = {
+			limit = { FROM = { has_completed_focus = HSP_com_workers_research } }
+			add_to_tech_sharing_group = HSP_workers_front_research
+		}
+		hidden_effect = {
+			add_ai_strategy = {
+				type = alliance
+				id = FROM
+				value = 200
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = HSP_spain_events.49.b
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				HSP_accepts_spanish_leadership = yes
+			}
+		}
+		FROM = {
+			country_event = { id = HSP_spain_events.51 hours = 6 }
+		}
+	}
+}
+
+# invitation accepted
+country_event = {
+	id = HSP_spain_events.50
+	title = HSP_spain_events.50.t
+	desc = HSP_spain_events.50.desc
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_events.50.a
+	}
+}
+
+# invitation refused
+country_event = {
+	id = HSP_spain_events.51
+	title = HSP_spain_events.51.t
+	desc = HSP_spain_events.51.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_events.51.a
+	}
+}
