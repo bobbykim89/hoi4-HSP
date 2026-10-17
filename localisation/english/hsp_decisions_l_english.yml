@@ -104,4 +104,4 @@
   HSP_ignite_anarchist_uprising:0 "Ignite an Uprising in §Y[FROM.GetNameDef]§!"
   HSP_ignite_anarchist_uprising_desc:0 "Costs §Y10,000§! infantry equipment. The states nearest us rise as an anarchist commune, and we join their war."
   HSP_integrate_commune:0 "Integrate the Commune of §Y[FROM.GetName]§!"
-  HSP_integrate_commune_desc:0 ""
+  HSP_integrate_commune_desc:0 "The state needs §Y50%§! compliance. It becomes our core and passes to us."

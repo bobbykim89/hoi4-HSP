@@ -642,6 +642,11 @@ HSP_start_anarchist_revolution = {
 		}
 	}
 	set_cosmetic_tag = SPR_anarchist_spain
+	# vanilla lar_spain.10's anarchist rules
+	set_rule = {
+		can_create_collaboration_government = no
+		can_generate_female_aces = yes
+	}
 	every_owned_state = {
 		limit = {
 			OR = {
