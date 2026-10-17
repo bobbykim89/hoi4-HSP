@@ -3388,40 +3388,8 @@ focus_tree = {
 		}
 	}
 
-	## 세계 혁명
-	focus = {
-		id = HSP_com_world_revolution
-		icon = GFX_focus_spr_anarchism_knows_no_borders
-		prerequisite = { focus = HSP_com_anti_fascist_war }
-		cost = 10
-		x = 0
-		y = 1
-		relative_position_id = HSP_com_anti_fascist_war
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = {
-			add_ideas = HSP_com_world_revolution_idea
-			every_neighbor_country = {
-				limit = {
-					NOT = { has_government = communism }
-					NOT = { is_in_faction_with = ROOT }
-					NOT = { is_subject_of = ROOT }
-				}
-				ROOT = {
-					create_wargoal = {
-						target = PREV
-						type = topple_government
-						expire = 0
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
 	# anarchism path
-	# Close to vanilla's CNT-FAI. HSP_ana_masters_of_our_own_fate starts the revolution: the Republic revolts against us.
+	# Order and buffs follow vanilla's CNT-FAI branch. HSP_ana_masters_of_our_own_fate starts the revolution: the Republic revolts against us.
 
 	## CNT-FAI
 	focus = {
@@ -3441,6 +3409,7 @@ focus_tree = {
 				ideology = neutrality
 				popularity = 0.15
 			}
+			add_war_support = 0.1
 			set_party_name = {
 				ideology = neutrality
 				long_name = HSP_cnt_fai_party_long
@@ -3459,92 +3428,12 @@ focus_tree = {
 		icon = GFX_focus_generic_support_the_left_right
 		prerequisite = { focus = HSP_the_cnt_fai }
 		cost = 10
-		x = -6
+		x = -1
 		y = 1
 		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			add_political_power = 75
-			add_stability = 0.05
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 자주 관리
-	focus = {
-		id = HSP_ana_autogestion
-		icon = GFX_goal_generic_production
-		prerequisite = { focus = HSP_ana_appropriate_the_means }
-		cost = 10
-		x = 0
-		y = 1
-		relative_position_id = HSP_ana_appropriate_the_means
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		completion_reward = {
-			swap_ideas = {
-				remove_idea = HSP_anarchist_society_1
-				add_idea = HSP_anarchist_society_2
-			}
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 농업 집산화
-	focus = {
-		id = HSP_ana_agrarian_collectivization
-		icon = GFX_goal_generic_national_unity
-		prerequisite = { focus = HSP_ana_autogestion }
-		cost = 10
-		x = -1
-		y = 1
-		relative_position_id = HSP_ana_autogestion
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		completion_reward = {
-			add_ideas = HSP_ana_agrarian_collectives_idea
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 자유 여성
-	focus = {
-		id = HSP_ana_mujeres_libres
-		icon = GFX_goal_generic_improve_relations
-		prerequisite = { focus = HSP_ana_autogestion }
-		cost = 10
-		x = 1
-		y = 1
-		relative_position_id = HSP_ana_autogestion
-		search_filters = { FOCUS_FILTER_MANPOWER }
-		completion_reward = {
-			add_ideas = HSP_ana_mujeres_libres_idea
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 집산화와 노동자 통제
-	focus = {
-		id = HSP_ana_workers_control
-		icon = GFX_focus_eng_concessions_to_the_trade_unions
-		prerequisite = { focus = HSP_ana_agrarian_collectivization }
-		prerequisite = { focus = HSP_ana_mujeres_libres }
-		cost = 10
-		x = 0
-		y = 2
-		relative_position_id = HSP_ana_autogestion
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		completion_reward = {
-			swap_ideas = {
-				remove_idea = HSP_anarchist_society_2
-				add_idea = HSP_anarchist_society_3
-			}
 		}
 		ai_will_do = {
 			base = 10
@@ -3557,7 +3446,7 @@ focus_tree = {
 		icon = GFX_goal_generic_military_sphere
 		prerequisite = { focus = HSP_the_cnt_fai }
 		cost = 10
-		x = -2
+		x = 1
 		y = 1
 		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_MANPOWER }
@@ -3570,18 +3459,63 @@ focus_tree = {
 		}
 	}
 
-	## 대중교통 장악
+	## 자주 관리
 	focus = {
-		id = HSP_ana_seize_public_transport
-		icon = GFX_goal_generic_army_motorized
+		id = HSP_ana_autogestion
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = HSP_ana_appropriate_the_means }
+		cost = 10
+		x = -2
+		y = 2
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = HSP_anarchist_society_1
+				add_idea = HSP_anarchist_society_2
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 최대한의 양보
+	# vanilla spirit (+10% defence, +5% attack), for a year
+	focus = {
+		id = HSP_ana_the_maximum_concession
+		icon = GFX_focus_generic_concessions
+		prerequisite = { focus = HSP_ana_appropriate_the_means }
 		prerequisite = { focus = HSP_ana_arm_the_people }
 		cost = 5
-		x = -1
-		y = 1
-		relative_position_id = HSP_ana_arm_the_people
+		x = 0
+		y = 2
+		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
-			add_ideas = SPR_anarchist_public_transport
+			add_timed_idea = {
+				idea = SPR_the_maximum_concession
+				days = 365
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 공동의 짐
+	focus = {
+		id = HSP_ana_shared_burdens
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = HSP_ana_arm_the_people }
+		prerequisite = { focus = HSP_ana_appropriate_the_means }
+		cost = 5
+		x = 2
+		y = 2
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = HSP_ana_shared_burdens_idea
 		}
 		ai_will_do = {
 			base = 10
@@ -3594,12 +3528,138 @@ focus_tree = {
 		icon = GFX_goal_generic_allies_build_infantry
 		prerequisite = { focus = HSP_ana_arm_the_people }
 		cost = 5
-		x = 1
-		y = 1
-		relative_position_id = HSP_ana_arm_the_people
+		x = 5
+		y = 2
+		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_MANPOWER }
 		completion_reward = {
 			add_ideas = SPR_international_brigades
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 집산화된 공장
+	focus = {
+		id = HSP_ana_collectivized_factories
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = HSP_ana_autogestion }
+		cost = 10
+		x = -3
+		y = 3
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_ana_collectivized_factories_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_ana_collectivized_factories_civ }
+				}
+				set_state_flag = HSP_ana_collectivized_factories_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_ana_collectivized_factories_civ }
+				}
+				set_state_flag = HSP_ana_collectivized_factories_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 대중교통 장악
+	focus = {
+		id = HSP_ana_seize_public_transport
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { focus = HSP_ana_the_maximum_concession }
+		cost = 5
+		x = -1
+		y = 3
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = SPR_anarchist_public_transport
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 농업 집산화
+	focus = {
+		id = HSP_ana_agrarian_collectivization
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = HSP_ana_the_maximum_concession }
+		cost = 5
+		x = 1
+		y = 3
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = HSP_ana_agrarian_collectives_idea
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 보편적 민병 복무
+	# More recruitable population: anarchists can only use volunteer conscription laws
+	focus = {
+		id = HSP_ana_universal_militia
+		icon = GFX_goal_generic_more_territorial_claims
+		prerequisite = { focus = HSP_ana_international_brigades }
+		cost = 10
+		x = 4
+		y = 3
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_ideas = HSP_ana_universal_militia_idea
+			add_manpower = 20000
 		}
 		ai_will_do = {
 			base = 10
@@ -3610,17 +3670,79 @@ focus_tree = {
 	focus = {
 		id = HSP_ana_seize_the_gold_reserves
 		icon = GFX_focus_usa_reestablish_the_gold_standard
-		prerequisite = { focus = HSP_ana_arm_the_people }
+		prerequisite = { focus = HSP_ana_the_maximum_concession }
 		cost = 5
-		x = 0
-		y = 2
-		relative_position_id = HSP_ana_arm_the_people
+		x = 5
+		y = 3
+		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			add_timed_idea = {
 				idea = SPR_seized_gold_reserves
 				days = 730
 			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 집산화와 노동자 통제
+	focus = {
+		id = HSP_ana_workers_control
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		prerequisite = { focus = HSP_ana_autogestion }
+		prerequisite = { focus = HSP_ana_seize_public_transport }
+		prerequisite = { focus = HSP_ana_agrarian_collectivization }
+		cost = 10
+		x = -2
+		y = 4
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = HSP_anarchist_society_2
+				add_idea = HSP_anarchist_society_3
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 자유 여성
+	focus = {
+		id = HSP_ana_mujeres_libres
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = HSP_ana_seize_public_transport }
+		prerequisite = { focus = HSP_ana_agrarian_collectivization }
+		cost = 10
+		x = 0
+		y = 4
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_ideas = HSP_ana_mujeres_libres_idea
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 코뮌 연방 평의회
+	# Political power, since anarchist stability stays near 0%
+	focus = {
+		id = HSP_ana_federation_of_communes
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = HSP_ana_seize_the_gold_reserves }
+		cost = 10
+		x = 3
+		y = 4
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = HSP_ana_federation_of_communes_idea
+			add_political_power = 100
 		}
 		ai_will_do = {
 			base = 10
@@ -3634,9 +3756,9 @@ focus_tree = {
 		icon = GFX_focus_spr_masters_of_our_own_fate
 		prerequisite = { focus = HSP_ana_seize_the_gold_reserves }
 		cost = 10
-		x = 0
-		y = 1
-		relative_position_id = HSP_ana_seize_the_gold_reserves
+		x = 5
+		y = 4
+		relative_position_id = HSP_the_cnt_fai
 		available = {
 			NOT = { has_country_flag = HSP_anarchist_revolution_flag }
 		}
@@ -3649,16 +3771,67 @@ focus_tree = {
 		}
 	}
 
-	## 아라곤 방위 평의회
-	# During the revolution only; vanilla SPR_regional_defense_council_of_aragon's commanders
+	## 문맹 퇴치 운동
 	focus = {
-		id = HSP_ana_council_of_aragon
-		icon = GFX_focus_spr_regional_defense_council_of_aragon
+		id = HSP_ana_literacy_programs
+		icon = GFX_focus_research
+		prerequisite = { focus = HSP_ana_workers_control }
+		prerequisite = { focus = HSP_ana_mujeres_libres }
+		cost = 10
+		x = -1
+		y = 5
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_research_slot = 1
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 모두가 횃불을
+	# vanilla SPR_all_must_bear_the_torch, without its forced volunteer-only army
+	focus = {
+		id = HSP_ana_all_must_bear_the_torch
+		icon = GFX_focus_spr_torchbearers_of_tomorrow
+		prerequisite = { focus = HSP_ana_mujeres_libres }
+		prerequisite = { focus = HSP_ana_masters_of_our_own_fate }
+		prerequisite = { focus = HSP_ana_workers_control }
+		cost = 10
+		x = 1
+		y = 5
+		relative_position_id = HSP_the_cnt_fai
+		available = {
+			has_country_flag = HSP_anarchist_victory_flag
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = SPR_collectivized_society
+			if = {
+				limit = { NOT = { has_idea = closed_economy } }
+				add_ideas = closed_economy
+			}
+			every_owned_state = {
+				remove_dynamic_modifier = { modifier = autonomous_state }
+				remove_dynamic_modifier = { modifier = semi_autonomous_state }
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 혁명 종대
+	# During the revolution only
+	focus = {
+		id = HSP_ana_revolutionary_columns
+		icon = GFX_goal_generic_small_arms
 		prerequisite = { focus = HSP_ana_masters_of_our_own_fate }
 		cost = 5
-		x = -1
-		y = 1
-		relative_position_id = HSP_ana_masters_of_our_own_fate
+		x = 5
+		y = 5
+		relative_position_id = HSP_the_cnt_fai
 		available = {
 			has_country_flag = HSP_anarchist_revolution_flag
 			NOT = { has_country_flag = HSP_anarchist_victory_flag }
@@ -3668,6 +3841,31 @@ focus_tree = {
 			has_country_flag = HSP_anarchist_victory_flag
 		}
 		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_war_support = 0.05
+			add_manpower = 25000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 5000
+				producer = SPR
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 아라곤 지역방위 위원회
+	# vanilla's commanders; the council chain Aragon > Iberia > Global runs down from here
+	focus = {
+		id = HSP_ana_council_of_aragon
+		icon = GFX_focus_spr_regional_defense_council_of_aragon
+		prerequisite = { focus = HSP_ana_masters_of_our_own_fate }
+		cost = 5
+		x = 7
+		y = 5
+		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_ARMY_XP }
 		completion_reward = {
 			create_field_marshal = {
@@ -3718,59 +3916,37 @@ focus_tree = {
 		}
 	}
 
-	## 혁명 종대
+	## 위협이 도처에
+	# vanilla's three-level spirit, upgraded at torchbearers and militarize the people
 	focus = {
-		id = HSP_ana_revolutionary_columns
-		icon = GFX_goal_generic_small_arms
-		prerequisite = { focus = HSP_ana_masters_of_our_own_fate }
-		cost = 5
-		x = 1
-		y = 1
-		relative_position_id = HSP_ana_masters_of_our_own_fate
-		available = {
-			has_country_flag = HSP_anarchist_revolution_flag
-			NOT = { has_country_flag = HSP_anarchist_victory_flag }
-			has_war = yes
-		}
-		bypass = {
-			has_country_flag = HSP_anarchist_victory_flag
-		}
-		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_MANPOWER }
+		id = HSP_ana_the_threats_abound
+		icon = GFX_goal_generic_defence
+		prerequisite = { focus = HSP_ana_all_must_bear_the_torch }
+		cost = 10
+		x = 0
+		y = 6
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_ARMY_XP }
 		completion_reward = {
-			add_war_support = 0.05
-			add_manpower = 25000
-			add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = 5000
-				producer = SPR
-			}
+			add_ideas = SPR_the_threats_abound_1
 		}
 		ai_will_do = {
 			base = 10
 		}
 	}
 
-	## 모두가 횃불을
-	# vanilla SPR_all_must_bear_the_torch: the Collectivized Society economy law (without vanilla's forced volunteer-only army)
+	## 불꽃을 지키며
 	focus = {
-		id = HSP_ana_all_must_bear_the_torch
-		icon = GFX_focus_spr_torchbearers_of_tomorrow
-		prerequisite = { focus = HSP_ana_masters_of_our_own_fate }
+		id = HSP_ana_maintaining_the_fire
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = HSP_ana_all_must_bear_the_torch }
 		cost = 10
-		x = 0
-		y = 2
-		relative_position_id = HSP_ana_masters_of_our_own_fate
-		available = {
-			has_country_flag = HSP_anarchist_victory_flag
-		}
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		x = 2
+		y = 6
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
-			add_ideas = SPR_collectivized_society
-			if = {
-				limit = { NOT = { has_idea = closed_economy } }
-				add_ideas = closed_economy
-			}
+			add_war_support = 0.15
 		}
 		ai_will_do = {
 			base = 10
@@ -3784,9 +3960,9 @@ focus_tree = {
 		icon = GFX_focus_generic_self_management
 		prerequisite = { focus = HSP_ana_all_must_bear_the_torch }
 		cost = 10
-		x = -1
-		y = 1
-		relative_position_id = HSP_ana_all_must_bear_the_torch
+		x = 4
+		y = 6
+		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			add_ideas = HSP_ana_liberated_territories_idea
@@ -3798,102 +3974,35 @@ focus_tree = {
 		}
 	}
 
-	## 공동체 자급자족
+	## 포르투갈 아나키즘
+	# An anarchist uprising that Spain joins (HSP_start_anarchist_uprising)
 	focus = {
-		id = HSP_ana_communal_autarky
-		icon = GFX_goal_generic_construction2
-		prerequisite = { focus = HSP_ana_liberated_territories }
+		id = HSP_ana_portuguese_anarchism
+		icon = GFX_focus_generic_attack_portugal
+		prerequisite = { focus = HSP_ana_council_of_aragon }
 		cost = 10
-		x = 0
-		y = 1
-		relative_position_id = HSP_ana_liberated_territories
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		completion_reward = {
-			add_ideas = HSP_ana_communal_autarky_idea
+		x = 7
+		y = 6
+		relative_position_id = HSP_the_cnt_fai
+		available = {
+			has_country_flag = HSP_anarchist_victory_flag
+			any_country = {
+				original_tag = POR
+				is_neighbor_of = ROOT
+				NOT = { is_subject_of = ROOT }
+				has_civil_war = no
+			}
+			NOT = { has_war_with = POR }
 		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 집단 재건
-	focus = {
-		id = HSP_ana_collective_recovery
-		icon = GFX_goal_generic_construct_infrastructure
-		prerequisite = { focus = HSP_ana_all_must_bear_the_torch }
-		cost = 10
-		x = 1
-		y = 1
-		relative_position_id = HSP_ana_all_must_bear_the_torch
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
-			swap_ideas = {
-				remove_idea = HSP_anarchist_society_3
-				add_idea = HSP_anarchist_society_4
-			}
-			random_owned_controlled_state = {
+			random_country = {
 				limit = {
-					is_core_of = ROOT
-					infrastructure < 5
+					original_tag = POR
+					NOT = { is_subject_of = ROOT }
 				}
-				set_state_flag = HSP_ana_recovery_infra
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				limit = {
-					is_core_of = ROOT
-					infrastructure < 5
-					NOT = { has_state_flag = HSP_ana_recovery_infra }
-				}
-				set_state_flag = HSP_ana_recovery_infra
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				limit = {
-					is_core_of = ROOT
-					infrastructure < 5
-					NOT = { has_state_flag = HSP_ana_recovery_infra }
-				}
-				set_state_flag = HSP_ana_recovery_infra
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				limit = {
-					is_core_of = ROOT
-					infrastructure < 5
-					NOT = { has_state_flag = HSP_ana_recovery_infra }
-				}
-				set_state_flag = HSP_ana_recovery_infra
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				limit = {
-					is_core_of = ROOT
-					infrastructure < 5
-					NOT = { has_state_flag = HSP_ana_recovery_infra }
-				}
-				set_state_flag = HSP_ana_recovery_infra
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
+				HSP_start_anarchist_uprising = yes
+				news_event = { id = HSP_spain_news.9 hours = 6 }
 			}
 		}
 		ai_will_do = {
@@ -3901,87 +4010,28 @@ focus_tree = {
 		}
 	}
 
-	## 산업 군사화
+	## 새로운 전쟁 방식
 	focus = {
-		id = HSP_ana_militarize_the_industry
-		icon = GFX_goal_generic_construct_mil_factory
-		prerequisite = { focus = HSP_ana_collective_recovery }
+		id = HSP_ana_new_way_of_warfare
+		icon = GFX_goal_generic_army_tanks
+		prerequisite = { focus = HSP_ana_the_threats_abound }
 		cost = 10
 		x = 0
-		y = 1
-		relative_position_id = HSP_ana_collective_recovery
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		y = 7
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
-			random_owned_controlled_state = {
-				limit = {
-					is_core_of = ROOT
-					free_building_slots = {
-						building = arms_factory
-						size > 0
-						include_locked = yes
-					}
-				}
-				set_state_flag = HSP_ana_militarize_mil
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
+			add_tech_bonus = {
+				name = HSP_ana_new_way_of_warfare
+				bonus = 1.0
+				uses = 1
+				category = light_fighter
 			}
-			random_owned_controlled_state = {
-				limit = {
-					is_core_of = ROOT
-					free_building_slots = {
-						building = arms_factory
-						size > 0
-						include_locked = yes
-					}
-					NOT = { has_state_flag = HSP_ana_militarize_mil }
-				}
-				set_state_flag = HSP_ana_militarize_mil
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				limit = {
-					is_core_of = ROOT
-					free_building_slots = {
-						building = arms_factory
-						size > 0
-						include_locked = yes
-					}
-					NOT = { has_state_flag = HSP_ana_militarize_mil }
-				}
-				set_state_flag = HSP_ana_militarize_mil
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				limit = {
-					is_core_of = ROOT
-					free_building_slots = {
-						building = arms_factory
-						size > 0
-						include_locked = yes
-					}
-					NOT = { has_state_flag = HSP_ana_militarize_mil }
-				}
-				set_state_flag = HSP_ana_militarize_mil
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
+			add_tech_bonus = {
+				name = HSP_ana_new_way_of_warfare
+				bonus = 1.0
+				uses = 1
+				category = armor
 			}
 		}
 		ai_will_do = {
@@ -3993,14 +4043,113 @@ focus_tree = {
 	focus = {
 		id = HSP_ana_freedom_of_thought
 		icon = GFX_focus_research2
-		prerequisite = { focus = HSP_ana_all_must_bear_the_torch }
+		prerequisite = { focus = HSP_ana_maintaining_the_fire }
 		cost = 10
-		x = 3
-		y = 1
-		relative_position_id = HSP_ana_all_must_bear_the_torch
+		x = 2
+		y = 7
+		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_research_slot = 1
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 집단 재건
+	focus = {
+		id = HSP_ana_collective_recovery
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = HSP_ana_maintaining_the_fire }
+		cost = 10
+		x = 5
+		y = 7
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = HSP_anarchist_society_3
+				add_idea = HSP_anarchist_society_4
+			}
+			add_ideas = SPR_collective_recovery_efforts
+			every_owned_state = {
+				limit = {
+					is_core_of = ROOT
+					infrastructure < 5
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 이베리아 지역방위 위원회
+	focus = {
+		id = HSP_ana_council_of_iberia
+		icon = GFX_goal_generic_alliance
+		prerequisite = { focus = HSP_ana_portuguese_anarchism }
+		cost = 10
+		x = 7
+		y = 7
+		relative_position_id = HSP_the_cnt_fai
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = HSP_com_portugal_is_ours_tt
+				NOT = {
+					any_country = {
+						original_tag = POR
+						NOT = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			every_country = {
+				limit = {
+					original_tag = POR
+					is_subject_of = ROOT
+				}
+				HSP_annex_viceroyalty = yes
+			}
+			every_state = {
+				limit = { is_core_of = POR }
+				add_core_of = ROOT
+			}
+			set_cosmetic_tag = SPC_regional_defense_council_of_iberia
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 코뮌 군사전략
+	# Unlocks the anarchist military councils and the Council of Theorists (common/characters/SPR.txt hooks)
+	focus = {
+		id = HSP_ana_communal_military_strategies
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = HSP_ana_new_way_of_warfare }
+		cost = 10
+		x = 0
+		y = 8
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			army_experience = 20
+			add_doctrine_cost_reduction = {
+				name = HSP_ana_communal_military_strategies
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+			custom_effect_tooltip = HSP_ana_communal_military_strategies_tt
 		}
 		ai_will_do = {
 			base = 10
@@ -4011,14 +4160,19 @@ focus_tree = {
 	focus = {
 		id = HSP_ana_torchbearers_of_tomorrow
 		icon = GFX_goal_generic_demand_territory
-		prerequisite = { focus = HSP_ana_freedom_of_thought }
+		prerequisite = { focus = HSP_ana_new_way_of_warfare }
+		prerequisite = { focus = HSP_ana_collective_recovery }
 		cost = 10
-		x = 0
-		y = 1
-		relative_position_id = HSP_ana_freedom_of_thought
+		x = 2
+		y = 8
+		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_ideas = SPR_torchbearers_of_tomorrow
+			swap_ideas = {
+				remove_idea = SPR_the_threats_abound_1
+				add_idea = SPR_the_threats_abound_2
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -4029,11 +4183,11 @@ focus_tree = {
 	focus = {
 		id = HSP_ana_expand_the_dockyards
 		icon = GFX_goal_generic_construct_naval_dockyard
-		prerequisite = { focus = HSP_ana_all_must_bear_the_torch }
+		prerequisite = { focus = HSP_ana_collective_recovery }
 		cost = 10
 		x = 5
-		y = 1
-		relative_position_id = HSP_ana_all_must_bear_the_torch
+		y = 8
+		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			random_owned_controlled_state = {
@@ -4107,6 +4261,45 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 필멸적인 반격
+	# vanilla: the spirit and the Anarchist Zeal leader trait
+	focus = {
+		id = HSP_ana_the_inevitable_counterblow
+		icon = GFX_goal_generic_construct_military
+		prerequisite = { focus = HSP_ana_communal_military_strategies }
+		prerequisite = { focus = HSP_ana_torchbearers_of_tomorrow }
+		cost = 10
+		x = 0
+		y = 9
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			add_ideas = SPR_the_inevitable_counterblow
+			add_country_leader_trait = anarchist_zeal
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 대의에 대한 믿음
+	focus = {
+		id = HSP_ana_faith_in_the_cause
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+		prerequisite = { focus = HSP_ana_torchbearers_of_tomorrow }
+		cost = 10
+		x = 2
+		y = 9
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_war_support = 0.1
 		}
 		ai_will_do = {
 			base = 10
@@ -4119,9 +4312,9 @@ focus_tree = {
 		icon = GFX_goal_generic_navy_doctrines_tactics
 		prerequisite = { focus = HSP_ana_expand_the_dockyards }
 		cost = 10
-		x = 0
-		y = 1
-		relative_position_id = HSP_ana_expand_the_dockyards
+		x = 5
+		y = 9
+		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_NAVY_XP }
 		completion_reward = {
 			navy_experience = 25
@@ -4143,69 +4336,183 @@ focus_tree = {
 		}
 	}
 
-	## 위협이 도처에
+	## 군사 기반시설 개선
 	focus = {
-		id = HSP_ana_the_threats_abound
-		icon = GFX_goal_generic_defence
-		prerequisite = { focus = HSP_the_cnt_fai }
+		id = HSP_ana_improve_military_infrastructure
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = HSP_ana_the_inevitable_counterblow }
 		cost = 10
-		x = 6
-		y = 1
+		x = -2
+		y = 10
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = SPR_improve_military_infrastructure
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					infrastructure < 5
+				}
+				set_state_flag = HSP_ana_military_infra
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					infrastructure < 5
+					NOT = { has_state_flag = HSP_ana_military_infra }
+				}
+				set_state_flag = HSP_ana_military_infra
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					infrastructure < 5
+					NOT = { has_state_flag = HSP_ana_military_infra }
+				}
+				set_state_flag = HSP_ana_military_infra
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					infrastructure < 5
+					NOT = { has_state_flag = HSP_ana_military_infra }
+				}
+				set_state_flag = HSP_ana_military_infra
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 산업 군사화
+	focus = {
+		id = HSP_ana_militarize_the_industry
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = HSP_ana_the_inevitable_counterblow }
+		cost = 10
+		x = 0
+		y = 10
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_ana_militarize_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_ana_militarize_mil }
+				}
+				set_state_flag = HSP_ana_militarize_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_ana_militarize_mil }
+				}
+				set_state_flag = HSP_ana_militarize_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_ana_militarize_mil }
+				}
+				set_state_flag = HSP_ana_militarize_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 인민 군사화
+	focus = {
+		id = HSP_ana_militarize_the_people
+		icon = GFX_goal_generic_military_deal
+		prerequisite = { focus = HSP_ana_the_inevitable_counterblow }
+		prerequisite = { focus = HSP_ana_faith_in_the_cause }
+		cost = 10
+		x = 2
+		y = 10
 		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_ARMY_XP }
 		completion_reward = {
-			add_ideas = HSP_ana_threats_abound_1
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 새로운 전쟁 방식
-	focus = {
-		id = HSP_ana_new_way_of_warfare
-		icon = GFX_goal_generic_army_tanks
-		prerequisite = { focus = HSP_ana_the_threats_abound }
-		cost = 10
-		x = -1
-		y = 1
-		relative_position_id = HSP_ana_the_threats_abound
-		search_filters = { FOCUS_FILTER_RESEARCH }
-		completion_reward = {
-			add_tech_bonus = {
-				name = HSP_ana_new_way_of_warfare
-				bonus = 1.0
-				uses = 1
-				category = light_fighter
+			swap_ideas = {
+				remove_idea = SPR_the_threats_abound_2
+				add_idea = SPR_the_threats_abound_3
 			}
-			add_tech_bonus = {
-				name = HSP_ana_new_way_of_warfare
-				bonus = 1.0
-				uses = 1
-				category = armor
-			}
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 공동체 군사 전략
-	focus = {
-		id = HSP_ana_communal_military_strategies
-		icon = GFX_goal_generic_army_doctrines
-		prerequisite = { focus = HSP_ana_new_way_of_warfare }
-		cost = 10
-		x = 0
-		y = 1
-		relative_position_id = HSP_ana_new_way_of_warfare
-		search_filters = { FOCUS_FILTER_ARMY_XP }
-		completion_reward = {
-			army_experience = 20
 			add_doctrine_cost_reduction = {
-				name = HSP_ana_communal_military_strategies
+				name = HSP_ana_militarize_the_people
 				cost_reduction = 0.5
-				uses = 2
+				uses = 1
 				category = land_doctrine
 			}
 		}
@@ -4219,11 +4526,11 @@ focus_tree = {
 	focus = {
 		id = HSP_ana_fortify_the_pyrenees
 		icon = GFX_goal_generic_fortify_city
-		prerequisite = { focus = HSP_ana_the_threats_abound }
+		prerequisite = { focus = HSP_ana_improve_military_infrastructure }
 		cost = 10
-		x = 1
-		y = 1
-		relative_position_id = HSP_ana_the_threats_abound
+		x = -2
+		y = 11
+		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_ARMY_XP }
 		completion_reward = {
 			custom_effect_tooltip = HSP_com_red_bulwark_tt
@@ -4305,15 +4612,105 @@ focus_tree = {
 		}
 	}
 
+	## 공동체 자급자족
+	focus = {
+		id = HSP_ana_communal_autarky
+		icon = GFX_goal_generic_construction2
+		prerequisite = { focus = HSP_ana_militarize_the_industry }
+		cost = 10
+		x = 0
+		y = 11
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = HSP_ana_communal_autarky_idea
+			add_tech_bonus = {
+				name = HSP_ana_communal_autarky
+				bonus = 1.0
+				uses = 1
+				category = excavation_tech
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 아나키즘에 국경은 없다
+	focus = {
+		id = HSP_ana_anarchism_knows_no_borders
+		icon = GFX_focus_spr_anarchism_knows_no_borders
+		prerequisite = { focus = HSP_ana_militarize_the_people }
+		cost = 10
+		x = 2
+		y = 11
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = SPR_anarchism_knows_no_borders
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 라 리네아 요새화
+	# vanilla SPR_fortify_la_linea_de_la_concepcion (facing Gibraltar)
+	focus = {
+		id = HSP_ana_fortify_la_linea
+		icon = GFX_goal_generic_fortify_city
+		prerequisite = { focus = HSP_ana_fortify_the_pyrenees }
+		cost = 10
+		x = -3
+		y = 12
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			custom_effect_tooltip = HSP_ana_fortify_la_linea_tt
+			hidden_effect = {
+				if = {
+					limit = { 169 = { is_controlled_by = ROOT } }
+					169 = {
+						add_building_construction = {
+							type = bunker
+							province = {
+							id = 13228
+							id = 10094
+							}
+							level = 3
+							instant_build = yes
+						}
+					}
+				}
+				if = {
+					limit = { 173 = { is_controlled_by = ROOT } }
+					173 = {
+						add_building_construction = {
+							type = bunker
+							province = {
+							id = 7153
+							}
+							level = 3
+							instant_build = yes
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
 	## 해안 요새화
 	focus = {
 		id = HSP_ana_fortify_the_coastlines
 		icon = GFX_focus_generic_coastal_fort
 		prerequisite = { focus = HSP_ana_fortify_the_pyrenees }
 		cost = 10
-		x = 0
-		y = 1
-		relative_position_id = HSP_ana_fortify_the_pyrenees
+		x = -1
+		y = 12
+		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_ARMY_XP }
 		completion_reward = {
 			custom_effect_tooltip = HSP_ana_fortify_the_coastlines_tt
@@ -4341,150 +4738,6 @@ focus_tree = {
 		}
 	}
 
-	## 인민 군사화
-	focus = {
-		id = HSP_ana_militarize_the_people
-		icon = GFX_goal_generic_military_deal
-		prerequisite = { focus = HSP_ana_communal_military_strategies }
-		prerequisite = { focus = HSP_ana_fortify_the_coastlines }
-		cost = 10
-		x = 1
-		y = 1
-		relative_position_id = HSP_ana_communal_military_strategies
-		search_filters = { FOCUS_FILTER_ARMY_XP }
-		completion_reward = {
-			swap_ideas = {
-				remove_idea = HSP_ana_threats_abound_1
-				add_idea = HSP_ana_threats_abound_2
-			}
-			add_doctrine_cost_reduction = {
-				name = HSP_ana_militarize_the_people
-				cost_reduction = 0.5
-				uses = 1
-				category = land_doctrine
-			}
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 피할 수 없는 반격
-	focus = {
-		id = HSP_ana_the_inevitable_counterblow
-		icon = GFX_goal_generic_construct_military
-		prerequisite = { focus = HSP_ana_militarize_the_people }
-		cost = 10
-		x = 0
-		y = 1
-		relative_position_id = HSP_ana_militarize_the_people
-		available = {
-			has_country_flag = HSP_anarchist_victory_flag
-		}
-		search_filters = { FOCUS_FILTER_ARMY_XP }
-		completion_reward = {
-			add_ideas = SPR_the_inevitable_counterblow
-			army_experience = 20
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 포르투갈 아나키즘
-	# vanilla SPR_portuguese_anarchism; an anarchist uprising that Spain joins (HSP_start_anarchist_uprising)
-	focus = {
-		id = HSP_ana_portuguese_anarchism
-		icon = GFX_focus_generic_attack_portugal
-		prerequisite = { focus = HSP_ana_the_inevitable_counterblow }
-		cost = 10
-		x = 2
-		y = 1
-		relative_position_id = HSP_ana_the_inevitable_counterblow
-		available = {
-			any_country = {
-				original_tag = POR
-				is_neighbor_of = ROOT
-				NOT = { is_subject_of = ROOT }
-				has_civil_war = no
-			}
-			NOT = { has_war_with = POR }
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = {
-			random_country = {
-				limit = {
-					original_tag = POR
-					NOT = { is_subject_of = ROOT }
-				}
-				HSP_start_anarchist_uprising = yes
-				news_event = { id = HSP_spain_news.9 hours = 6 }
-			}
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 이베리아 방위 평의회
-	# vanilla SPR_regional_defense_council_of_iberia
-	focus = {
-		id = HSP_ana_council_of_iberia
-		icon = GFX_goal_generic_alliance
-		prerequisite = { focus = HSP_ana_portuguese_anarchism }
-		cost = 10
-		x = 0
-		y = 1
-		relative_position_id = HSP_ana_portuguese_anarchism
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = HSP_com_portugal_is_ours_tt
-				NOT = {
-					any_country = {
-						original_tag = POR
-						NOT = { is_subject_of = ROOT }
-					}
-				}
-			}
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = {
-			every_country = {
-				limit = {
-					original_tag = POR
-					is_subject_of = ROOT
-				}
-				HSP_annex_viceroyalty = yes
-			}
-			every_state = {
-				limit = { is_core_of = POR }
-				add_core_of = ROOT
-			}
-			set_cosmetic_tag = SPC_regional_defense_council_of_iberia
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 아나키즘에 국경은 없다
-	focus = {
-		id = HSP_ana_anarchism_knows_no_borders
-		icon = GFX_focus_spr_anarchism_knows_no_borders
-		prerequisite = { focus = HSP_ana_the_inevitable_counterblow }
-		cost = 10
-		x = 0
-		y = 1
-		relative_position_id = HSP_ana_the_inevitable_counterblow
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = {
-			add_ideas = SPR_anarchism_knows_no_borders
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
 	## 혁명의 씨앗
 	# Unlocks HSP_ignite_anarchist_uprising (vanilla SPR_plant_the_seeds_of_revolution)
 	focus = {
@@ -4492,9 +4745,9 @@ focus_tree = {
 		icon = GFX_focus_prc_infiltration
 		prerequisite = { focus = HSP_ana_anarchism_knows_no_borders }
 		cost = 10
-		x = -1
-		y = 1
-		relative_position_id = HSP_ana_anarchism_knows_no_borders
+		x = 1
+		y = 12
+		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			custom_effect_tooltip = HSP_ana_seeds_of_revolution_tt
@@ -4504,46 +4757,24 @@ focus_tree = {
 		}
 	}
 
-	## 세계 방위 평의회
-	# Unlocks HSP_integrate_commune (vanilla SPR_integrate_commune)
+	## 세계 혁명
 	focus = {
-		id = HSP_ana_global_defense_council
-		icon = GFX_goal_generic_alliance
+		id = HSP_ana_world_revolution
+		icon = GFX_focus_generic_strike_at_democracy1
 		prerequisite = { focus = HSP_ana_anarchism_knows_no_borders }
 		cost = 10
-		x = 1
-		y = 1
-		relative_position_id = HSP_ana_anarchism_knows_no_borders
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = {
-			set_cosmetic_tag = SPC_global_defense_council
-			custom_effect_tooltip = HSP_ana_global_defense_council_tt
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 폭정에 맞선 전쟁
-	focus = {
-		id = HSP_ana_war_against_tyranny
-		icon = GFX_focus_generic_anti_fascist_diplomacy
-		prerequisite = { focus = HSP_ana_anarchism_knows_no_borders }
-		cost = 10
-		x = 0
-		y = 2
-		relative_position_id = HSP_ana_anarchism_knows_no_borders
+		x = 3
+		y = 12
+		relative_position_id = HSP_the_cnt_fai
 		available = {
 			threat > 0.5
 		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_ARMY_XP }
 		completion_reward = {
+			add_ideas = HSP_ana_world_revolution_idea
 			every_neighbor_country = {
 				limit = {
-					OR = {
-						has_government = fascism
-						has_government = communism
-					}
+					NOT = { has_country_flag = HSP_anarchist_commune_flag }
 					NOT = { is_in_faction_with = ROOT }
 					NOT = { is_subject_of = ROOT }
 				}
@@ -4555,6 +4786,27 @@ focus_tree = {
 					}
 				}
 			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 범세계 방위 위원회
+	# Unlocks HSP_integrate_commune (vanilla SPR_integrate_commune)
+	focus = {
+		id = HSP_ana_global_defense_council
+		icon = GFX_goal_generic_alliance
+		prerequisite = { focus = HSP_ana_council_of_iberia }
+		prerequisite = { focus = HSP_ana_anarchism_knows_no_borders }
+		cost = 10
+		x = 7
+		y = 12
+		relative_position_id = HSP_the_cnt_fai
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			set_cosmetic_tag = SPC_global_defense_council
+			custom_effect_tooltip = HSP_ana_global_defense_council_tt
 		}
 		ai_will_do = {
 			base = 10

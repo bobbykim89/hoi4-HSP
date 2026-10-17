@@ -364,7 +364,8 @@ ideas = {
 				research_speed_factor = 0.05
 			}
 		}
-		HSP_com_world_revolution_idea = {
+		# anarchism: HSP_ana_world_revolution
+		HSP_ana_world_revolution_idea = {
 			picture = generic_morale_bonus
 			allowed = {
 				original_tag = SPR
@@ -477,7 +478,7 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				compliance_growth = 0.15
+				compliance_gain = 0.05
 				resistance_target = -0.1
 			}
 		}
@@ -494,8 +495,9 @@ ideas = {
 				local_resources_factor = 0.2
 			}
 		}
-		HSP_ana_threats_abound_1 = {
-			picture = generic_morale_bonus
+		# anarchism: consumer goods, political power and recruitable population, since stability stays near 0%
+		HSP_ana_shared_burdens_idea = {
+			picture = generic_goods_red_bonus
 			allowed = {
 				original_tag = SPR
 			}
@@ -504,11 +506,11 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				army_core_defence_factor = 0.1
+				consumer_goods_factor = -0.1
 			}
 		}
-		HSP_ana_threats_abound_2 = {
-			picture = generic_morale_bonus
+		HSP_ana_federation_of_communes_idea = {
+			picture = generic_pp_unity_bonus
 			allowed = {
 				original_tag = SPR
 			}
@@ -517,9 +519,22 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				army_core_defence_factor = 0.1
-				army_morale_factor = 0.1
-				training_time_factor = -0.1
+				political_power_factor = 0.2
+				political_power_gain = 0.15
+			}
+		}
+		HSP_ana_universal_militia_idea = {
+			picture = generic_manpower_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				conscription = 0.03
+				conscription_factor = 0.1
 			}
 		}
 	}

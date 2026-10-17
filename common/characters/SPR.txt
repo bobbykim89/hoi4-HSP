@@ -2123,10 +2123,16 @@ characters={
 					tag = SPA
 					tag = SPB
 				}
-				has_completed_focus = SPR_regional_defense_council_of_aragon
+				OR = {
+					has_completed_focus = SPR_regional_defense_council_of_aragon
+					has_completed_focus = HSP_the_cnt_fai # HSP
+				}
 			}
 			available = {
-				has_completed_focus = SPR_communal_military_strategies
+				OR = {
+					has_completed_focus = SPR_communal_military_strategies
+					has_completed_focus = HSP_ana_communal_military_strategies # HSP
+				}
 			}
 			traits = { council_of_theorists }
 		}
@@ -2348,11 +2354,19 @@ characters={
 					tag = SPA
 					tag = SPB
 				}
-				has_completed_focus = SPR_regional_defense_council_of_aragon
+				OR = {
+					has_completed_focus = SPR_regional_defense_council_of_aragon
+					has_completed_focus = HSP_the_cnt_fai # HSP
+				}
 			}
 			available = {
-				has_completed_focus = SPR_regional_defense_council_of_aragon
-				has_completed_focus = SPR_masters_of_our_own_fate
+				OR = {
+					AND = {
+						has_completed_focus = SPR_regional_defense_council_of_aragon
+						has_completed_focus = SPR_masters_of_our_own_fate
+					}
+					has_completed_focus = HSP_ana_communal_military_strategies # HSP
+				}
 				custom_trigger_tooltip = {
 					tooltip = SPR_not_nationalist_spain_tt
 					NOT = { tag = SPA }
@@ -2383,11 +2397,19 @@ characters={
 					tag = SPA
 					tag = SPB
 				}
-				has_completed_focus = SPR_regional_defense_council_of_aragon
+				OR = {
+					has_completed_focus = SPR_regional_defense_council_of_aragon
+					has_completed_focus = HSP_the_cnt_fai # HSP
+				}
 			}
 			available = {
-				has_completed_focus = SPR_regional_defense_council_of_aragon
-				has_completed_focus = SPR_masters_of_our_own_fate
+				OR = {
+					AND = {
+						has_completed_focus = SPR_regional_defense_council_of_aragon
+						has_completed_focus = SPR_masters_of_our_own_fate
+					}
+					has_completed_focus = HSP_ana_communal_military_strategies # HSP
+				}
 				custom_trigger_tooltip = {
 					tooltip = SPR_not_nationalist_spain_tt
 					NOT = { tag = SPA }
@@ -2418,11 +2440,19 @@ characters={
 					tag = SPA
 					tag = SPB
 				}
-				has_completed_focus = SPR_regional_defense_council_of_aragon
+				OR = {
+					has_completed_focus = SPR_regional_defense_council_of_aragon
+					has_completed_focus = HSP_the_cnt_fai # HSP
+				}
 			}
 			available = {
-				has_completed_focus = SPR_regional_defense_council_of_aragon
-				has_completed_focus = SPR_masters_of_our_own_fate
+				OR = {
+					AND = {
+						has_completed_focus = SPR_regional_defense_council_of_aragon
+						has_completed_focus = SPR_masters_of_our_own_fate
+					}
+					has_completed_focus = HSP_ana_communal_military_strategies # HSP
+				}
 				custom_trigger_tooltip = {
 					tooltip = SPR_not_nationalist_spain_tt
 					NOT = { tag = SPA }
@@ -2718,11 +2748,19 @@ characters={
 					tag = SPA
 					tag = SPB
 				}
-				has_completed_focus = SPR_regional_defense_council_of_aragon
+				OR = {
+					has_completed_focus = SPR_regional_defense_council_of_aragon
+					has_completed_focus = HSP_the_cnt_fai # HSP
+				}
 			}
 			available = {
-				has_completed_focus = SPR_regional_defense_council_of_aragon
-				has_completed_focus = SPR_masters_of_our_own_fate
+				OR = {
+					AND = {
+						has_completed_focus = SPR_regional_defense_council_of_aragon
+						has_completed_focus = SPR_masters_of_our_own_fate
+					}
+					has_completed_focus = HSP_ana_communal_military_strategies # HSP
+				}
 				custom_trigger_tooltip = {
 					tooltip = SPR_not_nationalist_spain_tt
 					NOT = { tag = SPA }
@@ -2753,11 +2791,19 @@ characters={
 					tag = SPA
 					tag = SPB
 				}
-				has_completed_focus = SPR_regional_defense_council_of_aragon
+				OR = {
+					has_completed_focus = SPR_regional_defense_council_of_aragon
+					has_completed_focus = HSP_the_cnt_fai # HSP
+				}
 			}
 			available = {
-				has_completed_focus = SPR_regional_defense_council_of_aragon
-				has_completed_focus = SPR_masters_of_our_own_fate
+				OR = {
+					AND = {
+						has_completed_focus = SPR_regional_defense_council_of_aragon
+						has_completed_focus = SPR_masters_of_our_own_fate
+					}
+					has_completed_focus = HSP_ana_communal_military_strategies # HSP
+				}
 				custom_trigger_tooltip = {
 					tooltip = SPR_not_nationalist_spain_tt
 					NOT = { tag = SPA }
@@ -2901,11 +2947,19 @@ characters={
 					tag = SPA
 					tag = SPB
 				}
-				has_completed_focus = SPR_regional_defense_council_of_aragon
+				OR = {
+					has_completed_focus = SPR_regional_defense_council_of_aragon
+					has_completed_focus = HSP_the_cnt_fai # HSP
+				}
 			}
 			available = {
-				has_completed_focus = SPR_regional_defense_council_of_aragon
-				has_completed_focus = SPR_masters_of_our_own_fate
+				OR = {
+					AND = {
+						has_completed_focus = SPR_regional_defense_council_of_aragon
+						has_completed_focus = SPR_masters_of_our_own_fate
+					}
+					has_completed_focus = HSP_ana_communal_military_strategies # HSP
+				}
 				custom_trigger_tooltip = {
 					tooltip = SPR_not_nationalist_spain_tt
 					NOT = { tag = SPA }
@@ -2936,11 +2990,19 @@ characters={
 					tag = SPA
 					tag = SPB
 				}
-				has_completed_focus = SPR_regional_defense_council_of_aragon
+				OR = {
+					has_completed_focus = SPR_regional_defense_council_of_aragon
+					has_completed_focus = HSP_the_cnt_fai # HSP
+				}
 			}
 			available = {
-				has_completed_focus = SPR_regional_defense_council_of_aragon
-				has_completed_focus = SPR_masters_of_our_own_fate
+				OR = {
+					AND = {
+						has_completed_focus = SPR_regional_defense_council_of_aragon
+						has_completed_focus = SPR_masters_of_our_own_fate
+					}
+					has_completed_focus = HSP_ana_communal_military_strategies # HSP
+				}
 				custom_trigger_tooltip = {
 					tooltip = SPR_not_nationalist_spain_tt
 					NOT = { tag = SPA }
@@ -3305,11 +3367,19 @@ characters={
 					tag = SPA
 					tag = SPB
 				}
-				has_completed_focus = SPR_regional_defense_council_of_aragon
+				OR = {
+					has_completed_focus = SPR_regional_defense_council_of_aragon
+					has_completed_focus = HSP_the_cnt_fai # HSP
+				}
 			}
 			available = {
-				has_completed_focus = SPR_regional_defense_council_of_aragon
-				has_completed_focus = SPR_masters_of_our_own_fate
+				OR = {
+					AND = {
+						has_completed_focus = SPR_regional_defense_council_of_aragon
+						has_completed_focus = SPR_masters_of_our_own_fate
+					}
+					has_completed_focus = HSP_ana_communal_military_strategies # HSP
+				}
 				custom_trigger_tooltip = {
 					tooltip = SPR_not_nationalist_spain_tt
 					NOT = { tag = SPA }
@@ -3340,11 +3410,19 @@ characters={
 					tag = SPA
 					tag = SPB
 				}
-				has_completed_focus = SPR_regional_defense_council_of_aragon
+				OR = {
+					has_completed_focus = SPR_regional_defense_council_of_aragon
+					has_completed_focus = HSP_the_cnt_fai # HSP
+				}
 			}
 			available = {
-				has_completed_focus = SPR_regional_defense_council_of_aragon
-				has_completed_focus = SPR_masters_of_our_own_fate
+				OR = {
+					AND = {
+						has_completed_focus = SPR_regional_defense_council_of_aragon
+						has_completed_focus = SPR_masters_of_our_own_fate
+					}
+					has_completed_focus = HSP_ana_communal_military_strategies # HSP
+				}
 				custom_trigger_tooltip = {
 					tooltip = SPR_not_nationalist_spain_tt
 					NOT = { tag = SPA }
@@ -3375,11 +3453,19 @@ characters={
 					tag = SPA
 					tag = SPB
 				}
-				has_completed_focus = SPR_regional_defense_council_of_aragon
+				OR = {
+					has_completed_focus = SPR_regional_defense_council_of_aragon
+					has_completed_focus = HSP_the_cnt_fai # HSP
+				}
 			}
 			available = {
-				has_completed_focus = SPR_regional_defense_council_of_aragon
-				has_completed_focus = SPR_masters_of_our_own_fate
+				OR = {
+					AND = {
+						has_completed_focus = SPR_regional_defense_council_of_aragon
+						has_completed_focus = SPR_masters_of_our_own_fate
+					}
+					has_completed_focus = HSP_ana_communal_military_strategies # HSP
+				}
 				custom_trigger_tooltip = {
 					tooltip = SPR_not_nationalist_spain_tt
 					NOT = { tag = SPA }
@@ -3410,11 +3496,19 @@ characters={
 					tag = SPA
 					tag = SPB
 				}
-				has_completed_focus = SPR_regional_defense_council_of_aragon
+				OR = {
+					has_completed_focus = SPR_regional_defense_council_of_aragon
+					has_completed_focus = HSP_the_cnt_fai # HSP
+				}
 			}
 			available = {
-				has_completed_focus = SPR_regional_defense_council_of_aragon
-				has_completed_focus = SPR_masters_of_our_own_fate
+				OR = {
+					AND = {
+						has_completed_focus = SPR_regional_defense_council_of_aragon
+						has_completed_focus = SPR_masters_of_our_own_fate
+					}
+					has_completed_focus = HSP_ana_communal_military_strategies # HSP
+				}
 				custom_trigger_tooltip = {
 					tooltip = SPR_not_nationalist_spain_tt
 					NOT = { tag = SPA }
@@ -3445,11 +3539,19 @@ characters={
 					tag = SPA
 					tag = SPB
 				}
-				has_completed_focus = SPR_regional_defense_council_of_aragon
+				OR = {
+					has_completed_focus = SPR_regional_defense_council_of_aragon
+					has_completed_focus = HSP_the_cnt_fai # HSP
+				}
 			}
 			available = {
-				has_completed_focus = SPR_regional_defense_council_of_aragon
-				has_completed_focus = SPR_masters_of_our_own_fate
+				OR = {
+					AND = {
+						has_completed_focus = SPR_regional_defense_council_of_aragon
+						has_completed_focus = SPR_masters_of_our_own_fate
+					}
+					has_completed_focus = HSP_ana_communal_military_strategies # HSP
+				}
 				custom_trigger_tooltip = {
 					tooltip = SPR_not_nationalist_spain_tt
 					NOT = { tag = SPA }
@@ -3480,11 +3582,19 @@ characters={
 					tag = SPA
 					tag = SPB
 				}
-				has_completed_focus = SPR_regional_defense_council_of_aragon
+				OR = {
+					has_completed_focus = SPR_regional_defense_council_of_aragon
+					has_completed_focus = HSP_the_cnt_fai # HSP
+				}
 			}
 			available = {
-				has_completed_focus = SPR_regional_defense_council_of_aragon
-				has_completed_focus = SPR_masters_of_our_own_fate
+				OR = {
+					AND = {
+						has_completed_focus = SPR_regional_defense_council_of_aragon
+						has_completed_focus = SPR_masters_of_our_own_fate
+					}
+					has_completed_focus = HSP_ana_communal_military_strategies # HSP
+				}
 				custom_trigger_tooltip = {
 					tooltip = SPR_not_nationalist_spain_tt
 					NOT = { tag = SPA }
@@ -3515,11 +3625,19 @@ characters={
 					tag = SPA
 					tag = SPB
 				}
-				has_completed_focus = SPR_regional_defense_council_of_aragon
+				OR = {
+					has_completed_focus = SPR_regional_defense_council_of_aragon
+					has_completed_focus = HSP_the_cnt_fai # HSP
+				}
 			}
 			available = {
-				has_completed_focus = SPR_regional_defense_council_of_aragon
-				has_completed_focus = SPR_masters_of_our_own_fate
+				OR = {
+					AND = {
+						has_completed_focus = SPR_regional_defense_council_of_aragon
+						has_completed_focus = SPR_masters_of_our_own_fate
+					}
+					has_completed_focus = HSP_ana_communal_military_strategies # HSP
+				}
 				custom_trigger_tooltip = {
 					tooltip = SPR_not_nationalist_spain_tt
 					NOT = { tag = SPA }
