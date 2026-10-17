@@ -2653,8 +2653,7 @@ HSP_anarchist_revolution_cat = {
 		visible = {
 			has_completed_focus = HSP_ana_global_defense_council
 		}
-		state_target = yes
-		target_array = controlled_states
+		state_target = any_controlled_state # checks only the states we control (decisions/_documentation.md)
 		target_root_trigger = {
 			has_completed_focus = HSP_ana_global_defense_council
 		}
