@@ -2660,11 +2660,8 @@ HSP_anarchist_revolution_cat = {
 		target_trigger = {
 			FROM = {
 				NOT = { is_core_of = ROOT }
-				compliance > 35
+				compliance > 50
 			}
-		}
-		available = {
-			FROM = { compliance > 50 }
 		}
 		on_map_mode = map_and_decisions_view
 		cost = 50
