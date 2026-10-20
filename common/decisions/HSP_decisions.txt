@@ -2676,3 +2676,83 @@ HSP_anarchist_revolution_cat = {
 		}
 	}
 }
+
+HSP_mining_cat = {
+	# Unlocked by HSP_expand_mining: +8 coal in the coal state chosen by HSP_expand_mining
+	HSP_expand_coal_mines = {
+		icon = GFX_decision_generic_factory
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_expand_mining
+			NOT = { has_country_flag = HSP_expand_coal_mines_flag }
+		}
+		available = {
+			any_owned_state = {
+				has_state_flag = HSP_coal_mine_state
+				is_controlled_by = ROOT
+			}
+		}
+		cost = 0
+		days_remove = 35
+		fire_only_once = yes
+		modifier = {
+			civilian_factory_use = 3
+		}
+		complete_effect = {
+			set_country_flag = HSP_expand_coal_mines_flag
+		}
+		remove_effect = {
+			every_owned_state = {
+				limit = { has_state_flag = HSP_coal_mine_state }
+				add_resource = {
+					type = coal
+					amount = 8
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	# Unlocked by HSP_expand_mineral_extraction: +12 coal in the coal state chosen by HSP_expand_mining
+	HSP_deepen_coal_mines = {
+		icon = GFX_decision_generic_factory
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_expand_mineral_extraction
+			NOT = { has_country_flag = HSP_deepen_coal_mines_flag }
+		}
+		available = {
+			any_owned_state = {
+				has_state_flag = HSP_coal_mine_state
+				is_controlled_by = ROOT
+			}
+		}
+		cost = 0
+		days_remove = 35
+		fire_only_once = yes
+		modifier = {
+			civilian_factory_use = 3
+		}
+		complete_effect = {
+			set_country_flag = HSP_deepen_coal_mines_flag
+		}
+		remove_effect = {
+			every_owned_state = {
+				limit = { has_state_flag = HSP_coal_mine_state }
+				add_resource = {
+					type = coal
+					amount = 12
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+}

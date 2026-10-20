@@ -57,7 +57,7 @@ focus_tree = {
 	focus = {
 		id = HSP_defend_the_republic
 		icon = GFX_focus_spr_maintain_the_republic
-		cost = 10
+		cost = 5
 		x = 72
 		y = 0
 		available = {
@@ -276,7 +276,7 @@ focus_tree = {
 		id = HSP_the_democratic_republic
 		icon = GFX_goal_support_democracy
 		prerequisite = { focus = HSP_purge_the_conspirators focus = HSP_no_pasaran }
-		cost = 10
+		cost = 5
 		x = 63
 		y = 4
 		mutually_exclusive = { focus = HSP_the_workers_republic focus = HSP_the_cnt_fai }
@@ -2131,7 +2131,7 @@ focus_tree = {
 		id = HSP_the_workers_republic
 		icon = GFX_focus_spr_the_anti_fascist_workers_revolution
 		prerequisite = { focus = HSP_purge_the_conspirators focus = HSP_no_pasaran }
-		cost = 10
+		cost = 5
 		x = 85
 		y = 4
 		available = {
@@ -3396,7 +3396,7 @@ focus_tree = {
 		id = HSP_the_cnt_fai
 		icon = GFX_focus_spr_regional_defense_council_of_aragon
 		prerequisite = { focus = HSP_purge_the_conspirators focus = HSP_no_pasaran }
-		cost = 10
+		cost = 5
 		x = 106
 		y = 4
 		available = {
@@ -4086,7 +4086,7 @@ focus_tree = {
 		icon = GFX_goal_generic_construct_infrastructure
 		prerequisite = { focus = HSP_ana_maintaining_the_fire }
 		cost = 10
-		x = 5
+		x = 2
 		y = 7
 		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -4195,7 +4195,6 @@ focus_tree = {
 	focus = {
 		id = HSP_ana_torchbearers_of_tomorrow
 		icon = GFX_goal_generic_demand_territory
-		prerequisite = { focus = HSP_ana_maintaining_the_fire }
 		prerequisite = { focus = HSP_ana_collective_recovery }
 		cost = 10
 		x = 2
@@ -4220,7 +4219,7 @@ focus_tree = {
 		icon = GFX_goal_generic_construct_naval_dockyard
 		prerequisite = { focus = HSP_ana_collective_recovery }
 		cost = 10
-		x = 5
+		x = 4
 		y = 8
 		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -4946,7 +4945,7 @@ focus_tree = {
 		prerequisite = {
 			focus = HSP_martial_law_for_stability
 		}
-		cost = 10
+		cost = 5
 		x = 2
 		y = 1
 		relative_position_id = HSP_ensure_military_loyalty
@@ -6084,6 +6083,48 @@ focus_tree = {
 		relative_position_id = HSP_barcelona_steel
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
+			# coal in the first of Asturias, Leon, Western Aragon and Catalonia we hold; HSP_mining_cat expands it
+			if = {
+				limit = { 790 = { is_owned_by = ROOT is_controlled_by = ROOT } }
+				790 = {
+					set_state_flag = HSP_coal_mine_state
+					add_resource = {
+						type = coal
+						amount = 18
+					}
+				}
+			}
+			else_if = {
+				limit = { 174 = { is_owned_by = ROOT is_controlled_by = ROOT } }
+				174 = {
+					set_state_flag = HSP_coal_mine_state
+					add_resource = {
+						type = coal
+						amount = 18
+					}
+				}
+			}
+			else_if = {
+				limit = { 166 = { is_owned_by = ROOT is_controlled_by = ROOT } }
+				166 = {
+					set_state_flag = HSP_coal_mine_state
+					add_resource = {
+						type = coal
+						amount = 18
+					}
+				}
+			}
+			else_if = {
+				limit = { 165 = { is_owned_by = ROOT is_controlled_by = ROOT } }
+				165 = {
+					set_state_flag = HSP_coal_mine_state
+					add_resource = {
+						type = coal
+						amount = 18
+					}
+				}
+			}
+			custom_effect_tooltip = HSP_expand_coal_mines_tt
 			41 = {
 				add_resource = {
 					type = aluminium
@@ -6163,6 +6204,7 @@ focus_tree = {
 		relative_position_id = HSP_national_mining_company
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 		completion_reward = {
+			custom_effect_tooltip = HSP_deepen_coal_mines_tt
 			41 = {
 				add_resource = {
 					type = aluminium
@@ -6651,14 +6693,16 @@ focus_tree = {
 	focus = {
 		id = HSP_royal_university_of_madrid
 		icon = GFX_goal_tfv_generic_tech_sharing
+		available = {
+			OR = { # either house's restoration focus; prerequisite lines would cross the branch
+				has_completed_focus = HSP_restore_royal_authority
+				has_completed_focus = HSP_restore_royal_legitimacy
+			}
+		}
 		cost = 10
 		x = 0
 		y = 2
 		relative_position_id = HSP_reorganize_administration
-		prerequisite = {
-			focus = HSP_restore_royal_authority
-			focus = HSP_restore_royal_legitimacy
-		}
 		prerequisite = {
 			focus = HSP_integration_of_public_opinion
 		}
@@ -7038,15 +7082,15 @@ focus_tree = {
 	focus = {
 		id = HSP_the_empire_resurrected
 		icon = GFX_focus_POL_habsburg
+		available = {
+			has_completed_focus = HSP_house_of_habsburg # a prerequisite line would run through the branch
+		}
 		cost = 5
 		x = -5
 		y = 1
 		relative_position_id = HSP_looking_outside
 		prerequisite = {
 			focus = HSP_looking_outside
-		}
-		prerequisite = {
-			focus = HSP_house_of_habsburg
 		}
 		mutually_exclusive = {
 			focus = HSP_approach_uk
@@ -7736,15 +7780,15 @@ focus_tree = {
 	focus = {
 		id = HSP_obtaining_rights_to_austria
 		icon = GFX_focus_generic_court
+		available = {
+			has_completed_focus = HSP_house_of_habsburg # a prerequisite line would run through the branch
+		}
 		cost = 10
 		x = -1
 		y = 1
 		relative_position_id = HSP_allies_economic_support
 		prerequisite = {
 			focus = HSP_allies_economic_support
-		}
-		prerequisite = {
-			focus = HSP_house_of_habsburg
 		}
 		completion_reward = {
 			every_state = {
@@ -7800,15 +7844,15 @@ focus_tree = {
 	focus = {
 		id = HSP_bourbon_claims_in_italy
 		icon = GFX_focus_attack_italy
+		available = {
+			has_completed_focus = HSP_house_of_borbon # a prerequisite line would run through the branch
+		}
 		cost = 10
 		x = 1
 		y = 1
 		relative_position_id = HSP_allies_economic_support
 		prerequisite = {
 			focus = HSP_allies_economic_support
-		}
-		prerequisite = {
-			focus = HSP_house_of_borbon
 		}
 		search_filters = {FOCUS_FILTER_ANNEXATION}
 		completion_reward = {
@@ -8013,15 +8057,15 @@ focus_tree = {
 	focus = {
 		id = HSP_obtain_right_to_low_countries
 		icon = GFX_focus_hol_gateway_to_europe
+		available = {
+			has_completed_focus = HSP_house_of_habsburg # a prerequisite line would run through the branch
+		}
 		cost = 10
 		x = 2
 		y = 1
 		relative_position_id = HSP_support_paramilitary_organizations
 		prerequisite = {
 			focus = HSP_support_paramilitary_organizations
-		}
-		prerequisite = {
-			focus = HSP_house_of_habsburg
 		}
 		search_filters = {FOCUS_FILTER_ANNEXATION}
 		completion_reward = {
@@ -8071,15 +8115,15 @@ focus_tree = {
 	focus = {
 		id = HSP_spanish_north_africa
 		icon = GFX_focus_generic_africa_defense
+		available = {
+			has_completed_focus = HSP_house_of_borbon # a prerequisite line would run through the branch
+		}
 		cost = 10
 		x = 0
 		y = 1
 		relative_position_id = HSP_support_paramilitary_organizations
 		prerequisite = {
 			focus = HSP_support_paramilitary_organizations
-		}
-		prerequisite = {
-			focus = HSP_house_of_borbon
 		}
 		search_filters = {FOCUS_FILTER_ANNEXATION}
 		completion_reward = {

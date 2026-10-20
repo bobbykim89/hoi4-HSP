@@ -105,3 +105,10 @@
   HSP_ignite_anarchist_uprising_desc:0 "Costs §Y10,000§! infantry equipment. The states nearest us rise as an anarchist commune, and we join their war."
   HSP_integrate_commune:0 "Integrate the Commune of §Y[FROM.GetName]§!"
   HSP_integrate_commune_desc:0 "The state needs §Y50%§! compliance. It becomes our core and passes to us."
+  # mining
+  HSP_mining_cat:0 "Spanish Mining"
+  HSP_mining_cat_desc:0 ""
+  HSP_expand_coal_mines:0 "Expand the Coal Mines"
+  HSP_expand_coal_mines_desc:0 "Uses §Y3§! civilian factories for 35 days, then adds §Y8§! coal to our coal state."
+  HSP_deepen_coal_mines:0 "Deepen the Coal Mines"
+  HSP_deepen_coal_mines_desc:0 "Uses §Y3§! civilian factories for 35 days, then adds §Y12§! coal to our coal state."

@@ -105,3 +105,10 @@
   HSP_ignite_anarchist_uprising_desc:0 "보병 장비 §Y10,000§!개가 소모됩니다. 우리와 가장 가까운 주들이 아나키스트 코뮌으로 봉기하며, 우리는 그들의 전쟁에 참전합니다."
   HSP_integrate_commune:0 "§Y[FROM.GetName]§! 코뮌 통합"
   HSP_integrate_commune_desc:0 "순응도가 §Y50%§! 이상이어야 합니다. 이 주는 우리의 코어가 되고 우리 소유가 됩니다."
+  # mining
+  HSP_mining_cat:0 "스페인 광업"
+  HSP_mining_cat_desc:0 ""
+  HSP_expand_coal_mines:0 "탄광 확장"
+  HSP_expand_coal_mines_desc:0 "35일 동안 민간 공장 §Y3§!개를 사용한 뒤, 탄광 주에 석탄 §Y8§!을 더합니다."
+  HSP_deepen_coal_mines:0 "탄광 심화 개발"
+  HSP_deepen_coal_mines_desc:0 "35일 동안 민간 공장 §Y3§!개를 사용한 뒤, 탄광 주에 석탄 §Y12§!를 더합니다."
