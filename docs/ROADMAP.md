@@ -1,11 +1,11 @@
 # HSP roadmap
 
-Status as of 2026-10-16. The full design is the author's plan; this file records what is built, what comes next, and what was deferred.
+Status as of 2026-10-20. The full design is the author's plan; this file records what is built, what comes next, and what was deferred.
 
 ## Built: Phase 1 (foundation and monarchy)
 
 - **The mod's own tree.** `HSP_spanish_focus` (`common/national_focus/HSP_spain.txt`) replaces vanilla's Spain tree on the 1936 start.
-- **Starting choice.** The emergency council leads to the monarchy and cancels the 1936 election. 역사적 스페인 (Historical Spain) hands off to vanilla's tree.
+- **Starting choice.** The emergency council leads to the monarchy and cancels the 1936 election. (역사적 스페인, the Phase 1 hand-off to vanilla's tree, was replaced by the Republican and Fascist roots.)
 - **Shared branches.** The economy and military branches are open to every path.
 - **Choosing the king.** An event crowns Otto (Habsburg) or Alfonso XIII (Borbón); Karl Pius is the fallback.
 - **Habsburg route:**
@@ -28,41 +28,45 @@ Status as of 2026-10-16. The full design is the author's plan; this file records
   - war planning and the Crusade Against Communism
 - **AI.** Every focus and decision has an AI weight.
 
-## Next: Phase 2, the Republican path
+## Built: Phase 2 (the Republican path)
 
-Replaces the 역사적 스페인 hand-off root for republicans. Taken from the author's design:
+- **Root:** 공화국 수호 (`HSP_defend_the_republic`). The election starts a 180-day fascist plot.
+- **Dealing with the plot:** decisions to maintain order state by state, negotiate with the unions and eliminate the fascists. If the plot runs out, the unpacified Nationalist states rise in a civil war.
+- **Democracy** (about 50 focuses):
+  - an economy spine with a three-level spirit
+  - domestic reforms
+  - the Allies (with their research group) or the Latin Sphere (customs union, research group, mutual defence, annexation into the Latin Union)
+  - the federal split (Galicia, the Basque Country, Catalonia and Morocco as puppets with their own development tree, then reunified or freed into an Iberian Defense Council)
+  - a Popular Front line that can turn communist and join the Comintern
+  - late-game war
+- **Communism** (about 40 focuses): Stalinist or independent lines; Portuguese and French revolutions; the Iberian Socialist Union; exporting the revolution to Latin America.
+- **Anarchism** (about 45 focuses), on vanilla's CNT-FAI layout:
+  - the Anarchist Society, a single dynamic spirit fed by focuses
+  - the revolution at Masters of Our Own Fate, in which the Republic revolts
+  - volunteers only, and no puppets, factions or collaboration governments
+  - the councils and theorists unlocked by focus
+  - Portuguese anarchism, uprisings abroad and commune integration
+  - World Revolution
 
-- **Common to all three sub-paths.** The fascist civil war can be avoided, but the fascist partisans must be dealt with.
-  - Once the election happens, a civil-war countdown of 180 days starts. Use a mission, like vanilla's `SPR_military_plot_*`.
-  - **Focus 1:** unlocks "Maintain order in [state]" decisions for the northern states, the historical Nationalist territories. Troops must be present; each costs 15 PP and gives +5% stability, −3% fascism and +35 days on the countdown.
-  - **Focus 2:** unlocks "Negotiate with the unions": 50 PP for 30 days of +1.5% stability, −0.1 fascism per week, and −10% consumer goods.
-  - **Focus 3:** unlocks "Eliminate the fascists", available at 75%+ stability and fascism below 5%. The Falange and Nationalist generals and political advisors retire.
-  - After the fascists are dealt with (or after a civil war against them), choose Democracy, Communism or Anarchism.
-- **Democracy.** Extends vanilla's republican route. It has strong economy and factory buffs and few military ones.
-  - Communist generals retire.
-  - It can join the Allies.
-  - It can form the **Latin Sphere** faction. Decisions invite Latin American countries for 25 PP each: MEX GUA HON ELS NIC COS CUB JAM COL VEN ECU PRU BOL PAR CHL ARG URG.
-  - The focus "Hispanic Unity" renames the country to the Latin Union and unlocks decisions to annex faction members with cores (50 PP each).
-- **Communism.** Close to vanilla's Stalinist path.
-  - It can trigger a communist revolution in Portugal and unite with it, taking all of Portugal's cores.
-  - A focus switches the government to communism once communism has 40%+ support.
-  - Republican generals retire.
-- **Anarchism.** Like vanilla's anarchist Spain, with buffs, and it requires a civil war.
-  - A focus gives a compliance buff and enables the occupation law 해방된 노동자들 (`liberate_workers_occupation`). Vanilla only shows that law to communist governments, so it needs a mod condition.
-  - The anarchist revolution starts after the focus "Masters of Our Own Fate", and a normal civil war follows.
-  - Republican generals retire.
+## Built: Phase 3 (the Fascist path)
 
-## Next: Phase 3, the Fascist path
-
-Requires a civil war. It has two sub-routes.
-
-- **Common:**
-  - Republican and communist generals retire.
-  - **Focus 1:** unlocks a decision to cause civil unrest in the northern states: +0.1 fascism and −1% stability weekly for 30 days.
-  - **Focus 2:** unlocks a per-state decision to win that state over: −5% stability and +3% fascism each, 30 days. The state joins your side when the civil war starts.
-  - The civil war starts when the countdown ends, or when stability is at 0 and fascism is over 60%.
-- **Nationalist:** the low-return path, close to vanilla's Nationalist Spain.
-- **Falange:** the high-return path, close to vanilla's Falange path.
+- **Root:** 국민 운동 (`HSP_national_movement`). The 역사적 스페인 hand-off to vanilla's tree is gone. The election starts a 180-day countdown to the uprising, which can also come early at 0% stability with fascism above 60%.
+- **Before the uprising:** decisions to incite unrest and to win over states one by one.
+- **The uprising:**
+  - The player is the Nationalists under Franco and keeps the states won over, plus Spanish Morocco and the Canaries; the Republic revolts with the rest.
+  - Winning adds 내전으로부터 회복 (−10% output, stability, construction and recruitable population).
+- **Nationalist** (32 focuses), close to vanilla's Francoist route:
+  - no new cores
+  - the recovery spirit removed early
+  - a crowned puppet king (Alfonso XIII or Jaime IV, with a stability spirit) or a military dictatorship
+  - +5% recruitable population in total (2 + 2 + 1)
+- **Falange** (30 focuses), close to vanilla's Falange route:
+  - José Antonio as leader
+  - the recovery spirit removed late
+  - Portugal (cores and a war goal)
+  - the Aragonese possessions, North Africa and Nueva España (claims, war goals, and decisions to core occupied states)
+  - submission demands to Spanish-speaking Latin America, then the Hispanic Empire
+  - the Axis
 
 ## Deferred and future ideas
 
@@ -76,9 +80,11 @@ Requires a civil war. It has two sub-routes.
 
 ## Content the author needs to supply
 
-- **Event text review.** Every event now has a functional draft in both languages (2026-10-16). The author reviews and rewrites the Korean; keep the English as a faithful translation.
+- **Event text review.** Every event now has a functional draft in both languages, including the Republican and Fascist events and news added in Phases 2 and 3. The author reviews and rewrites the Korean; keep the English as a faithful translation.
 - **Focus descriptions.** Most `_desc` keys are still the `""` placeholder.
 - **Flags.** These currently use placeholders:
+  - `HSP_latin_union` (a copy of vanilla's Gran Colombia flag)
+  - `HSP_iberian_socialist_republic` (a copy of vanilla's communist Spain flag)
   - the four viceroyalties (`HSP_viceroyalty_*`, copied from vanilla's Carlist Cross of Burgundy)
   - `HSP_franco_spanish_commonwealth` (a copy of `HSP_kingdom_of_spain`)
 - **Portrait.** Archduke Felix (king of Bulgaria) uses Archduke Joseph Ferdinand's portrait.

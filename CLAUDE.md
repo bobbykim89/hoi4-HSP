@@ -5,9 +5,15 @@ Alt-history focus tree for Republican Spain (tag `SPR`; nationalist Spain is `SP
 ## Where things are
 
 - `common/national_focus/HSP_spain.txt` is the mod's own tree, `HSP_spanish_focus`. SPR gets it on the 1936 start, replacing vanilla's `spanish_focus`; the 1939 start keeps vanilla. Branches start at `\t# <name> path` / `\t# army` headers; map them with `grep -n '^\t#' common/national_focus/HSP_spain.txt`. Each focus is preceded by a `## <Korean name>` comment; keep that.
-- **Two roots at the start.** `HSP_assemble_emergency_council` leads to the monarchy and cancels the election, so there is no civil war. `HSP_historical_spain` runs `HSP_return_to_historical_spain` (`common/scripted_effects/HSP_scripted_effects.txt`), which loads vanilla's tree with its election and civil war. If neither root is taken before the 16 Feb 1936 election, `lar_spain.1` options a/b do the same hand-off. Until the HSP Republican and Fascist paths exist, they are vanilla's.
-- At game start, `common/on_actions/HSP_on_actions.txt` strips SPR's vanilla spirits down to 전국 파업 plus 구식 군대. Anything that sends Spain back to vanilla must restore them.
-- `docs/ROADMAP.md`: what is built, the next phases (Republican, Fascist), deferred ideas and the art and text still needed. Update it when a phase or deferred item lands.
+- **Three roots at the start, one per path.** Each path's civil war keeps the player on the HSP tree; nothing hands Spain to vanilla's tree any more.
+  - `HSP_assemble_emergency_council`: the monarchy. It cancels the election, so there is no civil war.
+  - `HSP_defend_the_republic`: the Republic. The election starts a 180-day fascist plot (`HSP_fascist_plot_mission`), dealt with by decisions or by civil war, then Democracy, Communism or Anarchism.
+  - `HSP_national_movement`: the Fascists. The election starts a 180-day countdown (`HSP_nationalist_plot_mission`) to the uprising, then Nationalist or Falange.
+  - If no root is taken before the 16 Feb 1936 election, `lar_spain.1` picks one: option a the Republic, b the Fascists, c the monarchy.
+- The civil wars are `start_civil_war` calls in `common/scripted_effects/HSP_scripted_effects.txt` (`HSP_start_fascist_uprising`, `HSP_start_nationalist_uprising`, `HSP_start_anarchist_revolution`), not vanilla's `lar_spain.2`. Their outcomes are set in `on_civil_war_end` (`common/on_actions/HSP_on_actions.txt`). Pass `keep_all_characters = yes`: by default the game hands the rebels a share of Spain's characters.
+- At game start, `common/on_actions/HSP_on_actions.txt` strips SPR's vanilla spirits down to 전국 파업 plus 구식 군대 and unlocks division templates.
+- `common/national_focus/HSP_regional.txt` is a small development tree for the regions the democracy path releases.
+- `docs/ROADMAP.md`: what is built, deferred ideas and the art and text still needed. Update it when a phase or deferred item lands.
 - Localisation: `localisation/{english,korean}/hsp_*_l_{english,korean}.yml`. The two languages have the same files, the same keys in the same order, and the same `# <branch> focus` comments, which mirror the tree.
 
 ## Vanilla overrides
@@ -41,7 +47,7 @@ Before using an effect, trigger or modifier, confirm it exists in the installed 
 
 ## Known problems (don't fix unprompted; ask first)
 
-- Event text for `HSP_spain_events.6`–`.39` is a functional draft the author is reviewing; ask the author before rewriting story text. Most focus `_desc` keys are `""` placeholders. The one remaining known issue is a vanilla sprite bug in `events/LAR_Spain.txt`.
+- Event text for `HSP_spain_events.6` onwards and `HSP_spain_news.2` onwards is a functional draft the author is reviewing; ask the author before rewriting story text. Most focus `_desc` keys are `""` placeholders. The one remaining known issue is a vanilla sprite bug in `events/LAR_Spain.txt`.
 - Some focus IDs contain typos (`HSP_convoy_escord_focus`). Renaming an ID breaks save games and references, so leave IDs as they are.
 
 ## Git
