@@ -986,9 +986,9 @@ focus_tree = {
 		icon = GFX_goal_generic_major_alliance
 		prerequisite = { focus = HSP_latin_customs_union }
 		cost = 10
-		x = 0
-		y = 2
-		relative_position_id = HSP_latin_customs_union
+		x = -1
+		y = 6
+		relative_position_id = HSP_the_democratic_republic
 		available = {
 			is_faction_leader = yes
 		}
@@ -1329,8 +1329,8 @@ focus_tree = {
 		prerequisite = { focus = HSP_joint_military_training }
 		cost = 10
 		x = 0
-		y = 1
-		relative_position_id = HSP_joint_military_training
+		y = 6
+		relative_position_id = HSP_the_democratic_republic
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			every_country = {
@@ -1353,9 +1353,9 @@ focus_tree = {
 		icon = GFX_goal_generic_construct_mil_factory
 		prerequisite = { focus = HSP_integrated_economies }
 		cost = 10
-		x = 0
-		y = 1
-		relative_position_id = HSP_integrated_economies
+		x = -2
+		y = 6
+		relative_position_id = HSP_the_democratic_republic
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			random_owned_controlled_state = {
@@ -1437,9 +1437,9 @@ focus_tree = {
 		icon = GFX_focus_generic_socialist_science
 		prerequisite = { focus = HSP_join_the_comintern }
 		cost = 5
-		x = 0
-		y = 1
-		relative_position_id = HSP_join_the_comintern
+		x = 9
+		y = 4
+		relative_position_id = HSP_the_democratic_republic
 		available = {
 			is_in_faction_with = SOV
 		}
