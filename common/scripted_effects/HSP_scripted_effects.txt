@@ -642,9 +642,16 @@ HSP_start_anarchist_revolution = {
 		}
 	}
 	set_cosmetic_tag = SPR_anarchist_spain
-	# vanilla lar_spain.10's anarchist rules
+	# vanilla lar_spain.10's anarchist rules: no collaboration governments, puppets or factions
+	if = {
+		limit = { is_in_faction = yes }
+		leave_faction = yes
+	}
 	set_rule = {
 		can_create_collaboration_government = no
+		can_puppet = no
+		can_create_factions = no
+		can_join_factions = no
 		can_generate_female_aces = yes
 	}
 	every_owned_state = {
@@ -683,8 +690,8 @@ HSP_start_anarchist_revolution = {
 	news_event = { id = HSP_spain_news.7 hours = 6 }
 }
 
-# Scope: the country that rises. ROOT = Spain. An anarchist uprising in the states nearest Spain;
-# Spain joins the rebels and makes them its puppet (Portuguese anarchism, HSP_ignite_anarchist_uprising).
+# Scope: the country that rises. ROOT = Spain. An anarchist uprising in the states nearest Spain; Spain joins
+# the rebels' war. Anarchists take no puppets: the commune stays free (Portuguese anarchism, HSP_ignite_anarchist_uprising).
 HSP_start_anarchist_uprising = {
 	save_event_target_as = HSP_revolution_target
 	if = {
@@ -732,11 +739,6 @@ HSP_start_anarchist_uprising = {
 				targeted_alliance = PREV
 				enemy = event_target:HSP_revolution_target
 				hostility_reason = asked_to_join
-			}
-			puppet = {
-				target = PREV
-				end_wars = no
-				end_civil_wars = no
 			}
 		}
 	}

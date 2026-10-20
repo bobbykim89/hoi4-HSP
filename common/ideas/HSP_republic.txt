@@ -379,114 +379,6 @@ ideas = {
 				justify_war_goal_time = -0.5
 			}
 		}
-		# anarchism path: the society spirit, upgraded at HSP_ana_appropriate_the_means, _autogestion, _workers_control and _collective_recovery
-		HSP_anarchist_society_1 = {
-			picture = generic_local_self_management
-			allowed = {
-				original_tag = SPR
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			modifier = {
-				stability_weekly = -0.01
-				production_speed_buildings_factor = 0.05
-			}
-		}
-		HSP_anarchist_society_2 = {
-			picture = generic_local_self_management
-			allowed = {
-				original_tag = SPR
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			modifier = {
-				stability_weekly = -0.01
-				production_speed_buildings_factor = 0.05
-				industrial_capacity_factory = 0.05
-				industrial_capacity_dockyard = 0.05
-			}
-		}
-		HSP_anarchist_society_3 = {
-			picture = generic_local_self_management
-			allowed = {
-				original_tag = SPR
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			modifier = {
-				stability_weekly = -0.01
-				production_speed_buildings_factor = 0.1
-				industrial_capacity_factory = 0.1
-				industrial_capacity_dockyard = 0.1
-			}
-		}
-		HSP_anarchist_society_4 = {
-			picture = generic_local_self_management
-			allowed = {
-				original_tag = SPR
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			modifier = {
-				stability_weekly = -0.005
-				production_speed_buildings_factor = 0.15
-				industrial_capacity_factory = 0.15
-				industrial_capacity_dockyard = 0.15
-				consumer_goods_factor = -0.05
-			}
-		}
-		HSP_anarchist_society_5 = {
-			picture = generic_local_self_management
-			allowed = {
-				original_tag = SPR
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			modifier = {
-				production_speed_buildings_factor = 0.2
-				industrial_capacity_factory = 0.15
-				industrial_capacity_dockyard = 0.15
-				consumer_goods_factor = -0.1
-				conscription_factor = 0.03
-			}
-		}
-		HSP_ana_agrarian_collectives_idea = {
-			picture = generic_agrarian_society
-			allowed = {
-				original_tag = SPR
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			modifier = {
-				consumer_goods_factor = -0.1
-			}
-		}
-		HSP_ana_mujeres_libres_idea = {
-			picture = generic_manpower_bonus
-			allowed = {
-				original_tag = SPR
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			modifier = {
-				conscription = 0.02
-				production_speed_buildings_factor = 0.05
-			}
-		}
 		HSP_ana_liberated_territories_idea = {
 			picture = generic_local_self_management
 			allowed = {
@@ -514,20 +406,7 @@ ideas = {
 				local_resources_factor = 0.2
 			}
 		}
-		# anarchism: consumer goods, political power and recruitable population, since stability stays near 0%
-		HSP_ana_shared_burdens_idea = {
-			picture = generic_goods_red_bonus
-			allowed = {
-				original_tag = SPR
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			modifier = {
-				consumer_goods_factor = -0.1
-			}
-		}
+		# anarchism: political power, since stability stays near 0%
 		HSP_ana_federation_of_communes_idea = {
 			picture = generic_pp_unity_bonus
 			allowed = {
@@ -540,20 +419,6 @@ ideas = {
 			modifier = {
 				political_power_factor = 0.2
 				political_power_gain = 0.15
-			}
-		}
-		HSP_ana_universal_militia_idea = {
-			picture = generic_manpower_bonus
-			allowed = {
-				original_tag = SPR
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			modifier = {
-				conscription = 0.03
-				conscription_factor = 0.1
 			}
 		}
 	}

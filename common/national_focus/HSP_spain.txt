@@ -3415,7 +3415,17 @@ focus_tree = {
 				long_name = HSP_cnt_fai_party_long
 				name = HSP_cnt_fai_party
 			}
-			add_ideas = HSP_anarchist_society_1
+			add_dynamic_modifier = {
+				modifier = HSP_anarchist_society
+			}
+			add_to_variable = {
+				HSP_ana_stability_weekly = -0.01
+				tooltip = HSP_stability_weekly_tt
+			}
+			add_to_variable = {
+				HSP_ana_construction = 0.05
+				tooltip = production_speed_buildings_factor_tt
+			}
 		}
 		ai_will_do = {
 			base = 3
@@ -3427,15 +3437,19 @@ focus_tree = {
 		id = HSP_ana_appropriate_the_means
 		icon = GFX_focus_generic_support_the_left_right
 		prerequisite = { focus = HSP_the_cnt_fai }
-		cost = 10
+		cost = 5
 		x = -1
 		y = 1
 		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
-			swap_ideas = {
-				remove_idea = HSP_anarchist_society_1
-				add_idea = HSP_anarchist_society_2
+			add_to_variable = {
+				HSP_ana_factory = 0.05
+				tooltip = industrial_capacity_factory_tt
+			}
+			add_to_variable = {
+				HSP_ana_dockyard = 0.05
+				tooltip = industrial_capacity_dockyard_tt
 			}
 		}
 		ai_will_do = {
@@ -3448,7 +3462,7 @@ focus_tree = {
 		id = HSP_ana_arm_the_people
 		icon = GFX_goal_generic_military_sphere
 		prerequisite = { focus = HSP_the_cnt_fai }
-		cost = 10
+		cost = 5
 		x = 1
 		y = 1
 		relative_position_id = HSP_the_cnt_fai
@@ -3473,9 +3487,17 @@ focus_tree = {
 		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
-			swap_ideas = {
-				remove_idea = HSP_anarchist_society_2
-				add_idea = HSP_anarchist_society_3
+			add_to_variable = {
+				HSP_ana_construction = 0.05
+				tooltip = production_speed_buildings_factor_tt
+			}
+			add_to_variable = {
+				HSP_ana_factory = 0.05
+				tooltip = industrial_capacity_factory_tt
+			}
+			add_to_variable = {
+				HSP_ana_dockyard = 0.05
+				tooltip = industrial_capacity_dockyard_tt
 			}
 		}
 		ai_will_do = {
@@ -3518,7 +3540,10 @@ focus_tree = {
 		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
-			add_ideas = HSP_ana_shared_burdens_idea
+			add_to_variable = {
+				HSP_ana_consumer = -0.1
+				tooltip = consumer_goods_factor_tt
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -3624,7 +3649,10 @@ focus_tree = {
 		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
-			add_ideas = SPR_anarchist_public_transport
+			add_to_variable = {
+				HSP_ana_army_speed = 0.15
+				tooltip = army_speed_factor_tt
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -3642,7 +3670,10 @@ focus_tree = {
 		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
-			add_ideas = HSP_ana_agrarian_collectives_idea
+			add_to_variable = {
+				HSP_ana_consumer = -0.1
+				tooltip = consumer_goods_factor_tt
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -3661,7 +3692,14 @@ focus_tree = {
 		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_MANPOWER }
 		completion_reward = {
-			add_ideas = HSP_ana_universal_militia_idea
+			add_to_variable = {
+				HSP_ana_conscription = 0.03
+				tooltip = conscription_tt
+			}
+			add_to_variable = {
+				HSP_ana_conscription_factor = 0.1
+				tooltip = conscription_factor_tt
+			}
 			add_manpower = 20000
 		}
 		ai_will_do = {
@@ -3703,9 +3741,21 @@ focus_tree = {
 		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
-			swap_ideas = {
-				remove_idea = HSP_anarchist_society_3
-				add_idea = HSP_anarchist_society_4
+			add_to_variable = {
+				HSP_ana_construction = 0.05
+				tooltip = production_speed_buildings_factor_tt
+			}
+			add_to_variable = {
+				HSP_ana_factory = 0.05
+				tooltip = industrial_capacity_factory_tt
+			}
+			add_to_variable = {
+				HSP_ana_dockyard = 0.05
+				tooltip = industrial_capacity_dockyard_tt
+			}
+			add_to_variable = {
+				HSP_ana_consumer = -0.05
+				tooltip = consumer_goods_factor_tt
 			}
 		}
 		ai_will_do = {
@@ -3725,7 +3775,14 @@ focus_tree = {
 		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_MANPOWER }
 		completion_reward = {
-			add_ideas = HSP_ana_mujeres_libres_idea
+			add_to_variable = {
+				HSP_ana_conscription = 0.02
+				tooltip = conscription_tt
+			}
+			add_to_variable = {
+				HSP_ana_construction = 0.05
+				tooltip = production_speed_buildings_factor_tt
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -4023,35 +4080,6 @@ focus_tree = {
 		}
 	}
 
-	## 새로운 전쟁 방식
-	focus = {
-		id = HSP_ana_new_way_of_warfare
-		icon = GFX_goal_generic_army_tanks
-		prerequisite = { focus = HSP_ana_the_threats_abound }
-		cost = 5
-		x = 0
-		y = 7
-		relative_position_id = HSP_the_cnt_fai
-		search_filters = { FOCUS_FILTER_RESEARCH }
-		completion_reward = {
-			add_tech_bonus = {
-				name = HSP_ana_new_way_of_warfare
-				bonus = 1.0
-				uses = 1
-				category = light_fighter
-			}
-			add_tech_bonus = {
-				name = HSP_ana_new_way_of_warfare
-				bonus = 1.0
-				uses = 1
-				category = armor
-			}
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
 	## 집단 재건
 	focus = {
 		id = HSP_ana_collective_recovery
@@ -4063,9 +4091,17 @@ focus_tree = {
 		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
-			swap_ideas = {
-				remove_idea = HSP_anarchist_society_4
-				add_idea = HSP_anarchist_society_5
+			add_to_variable = {
+				HSP_ana_construction = 0.05
+				tooltip = production_speed_buildings_factor_tt
+			}
+			add_to_variable = {
+				HSP_ana_consumer = -0.05
+				tooltip = consumer_goods_factor_tt
+			}
+			add_to_variable = {
+				HSP_ana_conscription_factor = 0.03
+				tooltip = conscription_factor_tt
 			}
 			add_ideas = SPR_collective_recovery_efforts
 			every_owned_state = {
@@ -4096,11 +4132,12 @@ focus_tree = {
 		relative_position_id = HSP_the_cnt_fai
 		available = {
 			custom_trigger_tooltip = {
-				tooltip = HSP_com_portugal_is_ours_tt
+				tooltip = HSP_ana_portugal_is_commune_tt
 				NOT = {
 					any_country = {
 						original_tag = POR
 						NOT = { is_subject_of = ROOT }
+						NOT = { has_country_flag = HSP_anarchist_commune_flag }
 					}
 				}
 			}
@@ -4110,7 +4147,10 @@ focus_tree = {
 			every_country = {
 				limit = {
 					original_tag = POR
-					is_subject_of = ROOT
+					OR = {
+						is_subject_of = ROOT
+						has_country_flag = HSP_anarchist_commune_flag
+					}
 				}
 				HSP_annex_viceroyalty = yes
 			}
@@ -4130,7 +4170,7 @@ focus_tree = {
 	focus = {
 		id = HSP_ana_communal_military_strategies
 		icon = GFX_goal_generic_army_doctrines
-		prerequisite = { focus = HSP_ana_new_way_of_warfare }
+		prerequisite = { focus = HSP_ana_the_threats_abound }
 		cost = 10
 		x = 0
 		y = 8
@@ -4155,7 +4195,7 @@ focus_tree = {
 	focus = {
 		id = HSP_ana_torchbearers_of_tomorrow
 		icon = GFX_goal_generic_demand_territory
-		prerequisite = { focus = HSP_ana_new_way_of_warfare }
+		prerequisite = { focus = HSP_ana_maintaining_the_fire }
 		prerequisite = { focus = HSP_ana_collective_recovery }
 		cost = 10
 		x = 2
@@ -4295,36 +4335,6 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			add_war_support = 0.1
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 인민의 함대
-	focus = {
-		id = HSP_ana_the_peoples_fleet
-		icon = GFX_goal_generic_navy_doctrines_tactics
-		prerequisite = { focus = HSP_ana_expand_the_dockyards }
-		cost = 10
-		x = 5
-		y = 9
-		relative_position_id = HSP_the_cnt_fai
-		search_filters = { FOCUS_FILTER_NAVY_XP }
-		completion_reward = {
-			navy_experience = 25
-			add_tech_bonus = {
-				name = HSP_ana_the_peoples_fleet
-				bonus = 1.0
-				uses = 1
-				category = dd_tech
-			}
-			add_tech_bonus = {
-				name = HSP_ana_the_peoples_fleet
-				bonus = 1.0
-				uses = 1
-				category = ca_tech
-			}
 		}
 		ai_will_do = {
 			base = 10
