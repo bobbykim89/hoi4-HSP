@@ -4949,6 +4949,2262 @@ focus_tree = {
 		}
 	}
 
+	# nationalist path
+	# Franco's Spain, close to vanilla's Francoist route: no new cores, an early end to the civil war's scars,
+	# and a choice between a crowned puppet king and a military dictatorship.
+
+	## 카우디요
+	# vanilla SPA_caudillo_of_spain; Franco already leads since the uprising
+	focus = {
+		id = HSP_nat_caudillo_of_spain
+		icon = GFX_focus_spa_caudillo_of_spain
+		prerequisite = { focus = HSP_purge_the_left focus = HSP_march_on_madrid }
+		cost = 5
+		x = 136
+		y = 4
+		available = {
+			has_country_flag = HSP_nationalists_won_flag
+		}
+		mutually_exclusive = { focus = HSP_fal_phalanx_ascendant }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 50
+		}
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 2
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	## 국민 전선 통합
+	focus = {
+		id = HSP_nat_unify_the_nationalist_front
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = HSP_nat_caudillo_of_spain }
+		cost = 10
+		x = -9
+		y = 1
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = 100
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 순교자 추모
+	focus = {
+		id = HSP_nat_extol_the_martyrs
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = HSP_nat_unify_the_nationalist_front }
+		cost = 10
+		x = -11
+		y = 2
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_war_support = 0.1
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 신앙의 자유 보장
+	focus = {
+		id = HSP_nat_safeguard_the_freedom_of_worship
+		icon = GFX_focus_generic_strike_at_democracy1
+		prerequisite = { focus = HSP_nat_unify_the_nationalist_front }
+		cost = 10
+		x = -7
+		y = 2
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = 60
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.05
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 정당 통합
+	# vanilla SPA_fuse_the_parties: FET de las JONS
+	focus = {
+		id = HSP_nat_fuse_the_parties
+		icon = GFX_focus_spa_fuse_the_parties
+		prerequisite = { focus = HSP_nat_extol_the_martyrs }
+		prerequisite = { focus = HSP_nat_safeguard_the_freedom_of_worship }
+		cost = 10
+		x = -9
+		y = 3
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			set_party_name = {
+				ideology = fascism
+				long_name = SPR_fascism_francoist_party_long
+				name = SPR_fascism_francoist_party
+			}
+			add_stability = 0.05
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.1
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 당 지도부 축출
+	focus = {
+		id = HSP_nat_banish_the_party_leaders
+		icon = GFX_focus_generic_support_the_left_right
+		prerequisite = { focus = HSP_nat_fuse_the_parties }
+		cost = 10
+		x = -9
+		y = 4
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 200
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 군주제 복원
+	# A king reigns, Franco rules: neutrality government and a stability spirit (HSP_crown_nationalist_king)
+	focus = {
+		id = HSP_nat_restore_the_monarchy
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties
+		prerequisite = { focus = HSP_nat_banish_the_party_leaders }
+		cost = 10
+		x = -11
+		y = 5
+		relative_position_id = HSP_nat_caudillo_of_spain
+		mutually_exclusive = { focus = HSP_nat_dictator_for_life }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			HSP_crown_nationalist_king = yes
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 종신 독재자
+	# vanilla SPA_dictator_for_life: Caudillo trait 1 > 2
+	focus = {
+		id = HSP_nat_dictator_for_life
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = HSP_nat_banish_the_party_leaders }
+		cost = 10
+		x = -7
+		y = 5
+		relative_position_id = HSP_nat_caudillo_of_spain
+		mutually_exclusive = { focus = HSP_nat_restore_the_monarchy }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			if = {
+				limit = {
+					has_country_leader = {
+						character = SPA_francisco_franco
+						ruling_only = yes
+					}
+				}
+				swap_ruler_traits = {
+					remove = caudillo_1
+					add = caudillo_2
+				}
+			}
+			add_ideas = HSP_nat_military_dictatorship
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 신, 조국, 국왕
+	focus = {
+		id = HSP_nat_dios_patria_rey
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = HSP_nat_restore_the_monarchy }
+		cost = 10
+		x = -11
+		y = 6
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 하나의, 위대한, 자유로운
+	focus = {
+		id = HSP_nat_una_grande_y_libre
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = HSP_nat_dictator_for_life }
+		cost = 10
+		x = -7
+		y = 6
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_war_support = 0.1
+			add_political_power = 100
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 청색 사단
+	# vanilla spirit: volunteers
+	focus = {
+		id = HSP_nat_la_division_azul
+		icon = GFX_goal_rhineland
+		prerequisite = { focus = HSP_nat_dios_patria_rey focus = HSP_nat_una_grande_y_libre }
+		cost = 10
+		x = -9
+		y = 7
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = SPA_la_division_azul
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 이베리아 협정
+	# vanilla SPA_the_iberian_pact, as mutual guarantees
+	focus = {
+		id = HSP_nat_iberian_pact
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = HSP_nat_la_division_azul }
+		cost = 10
+		x = -10
+		y = 8
+		relative_position_id = HSP_nat_caudillo_of_spain
+		available = {
+			country_exists = POR
+			NOT = { has_war_with = POR }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			if = {
+				limit = { country_exists = POR }
+				POR = {
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = HSP_iberian_pact_opinion
+					}
+				}
+				add_opinion_modifier = {
+					target = POR
+					modifier = HSP_iberian_pact_opinion
+				}
+				give_guarantee = POR
+				POR = { give_guarantee = ROOT }
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 지브롤터 탈환
+	# vanilla SPA_retake_gibraltar (a wargoal, no core)
+	focus = {
+		id = HSP_nat_retake_gibraltar
+		icon = GFX_focus_attack_britain
+		prerequisite = { focus = HSP_nat_la_division_azul }
+		cost = 10
+		x = -8
+		y = 8
+		relative_position_id = HSP_nat_caudillo_of_spain
+		available = {
+			NOT = { owns_state = 118 }
+			118 = { OWNER = { NOT = { is_in_faction_with = ROOT } } }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			random_country = {
+				limit = { owns_state = 118 }
+				ROOT = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						generator = { 118 }
+						expire = 0
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 국가 재건
+	# vanilla SPA_national_recovery
+	focus = {
+		id = HSP_nat_national_recovery
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = HSP_nat_caudillo_of_spain }
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_timed_idea = {
+				idea = SPA_national_recovery_1
+				days = 1825
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_nat_recovery_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_nat_recovery_civ }
+				}
+				set_state_flag = HSP_nat_recovery_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 안정화 계획
+	# The Nationalists put the war behind them early
+	focus = {
+		id = HSP_nat_stabilization_plan
+		icon = GFX_goal_generic_neutrality_focus
+		prerequisite = { focus = HSP_nat_national_recovery }
+		cost = 10
+		x = -3
+		y = 2
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			if = {
+				limit = { has_idea = HSP_recovering_from_civil_war }
+				remove_ideas = HSP_recovering_from_civil_war
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 국내 산업 개발
+	focus = {
+		id = HSP_nat_domestic_industrial_developments
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = HSP_nat_national_recovery }
+		cost = 10
+		x = -1
+		y = 2
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_nat_domestic_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_nat_domestic_civ }
+				}
+				set_state_flag = HSP_nat_domestic_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_nat_domestic_civ }
+				}
+				set_state_flag = HSP_nat_domestic_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 생활 수준 향상
+	focus = {
+		id = HSP_nat_improve_living_standards
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = HSP_nat_stabilization_plan }
+		cost = 10
+		x = -3
+		y = 3
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.15
+			add_political_power = 120
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 철도망 정비
+	focus = {
+		id = HSP_nat_improve_the_railways
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = HSP_nat_domestic_industrial_developments }
+		cost = 10
+		x = -1
+		y = 3
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_core_of = ROOT
+					infrastructure < 5
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 스페인의 기적
+	focus = {
+		id = HSP_nat_the_spanish_miracle
+		icon = GFX_focus_spa_the_spanish_miracle
+		prerequisite = { focus = HSP_nat_improve_living_standards }
+		prerequisite = { focus = HSP_nat_improve_the_railways }
+		cost = 10
+		x = -2
+		y = 4
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_nat_miracle_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_nat_miracle_civ }
+				}
+				set_state_flag = HSP_nat_miracle_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_nat_miracle_civ }
+				}
+				set_state_flag = HSP_nat_miracle_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_nat_miracle_civ }
+				}
+				set_state_flag = HSP_nat_miracle_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_nat_miracle_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_nat_miracle_mil }
+				}
+				set_state_flag = HSP_nat_miracle_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_nat_miracle_mil }
+				}
+				set_state_flag = HSP_nat_miracle_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 해군 기반시설 투자
+	focus = {
+		id = HSP_nat_invest_in_naval_infrastructure
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		prerequisite = { focus = HSP_nat_the_spanish_miracle }
+		cost = 10
+		x = -2
+		y = 5
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		completion_reward = {
+			navy_experience = 25
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_nat_naval_dock
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_nat_naval_dock }
+				}
+				set_state_flag = HSP_nat_naval_dock
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_nat_naval_dock }
+				}
+				set_state_flag = HSP_nat_naval_dock
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 조선대 확장
+	focus = {
+		id = HSP_nat_expand_the_slipways
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = { focus = HSP_nat_invest_in_naval_infrastructure }
+		cost = 10
+		x = -3
+		y = 6
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_nat_slipways_dock
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_nat_slipways_dock }
+				}
+				set_state_flag = HSP_nat_slipways_dock
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_nat_slipways_dock }
+				}
+				set_state_flag = HSP_nat_slipways_dock
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_nat_slipways_dock }
+				}
+				set_state_flag = HSP_nat_slipways_dock
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 소형 함정 건조 재개
+	focus = {
+		id = HSP_nat_small_scale_shipbuilding
+		icon = GFX_focus_generic_destroyer
+		prerequisite = { focus = HSP_nat_invest_in_naval_infrastructure }
+		cost = 10
+		x = -1
+		y = 6
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		completion_reward = {
+			navy_experience = 25
+			add_tech_bonus = {
+				name = HSP_nat_small_scale_shipbuilding
+				bonus = 1.0
+				uses = 1
+				category = dd_tech
+			}
+			add_tech_bonus = {
+				name = HSP_nat_small_scale_shipbuilding
+				bonus = 1.0
+				uses = 1
+				category = ss_tech
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 국민군 창설
+	focus = {
+		id = HSP_nat_national_army
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = HSP_nat_caudillo_of_spain }
+		cost = 10
+		x = 6
+		y = 1
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			army_experience = 10
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_nat_national_army_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_nat_national_army_mil }
+				}
+				set_state_flag = HSP_nat_national_army_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 징병 확대
+	# vanilla spirit: +2% recruitable population
+	focus = {
+		id = HSP_nat_expand_conscription
+		icon = GFX_goal_generic_axis_build_infantry
+		prerequisite = { focus = HSP_nat_national_army }
+		cost = 10
+		x = 4
+		y = 2
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_ideas = SPA_expand_conscription
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 아프리카군 모델
+	focus = {
+		id = HSP_nat_army_of_africa_model
+		icon = GFX_goal_generic_army_artillery
+		prerequisite = { focus = HSP_nat_national_army }
+		cost = 10
+		x = 8
+		y = 2
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			army_experience = 25
+			add_doctrine_cost_reduction = {
+				name = HSP_nat_army_of_africa_model
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 의무 군사 예비 훈련
+	focus = {
+		id = HSP_nat_pre_military_training
+		icon = GFX_focus_generic_military_academy
+		prerequisite = { focus = HSP_nat_expand_conscription }
+		cost = 10
+		x = 4
+		y = 3
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_ideas = SPA_mandatory_pre_military_training_1
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 장비 현대화
+	focus = {
+		id = HSP_nat_equipment_modernization
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = HSP_nat_army_of_africa_model }
+		cost = 10
+		x = 7
+		y = 3
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_nat_equipment_modernization
+				bonus = 1.0
+				uses = 2
+				category = infantry_weapons
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 차량화
+	focus = {
+		id = HSP_nat_motorization
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { focus = HSP_nat_army_of_africa_model }
+		cost = 10
+		x = 10
+		y = 3
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_nat_motorization
+				bonus = 2.0
+				uses = 1
+				category = motorized_equipment
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 모두가 복무한다
+	# vanilla: training spirit 1 > 2 (+2% recruitable population)
+	focus = {
+		id = HSP_nat_all_shall_serve
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = HSP_nat_pre_military_training }
+		cost = 10
+		x = 4
+		y = 4
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_war_support = 0.1
+			swap_ideas = {
+				remove_idea = SPA_mandatory_pre_military_training_1
+				add_idea = SPA_mandatory_pre_military_training_2
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 포병 현대화
+	focus = {
+		id = HSP_nat_artillery_modernization
+		icon = GFX_goal_generic_army_artillery2
+		prerequisite = { focus = HSP_nat_equipment_modernization }
+		cost = 10
+		x = 6
+		y = 4
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_nat_artillery_modernization
+				bonus = 1.0
+				uses = 2
+				category = artillery
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 공군 확장
+	focus = {
+		id = HSP_nat_expand_the_air_branch
+		icon = GFX_goal_generic_air_doctrine
+		prerequisite = { focus = HSP_nat_equipment_modernization }
+		cost = 10
+		x = 8
+		y = 4
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_AIR_XP }
+		completion_reward = {
+			air_experience = 50
+			add_doctrine_cost_reduction = {
+				name = HSP_nat_expand_the_air_branch
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+			add_tech_bonus = {
+				name = HSP_nat_expand_the_air_branch
+				bonus = 1.0
+				uses = 1
+				category = light_fighter
+			}
+			add_tech_bonus = {
+				name = HSP_nat_expand_the_air_branch
+				bonus = 1.0
+				uses = 1
+				category = cas_bomber
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 모로코 정규군
+	# The last +1% recruitable population (2 + 2 + 1)
+	focus = {
+		id = HSP_nat_moroccan_regulars
+		icon = GFX_goal_generic_special_forces
+		prerequisite = { focus = HSP_nat_all_shall_serve }
+		cost = 10
+		x = 4
+		y = 5
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_ideas = HSP_nat_moroccan_regulars_idea
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	# falange path
+	# Close to vanilla's Falange route, with a Spanish empire: Portugal, the Aragonese Mediterranean, North Africa,
+	# Latin America and the lands of Nueva España (HSP_spanish_empire_cat decisions).
+
+	## 팔랑헤의 부상
+	# vanilla SPA_the_phalanx_ascendant; José Antonio leads (vanilla SPA_the_national_syndicalist_state)
+	focus = {
+		id = HSP_fal_phalanx_ascendant
+		icon = GFX_focus_spa_the_phalanx_ascendant
+		prerequisite = { focus = HSP_purge_the_left focus = HSP_march_on_madrid }
+		cost = 5
+		x = 170
+		y = 4
+		available = {
+			has_country_flag = HSP_nationalists_won_flag
+		}
+		mutually_exclusive = { focus = HSP_nat_caudillo_of_spain }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			if = {
+				limit = { has_character = SPA_jose_antonio_primo_de_rivera }
+				promote_character = {
+					character = SPA_jose_antonio_primo_de_rivera
+					ideology = falangism
+				}
+			}
+			set_party_name = {
+				ideology = fascism
+				long_name = SPR_fascism_falange_party_long
+				name = SPR_fascism_falange_party
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.1
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	## 일당 국가
+	focus = {
+		id = HSP_fal_a_one_party_state
+		icon = GFX_focus_generic_strike_at_democracy2
+		prerequisite = { focus = HSP_fal_phalanx_ascendant }
+		cost = 10
+		x = -12
+		y = 1
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.2
+			}
+			add_political_power = 100
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 26개 강령 채택
+	focus = {
+		id = HSP_fal_adopt_the_26_points
+		icon = GFX_focus_generic_treaty
+		prerequisite = { focus = HSP_fal_a_one_party_state }
+		cost = 10
+		x = -14
+		y = 2
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.1
+			}
+			add_war_support = 0.05
+			add_political_power = 100
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 국가 생디칼리스트 국가
+	focus = {
+		id = HSP_fal_the_national_syndicalist_state
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = HSP_fal_a_one_party_state }
+		cost = 10
+		x = -10
+		y = 2
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			set_cosmetic_tag = SPA_spanish_empire
+			add_political_power = 100
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 지역 농업 위원회
+	focus = {
+		id = HSP_fal_regional_agrarian_commissions
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = HSP_fal_adopt_the_26_points }
+		cost = 10
+		x = -14
+		y = 3
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = SPA_regional_agrarian_commissions
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_fal_agrarian_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_fal_agrarian_civ }
+				}
+				set_state_flag = HSP_fal_agrarian_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 생산의 생디칼리즘화
+	focus = {
+		id = HSP_fal_syndicalize_production
+		icon = GFX_goal_generic_production2
+		prerequisite = { focus = HSP_fal_the_national_syndicalist_state }
+		cost = 10
+		x = -10
+		y = 3
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_fal_syndicalize_production
+				bonus = 1.0
+				uses = 1
+				category = industry
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_fal_syndicalize_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_fal_syndicalize_civ }
+				}
+				set_state_flag = HSP_fal_syndicalize_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_fal_syndicalize_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_fal_syndicalize_mil }
+				}
+				set_state_flag = HSP_fal_syndicalize_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 모든 인재 개발
+	focus = {
+		id = HSP_fal_develop_all_talent
+		icon = GFX_focus_research
+		prerequisite = { focus = HSP_fal_regional_agrarian_commissions }
+		cost = 10
+		x = -14
+		y = 4
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_research_slot = 1
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 스페인의 지고한 실재
+	focus = {
+		id = HSP_fal_supreme_reality_of_spain
+		icon = GFX_focus_spa_strengthen_the_supreme_reality_of_spain
+		prerequisite = { focus = HSP_fal_syndicalize_production }
+		cost = 10
+		x = -10
+		y = 4
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.1
+			every_owned_state = {
+				remove_dynamic_modifier = { modifier = autonomous_state }
+				remove_dynamic_modifier = { modifier = semi_autonomous_state }
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 노동의 의무
+	focus = {
+		id = HSP_fal_the_duty_to_work
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = HSP_fal_supreme_reality_of_spain }
+		cost = 10
+		x = -10
+		y = 5
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = SPA_the_duty_to_work
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 국가 재건
+	# The Falange only shakes off the civil war late
+	focus = {
+		id = HSP_fal_national_reconstruction
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = HSP_fal_develop_all_talent }
+		prerequisite = { focus = HSP_fal_the_duty_to_work }
+		cost = 10
+		x = -12
+		y = 6
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			if = {
+				limit = { has_idea = HSP_recovering_from_civil_war }
+				remove_ideas = HSP_recovering_from_civil_war
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_fal_reconstruction_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_fal_reconstruction_civ }
+				}
+				set_state_flag = HSP_fal_reconstruction_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_fal_reconstruction_civ }
+				}
+				set_state_flag = HSP_fal_reconstruction_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 해상 교역로의 영광과 부
+	focus = {
+		id = HSP_fal_glory_on_the_sea_lanes
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		prerequisite = { focus = HSP_fal_phalanx_ascendant }
+		cost = 10
+		x = -18
+		y = 1
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		completion_reward = {
+			navy_experience = 25
+			add_tech_bonus = {
+				name = HSP_fal_glory_on_the_sea_lanes
+				bonus = 1.0
+				uses = 1
+				category = dd_tech
+			}
+			add_tech_bonus = {
+				name = HSP_fal_glory_on_the_sea_lanes
+				bonus = 1.0
+				uses = 1
+				category = ca_tech
+			}
+			add_tech_bonus = {
+				name = HSP_fal_glory_on_the_sea_lanes
+				bonus = 1.0
+				uses = 1
+				category = ss_tech
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 국내 해군 시설 개선
+	focus = {
+		id = HSP_fal_improve_naval_facilities
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = { focus = HSP_fal_glory_on_the_sea_lanes }
+		cost = 10
+		x = -18
+		y = 2
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		completion_reward = {
+			navy_experience = 25
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_fal_naval_dock
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_fal_naval_dock }
+				}
+				set_state_flag = HSP_fal_naval_dock
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_fal_naval_dock }
+				}
+				set_state_flag = HSP_fal_naval_dock
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 위대한 해양 강국
+	focus = {
+		id = HSP_fal_a_great_maritime_power
+		icon = GFX_goal_generic_navy_battleship
+		prerequisite = { focus = HSP_fal_improve_naval_facilities }
+		cost = 10
+		x = -18
+		y = 3
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		completion_reward = {
+			navy_experience = 50
+			add_tech_bonus = {
+				name = HSP_fal_a_great_maritime_power
+				bonus = 1.0
+				uses = 1
+				category = bb_tech
+			}
+			add_tech_bonus = {
+				name = HSP_fal_a_great_maritime_power
+				bonus = 1.0
+				uses = 1
+				category = cv_tech
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_fal_maritime_dock
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_fal_maritime_dock }
+				}
+				set_state_flag = HSP_fal_maritime_dock
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 국민 인민군
+	focus = {
+		id = HSP_fal_national_and_popular_army
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = HSP_fal_phalanx_ascendant }
+		cost = 10
+		x = -3
+		y = 1
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			army_experience = 10
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_fal_army_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_fal_army_mil }
+				}
+				set_state_flag = HSP_fal_army_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 의무 군사 예비 훈련
+	# +2% recruitable population and -10% training time
+	focus = {
+		id = HSP_fal_pre_military_training
+		icon = GFX_focus_generic_military_academy
+		prerequisite = { focus = HSP_fal_national_and_popular_army }
+		cost = 10
+		x = -5
+		y = 2
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_ideas = HSP_fal_militia_training
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 아프리카군 모델
+	focus = {
+		id = HSP_fal_army_of_africa_model
+		icon = GFX_goal_generic_army_artillery
+		prerequisite = { focus = HSP_fal_national_and_popular_army }
+		cost = 10
+		x = -1
+		y = 2
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			army_experience = 25
+			add_doctrine_cost_reduction = {
+				name = HSP_fal_army_of_africa_model
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 스페인의 운명을 받아들이다
+	# vanilla spirit: mobilisation +20%, attack +5%
+	focus = {
+		id = HSP_fal_embrace_the_spanish_destiny
+		icon = GFX_goal_demand_sudetenland
+		prerequisite = { focus = HSP_fal_pre_military_training }
+		cost = 10
+		x = -5
+		y = 3
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_ideas = SPA_embrace_the_spanish_destiny
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 장비 현대화
+	focus = {
+		id = HSP_fal_equipment_modernization
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = HSP_fal_army_of_africa_model }
+		cost = 10
+		x = -2
+		y = 3
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_fal_equipment_modernization
+				bonus = 1.0
+				uses = 2
+				category = infantry_weapons
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 차량화
+	focus = {
+		id = HSP_fal_motorization
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { focus = HSP_fal_army_of_africa_model }
+		cost = 10
+		x = 0
+		y = 3
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_fal_motorization
+				bonus = 2.0
+				uses = 1
+				category = motorized_equipment
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 포병 현대화
+	focus = {
+		id = HSP_fal_artillery_modernization
+		icon = GFX_goal_generic_army_artillery2
+		prerequisite = { focus = HSP_fal_equipment_modernization }
+		cost = 10
+		x = -3
+		y = 4
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_fal_artillery_modernization
+				bonus = 1.0
+				uses = 2
+				category = artillery
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 공군 확장
+	focus = {
+		id = HSP_fal_expand_the_air_branch
+		icon = GFX_goal_generic_air_doctrine
+		prerequisite = { focus = HSP_fal_equipment_modernization }
+		cost = 10
+		x = -1
+		y = 4
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_AIR_XP }
+		completion_reward = {
+			air_experience = 50
+			add_doctrine_cost_reduction = {
+				name = HSP_fal_expand_the_air_branch
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+			add_tech_bonus = {
+				name = HSP_fal_expand_the_air_branch
+				bonus = 1.0
+				uses = 1
+				category = light_fighter
+			}
+			add_tech_bonus = {
+				name = HSP_fal_expand_the_air_branch
+				bonus = 1.0
+				uses = 1
+				category = cas_bomber
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 기갑 군단
+	focus = {
+		id = HSP_fal_an_armored_corps
+		icon = GFX_goal_generic_army_tanks
+		prerequisite = { focus = HSP_fal_motorization }
+		cost = 10
+		x = 1
+		y = 4
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_fal_an_armored_corps
+				bonus = 1.0
+				uses = 2
+				category = armor
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 제국에의 의지
+	# vanilla SPA_the_will_to_empire
+	focus = {
+		id = HSP_fal_the_will_to_empire
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = HSP_fal_phalanx_ascendant }
+		cost = 10
+		x = 11
+		y = 1
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 200
+			add_country_leader_trait = empire_builder
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 추축국 가입
+	# vanilla SPA_join_the_axis
+	focus = {
+		id = HSP_fal_join_the_axis
+		icon = GFX_goal_support_fascism
+		prerequisite = { focus = HSP_fal_the_will_to_empire }
+		cost = 5
+		x = 5
+		y = 2
+		relative_position_id = HSP_fal_phalanx_ascendant
+		available = {
+			is_in_faction = no
+			any_country = {
+				has_government = fascism
+				is_faction_leader = yes
+				OR = {
+					tag = GER
+					tag = ITA
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			random_country = {
+				limit = {
+					has_government = fascism
+					is_faction_leader = yes
+					NOT = { has_war_with = ROOT }
+					OR = {
+						tag = GER
+						tag = ITA
+					}
+				}
+				country_event = generic.2
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 이베리아 통일
+	# Cores on all of Portugal, and a war claim (vanilla SPA_unite_iberia gave claims)
+	focus = {
+		id = HSP_fal_unite_iberia
+		icon = GFX_focus_generic_attack_portugal
+		prerequisite = { focus = HSP_fal_the_will_to_empire }
+		cost = 10
+		x = 8
+		y = 2
+		relative_position_id = HSP_fal_phalanx_ascendant
+		available = {
+			NOT = { is_in_faction_with = POR }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			every_state = {
+				limit = { is_core_of = POR }
+				add_core_of = ROOT
+			}
+			if = {
+				limit = { country_exists = POR }
+				create_wargoal = {
+					type = annex_everything
+					target = POR
+					expire = 0
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 스페인령 북아프리카
+	# Cores on Spanish North Africa, claims on Morocco and Algeria (HSP_integrate_north_africa)
+	focus = {
+		id = HSP_fal_spanish_north_africa
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		prerequisite = { focus = HSP_fal_the_will_to_empire }
+		cost = 10
+		x = 11
+		y = 2
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			290 = {
+				add_core_of = ROOT
+			}
+			783 = {
+				add_core_of = ROOT
+			}
+			699 = {
+				add_core_of = ROOT
+			}
+			461 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_north_africa_claim_flag
+			}
+			462 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_north_africa_claim_flag
+			}
+			459 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_north_africa_claim_flag
+			}
+			460 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_north_africa_claim_flag
+			}
+			513 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_north_africa_claim_flag
+			}
+			514 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_north_africa_claim_flag
+			}
+			custom_effect_tooltip = HSP_fal_spanish_north_africa_tt
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 아라곤의 유산
+	# The Crown of Aragon: Sardinia, Sicily, Naples, Corsica, Malta, Tunis and Tripoli (vanilla SPA_claim_the_aragonese_possessions)
+	focus = {
+		id = HSP_fal_aragonese_possessions
+		icon = GFX_goal_generic_territory_or_war
+		prerequisite = { focus = HSP_fal_the_will_to_empire }
+		cost = 10
+		x = 14
+		y = 2
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			114 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_aragonese_claim_flag
+			}
+			115 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_aragonese_claim_flag
+			}
+			117 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_aragonese_claim_flag
+			}
+			156 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_aragonese_claim_flag
+			}
+			849 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_aragonese_claim_flag
+			}
+			1 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_aragonese_claim_flag
+			}
+			116 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_aragonese_claim_flag
+			}
+			458 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_aragonese_claim_flag
+			}
+			665 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_aragonese_claim_flag
+			}
+			448 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_aragonese_claim_flag
+			}
+			661 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_aragonese_claim_flag
+			}
+			custom_effect_tooltip = HSP_fal_aragonese_possessions_tt
+			every_country = {
+				limit = {
+					any_owned_state = { has_state_flag = HSP_aragonese_claim_flag }
+					NOT = { tag = ROOT }
+					NOT = { is_in_faction_with = ROOT }
+				}
+				ROOT = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						generator = { 114 115 117 156 849 1 116 458 665 448 661 }
+						expire = 0
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 아메리카에 대한 지배권 재천명
+	# Unlocks HSP_demand_hispanic_submission
+	focus = {
+		id = HSP_fal_reassert_american_dominance
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = HSP_fal_the_will_to_empire }
+		cost = 10
+		x = 17
+		y = 2
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			custom_effect_tooltip = HSP_fal_reassert_american_dominance_tt
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 누에바 에스파냐 탈환
+	# California, Arizona, New Mexico, Texas, Utah, Colorado, Oklahoma and Florida
+	focus = {
+		id = HSP_fal_reclaim_nueva_espana
+		icon = GFX_focus_spa_the_war_of_vengeance
+		prerequisite = { focus = HSP_fal_reassert_american_dominance }
+		cost = 10
+		x = 16
+		y = 3
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			378 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_nueva_espana_claim_flag
+			}
+			377 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_nueva_espana_claim_flag
+			}
+			376 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_nueva_espana_claim_flag
+			}
+			375 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_nueva_espana_claim_flag
+			}
+			380 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_nueva_espana_claim_flag
+			}
+			382 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_nueva_espana_claim_flag
+			}
+			374 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_nueva_espana_claim_flag
+			}
+			366 = {
+				add_claim_by = ROOT
+				set_state_flag = HSP_nueva_espana_claim_flag
+			}
+			custom_effect_tooltip = HSP_fal_reclaim_nueva_espana_tt
+			random_country = {
+				limit = { owns_state = 375 }
+				ROOT = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						generator = { 378 377 376 375 380 382 374 366 }
+						expire = 0
+					}
+				}
+			}
+			add_ideas = HSP_fal_nueva_espana_unrest
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 히스패닉 제국
+	# Every Latin American state occupied by us or our puppets: annex them all, with cores (vanilla SPA_embrace_pan_hispanism)
+	focus = {
+		id = HSP_fal_the_hispanic_empire
+		icon = GFX_focus_CHL_promote_pan_hispanic_rhetoric
+		prerequisite = { focus = HSP_fal_reassert_american_dominance }
+		cost = 10
+		x = 18
+		y = 4
+		relative_position_id = HSP_fal_phalanx_ascendant
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = HSP_fal_hispanic_empire_available_tt
+				all_state = {
+					OR = {
+						NOT = { HSP_is_hispanic_american_state = yes }
+						is_controlled_by = ROOT
+						CONTROLLER = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			every_country = {
+				limit = {
+					HSP_is_hispanic_american = yes
+					is_subject_of = ROOT
+				}
+				HSP_annex_viceroyalty = yes
+			}
+			every_state = {
+				limit = {
+					HSP_is_hispanic_american_state = yes
+					is_controlled_by = ROOT
+				}
+				add_core_of = ROOT
+			}
+			add_ideas = HSP_fal_hispanic_empire_strain
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
 	## Habsburd focus
 
 	## 긴급 의회 소집
@@ -8363,7 +10619,7 @@ focus_tree = {
 		id = HSP_military_reform
 		icon = GFX_focus_generic_limited_social_mobilization
 		cost = 5
-		x = 196
+		x = 202
 		y = 0
 		completion_reward = {
 			swap_ideas = {

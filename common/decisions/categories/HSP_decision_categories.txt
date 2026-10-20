@@ -219,3 +219,21 @@ HSP_nationalist_plot_cat = {
 	}
 	visible_when_empty = no
 }
+
+HSP_spanish_empire_cat = {
+	priority = 60
+	icon = GFX_decision_category_generic_formable_nations
+
+	allowed = {
+		original_tag = SPR
+	}
+	visible = {
+		OR = {
+			has_completed_focus = HSP_fal_spanish_north_africa
+			has_completed_focus = HSP_fal_aragonese_possessions
+			has_completed_focus = HSP_fal_reassert_american_dominance
+			has_completed_focus = HSP_fal_reclaim_nueva_espana
+		}
+	}
+	visible_when_empty = no
+}

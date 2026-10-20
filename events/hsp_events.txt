@@ -1692,3 +1692,75 @@ country_event = {
 		name = HSP_spain_events.51.a
 	}
 }
+
+# Falangist Spain demands submission (HSP_demand_hispanic_submission). ROOT = the target, FROM = Spain.
+# It submits if it is fascist too or Spain's army is twice as strong; otherwise Spain gets a war goal.
+country_event = {
+	id = HSP_spain_events.52
+	title = HSP_spain_events.52.t
+	desc = HSP_spain_events.52.desc
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+
+	# submit
+	option = {
+		name = HSP_spain_events.52.a
+		trigger = {
+			OR = {
+				has_government = fascism
+				strength_ratio = {
+					tag = SPR
+					ratio < 0.5
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		FROM = {
+			puppet = ROOT
+			country_event = { id = HSP_spain_events.53 hours = 6 }
+		}
+	}
+	# refuse
+	option = {
+		name = HSP_spain_events.52.b
+		ai_chance = {
+			base = 0
+		}
+		FROM = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = ROOT
+				expire = 0
+			}
+			country_event = { id = HSP_spain_events.54 hours = 6 }
+		}
+	}
+}
+
+# submission accepted
+country_event = {
+	id = HSP_spain_events.53
+	title = HSP_spain_events.53.t
+	desc = HSP_spain_events.53.desc
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_events.53.a
+	}
+}
+
+# submission refused
+country_event = {
+	id = HSP_spain_events.54
+	title = HSP_spain_events.54.t
+	desc = HSP_spain_events.54.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_events.54.a
+	}
+}

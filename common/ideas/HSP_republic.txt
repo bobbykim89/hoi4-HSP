@@ -451,5 +451,87 @@ ideas = {
 				army_attack_factor = 0.1
 			}
 		}
+		# nationalist path
+		HSP_nat_crowned_monarchy = {
+			picture = generic_king_handled
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.15
+			}
+		}
+		HSP_nat_military_dictatorship = {
+			picture = generic_morale_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.1
+				command_power_gain_mult = 0.15
+			}
+		}
+		HSP_nat_moroccan_regulars_idea = {
+			picture = generic_manpower_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				conscription = 0.01
+			}
+		}
+		# falange path
+		HSP_fal_militia_training = {
+			picture = generic_manpower_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				conscription = 0.02
+				training_time_factor = -0.1
+			}
+		}
+		HSP_fal_nueva_espana_unrest = {
+			picture = generic_disjointed_gov
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.1
+			}
+		}
+		HSP_fal_hispanic_empire_strain = {
+			picture = generic_disjointed_gov
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.1
+			}
+		}
 	}
 }

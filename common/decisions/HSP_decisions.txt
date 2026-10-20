@@ -2864,3 +2864,181 @@ HSP_nationalist_plot_cat = {
 		}
 	}
 }
+
+HSP_spanish_empire_cat = {
+	# Unlocked by HSP_fal_reassert_american_dominance. Every Spanish-speaking country but Brazil; it submits if it is
+	# fascist too or Spain's army is twice as strong (HSP_spain_events.52).
+	HSP_demand_hispanic_submission = {
+		icon = GFX_decision_eng_trade_unions_demand
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_fal_reassert_american_dominance
+		}
+		target_root_trigger = {
+			has_completed_focus = HSP_fal_reassert_american_dominance
+		}
+		target_trigger = {
+			FROM = {
+				exists = yes
+				HSP_is_hispanic_american = yes
+				is_subject = no
+				NOT = { has_war_with = ROOT }
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		cost = 25
+		days_remove = 10
+		fire_only_once = no
+		remove_effect = {
+			FROM = {
+				country_event = { id = HSP_spain_events.52 hours = 1 }
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	# Unlocked by HSP_fal_aragonese_possessions: an occupied Aragonese possession becomes a core. 30 days, one at a time (shared with the others).
+	HSP_integrate_aragonese_possession = {
+		icon = GFX_decision_generic_civil_support
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_fal_aragonese_possessions
+		}
+		state_target = any_controlled_state
+		target_root_trigger = {
+			has_completed_focus = HSP_fal_aragonese_possessions
+		}
+		target_trigger = {
+			FROM = {
+				has_state_flag = HSP_aragonese_claim_flag
+				NOT = { is_core_of = ROOT }
+			}
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = HSP_integrate_one_at_a_time_tt
+				NOT = { has_country_flag = HSP_integrating_claim_flag }
+			}
+		}
+		cancel_trigger = {
+			FROM = { NOT = { is_controlled_by = ROOT } }
+		}
+		on_map_mode = map_and_decisions_view
+		cost = 25
+		days_remove = 30
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = HSP_integrating_claim_flag
+		}
+		remove_effect = {
+			clr_country_flag = HSP_integrating_claim_flag
+			FROM = { add_core_of = ROOT }
+		}
+		cancel_effect = {
+			clr_country_flag = HSP_integrating_claim_flag
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	# Unlocked by HSP_fal_reclaim_nueva_espana: an occupied state of Nueva España becomes a core. 30 days, one at a time (shared with the others).
+	HSP_integrate_nueva_espana = {
+		icon = GFX_decision_generic_civil_support
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_fal_reclaim_nueva_espana
+		}
+		state_target = any_controlled_state
+		target_root_trigger = {
+			has_completed_focus = HSP_fal_reclaim_nueva_espana
+		}
+		target_trigger = {
+			FROM = {
+				has_state_flag = HSP_nueva_espana_claim_flag
+				NOT = { is_core_of = ROOT }
+			}
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = HSP_integrate_one_at_a_time_tt
+				NOT = { has_country_flag = HSP_integrating_claim_flag }
+			}
+		}
+		cancel_trigger = {
+			FROM = { NOT = { is_controlled_by = ROOT } }
+		}
+		on_map_mode = map_and_decisions_view
+		cost = 25
+		days_remove = 30
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = HSP_integrating_claim_flag
+		}
+		remove_effect = {
+			clr_country_flag = HSP_integrating_claim_flag
+			FROM = { add_core_of = ROOT }
+		}
+		cancel_effect = {
+			clr_country_flag = HSP_integrating_claim_flag
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	# Unlocked by HSP_fal_spanish_north_africa: an occupied North African state becomes a core. 30 days, one at a time (shared with the others).
+	HSP_integrate_north_africa = {
+		icon = GFX_decision_generic_civil_support
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_fal_spanish_north_africa
+		}
+		state_target = any_controlled_state
+		target_root_trigger = {
+			has_completed_focus = HSP_fal_spanish_north_africa
+		}
+		target_trigger = {
+			FROM = {
+				has_state_flag = HSP_north_africa_claim_flag
+				NOT = { is_core_of = ROOT }
+			}
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = HSP_integrate_one_at_a_time_tt
+				NOT = { has_country_flag = HSP_integrating_claim_flag }
+			}
+		}
+		cancel_trigger = {
+			FROM = { NOT = { is_controlled_by = ROOT } }
+		}
+		on_map_mode = map_and_decisions_view
+		cost = 25
+		days_remove = 30
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = HSP_integrating_claim_flag
+		}
+		remove_effect = {
+			clr_country_flag = HSP_integrating_claim_flag
+			FROM = { add_core_of = ROOT }
+		}
+		cancel_effect = {
+			clr_country_flag = HSP_integrating_claim_flag
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+}

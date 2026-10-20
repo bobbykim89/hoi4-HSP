@@ -67,6 +67,12 @@
   HSP_ana_federation_of_communes_idea:0 "코뮌 연방 평의회"
   HSP_recovering_from_civil_war:0 "내전으로부터 회복"
   HSP_march_on_madrid_idea:0 "마드리드 진격"
+  HSP_nat_crowned_monarchy:0 "왕관을 쓴 군주정"
+  HSP_nat_military_dictatorship:0 "군사 독재"
+  HSP_nat_moroccan_regulars_idea:0 "모로코 정규군"
+  HSP_fal_militia_training:0 "의무 군사 예비 훈련"
+  HSP_fal_nueva_espana_unrest:0 "누에바 에스파냐의 동요"
+  HSP_fal_hispanic_empire_strain:0 "히스패닉 제국의 짐"
   # temporary
   HSP_british_latin_american_territory_purchase_01:0 "영국령 라틴아메리카 매입"
   HSP_dutch_latin_american_territory_purchase_01:0 "네덜란드령 라틴아메리카 매입"

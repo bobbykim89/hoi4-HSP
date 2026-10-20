@@ -922,3 +922,38 @@ HSP_start_nationalist_uprising = {
 	}
 	news_event = { id = HSP_spain_news.10 hours = 6 }
 }
+
+# HSP_nat_restore_the_monarchy: a king reigns over a neutrality government while Franco keeps the army.
+# Alfonso XIII as on the Borbón route (HSP_spain_events.30), or vanilla's Jaime IV if Alfonso is gone.
+HSP_crown_nationalist_king = {
+	add_popularity = {
+		ideology = neutrality
+		popularity = 0.2
+	}
+	set_politics = {
+		ruling_party = neutrality
+		elections_allowed = no
+	}
+	if = {
+		limit = { HSP_alfonso_available = yes }
+		create_country_leader = {
+			name = HSP_alfonso_xiii
+			desc = "POLITICS_ALFONSO_XIII_DESC"
+			picture = "GFX_portrait_SPA_alfonso_xiii"
+			expire = "1965.1.1"
+			ideology = despotism
+			traits = { the_legitimist }
+		}
+	}
+	else = {
+		create_country_leader = {
+			name = HSP_jaime_iv
+			picture = "GFX_portrait_fra_infante_jaime"
+			expire = "1965.1.1"
+			ideology = despotism
+			traits = { the_legitimist }
+		}
+	}
+	set_cosmetic_tag = HSP_kingdom_of_spain
+	add_ideas = HSP_nat_crowned_monarchy
+}

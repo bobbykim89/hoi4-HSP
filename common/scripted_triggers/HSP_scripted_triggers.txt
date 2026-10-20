@@ -201,3 +201,27 @@ HSP_is_latin_sphere_candidate = {
 		original_tag = URG
 	}
 }
+
+# Scope: a state. A core of a Spanish-speaking Latin American country (the countries of HSP_is_hispanic_american).
+HSP_is_hispanic_american_state = {
+	OR = {
+		is_core_of = MEX
+		is_core_of = GUA
+		is_core_of = HON
+		is_core_of = ELS
+		is_core_of = NIC
+		is_core_of = COS
+		is_core_of = PAN
+		is_core_of = CUB
+		is_core_of = DOM
+		is_core_of = COL
+		is_core_of = VEN
+		is_core_of = ECU
+		is_core_of = PRU
+		is_core_of = BOL
+		is_core_of = PAR
+		is_core_of = CHL
+		is_core_of = ARG
+		is_core_of = URG
+	}
+}
