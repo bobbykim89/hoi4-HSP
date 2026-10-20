@@ -35,7 +35,7 @@ Before using an effect, trigger or modifier, confirm it exists in the installed 
 
 ## Verifying changes
 
-- **`tools/validate_mod.py`** checks brace balance, loc file format, focus/event/sprite references, duplicate IDs, missing loc keys, overlapping focus positions, and focuses placed relative to a focus defined later in the file (the game stacks those near the tree origin). A hook runs it after every edit and reports only issues the edit introduced. Run `python3 tools/validate_mod.py` for the whole mod before calling work done: the bar is **0 new issues**. Pre-existing issues live in `tools/known_issues.txt`; when you fix one, run `--write-baseline` to drop it.
+- **`tools/validate_mod.py`** checks brace balance, loc file format, focus/event/sprite references, duplicate IDs, missing loc keys, overlapping focus positions (including icons one column apart on a row; leave two), and focuses placed relative to a focus defined later in the file (the game stacks those near the tree origin). A hook runs it after every edit and reports only issues the edit introduced. Run `python3 tools/validate_mod.py` for the whole mod before calling work done: the bar is **0 new issues**. Pre-existing issues live in `tools/known_issues.txt`; when you fix one, run `--write-baseline` to drop it.
 - **CWTools** (VS Code extension) checks scopes and effect/trigger validity more deeply than the validator. Read its diagnostics for files you edited when the diagnostics tool is available.
 - **In game** is the only real test. The user plays; afterwards the `check-errors` skill reads `error.log`.
 

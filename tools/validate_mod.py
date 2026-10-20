@@ -423,6 +423,12 @@ def main(argv):
                 _, _, _, rel, line = tpos[fid]
                 issues.append(Issue(rel, line, f"focus '{fid}' overlaps '{fids[0]}' at x={x} y={y}"))
 
+        # Focus icons are wider than one grid step: neighbours on a row need two columns between them.
+        for (x, y), fids in tiles.items():
+            if (x + 1, y) in tiles:
+                _, _, _, rel, line = tpos[tiles[(x + 1, y)][0]]
+                issues.append(Issue(rel, line, f"focus '{tiles[(x + 1, y)][0]}' is one column from '{fids[0]}' at y={y}; the icons overlap"))
+
         # The game places focuses in file order: a relative_position_id pointing at a focus defined
         # further down is not resolved yet, and the focus lands near the tree origin on top of others.
         order = {fid: i for i, fid in enumerate(tpos)}
