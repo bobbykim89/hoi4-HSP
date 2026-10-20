@@ -4240,6 +4240,7 @@ characters={
 			}
 			available = {
 				OR = {
+					has_completed_focus = HSP_ana_masters_of_our_own_fate # HSP
 					AND = {
 						has_completed_focus = SPR_masters_of_our_own_fate 
 						NOT = {
@@ -4294,9 +4295,12 @@ characters={
 				}
 			}
 			available = {
-				has_completed_focus = SPR_masters_of_our_own_fate 
-				NOT = {
-					has_completed_focus = SPR_regional_defense_council_of_aragon 
+				OR = {
+					AND = {
+						has_completed_focus = SPR_masters_of_our_own_fate
+						NOT = { has_completed_focus = SPR_regional_defense_council_of_aragon }
+					}
+					has_completed_focus = HSP_ana_masters_of_our_own_fate # HSP
 				}
 				custom_trigger_tooltip = {
 					tooltip = SPR_not_nationalist_spain_tt

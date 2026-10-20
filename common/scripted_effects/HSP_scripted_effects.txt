@@ -433,16 +433,16 @@ HSP_start_fascist_uprising = {
 			size = var:HSP_uprising_size
 			states = all
 			states_filter = { has_state_flag = HSP_fascist_state_flag }
-			# Franco (legacy id 1108) has no sympathies trait
-			keep_unit_leaders_trigger = {
-				NOT = { has_trait = trait_SPA_nationalist_sympathies }
-				NOT = { has_id = 1108 }
-			}
+			# Spain keeps every character; the Nationalists are sent over by name below
+			# (by default the game hands the rebels a share of everyone, left-wing advisors included)
+			keep_all_characters = yes
+			save_event_target_as = HSP_fascist_rebels
 			set_cosmetic_tag = SPR_civil_war
 			set_country_flag = HSP_fascist_rebels_flag
 			set_stability = 0.7
 			set_war_support = 0.8
 		}
+		HSP_send_fascists_to_rebels = yes
 		if = {
 			limit = { has_idea = HSP_fascist_conspiracy }
 			remove_ideas = HSP_fascist_conspiracy
@@ -681,9 +681,7 @@ HSP_start_anarchist_revolution = {
 		states_filter = {
 			NOT = { has_state_flag = HSP_anarchist_state_flag }
 		}
-		keep_unit_leaders_trigger = {
-			always = yes
-		}
+		keep_all_characters = yes # the Republican figures are retired beforehand; the CNT advisors stay with us
 		set_cosmetic_tag = SPR_republican_spain
 		set_country_flag = HSP_republican_rebels_flag
 	}
@@ -740,6 +738,131 @@ HSP_start_anarchist_uprising = {
 				enemy = event_target:HSP_revolution_target
 				hostility_reason = asked_to_join
 			}
+		}
+	}
+}
+
+# Scope: Spain, after HSP_start_fascist_uprising saved the rebels as event_target:HSP_fascist_rebels.
+# Franco, the Nationalist generals and the Francoist, Falangist and Carlist advisors join the rebels
+# (same list as HSP_retire_fascist_characters).
+HSP_send_fascists_to_rebels = {
+	hidden_effect = {
+		every_unit_leader = {
+			limit = {
+				OR = {
+					has_trait = trait_SPA_nationalist_sympathies
+					has_id = 1108 # Franco
+				}
+			}
+			set_nationality = event_target:HSP_fascist_rebels
+		}
+		if = {
+			limit = { has_character = SPA_emilio_mola }
+			SPA_emilio_mola = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_juan_yague }
+			SPA_juan_yague = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_agustin_munoz_grandes }
+			SPA_agustin_munoz_grandes = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_jose_enrique_varela }
+			SPA_jose_enrique_varela = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_miguel_cabanellas }
+			SPA_miguel_cabanellas = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPR_mohamed_meziane }
+			SPR_mohamed_meziane = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPR_gonzalo_queipo_de_llano }
+			SPR_gonzalo_queipo_de_llano = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPR_jose_millan_astray }
+			SPR_jose_millan_astray = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_luis_carrero_blanco }
+			SPA_luis_carrero_blanco = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_rafael_garcia_valino }
+			SPA_rafael_garcia_valino = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_heli_rolando_de_tella }
+			SPA_heli_rolando_de_tella = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_miguel_ponte }
+			SPA_miguel_ponte = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_joaquin_garcia_morato }
+			SPA_joaquin_garcia_morato = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_juan_vigon_suero_diaz }
+			SPA_juan_vigon_suero_diaz = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_ricardo_rada }
+			SPA_ricardo_rada = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_enrique_canovas_lacruz }
+			SPA_enrique_canovas_lacruz = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_jose_antonio_primo_de_rivera }
+			SPA_jose_antonio_primo_de_rivera = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_jose_antonio_giron }
+			SPA_jose_antonio_giron = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_manuel_hedilla }
+			SPA_manuel_hedilla = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_raimundo_fernandez_cuesta }
+			SPA_raimundo_fernandez_cuesta = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_ramon_serrano_suner }
+			SPA_ramon_serrano_suner = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_diego_hidalgo_y_duran }
+			SPA_diego_hidalgo_y_duran = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPR_manuel_fal_conde }
+			SPR_manuel_fal_conde = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_tomas_dominguez_arevalo }
+			SPA_tomas_dominguez_arevalo = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_luis_hernando_de_larramendi }
+			SPA_luis_hernando_de_larramendi = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_martin_de_riquer }
+			SPA_martin_de_riquer = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_mauricio_de_sivatte }
+			SPA_mauricio_de_sivatte = { set_nationality = event_target:HSP_fascist_rebels }
 		}
 	}
 }
