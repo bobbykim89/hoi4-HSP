@@ -58,7 +58,7 @@ focus_tree = {
 		id = HSP_defend_the_republic
 		icon = GFX_focus_spr_maintain_the_republic
 		cost = 5
-		x = 72
+		x = 80
 		y = 0
 		available = {
 			NOT = {
@@ -277,7 +277,7 @@ focus_tree = {
 		icon = GFX_goal_support_democracy
 		prerequisite = { focus = HSP_purge_the_conspirators focus = HSP_no_pasaran }
 		cost = 5
-		x = 63
+		x = 66
 		y = 4
 		mutually_exclusive = { focus = HSP_the_workers_republic focus = HSP_the_cnt_fai }
 		available = {
@@ -444,7 +444,7 @@ focus_tree = {
 		icon = GFX_goal_generic_production
 		prerequisite = { focus = HSP_the_democratic_republic }
 		cost = 10
-		x = -7
+		x = -6
 		y = 1
 		relative_position_id = HSP_the_democratic_republic
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -753,7 +753,7 @@ focus_tree = {
 		icon = GFX_focus_generic_diplomatic_treaty
 		prerequisite = { focus = HSP_the_democratic_republic }
 		cost = 10
-		x = -3
+		x = 0
 		y = 1
 		relative_position_id = HSP_the_democratic_republic
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
@@ -776,7 +776,7 @@ focus_tree = {
 		icon = GFX_focus_research
 		prerequisite = { focus = HSP_secure_democratic_principles }
 		cost = 10
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = HSP_secure_democratic_principles
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -823,7 +823,7 @@ focus_tree = {
 		icon = GFX_goal_generic_improve_relations
 		prerequisite = { focus = HSP_secure_democratic_principles }
 		cost = 10
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = HSP_secure_democratic_principles
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -861,7 +861,7 @@ focus_tree = {
 		icon = GFX_focus_chi_british_cooperation
 		prerequisite = { focus = HSP_approach_the_democracies }
 		cost = 5
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = HSP_approach_the_democracies
 		mutually_exclusive = { focus = HSP_found_the_latin_sphere }
@@ -960,7 +960,7 @@ focus_tree = {
 		icon = GFX_goal_generic_alliance
 		prerequisite = { focus = HSP_approach_the_democracies }
 		cost = 10
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = HSP_approach_the_democracies
 		mutually_exclusive = { focus = HSP_join_the_allies }
@@ -986,8 +986,8 @@ focus_tree = {
 		icon = GFX_goal_generic_major_alliance
 		prerequisite = { focus = HSP_latin_customs_union }
 		cost = 10
-		x = -1
-		y = 6
+		x = 4
+		y = 7
 		relative_position_id = HSP_the_democratic_republic
 		available = {
 			is_faction_leader = yes
@@ -1009,7 +1009,7 @@ focus_tree = {
 		icon = GFX_goal_generic_army_artillery2
 		prerequisite = { focus = HSP_the_democratic_republic }
 		cost = 10
-		x = -13
+		x = -14
 		y = 1
 		relative_position_id = HSP_the_democratic_republic
 		search_filters = { FOCUS_FILTER_ARMY_XP }
@@ -1328,7 +1328,7 @@ focus_tree = {
 		icon = GFX_goal_generic_defence
 		prerequisite = { focus = HSP_joint_military_training }
 		cost = 10
-		x = 0
+		x = 6
 		y = 6
 		relative_position_id = HSP_the_democratic_republic
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -1353,7 +1353,7 @@ focus_tree = {
 		icon = GFX_goal_generic_construct_mil_factory
 		prerequisite = { focus = HSP_integrated_economies }
 		cost = 10
-		x = -2
+		x = 2
 		y = 6
 		relative_position_id = HSP_the_democratic_republic
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -1437,7 +1437,7 @@ focus_tree = {
 		icon = GFX_focus_generic_socialist_science
 		prerequisite = { focus = HSP_join_the_comintern }
 		cost = 5
-		x = 9
+		x = 16
 		y = 4
 		relative_position_id = HSP_the_democratic_republic
 		available = {
@@ -1497,7 +1497,7 @@ focus_tree = {
 		icon = GFX_goal_generic_political_pressure
 		prerequisite = { focus = HSP_the_democratic_republic }
 		cost = 5
-		x = 4
+		x = 10
 		y = 1
 		relative_position_id = HSP_the_democratic_republic
 		available = {
@@ -1767,7 +1767,7 @@ focus_tree = {
 		icon = GFX_focus_generic_support_the_left_right
 		prerequisite = { focus = HSP_the_democratic_republic }
 		cost = 10
-		x = 9
+		x = 16
 		y = 1
 		relative_position_id = HSP_the_democratic_republic
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
@@ -2132,7 +2132,7 @@ focus_tree = {
 		icon = GFX_focus_spr_the_anti_fascist_workers_revolution
 		prerequisite = { focus = HSP_purge_the_conspirators focus = HSP_no_pasaran }
 		cost = 5
-		x = 85
+		x = 93
 		y = 4
 		available = {
 			has_country_flag = HSP_fascists_defeated_flag
@@ -3397,7 +3397,7 @@ focus_tree = {
 		icon = GFX_focus_spr_regional_defense_council_of_aragon
 		prerequisite = { focus = HSP_purge_the_conspirators focus = HSP_no_pasaran }
 		cost = 5
-		x = 106
+		x = 112
 		y = 4
 		available = {
 			has_country_flag = HSP_fascists_defeated_flag
@@ -3687,7 +3687,7 @@ focus_tree = {
 		icon = GFX_goal_generic_more_territorial_claims
 		prerequisite = { focus = HSP_ana_international_brigades }
 		cost = 10
-		x = 4
+		x = 3
 		y = 3
 		relative_position_id = HSP_the_cnt_fai
 		search_filters = { FOCUS_FILTER_MANPOWER }
@@ -8231,7 +8231,7 @@ focus_tree = {
 		id = HSP_military_reform
 		icon = GFX_focus_generic_limited_social_mobilization
 		cost = 5
-		x = 128
+		x = 138
 		y = 0
 		completion_reward = {
 			swap_ideas = {
