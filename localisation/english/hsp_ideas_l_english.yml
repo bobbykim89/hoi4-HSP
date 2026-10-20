@@ -65,6 +65,8 @@
   HSP_ana_liberated_territories_idea:0 "Liberated Territories"
   HSP_ana_communal_autarky_idea:0 "Communal Autarky"
   HSP_ana_federation_of_communes_idea:0 "The Federal Council of Communes"
+  HSP_recovering_from_civil_war:0 "Recovering from the Civil War"
+  HSP_march_on_madrid_idea:0 "The March on Madrid"
   # temporary
   HSP_british_latin_american_territory_purchase_01:0 "Purchase of British Latin America"
   HSP_dutch_latin_american_territory_purchase_01:0 "Purchase of Dutch Latin America"

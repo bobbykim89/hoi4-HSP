@@ -2756,3 +2756,111 @@ HSP_mining_cat = {
 		}
 	}
 }
+
+HSP_nationalist_plot_cat = {
+	# Starts at the 1936 election (lar_spain.1 option b). Ends in the uprising when it times out, or earlier
+	# once stability is 0% and fascism is above 60%.
+	HSP_nationalist_plot_mission = {
+		priority = 10
+		icon = generic_ignite_civil_war
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_national_movement
+		}
+		activation = {
+			has_completed_focus = HSP_national_movement
+			has_country_flag = HSP_spanish_elections_held_flag
+			NOT = { has_country_flag = HSP_nationalist_uprising_flag }
+		}
+		available = {
+			has_stability < 0.01
+			fascism > 0.6
+		}
+		days_mission_timeout = 180
+		fire_only_once = yes
+		is_good = yes
+		complete_effect = {
+			HSP_start_nationalist_uprising = yes
+		}
+		timeout_effect = {
+			HSP_start_nationalist_uprising = yes
+		}
+	}
+
+	# Unlocked by HSP_sow_unrest
+	HSP_incite_unrest = {
+		icon = GFX_decision_generic_prepare_civil_war
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_sow_unrest
+		}
+		cost = 25
+		days_remove = 30
+		fire_only_once = no
+		modifier = {
+			fascism_drift = 0.1
+			stability_weekly = -0.01
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	# Unlocked by HSP_win_over_the_garrisons. 30 days, one state at a time; the state joins us in the uprising.
+	HSP_win_over_state = {
+		icon = GFX_decision_generic_military
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_win_over_the_garrisons
+		}
+		state_target = any_owned_state
+		target_root_trigger = {
+			has_completed_focus = HSP_win_over_the_garrisons
+		}
+		target_trigger = {
+			FROM = {
+				is_core_of = ROOT
+				NOT = { has_state_flag = HSP_won_over_flag }
+				NOT = { state = 290 }
+				NOT = { state = 178 }
+			}
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = HSP_win_over_one_at_a_time_tt
+				NOT = { has_country_flag = HSP_winning_over_flag }
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		cost = 15
+		days_remove = 30
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = HSP_winning_over_flag
+		}
+		remove_effect = {
+			clr_country_flag = HSP_winning_over_flag
+			add_stability = -0.05
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.03
+			}
+			FROM = {
+				set_state_flag = HSP_won_over_flag
+				custom_effect_tooltip = HSP_win_over_state_tt
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = HSP_winning_over_flag
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+}

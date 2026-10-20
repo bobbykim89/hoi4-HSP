@@ -65,6 +65,8 @@
   HSP_ana_liberated_territories_idea:0 "해방된 영토"
   HSP_ana_communal_autarky_idea:0 "공동체 자급자족"
   HSP_ana_federation_of_communes_idea:0 "코뮌 연방 평의회"
+  HSP_recovering_from_civil_war:0 "내전으로부터 회복"
+  HSP_march_on_madrid_idea:0 "마드리드 진격"
   # temporary
   HSP_british_latin_american_territory_purchase_01:0 "영국령 라틴아메리카 매입"
   HSP_dutch_latin_american_territory_purchase_01:0 "네덜란드령 라틴아메리카 매입"

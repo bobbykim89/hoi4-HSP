@@ -3,7 +3,6 @@ on_actions = {
 		effect = {
 			# 1936 start on the HSP tree: only 전국 파업 (SPR_national_strikes_3) and 구식 군대 remain,
 			# and division templates are unlocked (vanilla 05_lar_on_actions.txt locks them; this file runs after it).
-			# HSP_return_to_historical_spain puts the vanilla spirits back if the player leaves the HSP tree.
 			# Same conditions as HSP_spanish_focus's country weight; the tree may not be assigned yet here.
 			SPR = {
 				if = {
@@ -40,6 +39,23 @@ on_actions = {
 				}
 				HSP_fascists_defeated = yes
 				news_event = { id = HSP_spain_news.4 hours = 6 }
+			}
+			# The Nationalists win against the Republic (HSP_start_nationalist_uprising)
+			if = {
+				limit = {
+					original_tag = SPR
+					has_country_flag = HSP_nationalist_uprising_flag
+					NOT = { has_country_flag = HSP_nationalists_won_flag }
+					has_government = fascism
+					FROM = {
+						original_tag = SPR
+						has_country_flag = HSP_republican_rebels_flag
+					}
+				}
+				set_country_flag = HSP_nationalists_won_flag
+				set_global_flag = scw_over
+				add_ideas = HSP_recovering_from_civil_war
+				news_event = { id = HSP_spain_news.11 hours = 6 }
 			}
 			# The anarchists win against the Republic (HSP_start_anarchist_revolution)
 			if = {

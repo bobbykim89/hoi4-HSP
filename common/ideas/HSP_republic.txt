@@ -421,5 +421,35 @@ ideas = {
 				political_power_gain = 0.15
 			}
 		}
+		# fascist path: after winning the civil war (HSP_on_actions); removed by a later focus
+		HSP_recovering_from_civil_war = {
+			picture = generic_disjointed_gov
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = -0.1
+				stability_factor = -0.1
+				production_speed_buildings_factor = -0.1
+				conscription_factor = -0.1
+			}
+		}
+		HSP_march_on_madrid_idea = {
+			picture = generic_morale_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.1
+			}
+		}
 	}
 }

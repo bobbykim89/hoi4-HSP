@@ -222,3 +222,53 @@ news_event = {
 		}
 	}
 }
+
+# The Nationalist uprising (HSP_start_nationalist_uprising)
+news_event = {
+	id = HSP_spain_news.10
+	title = HSP_spain_news.10.title
+	desc = HSP_spain_news.10.desc
+	picture = GFX_news_event_soldiers_marching
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_news.10.a
+		trigger = {
+			original_tag = SPR
+		}
+	}
+	option = {
+		name = HSP_spain_news.10.b
+		trigger = {
+			NOT = {
+				original_tag = SPR
+			}
+		}
+	}
+}
+
+# The Nationalists win the civil war (HSP_on_actions on_civil_war_end)
+news_event = {
+	id = HSP_spain_news.11
+	title = HSP_spain_news.11.title
+	desc = HSP_spain_news.11.desc
+	picture = GFX_news_event_generic_rally
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_news.11.a
+		trigger = {
+			original_tag = SPR
+		}
+	}
+	option = {
+		name = HSP_spain_news.11.b
+		trigger = {
+			NOT = {
+				original_tag = SPR
+			}
+		}
+	}
+}

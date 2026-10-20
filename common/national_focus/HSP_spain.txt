@@ -21,35 +21,6 @@ focus_tree = {
 		y = 0
 	}
 
-	## 역사적 스페인
-	# Hand-off to vanilla's tree (its fascist path) until the HSP Fascist path exists.
-	focus = {
-		id = HSP_historical_spain
-		icon = GFX_goal_generic_political_pressure
-		cost = 1
-		x = 49
-		y = 0
-		available = {
-			NOT = {
-				has_country_flag = SPR_spanish_elections_flag
-				has_country_flag = HSP_spanish_elections_held_flag
-			}
-		}
-		mutually_exclusive = { focus = HSP_assemble_emergency_council focus = HSP_defend_the_republic }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = {
-			custom_effect_tooltip = HSP_historical_spain_tt
-			HSP_return_to_historical_spain = yes
-		}
-		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 10
-				is_historical_focus_on = yes
-			}
-		}
-	}
-
 	# republican path
 	# Common part: deal with the fascist plot (HSP_republican_order_cat decisions), by suppression or by civil war.
 
@@ -66,7 +37,7 @@ focus_tree = {
 				has_country_flag = HSP_spanish_elections_held_flag
 			}
 		}
-		mutually_exclusive = { focus = HSP_assemble_emergency_council focus = HSP_historical_spain }
+		mutually_exclusive = { focus = HSP_assemble_emergency_council focus = HSP_national_movement }
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 		completion_reward = {
 			add_popularity = {
@@ -4817,6 +4788,167 @@ focus_tree = {
 		}
 	}
 
+	# fascist path
+	# Common part: plot the uprising (HSP_nationalist_plot_cat decisions); the player is the Nationalists and the
+	# Republic revolts with every state not won over (HSP_start_nationalist_uprising). Then Nationalist or Falange.
+
+	## 국민 운동
+	focus = {
+		id = HSP_national_movement
+		icon = GFX_goal_support_fascism
+		cost = 5
+		x = 150
+		y = 0
+		available = {
+			NOT = {
+				has_country_flag = SPR_spanish_elections_flag
+				has_country_flag = HSP_spanish_elections_held_flag
+			}
+		}
+		mutually_exclusive = { focus = HSP_assemble_emergency_council focus = HSP_defend_the_republic }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+			}
+			add_ideas = HSP_fascist_conspiracy
+			custom_effect_tooltip = HSP_national_movement_tt
+		}
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 10
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	## 사회 불안 조성
+	focus = {
+		id = HSP_sow_unrest
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = HSP_national_movement }
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = HSP_national_movement
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 50
+			custom_effect_tooltip = HSP_sow_unrest_tt
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 주둔군 포섭
+	focus = {
+		id = HSP_win_over_the_garrisons
+		icon = GFX_goal_generic_position_armies
+		prerequisite = { focus = HSP_sow_unrest }
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = HSP_sow_unrest
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			custom_effect_tooltip = HSP_win_over_the_garrisons_tt
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 좌익 숙청
+	focus = {
+		id = HSP_purge_the_left
+		icon = GFX_focus_generic_strike_at_democracy2
+		prerequisite = { focus = HSP_win_over_the_garrisons }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_win_over_the_garrisons
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+			}
+			HSP_retire_republican_characters = yes
+			HSP_retire_communist_characters = yes
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 아프리카군 공수
+	# During the civil war only (vanilla SPA_the_army_of_africa)
+	focus = {
+		id = HSP_airlift_the_army_of_africa
+		icon = GFX_goal_generic_special_forces
+		prerequisite = { focus = HSP_national_movement }
+		cost = 5
+		x = 2
+		y = 1
+		relative_position_id = HSP_national_movement
+		available = {
+			has_country_flag = HSP_nationalist_uprising_flag
+			NOT = { has_country_flag = HSP_nationalists_won_flag }
+			has_war = yes
+		}
+		bypass = {
+			has_country_flag = HSP_nationalists_won_flag
+		}
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_manpower = 30000
+			army_experience = 20
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 3000
+				producer = SPR
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+
+	## 마드리드 진격
+	focus = {
+		id = HSP_march_on_madrid
+		icon = GFX_goal_generic_major_war
+		prerequisite = { focus = HSP_airlift_the_army_of_africa }
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = HSP_airlift_the_army_of_africa
+		available = {
+			has_country_flag = HSP_nationalist_uprising_flag
+			NOT = { has_country_flag = HSP_nationalists_won_flag }
+			has_war = yes
+		}
+		bypass = {
+			has_country_flag = HSP_nationalists_won_flag
+		}
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_war_support = 0.1
+			add_timed_idea = {
+				idea = HSP_march_on_madrid_idea
+				days = 365
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+
 	## Habsburd focus
 
 	## 긴급 의회 소집
@@ -4833,7 +4965,7 @@ focus_tree = {
 		}
 		icon = GFX_goal_generic_national_unity
 		cost = 5
-		mutually_exclusive = { focus = HSP_historical_spain focus = HSP_defend_the_republic }
+		mutually_exclusive = { focus = HSP_defend_the_republic focus = HSP_national_movement }
 		x = 24
 		y = 0
 		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
@@ -8231,7 +8363,7 @@ focus_tree = {
 		id = HSP_military_reform
 		icon = GFX_focus_generic_limited_social_mobilization
 		cost = 5
-		x = 138
+		x = 196
 		y = 0
 		completion_reward = {
 			swap_ideas = {

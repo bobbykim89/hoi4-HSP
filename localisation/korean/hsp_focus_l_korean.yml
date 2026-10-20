@@ -1,8 +1,4 @@
 ﻿l_korean:
-  # historical hand-off
-  HSP_historical_spain:0 "역사적 스페인"
-  HSP_historical_spain_desc:0 ""
-  HSP_historical_spain_tt:0 "§Y스페인은 역사적 경로를 따릅니다:§! 기존 스페인 국가중점 트리가 적용되며, 1936년 선거와 내전의 위협도 그대로 진행됩니다. 이 트리에서의 진행 상황은 사라집니다."
   # republican focus
   HSP_defend_the_republic:0 "공화국 수호"
   HSP_defend_the_republic_desc:0 ""
@@ -313,6 +309,22 @@
   HSP_ana_global_defense_council:0 "범세계 방위 위원회"
   HSP_ana_global_defense_council_desc:0 ""
   HSP_ana_global_defense_council_tt:0 "순응도가 높은 통제 지역을 코어로 §Y통합§!하는 결정을 사용할 수 있습니다."
+  # fascist focus
+  HSP_national_movement:0 "국민 운동"
+  HSP_national_movement_desc:0 ""
+  HSP_national_movement_tt:0 "§Y선거는 예정대로 치러집니다.§! 개표가 끝나면 봉기를 준비할 시간이 §Y180일§! 주어집니다."
+  HSP_sow_unrest:0 "사회 불안 조성"
+  HSP_sow_unrest_desc:0 ""
+  HSP_sow_unrest_tt:0 "§Y불안 선동§! 결정을 사용할 수 있습니다."
+  HSP_win_over_the_garrisons:0 "주둔군 포섭"
+  HSP_win_over_the_garrisons_desc:0 ""
+  HSP_win_over_the_garrisons_tt:0 "스페인의 주를 §Y포섭§!하는 결정을 사용할 수 있습니다. 포섭한 주는 봉기가 시작되면 §G우리 편에 섭니다§!."
+  HSP_purge_the_left:0 "좌익 숙청"
+  HSP_purge_the_left_desc:0 ""
+  HSP_airlift_the_army_of_africa:0 "아프리카군 공수"
+  HSP_airlift_the_army_of_africa_desc:0 ""
+  HSP_march_on_madrid:0 "마드리드 진격"
+  HSP_march_on_madrid_desc:0 ""
   # starting focus
   HSP_assemble_emergency_council:0 "긴급 의회 소집"
   HSP_assemble_emergency_council_desc:0 "국내의 여러 세력들은 반목하고 있고, 이대로 선거를 그대로 진행한다면 불만 세력의 반발은 불 보듯 뻔합니다. 현재의 정부는 이를 조율할 능력이 없습니다. 내키지는 않지만, 긴급 회의를 소집해서 각계 각층의 의견과 요구를 조율해야 합니다."

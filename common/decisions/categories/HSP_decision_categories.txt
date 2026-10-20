@@ -203,3 +203,19 @@ HSP_mining_cat = {
 	}
 	visible_when_empty = no
 }
+
+HSP_nationalist_plot_cat = {
+	priority = 100
+	icon = GFX_decision_category_spr_the_inevitable_civil_war
+	picture = GFX_decision_cat_picture_spr_the_inevitable_civil_war
+
+	allowed = {
+		original_tag = SPR
+		has_dlc = "La Resistance"
+	}
+	visible = {
+		has_completed_focus = HSP_national_movement
+		NOT = { has_country_flag = HSP_nationalist_uprising_flag }
+	}
+	visible_when_empty = no
+}

@@ -1,23 +1,3 @@
-# Switch SPR from the HSP tree back to vanilla's Spain tree (vanilla election and civil war).
-# Restores the starting spirits that HSP_on_actions.txt removed at game start.
-HSP_return_to_historical_spain = {
-	add_ideas = {
-		SPA_carlism_1
-		SPR_military_disloyalty
-		SPR_political_violence
-	}
-	remove_ideas = {
-		HSP_old_fashioned_army_01
-		HSP_old_fashioned_army_02
-		HSP_old_fashioned_army_03
-	}
-	country_lock_all_division_template = yes # vanilla's startup lock, lifted by its civil war events
-	load_focus_tree = {
-		tree = spanish_focus
-		keep_completed = no
-	}
-}
-
 # Retire SPR's Stalinist, POUM and independent-communist generals and advisors (anarchists are not included).
 HSP_retire_communist_characters = {
 	custom_effect_tooltip = HSP_retire_communist_characters_tt
@@ -865,4 +845,80 @@ HSP_send_fascists_to_rebels = {
 			SPA_mauricio_de_sivatte = { set_nationality = event_target:HSP_fascist_rebels }
 		}
 	}
+}
+
+# Fascist path: timeout of HSP_nationalist_plot_mission, or stability 0% with fascism above 60%.
+# Spain becomes Nationalist under Franco and keeps the states won over (HSP_win_over_state) plus Spanish Morocco
+# and the Canaries; the Republic revolts with the rest. The player keeps the HSP tree.
+HSP_start_nationalist_uprising = {
+	set_country_flag = HSP_nationalist_uprising_flag
+	if = {
+		limit = { has_active_mission = HSP_nationalist_plot_mission }
+		remove_mission = HSP_nationalist_plot_mission
+	}
+	if = {
+		limit = { has_idea = HSP_fascist_conspiracy }
+		remove_ideas = HSP_fascist_conspiracy
+	}
+	HSP_retire_republican_characters = yes
+	HSP_retire_communist_characters = yes
+	set_politics = {
+		ruling_party = fascism
+		elections_allowed = no
+	}
+	if = {
+		limit = { has_character = SPA_francisco_franco }
+		add_country_leader_role = {
+			character = SPA_francisco_franco
+			country_leader = {
+				ideology = fascism_ideology
+				traits = { caudillo_1 }
+				expire = "1965.1.1"
+			}
+			promote_leader = yes
+		}
+	}
+	set_cosmetic_tag = SPR_civil_war
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 290
+				state = 178
+			}
+		}
+		set_state_flag = HSP_won_over_flag
+	}
+	# the capital must stay with us: Burgos (the Nationalist capital) or another state we hold
+	if = {
+		limit = { NOT = { capital_scope = { has_state_flag = HSP_won_over_flag } } }
+		if = {
+			limit = { 176 = { has_state_flag = HSP_won_over_flag is_owned_by = ROOT } }
+			set_capital = { state = 176 }
+		}
+		else = {
+			random_owned_state = {
+				limit = { has_state_flag = HSP_won_over_flag }
+				ROOT = { set_capital = { state = PREV } }
+			}
+		}
+	}
+	if = {
+		limit = { democratic < 0.05 }
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.1
+		}
+	}
+	start_civil_war = {
+		ideology = democratic
+		size = 0.5
+		states = all
+		states_filter = {
+			NOT = { has_state_flag = HSP_won_over_flag }
+		}
+		keep_all_characters = yes # the Republican and communist figures are retired just above
+		set_cosmetic_tag = SPR_republican_spain
+		set_country_flag = HSP_republican_rebels_flag
+	}
+	news_event = { id = HSP_spain_news.10 hours = 6 }
 }
