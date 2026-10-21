@@ -46,16 +46,18 @@ on_actions = {
 					original_tag = SPR
 					has_country_flag = HSP_nationalist_uprising_flag
 					NOT = { has_country_flag = HSP_nationalists_won_flag }
-					has_government = fascism
+					NOT = { has_country_flag = HSP_republican_rebels_flag }
 					FROM = {
 						original_tag = SPR
-						has_country_flag = HSP_republican_rebels_flag
+						OR = {
+							has_country_flag = HSP_republican_rebels_flag
+							NOT = { has_government = fascism }
+						}
 					}
 				}
 				set_country_flag = HSP_nationalists_won_flag
 				set_global_flag = scw_over
-				add_ideas = HSP_recovering_from_civil_war
-				news_event = { id = HSP_spain_news.11 hours = 6 }
+				news_event = { id = HSP_spain_news.11 hours = 6 } # Spain's option adds HSP_recovering_from_civil_war
 			}
 			# The anarchists win against the Republic (HSP_start_anarchist_revolution)
 			if = {
