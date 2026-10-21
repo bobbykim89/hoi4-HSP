@@ -5887,38 +5887,19 @@ focus_tree = {
 		}
 	}
 
-	## 의무 군사 예비 훈련
-	focus = {
-		id = HSP_nat_pre_military_training
-		icon = GFX_focus_generic_military_academy
-		prerequisite = { focus = HSP_nat_expand_conscription }
-		cost = 10
-		x = 4
-		y = 3
-		relative_position_id = HSP_nat_caudillo_of_spain
-		search_filters = { FOCUS_FILTER_MANPOWER }
-		completion_reward = {
-			add_ideas = SPA_mandatory_pre_military_training_1
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
 	## 장비 현대화
 	focus = {
-		id = HSP_nat_equipment_modernization
+		id = HSP_fas_equipment_modernization
 		icon = GFX_goal_generic_small_arms
 		prerequisite = { focus = HSP_army_of_africa_model }
-		prerequisite = { focus = HSP_nat_national_army }
 		cost = 10
-		x = 7
-		y = 3
-		relative_position_id = HSP_nat_caudillo_of_spain
+		x = -1
+		y = 1
+		relative_position_id = HSP_army_of_africa_model
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
-				name = HSP_nat_equipment_modernization
+				name = HSP_fas_equipment_modernization
 				bonus = 1.0
 				uses = 2
 				category = infantry_weapons
@@ -5931,22 +5912,121 @@ focus_tree = {
 
 	## 차량화
 	focus = {
-		id = HSP_nat_motorization
+		id = HSP_fas_motorization
 		icon = GFX_goal_generic_army_motorized
 		prerequisite = { focus = HSP_army_of_africa_model }
-		prerequisite = { focus = HSP_nat_national_army }
 		cost = 10
-		x = 10
-		y = 3
-		relative_position_id = HSP_nat_caudillo_of_spain
+		x = 1
+		y = 1
+		relative_position_id = HSP_army_of_africa_model
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
-				name = HSP_nat_motorization
+				name = HSP_fas_motorization
 				bonus = 2.0
 				uses = 1
 				category = motorized_equipment
 			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 포병 현대화
+	focus = {
+		id = HSP_fas_artillery_modernization
+		icon = GFX_goal_generic_army_artillery2
+		prerequisite = { focus = HSP_fas_equipment_modernization }
+		cost = 10
+		x = -2
+		y = 2
+		relative_position_id = HSP_army_of_africa_model
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_fas_artillery_modernization
+				bonus = 1.0
+				uses = 2
+				category = artillery
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 공군 확장
+	focus = {
+		id = HSP_fas_expand_the_air_branch
+		icon = GFX_goal_generic_air_doctrine
+		prerequisite = { focus = HSP_fas_equipment_modernization }
+		cost = 10
+		x = 0
+		y = 2
+		relative_position_id = HSP_army_of_africa_model
+		search_filters = { FOCUS_FILTER_AIR_XP }
+		completion_reward = {
+			air_experience = 50
+			add_doctrine_cost_reduction = {
+				name = HSP_fas_expand_the_air_branch
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+			add_tech_bonus = {
+				name = HSP_fas_expand_the_air_branch
+				bonus = 1.0
+				uses = 1
+				category = light_fighter
+			}
+			add_tech_bonus = {
+				name = HSP_fas_expand_the_air_branch
+				bonus = 1.0
+				uses = 1
+				category = cas_bomber
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 기갑 군단
+	focus = {
+		id = HSP_fas_an_armored_corps
+		icon = GFX_goal_generic_army_tanks
+		prerequisite = { focus = HSP_fas_motorization }
+		cost = 10
+		x = 2
+		y = 2
+		relative_position_id = HSP_army_of_africa_model
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_fas_an_armored_corps
+				bonus = 1.0
+				uses = 2
+				category = armor
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 의무 군사 예비 훈련
+	focus = {
+		id = HSP_nat_pre_military_training
+		icon = GFX_focus_generic_military_academy
+		prerequisite = { focus = HSP_nat_expand_conscription }
+		cost = 10
+		x = 4
+		y = 3
+		relative_position_id = HSP_nat_caudillo_of_spain
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_ideas = SPA_mandatory_pre_military_training_1
 		}
 		ai_will_do = {
 			base = 10
@@ -5969,65 +6049,6 @@ focus_tree = {
 			swap_ideas = {
 				remove_idea = SPA_mandatory_pre_military_training_1
 				add_idea = SPA_mandatory_pre_military_training_2
-			}
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 포병 현대화
-	focus = {
-		id = HSP_nat_artillery_modernization
-		icon = GFX_goal_generic_army_artillery2
-		prerequisite = { focus = HSP_nat_equipment_modernization }
-		cost = 10
-		x = 6
-		y = 4
-		relative_position_id = HSP_nat_caudillo_of_spain
-		search_filters = { FOCUS_FILTER_RESEARCH }
-		completion_reward = {
-			add_tech_bonus = {
-				name = HSP_nat_artillery_modernization
-				bonus = 1.0
-				uses = 2
-				category = artillery
-			}
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 공군 확장
-	focus = {
-		id = HSP_nat_expand_the_air_branch
-		icon = GFX_goal_generic_air_doctrine
-		prerequisite = { focus = HSP_nat_equipment_modernization }
-		cost = 10
-		x = 8
-		y = 4
-		relative_position_id = HSP_nat_caudillo_of_spain
-		search_filters = { FOCUS_FILTER_AIR_XP }
-		completion_reward = {
-			air_experience = 50
-			add_doctrine_cost_reduction = {
-				name = HSP_nat_expand_the_air_branch
-				cost_reduction = 0.5
-				uses = 1
-				category = air_doctrine
-			}
-			add_tech_bonus = {
-				name = HSP_nat_expand_the_air_branch
-				bonus = 1.0
-				uses = 1
-				category = light_fighter
-			}
-			add_tech_bonus = {
-				name = HSP_nat_expand_the_air_branch
-				bonus = 1.0
-				uses = 1
-				category = cas_bomber
 			}
 		}
 		ai_will_do = {
@@ -6693,136 +6714,6 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			add_ideas = SPA_embrace_the_spanish_destiny
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 장비 현대화
-	focus = {
-		id = HSP_fal_equipment_modernization
-		icon = GFX_goal_generic_small_arms
-		prerequisite = { focus = HSP_army_of_africa_model }
-		prerequisite = { focus = HSP_fal_national_and_popular_army }
-		cost = 10
-		x = -2
-		y = 3
-		relative_position_id = HSP_fal_phalanx_ascendant
-		search_filters = { FOCUS_FILTER_RESEARCH }
-		completion_reward = {
-			add_tech_bonus = {
-				name = HSP_fal_equipment_modernization
-				bonus = 1.0
-				uses = 2
-				category = infantry_weapons
-			}
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 차량화
-	focus = {
-		id = HSP_fal_motorization
-		icon = GFX_goal_generic_army_motorized
-		prerequisite = { focus = HSP_army_of_africa_model }
-		prerequisite = { focus = HSP_fal_national_and_popular_army }
-		cost = 10
-		x = 0
-		y = 3
-		relative_position_id = HSP_fal_phalanx_ascendant
-		search_filters = { FOCUS_FILTER_RESEARCH }
-		completion_reward = {
-			add_tech_bonus = {
-				name = HSP_fal_motorization
-				bonus = 2.0
-				uses = 1
-				category = motorized_equipment
-			}
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 포병 현대화
-	focus = {
-		id = HSP_fal_artillery_modernization
-		icon = GFX_goal_generic_army_artillery2
-		prerequisite = { focus = HSP_fal_equipment_modernization }
-		cost = 10
-		x = -3
-		y = 4
-		relative_position_id = HSP_fal_phalanx_ascendant
-		search_filters = { FOCUS_FILTER_RESEARCH }
-		completion_reward = {
-			add_tech_bonus = {
-				name = HSP_fal_artillery_modernization
-				bonus = 1.0
-				uses = 2
-				category = artillery
-			}
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 공군 확장
-	focus = {
-		id = HSP_fal_expand_the_air_branch
-		icon = GFX_goal_generic_air_doctrine
-		prerequisite = { focus = HSP_fal_equipment_modernization }
-		cost = 10
-		x = -1
-		y = 4
-		relative_position_id = HSP_fal_phalanx_ascendant
-		search_filters = { FOCUS_FILTER_AIR_XP }
-		completion_reward = {
-			air_experience = 50
-			add_doctrine_cost_reduction = {
-				name = HSP_fal_expand_the_air_branch
-				cost_reduction = 0.5
-				uses = 1
-				category = air_doctrine
-			}
-			add_tech_bonus = {
-				name = HSP_fal_expand_the_air_branch
-				bonus = 1.0
-				uses = 1
-				category = light_fighter
-			}
-			add_tech_bonus = {
-				name = HSP_fal_expand_the_air_branch
-				bonus = 1.0
-				uses = 1
-				category = cas_bomber
-			}
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
-	## 기갑 군단
-	focus = {
-		id = HSP_fal_an_armored_corps
-		icon = GFX_goal_generic_army_tanks
-		prerequisite = { focus = HSP_fal_motorization }
-		cost = 10
-		x = 1
-		y = 4
-		relative_position_id = HSP_fal_phalanx_ascendant
-		search_filters = { FOCUS_FILTER_RESEARCH }
-		completion_reward = {
-			add_tech_bonus = {
-				name = HSP_fal_an_armored_corps
-				bonus = 1.0
-				uses = 2
-				category = armor
-			}
 		}
 		ai_will_do = {
 			base = 10
