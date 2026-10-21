@@ -6008,7 +6008,7 @@ focus_tree = {
 		icon = GFX_goal_generic_axis_build_infantry
 		prerequisite = { focus = HSP_nat_national_army }
 		cost = 10
-		x = 4
+		x = 6
 		y = 2
 		relative_position_id = HSP_nat_caudillo_of_spain
 		search_filters = { FOCUS_FILTER_MANPOWER }
@@ -6179,7 +6179,7 @@ focus_tree = {
 		icon = GFX_focus_generic_military_academy
 		prerequisite = { focus = HSP_nat_expand_conscription }
 		cost = 10
-		x = 4
+		x = 6
 		y = 3
 		relative_position_id = HSP_nat_caudillo_of_spain
 		search_filters = { FOCUS_FILTER_MANPOWER }
@@ -6198,7 +6198,7 @@ focus_tree = {
 		icon = GFX_focus_generic_military_mission
 		prerequisite = { focus = HSP_nat_pre_military_training }
 		cost = 10
-		x = 4
+		x = 6
 		y = 4
 		relative_position_id = HSP_nat_caudillo_of_spain
 		search_filters = { FOCUS_FILTER_MANPOWER }
@@ -6221,7 +6221,7 @@ focus_tree = {
 		icon = GFX_goal_generic_special_forces
 		prerequisite = { focus = HSP_nat_all_shall_serve }
 		cost = 10
-		x = 4
+		x = 6
 		y = 5
 		relative_position_id = HSP_nat_caudillo_of_spain
 		search_filters = { FOCUS_FILTER_MANPOWER }
@@ -6244,7 +6244,7 @@ focus_tree = {
 		icon = GFX_focus_spa_the_phalanx_ascendant
 		prerequisite = { focus = HSP_purge_the_left focus = HSP_march_on_madrid }
 		cost = 5
-		x = 165
+		x = 160
 		y = 4
 		available = {
 			has_country_flag = HSP_nationalists_won_flag
@@ -6280,7 +6280,7 @@ focus_tree = {
 		icon = GFX_focus_generic_strike_at_democracy2
 		prerequisite = { focus = HSP_fal_phalanx_ascendant }
 		cost = 10
-		x = 0
+		x = 5
 		y = 1
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -6302,7 +6302,7 @@ focus_tree = {
 		icon = GFX_focus_generic_treaty
 		prerequisite = { focus = HSP_fal_a_one_party_state }
 		cost = 10
-		x = -2
+		x = 3
 		y = 2
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -6325,7 +6325,7 @@ focus_tree = {
 		icon = GFX_goal_generic_propaganda
 		prerequisite = { focus = HSP_fal_a_one_party_state }
 		cost = 10
-		x = 2
+		x = 7
 		y = 2
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -6344,7 +6344,7 @@ focus_tree = {
 		icon = GFX_goal_generic_consumer_goods
 		prerequisite = { focus = HSP_fal_adopt_the_26_points }
 		cost = 10
-		x = -2
+		x = 3
 		y = 3
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -6397,7 +6397,7 @@ focus_tree = {
 		icon = GFX_goal_generic_production2
 		prerequisite = { focus = HSP_fal_the_national_syndicalist_state }
 		cost = 10
-		x = 2
+		x = 7
 		y = 3
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -6490,7 +6490,7 @@ focus_tree = {
 		icon = GFX_focus_research
 		prerequisite = { focus = HSP_fal_regional_agrarian_commissions }
 		cost = 10
-		x = -2
+		x = 3
 		y = 4
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_RESEARCH }
@@ -6508,7 +6508,7 @@ focus_tree = {
 		icon = GFX_focus_spa_strengthen_the_supreme_reality_of_spain
 		prerequisite = { focus = HSP_fal_syndicalize_production }
 		cost = 10
-		x = 2
+		x = 7
 		y = 4
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_STABILITY }
@@ -6530,7 +6530,7 @@ focus_tree = {
 		icon = GFX_goal_generic_production
 		prerequisite = { focus = HSP_fal_supreme_reality_of_spain }
 		cost = 10
-		x = 2
+		x = 7
 		y = 5
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -6550,7 +6550,7 @@ focus_tree = {
 		prerequisite = { focus = HSP_fal_develop_all_talent }
 		prerequisite = { focus = HSP_fal_the_duty_to_work }
 		cost = 10
-		x = 0
+		x = 5
 		y = 6
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -6621,7 +6621,7 @@ focus_tree = {
 		icon = GFX_goal_generic_navy_doctrines_tactics
 		prerequisite = { focus = HSP_fal_national_and_popular_army }
 		cost = 10
-		x = -10
+		x = -5
 		y = 2
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_NAVY_XP }
@@ -6657,7 +6657,7 @@ focus_tree = {
 		icon = GFX_goal_generic_construct_naval_dockyard
 		prerequisite = { focus = HSP_fal_glory_on_the_sea_lanes }
 		cost = 10
-		x = -10
+		x = -5
 		y = 3
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_NAVY_XP }
@@ -6728,7 +6728,7 @@ focus_tree = {
 		icon = GFX_goal_generic_navy_battleship
 		prerequisite = { focus = HSP_fal_improve_naval_facilities }
 		cost = 10
-		x = -10
+		x = -5
 		y = 4
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_NAVY_XP }
@@ -6793,7 +6793,7 @@ focus_tree = {
 		icon = GFX_goal_generic_army_doctrines
 		prerequisite = { focus = HSP_fal_phalanx_ascendant }
 		cost = 10
-		x = -9
+		x = -4
 		y = 1
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_ARMY_XP }
@@ -6847,7 +6847,7 @@ focus_tree = {
 		icon = GFX_focus_generic_military_academy
 		prerequisite = { focus = HSP_fal_national_and_popular_army }
 		cost = 10
-		x = -8
+		x = -3
 		y = 2
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_MANPOWER }
@@ -6866,7 +6866,7 @@ focus_tree = {
 		icon = GFX_goal_demand_sudetenland
 		prerequisite = { focus = HSP_fal_pre_military_training }
 		cost = 10
-		x = -8
+		x = -3
 		y = 3
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
@@ -6885,7 +6885,7 @@ focus_tree = {
 		icon = GFX_goal_generic_demand_territory
 		prerequisite = { focus = HSP_fal_supreme_reality_of_spain }
 		cost = 10
-		x = 9
+		x = 14
 		y = 5
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -6905,7 +6905,7 @@ focus_tree = {
 		icon = GFX_goal_support_fascism
 		prerequisite = { focus = HSP_fal_the_will_to_empire }
 		cost = 5
-		x = 4
+		x = 9
 		y = 6
 		relative_position_id = HSP_fal_phalanx_ascendant
 		available = {
@@ -6946,7 +6946,7 @@ focus_tree = {
 		icon = GFX_focus_generic_attack_portugal
 		prerequisite = { focus = HSP_fal_the_will_to_empire }
 		cost = 10
-		x = 7
+		x = 12
 		y = 6
 		relative_position_id = HSP_fal_phalanx_ascendant
 		available = {
@@ -6979,7 +6979,7 @@ focus_tree = {
 		icon = GFX_goal_generic_occupy_states_ongoing_war
 		prerequisite = { focus = HSP_fal_the_will_to_empire }
 		cost = 10
-		x = 10
+		x = 15
 		y = 6
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -7045,7 +7045,7 @@ focus_tree = {
 		icon = GFX_goal_generic_territory_or_war
 		prerequisite = { focus = HSP_fal_the_will_to_empire }
 		cost = 10
-		x = 13
+		x = 18
 		y = 6
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -7122,7 +7122,7 @@ focus_tree = {
 		icon = GFX_goal_generic_political_pressure
 		prerequisite = { focus = HSP_fal_the_will_to_empire }
 		cost = 10
-		x = 16
+		x = 21
 		y = 6
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -7141,7 +7141,7 @@ focus_tree = {
 		icon = GFX_focus_spa_the_war_of_vengeance
 		prerequisite = { focus = HSP_fal_reassert_american_dominance }
 		cost = 10
-		x = 15
+		x = 20
 		y = 7
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -7204,7 +7204,7 @@ focus_tree = {
 		icon = GFX_focus_CHL_promote_pan_hispanic_rhetoric
 		prerequisite = { focus = HSP_fal_reassert_american_dominance }
 		cost = 10
-		x = 17
+		x = 22
 		y = 7
 		relative_position_id = HSP_fal_phalanx_ascendant
 		available = {
@@ -7249,7 +7249,7 @@ focus_tree = {
 		icon = GFX_focus_research2
 		prerequisite = { focus = HSP_fal_join_the_axis }
 		cost = 5
-		x = 4
+		x = 9
 		y = 7
 		relative_position_id = HSP_fal_phalanx_ascendant
 		available = {
@@ -7272,7 +7272,7 @@ focus_tree = {
 		icon = GFX_goal_generic_major_alliance
 		prerequisite = { focus = HSP_fal_unite_iberia }
 		cost = 10
-		x = 7
+		x = 12
 		y = 7
 		relative_position_id = HSP_fal_phalanx_ascendant
 		available = {
@@ -7302,7 +7302,7 @@ focus_tree = {
 		icon = GFX_goal_generic_construct_infrastructure
 		prerequisite = { focus = HSP_fal_spanish_north_africa }
 		cost = 10
-		x = 10
+		x = 15
 		y = 7
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -7321,7 +7321,7 @@ focus_tree = {
 		icon = GFX_goal_generic_construct_infrastructure
 		prerequisite = { focus = HSP_fal_aragonese_possessions }
 		cost = 10
-		x = 13
+		x = 18
 		y = 7
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_POLITICAL }
