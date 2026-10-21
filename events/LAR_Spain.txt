@@ -19,6 +19,7 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			set_country_flag = SPR_spanish_elections_flag
+			set_country_flag = HSP_spanish_elections_held_flag
 			if = {
 				limit = {
 					focus_progress = {
@@ -52,6 +53,28 @@ country_event = {
 					}
 				}
 				complete_national_focus = HSP_assemble_emergency_council
+				add_political_power = -35
+			}
+			if = {
+				limit = {
+					focus_progress = {
+						focus = HSP_defend_the_republic
+						progress > 0
+					}
+					NOT = { has_completed_focus = HSP_defend_the_republic }
+				}
+				complete_national_focus = HSP_defend_the_republic
+				add_political_power = -35
+			}
+			if = {
+				limit = {
+					focus_progress = {
+						focus = HSP_national_movement
+						progress > 0
+					}
+					NOT = { has_completed_focus = HSP_national_movement }
+				}
+				complete_national_focus = HSP_national_movement
 				add_political_power = -35
 			}
 			if = {
@@ -91,11 +114,12 @@ country_event = {
 				}
 			}
 			if = {
-				limit = {
-					has_completed_focus = HSP_assemble_emergency_council
-				}
+				limit = { has_focus_tree = HSP_spanish_focus }
 				remove_mission = SPR_military_plot_republicans
 				remove_mission = SPA_military_plot_nationalists
+				# HSP: vanilla's flag shows the Inevitable Civil War tab and its decisions; the HSP paths
+				# use HSP_spanish_elections_held_flag instead
+				clr_country_flag = SPR_spanish_elections_flag
 			}
 			every_state = {
 				limit = {
@@ -112,6 +136,14 @@ country_event = {
 		trigger = {
 			NOT = {
 				has_completed_focus = SPA_a_great_spain has_completed_focus = HSP_assemble_emergency_council
+				has_completed_focus = HSP_national_movement
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0.2
+				is_historical_focus_on = yes
 			}
 		}
 		add_popularity = {
@@ -120,14 +152,18 @@ country_event = {
 		}
 		add_political_power = 5
 		if = {
+			limit = { has_focus_tree = HSP_spanish_focus } # HSP: the Republican path and its countdown replace vanilla's
+			if = {
+				limit = { NOT = { has_completed_focus = HSP_defend_the_republic } }
+				complete_national_focus = HSP_defend_the_republic
+			}
+			activate_mission = HSP_fascist_plot_mission
+		}
+		else_if = {
 			limit = {
 				NOT = {
 					has_completed_focus = SPR_the_popular_front
 				}
-			}
-			if = {
-				limit = { has_focus_tree = HSP_spanish_focus } # no HSP root chosen before the election
-				HSP_return_to_historical_spain = yes
 			}
 			complete_national_focus = SPR_the_popular_front
 			add_political_power = -35
@@ -144,8 +180,11 @@ country_event = {
 				}
 			}
 		}
-		effect_tooltip = { add_ideas = SPR_government_power_struggle }
-		custom_effect_tooltip = SPR_republican_garrison_control_decisions_tt
+		if = {
+			limit = { NOT = { has_focus_tree = HSP_spanish_focus } }
+			effect_tooltip = { add_ideas = SPR_government_power_struggle }
+			custom_effect_tooltip = SPR_republican_garrison_control_decisions_tt
+		}
 	}
 
 	# Falange
@@ -154,6 +193,14 @@ country_event = {
 		trigger = {
 			NOT = {
 				has_completed_focus = SPR_the_popular_front has_completed_focus = HSP_assemble_emergency_council
+				has_completed_focus = HSP_defend_the_republic
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 5
+				is_historical_focus_on = yes
 			}
 		}
 		add_popularity = {
@@ -161,14 +208,18 @@ country_event = {
 			popularity = 0.1
 		}
 		if = {
+			limit = { has_focus_tree = HSP_spanish_focus } # HSP: the Fascist path and its countdown replace vanilla's
+			if = {
+				limit = { NOT = { has_completed_focus = HSP_national_movement } }
+				complete_national_focus = HSP_national_movement
+			}
+			activate_mission = HSP_nationalist_plot_mission
+		}
+		else_if = {
 			limit = {
 				NOT = {
 					has_completed_focus = SPA_a_great_spain
 				}
-			}
-			if = {
-				limit = { has_focus_tree = HSP_spanish_focus } # no HSP root chosen before the election
-				HSP_return_to_historical_spain = yes
 			}
 			complete_national_focus = SPA_a_great_spain
 			add_political_power = -35
@@ -199,7 +250,10 @@ country_event = {
 				}
 			}
 		}
-		custom_effect_tooltip = SPA_nationalist_garrison_control_decisions_tt
+		if = {
+			limit = { NOT = { has_focus_tree = HSP_spanish_focus } }
+			custom_effect_tooltip = SPA_nationalist_garrison_control_decisions_tt
+		}
 	}
 	option = {
 		name = lar_spain.1.c
@@ -207,6 +261,7 @@ country_event = {
 			has_focus_tree = HSP_spanish_focus
 			NOT = {
 				has_completed_focus = SPR_the_popular_front has_completed_focus = SPA_a_great_spain
+				has_completed_focus = HSP_defend_the_republic has_completed_focus = HSP_national_movement
 			}
 		}
 		ai_chance = {

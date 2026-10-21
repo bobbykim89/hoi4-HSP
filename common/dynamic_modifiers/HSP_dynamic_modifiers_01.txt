@@ -66,3 +66,21 @@ HSP_habsburg_influence_01 = {
 	global_building_slots = 2
 	consumer_goods_factor = -0.15
 }
+
+# Anarchism path: the Anarchist Society spirit. HSP_the_cnt_fai adds it; the society focuses add to its variables
+# (HSP_ana_*), so they can be taken in any order.
+HSP_anarchist_society = {
+	enable = {
+		always = yes
+	}
+	icon = GFX_idea_generic_local_self_management
+
+	stability_weekly = HSP_ana_stability_weekly
+	production_speed_buildings_factor = HSP_ana_construction
+	industrial_capacity_factory = HSP_ana_factory
+	industrial_capacity_dockyard = HSP_ana_dockyard
+	consumer_goods_factor = HSP_ana_consumer
+	conscription = HSP_ana_conscription
+	conscription_factor = HSP_ana_conscription_factor
+	army_speed_factor = HSP_ana_army_speed
+}

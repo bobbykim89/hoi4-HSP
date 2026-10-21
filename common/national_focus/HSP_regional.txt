@@ -1,0 +1,322 @@
+# Development tree for the regions Spain releases on the democracy split path (GLC, NAV, CAT, MOR).
+# Loaded by HSP_setup_regional_puppet; nothing picks it by default. Only industry, infrastructure and research,
+# so the AI develops instead of following the generic tree.
+focus_tree = {
+	id = HSP_regional_focus
+
+	country = {
+		factor = 0
+	}
+
+	default = no
+
+	continuous_focus_position = { x = 50 y = 1200 }
+
+	## 지방 정부 수립
+	focus = {
+		id = HSP_reg_regional_government
+		icon = GFX_goal_generic_national_unity
+		cost = 5
+		x = 3
+		y = 0
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = 50
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	## 민간 산업 육성
+	focus = {
+		id = HSP_reg_civilian_industry
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = HSP_reg_regional_government }
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = HSP_reg_regional_government
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_reg_civilian_industry_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_reg_civilian_industry_civ }
+				}
+				set_state_flag = HSP_reg_civilian_industry_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	## 기반시설 확충
+	focus = {
+		id = HSP_reg_infrastructure
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = HSP_reg_regional_government }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_reg_regional_government
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			every_owned_state = {
+				limit = { infrastructure < 5 }
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	## 지역 대학 설립
+	focus = {
+		id = HSP_reg_regional_university
+		icon = GFX_focus_research
+		prerequisite = { focus = HSP_reg_regional_government }
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = HSP_reg_regional_government
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_research_slot = 1
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	## 산업 확장
+	focus = {
+		id = HSP_reg_industrial_expansion
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = HSP_reg_civilian_industry }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_reg_civilian_industry
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_reg_industrial_expansion_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_reg_industrial_expansion_civ }
+				}
+				set_state_flag = HSP_reg_industrial_expansion_civ
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = HSP_reg_industrial_expansion
+				bonus = 1.0
+				uses = 2
+				category = industry
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	## 교통망 정비
+	focus = {
+		id = HSP_reg_transport_network
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = HSP_reg_infrastructure }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_reg_infrastructure
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			every_owned_state = {
+				limit = { infrastructure < 5 }
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	## 기술 연구소
+	focus = {
+		id = HSP_reg_technical_institute
+		icon = GFX_focus_research2
+		prerequisite = { focus = HSP_reg_regional_university }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_reg_regional_university
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = {
+				name = HSP_reg_technical_institute
+				bonus = 1.0
+				uses = 2
+				category = electronics
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	## 지역 군수 산업
+	focus = {
+		id = HSP_reg_arms_industry
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = HSP_reg_industrial_expansion }
+		cost = 10
+		x = -1
+		y = 1
+		relative_position_id = HSP_reg_industrial_expansion
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				set_state_flag = HSP_reg_arms_industry_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					NOT = { has_state_flag = HSP_reg_arms_industry_mil }
+				}
+				set_state_flag = HSP_reg_arms_industry_mil
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	## 근대 경제
+	focus = {
+		id = HSP_reg_modern_economy
+		icon = GFX_focus_generic_industry_3
+		prerequisite = { focus = HSP_reg_industrial_expansion }
+		prerequisite = { focus = HSP_reg_transport_network }
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = HSP_reg_industrial_expansion
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = HSP_regional_modern_economy
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	## 과학 진흥
+	focus = {
+		id = HSP_reg_scientific_progress
+		icon = GFX_focus_generic_socialist_science
+		prerequisite = { focus = HSP_reg_technical_institute }
+		cost = 10
+		x = 0
+		y = 1
+		relative_position_id = HSP_reg_technical_institute
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_research_slot = 1
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+}

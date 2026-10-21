@@ -178,3 +178,50 @@ HSP_is_louisiana_purchase = {
 		state = 394
 	}
 }
+
+# Scope: a country. The Latin Sphere (democracy path) invites these; JAM only once it exists.
+HSP_is_latin_sphere_candidate = {
+	OR = {
+		original_tag = MEX
+		original_tag = GUA
+		original_tag = HON
+		original_tag = ELS
+		original_tag = NIC
+		original_tag = COS
+		original_tag = CUB
+		original_tag = JAM
+		original_tag = COL
+		original_tag = VEN
+		original_tag = ECU
+		original_tag = PRU
+		original_tag = BOL
+		original_tag = PAR
+		original_tag = CHL
+		original_tag = ARG
+		original_tag = URG
+	}
+}
+
+# Scope: a state. A core of a Spanish-speaking Latin American country (the countries of HSP_is_hispanic_american).
+HSP_is_hispanic_american_state = {
+	OR = {
+		is_core_of = MEX
+		is_core_of = GUA
+		is_core_of = HON
+		is_core_of = ELS
+		is_core_of = NIC
+		is_core_of = COS
+		is_core_of = PAN
+		is_core_of = CUB
+		is_core_of = DOM
+		is_core_of = COL
+		is_core_of = VEN
+		is_core_of = ECU
+		is_core_of = PRU
+		is_core_of = BOL
+		is_core_of = PAR
+		is_core_of = CHL
+		is_core_of = ARG
+		is_core_of = URG
+	}
+}

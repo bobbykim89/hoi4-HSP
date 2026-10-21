@@ -1,0 +1,511 @@
+ideas = {
+	country = {
+		# HSP_defend_the_republic until the fascists are dealt with (HSP_fascists_defeated)
+		HSP_fascist_conspiracy = {
+			picture = SPR_political_violence
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.05
+				fascism_drift = 0.03
+			}
+		}
+		# democracy path: HSP_republican_economic_plan, HSP_attract_foreign_capital, HSP_spanish_economic_miracle
+		HSP_republican_economy_1 = {
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.1
+			}
+		}
+		HSP_republican_economy_2 = {
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.15
+				industrial_capacity_factory = 0.05
+				consumer_goods_factor = -0.05
+			}
+		}
+		HSP_republican_economy_3 = {
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.2
+				industrial_capacity_factory = 0.1
+				consumer_goods_factor = -0.1
+				research_speed_factor = 0.05
+			}
+		}
+		# democracy split: the released regions (HSP_setup_regional_puppet)
+		HSP_regional_development = {
+			picture = generic_improved_industries
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.2
+				industrial_capacity_factory = 0.1
+			}
+		}
+		# HSP_reunite_spain, replaced by HSP_local_autonomy
+		HSP_reunification_strain = {
+			picture = generic_disjointed_gov
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.1
+			}
+		}
+		HSP_local_autonomy = {
+			picture = generic_local_self_management
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				resistance_target = -0.1
+				compliance_growth = 0.1
+			}
+		}
+		# democracy popular front
+		HSP_popular_front_productivity = {
+			picture = generic_communism_drift_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+				communism_drift = 0.05
+			}
+		}
+		HSP_soviet_military_advisors_idea = {
+			picture = saf_soviet_advisers
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				conscription_factor = 0.1
+				training_time_factor = -0.1
+			}
+		}
+		HSP_soviet_industrial_investment_idea = {
+			picture = eng_spirit_of_the_industrial_revolution
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.1
+			}
+		}
+		# Latin Sphere customs union: Spain and the members (HSP_customs_union_member_flag)
+		HSP_latin_customs_union_1 = {
+			picture = generic_foreign_capital
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.1
+			}
+			targeted_modifier = {
+				tag = SPR
+				trade_cost_for_target_factor = -0.2
+			}
+		}
+		HSP_latin_customs_union_2 = {
+			picture = generic_economic_increase
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.1
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+			}
+			targeted_modifier = {
+				tag = SPR
+				trade_cost_for_target_factor = -0.2
+			}
+		}
+		HSP_joint_military_training_idea = {
+			picture = generic_army_war_college
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				experience_gain_army = 0.1
+				experience_gain_navy = 0.1
+				experience_gain_air = 0.1
+			}
+		}
+		# democracy domestic reforms
+		HSP_agrarian_reform_idea = {
+			picture = generic_agrarian_reform
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				conscription_factor = 0.05
+				consumer_goods_factor = -0.03
+			}
+		}
+		HSP_labour_code_idea = {
+			picture = generic_central_management
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.05
+				stability_factor = 0.03
+			}
+		}
+		HSP_secular_education_idea = {
+			picture = generic_research_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.05
+			}
+		}
+		# HSP_reg_modern_economy (regional development tree)
+		HSP_regional_modern_economy = {
+			picture = generic_economic_increase
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.1
+				consumer_goods_factor = -0.05
+			}
+		}
+		# communism path
+		HSP_com_ministerial_positions_idea = {
+			picture = generic_communism_drift_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				communism_drift = 0.05
+			}
+		}
+		HSP_com_collective_farms_idea = {
+			picture = generic_agrarian_society
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.1
+				stability_factor = -0.03
+			}
+		}
+		HSP_com_five_year_plan_1 = {
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.1
+				industrial_capacity_factory = 0.05
+			}
+		}
+		HSP_com_five_year_plan_2 = {
+			picture = generic_production_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.15
+				industrial_capacity_factory = 0.1
+			}
+		}
+		HSP_com_exploit_resources_idea = {
+			picture = generic_exploit_mines
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				local_resources_factor = 0.15
+			}
+		}
+		HSP_com_commissars_idea = {
+			picture = generic_communist_army
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_morale_factor = 0.1
+				stability_factor = 0.03
+			}
+		}
+		HSP_com_independent_communism_idea = {
+			picture = generic_local_self_management
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				industrial_capacity_factory = 0.05
+			}
+		}
+		HSP_com_self_reliance_idea = {
+			picture = generic_improved_industries
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.1
+				research_speed_factor = 0.05
+			}
+		}
+		# anarchism: HSP_ana_world_revolution
+		HSP_ana_world_revolution_idea = {
+			picture = generic_morale_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.1
+				justify_war_goal_time = -0.5
+			}
+		}
+		HSP_ana_liberated_territories_idea = {
+			picture = generic_local_self_management
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				compliance_gain = 0.05
+				resistance_target = -0.1
+			}
+		}
+		HSP_ana_communal_autarky_idea = {
+			picture = generic_exploit_mines
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				local_resources_factor = 0.2
+			}
+		}
+		# anarchism: political power, since stability stays near 0%
+		HSP_ana_federation_of_communes_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.2
+				political_power_gain = 0.15
+			}
+		}
+		# fascist path: after winning the civil war (HSP_on_actions); removed by a later focus
+		HSP_recovering_from_civil_war = {
+			picture = generic_disjointed_gov
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = -0.1
+				stability_factor = -0.1
+				production_speed_buildings_factor = -0.1
+				conscription_factor = -0.1
+			}
+		}
+		HSP_march_on_madrid_idea = {
+			picture = generic_morale_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.1
+			}
+		}
+		# nationalist path
+		HSP_nat_crowned_monarchy = {
+			picture = generic_king_handled
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.15
+			}
+		}
+		HSP_nat_military_dictatorship = {
+			picture = generic_morale_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.1
+				command_power_gain_mult = 0.15
+			}
+		}
+		HSP_nat_moroccan_regulars_idea = {
+			picture = generic_manpower_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				conscription = 0.01
+			}
+		}
+		# falange path
+		HSP_fal_militia_training = {
+			picture = generic_manpower_bonus
+			allowed = {
+				original_tag = SPR
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				conscription = 0.02
+				training_time_factor = -0.1
+			}
+		}
+	}
+}

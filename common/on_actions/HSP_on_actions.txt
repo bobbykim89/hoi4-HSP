@@ -1,8 +1,8 @@
 on_actions = {
 	on_startup = {
 		effect = {
-			# 1936 start on the HSP tree: only 전국 파업 (SPR_national_strikes_3) and 구식 군대 remain.
-			# HSP_return_to_historical_spain puts the vanilla spirits back if the player leaves the HSP tree.
+			# 1936 start on the HSP tree: only 전국 파업 (SPR_national_strikes_3) and 구식 군대 remain,
+			# and division templates are unlocked (vanilla 05_lar_on_actions.txt locks them; this file runs after it).
 			# Same conditions as HSP_spanish_focus's country weight; the tree may not be assigned yet here.
 			SPR = {
 				if = {
@@ -16,7 +16,63 @@ on_actions = {
 						SPR_political_violence
 					}
 					add_ideas = HSP_old_fashioned_army_01
+					country_lock_all_division_template = no
 				}
+			}
+		}
+	}
+
+	# ROOT = winner, FROM = loser
+	on_civil_war_end = {
+		effect = {
+			# The Republic wins against the fascist uprising (HSP_start_fascist_uprising)
+			if = {
+				limit = {
+					original_tag = SPR
+					has_country_flag = HSP_fascist_uprising_flag
+					NOT = { has_country_flag = HSP_fascists_defeated_flag }
+					NOT = { has_government = fascism }
+					FROM = {
+						original_tag = SPR
+						has_government = fascism
+					}
+				}
+				HSP_fascists_defeated = yes
+				news_event = { id = HSP_spain_news.4 hours = 6 }
+			}
+			# The Nationalists win against the Republic (HSP_start_nationalist_uprising)
+			if = {
+				limit = {
+					original_tag = SPR
+					has_country_flag = HSP_nationalist_uprising_flag
+					NOT = { has_country_flag = HSP_nationalists_won_flag }
+					NOT = { has_country_flag = HSP_republican_rebels_flag }
+					FROM = {
+						original_tag = SPR
+						OR = {
+							has_country_flag = HSP_republican_rebels_flag
+							NOT = { has_government = fascism }
+						}
+					}
+				}
+				set_country_flag = HSP_nationalists_won_flag
+				set_global_flag = scw_over
+				news_event = { id = HSP_spain_news.11 hours = 6 } # Spain's option adds HSP_recovering_from_civil_war
+			}
+			# The anarchists win against the Republic (HSP_start_anarchist_revolution)
+			if = {
+				limit = {
+					original_tag = SPR
+					has_country_flag = HSP_anarchist_revolution_flag
+					NOT = { has_country_flag = HSP_anarchist_victory_flag }
+					has_government = neutrality
+					FROM = {
+						original_tag = SPR
+						has_country_flag = HSP_republican_rebels_flag
+					}
+				}
+				set_country_flag = HSP_anarchist_victory_flag
+				news_event = { id = HSP_spain_news.8 hours = 6 }
 			}
 		}
 	}

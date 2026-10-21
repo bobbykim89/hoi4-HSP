@@ -1,6 +1,9 @@
 ﻿l_english:
   # factions
   HSP_pan_hispanic_federation_faction:0 "Pan-Hispanic Federation"
+  HSP_latin_sphere_faction:0 "Latin Sphere"
+  HSP_iberian_defense_council_faction:0 "Iberian Defense Council"
+  HSP_workers_front_faction:0 "International Workers' Front"
   HSP_habsburg_hegemony_faction:0 "Habsburg Hegemonic League"
   # monarchy
   HSP_alfonso_xiii:0 "Alfonso XIII"
@@ -22,3 +25,10 @@
   habsburg_research:0 "Habsburg Academy of Science and Technology"
   habsburg_research_name:0 "Habsburg Academy of Science and Technology"
   habsburg_research_desc:0 ""
+  HSP_latin_sphere_research_name:0 "Latin Scientific Council"
+  HSP_latin_sphere_research_desc:0 "The scientists of the Latin Sphere share their research under the leadership of Madrid."
+  HSP_workers_front_research_name:0 "Workers' Scientific Council"
+  HSP_workers_front_research_desc:0 "The scientists of the workers' front share their research with Spain."
+  HSP_cnt_fai_party:0 "CNT-FAI"
+  HSP_cnt_fai_party_long:0 "Confederación Nacional del Trabajo – Federación Anarquista Ibérica"
+  HSP_liberate_workers_occupation:0 "Liberated Workers"

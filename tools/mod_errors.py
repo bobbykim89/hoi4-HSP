@@ -23,6 +23,9 @@ USER_DIR = Path(os.environ.get(
 DESCRIPTOR = "mod/habsburg_spain.mod"
 PREFIX = re.compile(r"^\[[^\]]*\]\[[^\]]*\]\[([^\]]*)\]:\s*")
 MOD_ID = re.compile(r"\bHSP_|\bhsp_|Habsburg", re.I)
+# Game noise, not mod errors. The game logs "Unexpected token: <law>" for every law in the vanilla law files
+# (_economic.txt, _manpower.txt ...) whether or not a mod overrides them.
+NOISE = re.compile(r'\[persistent\.cpp:\d+\]: Error: "Unexpected token: \w+, near line: \d+" in file: "common/ideas/_\w+\.txt"')
 
 
 def main(argv):
@@ -52,6 +55,8 @@ def main(argv):
 
     counts, sources = Counter(), {}
     for raw in log.read_text(encoding="utf-8", errors="replace").splitlines():
+        if not show_all and NOISE.search(raw):
+            continue
         m = PREFIX.match(raw)
         msg = raw[m.end():] if m else raw
         if not show_all and not (MOD_ID.search(msg) or any(f in msg for f in mod_files)):

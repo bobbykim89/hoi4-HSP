@@ -1,22 +1,3 @@
-# Switch SPR from the HSP tree back to vanilla's Spain tree (vanilla election and civil war).
-# Restores the starting spirits that HSP_on_actions.txt removed at game start.
-HSP_return_to_historical_spain = {
-	add_ideas = {
-		SPA_carlism_1
-		SPR_military_disloyalty
-		SPR_political_violence
-	}
-	remove_ideas = {
-		HSP_old_fashioned_army_01
-		HSP_old_fashioned_army_02
-		HSP_old_fashioned_army_03
-	}
-	load_focus_tree = {
-		tree = spanish_focus
-		keep_completed = no
-	}
-}
-
 # Retire SPR's Stalinist, POUM and independent-communist generals and advisors (anarchists are not included).
 HSP_retire_communist_characters = {
 	custom_effect_tooltip = HSP_retire_communist_characters_tt
@@ -133,7 +114,7 @@ HSP_join_viceroyalty = {
 	}
 }
 
-# Scope: a viceroyalty. ROOT = Spain. Its generals change nationality, then Spain annexes it and takes its cores.
+# Scope: a viceroyalty or a Latin Sphere member. ROOT = Spain. Its generals change nationality, then Spain annexes it and takes its cores.
 HSP_annex_viceroyalty = {
 	every_state = {
 		limit = { is_core_of = PREV }
@@ -163,4 +144,816 @@ HSP_make_personal_union = {
 	else = {
 		puppet = event_target:HSP_union_target
 	}
+}
+
+# Retire the Nationalist generals (Franco and those with trait_SPA_nationalist_sympathies) and the
+# Francoist, Falangist and Carlist advisors.
+HSP_retire_fascist_characters = {
+	custom_effect_tooltip = HSP_retire_fascist_characters_tt
+	hidden_effect = {
+		if = {
+			limit = { has_character = SPA_francisco_franco }
+			retire_character = SPA_francisco_franco
+		}
+		if = {
+			limit = { has_character = SPA_emilio_mola }
+			retire_character = SPA_emilio_mola
+		}
+		if = {
+			limit = { has_character = SPA_juan_yague }
+			retire_character = SPA_juan_yague
+		}
+		if = {
+			limit = { has_character = SPA_agustin_munoz_grandes }
+			retire_character = SPA_agustin_munoz_grandes
+		}
+		if = {
+			limit = { has_character = SPA_jose_enrique_varela }
+			retire_character = SPA_jose_enrique_varela
+		}
+		if = {
+			limit = { has_character = SPA_miguel_cabanellas }
+			retire_character = SPA_miguel_cabanellas
+		}
+		if = {
+			limit = { has_character = SPR_mohamed_meziane }
+			retire_character = SPR_mohamed_meziane
+		}
+		if = {
+			limit = { has_character = SPR_gonzalo_queipo_de_llano }
+			retire_character = SPR_gonzalo_queipo_de_llano
+		}
+		if = {
+			limit = { has_character = SPR_jose_millan_astray }
+			retire_character = SPR_jose_millan_astray
+		}
+		if = {
+			limit = { has_character = SPA_luis_carrero_blanco }
+			retire_character = SPA_luis_carrero_blanco
+		}
+		if = {
+			limit = { has_character = SPA_rafael_garcia_valino }
+			retire_character = SPA_rafael_garcia_valino
+		}
+		if = {
+			limit = { has_character = SPA_heli_rolando_de_tella }
+			retire_character = SPA_heli_rolando_de_tella
+		}
+		if = {
+			limit = { has_character = SPA_miguel_ponte }
+			retire_character = SPA_miguel_ponte
+		}
+		if = {
+			limit = { has_character = SPA_joaquin_garcia_morato }
+			retire_character = SPA_joaquin_garcia_morato
+		}
+		if = {
+			limit = { has_character = SPA_juan_vigon_suero_diaz }
+			retire_character = SPA_juan_vigon_suero_diaz
+		}
+		if = {
+			limit = { has_character = SPA_ricardo_rada }
+			retire_character = SPA_ricardo_rada
+		}
+		if = {
+			limit = { has_character = SPA_enrique_canovas_lacruz }
+			retire_character = SPA_enrique_canovas_lacruz
+		}
+		if = {
+			limit = { has_character = SPA_jose_antonio_primo_de_rivera }
+			retire_character = SPA_jose_antonio_primo_de_rivera
+		}
+		if = {
+			limit = { has_character = SPA_jose_antonio_giron }
+			retire_character = SPA_jose_antonio_giron
+		}
+		if = {
+			limit = { has_character = SPA_manuel_hedilla }
+			retire_character = SPA_manuel_hedilla
+		}
+		if = {
+			limit = { has_character = SPA_raimundo_fernandez_cuesta }
+			retire_character = SPA_raimundo_fernandez_cuesta
+		}
+		if = {
+			limit = { has_character = SPA_ramon_serrano_suner }
+			retire_character = SPA_ramon_serrano_suner
+		}
+		if = {
+			limit = { has_character = SPA_diego_hidalgo_y_duran }
+			retire_character = SPA_diego_hidalgo_y_duran
+		}
+		if = {
+			limit = { has_character = SPR_manuel_fal_conde }
+			retire_character = SPR_manuel_fal_conde
+		}
+		if = {
+			limit = { has_character = SPA_tomas_dominguez_arevalo }
+			retire_character = SPA_tomas_dominguez_arevalo
+		}
+		if = {
+			limit = { has_character = SPA_luis_hernando_de_larramendi }
+			retire_character = SPA_luis_hernando_de_larramendi
+		}
+		if = {
+			limit = { has_character = SPA_martin_de_riquer }
+			retire_character = SPA_martin_de_riquer
+		}
+		if = {
+			limit = { has_character = SPA_mauricio_de_sivatte }
+			retire_character = SPA_mauricio_de_sivatte
+		}
+		every_unit_leader = {
+			limit = { has_trait = trait_SPA_nationalist_sympathies }
+			retire = yes
+		}
+	}
+}
+
+# Retire the loyal Republican generals and the democratic and moderate PSOE advisors.
+# Counterpart of HSP_retire_communist_characters, used by the communist and anarchist paths.
+HSP_retire_republican_characters = {
+	custom_effect_tooltip = HSP_retire_republican_characters_tt
+	hidden_effect = {
+		if = {
+			limit = { has_character = SPR_jose_asensio_torrado }
+			retire_character = SPR_jose_asensio_torrado
+		}
+		if = {
+			limit = { has_character = SPR_vicente_rojo_lluch }
+			retire_character = SPR_vicente_rojo_lluch
+		}
+		if = {
+			limit = { has_character = SPR_jose_miaja }
+			retire_character = SPR_jose_miaja
+		}
+		if = {
+			limit = { has_character = SPR_miguel_buiza_fernandez_palacios }
+			retire_character = SPR_miguel_buiza_fernandez_palacios
+		}
+		if = {
+			limit = { has_character = SPR_nicolas_molero }
+			retire_character = SPR_nicolas_molero
+		}
+		if = {
+			limit = { has_character = SPR_domenec_batet }
+			retire_character = SPR_domenec_batet
+		}
+		if = {
+			limit = { has_character = SPR_ignacio_hidalgo_de_cisneros }
+			retire_character = SPR_ignacio_hidalgo_de_cisneros
+		}
+		if = {
+			limit = { has_character = SPR_andres_garcia_la_calle }
+			retire_character = SPR_andres_garcia_la_calle
+		}
+		if = {
+			limit = { has_character = SPR_luis_gonzalez_de_ubieta }
+			retire_character = SPR_luis_gonzalez_de_ubieta
+		}
+		if = {
+			limit = { has_character = SPR_toribio_martinez_cabrera }
+			retire_character = SPR_toribio_martinez_cabrera
+		}
+		if = {
+			limit = { has_character = SPR_antonio_azarola_y_gresillon }
+			retire_character = SPR_antonio_azarola_y_gresillon
+		}
+		if = {
+			limit = { has_character = SPR_antonio_escobar_huerta }
+			retire_character = SPR_antonio_escobar_huerta
+		}
+		if = {
+			limit = { has_character = SPR_felipe_diaz_sandino }
+			retire_character = SPR_felipe_diaz_sandino
+		}
+		if = {
+			limit = { has_character = SPR_augusto_barcia_trelles }
+			retire_character = SPR_augusto_barcia_trelles
+		}
+		if = {
+			limit = { has_character = SPR_diego_martinez_barrio }
+			retire_character = SPR_diego_martinez_barrio
+		}
+		if = {
+			limit = { has_character = SPR_juan_negrin }
+			retire_character = SPR_juan_negrin
+		}
+		if = {
+			limit = { has_character = SPR_indalecio_prieto }
+			retire_character = SPR_indalecio_prieto
+		}
+	}
+}
+
+# The fascist plot is over, by HSP_eliminate_the_fascists or by winning the uprising (HSP_on_actions).
+# Unlocks the choice between democracy, communism and anarchism.
+HSP_fascists_defeated = {
+	custom_effect_tooltip = HSP_fascists_defeated_tt
+	hidden_effect = {
+		set_country_flag = HSP_fascists_defeated_flag
+		set_global_flag = scw_over
+		if = {
+			limit = { has_idea = HSP_fascist_conspiracy }
+			remove_ideas = HSP_fascist_conspiracy
+		}
+		if = {
+			limit = { has_active_mission = HSP_fascist_plot_mission }
+			remove_mission = HSP_fascist_plot_mission
+		}
+	}
+}
+
+# Timeout of HSP_fascist_plot_mission. The historical Nationalist states rise, except those where
+# HSP_maintain_order was taken. Template: vanilla events/Spain.txt spain.1 option b.
+HSP_start_fascist_uprising = {
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 171
+				state = 172
+				state = 174
+				state = 176
+				state = 791
+				state = 788
+				state = 166
+				state = 169
+				state = 170
+				state = 789
+				state = 177
+				state = 178
+				state = 290
+				state = 297
+				state = 699
+			}
+			is_controlled_by = ROOT
+			NOT = { has_state_flag = HSP_order_maintained_flag }
+		}
+		set_state_flag = HSP_fascist_state_flag
+	}
+	if = {
+		limit = {
+			NOT = {
+				any_owned_state = { has_state_flag = HSP_fascist_state_flag }
+			}
+		}
+		# every state was pacified: the plot collapses without a war
+		HSP_fascists_defeated = yes
+		news_event = { id = HSP_spain_news.3 hours = 6 }
+	}
+	else = {
+		set_country_flag = HSP_fascist_uprising_flag
+		set_variable = { HSP_uprising_size = 0.1 }
+		every_owned_state = {
+			limit = { has_state_flag = HSP_fascist_state_flag }
+			ROOT = { add_to_variable = { HSP_uprising_size = 0.03 } }
+		}
+		start_civil_war = {
+			ideology = fascism
+			size = var:HSP_uprising_size
+			states = all
+			states_filter = { has_state_flag = HSP_fascist_state_flag }
+			# Spain keeps every character; the Nationalists are sent over by name below
+			# (by default the game hands the rebels a share of everyone, left-wing advisors included)
+			keep_all_characters = yes
+			save_event_target_as = HSP_fascist_rebels
+			set_cosmetic_tag = SPR_civil_war
+			set_country_flag = HSP_fascist_rebels_flag
+			set_stability = 0.7
+			set_war_support = 0.8
+		}
+		HSP_send_fascists_to_rebels = yes
+		if = {
+			limit = { has_idea = HSP_fascist_conspiracy }
+			remove_ideas = HSP_fascist_conspiracy
+		}
+		news_event = { id = HSP_spain_news.2 hours = 6 }
+	}
+}
+
+# Scope: a region released as Spain's puppet (democracy split: GLC, NAV, CAT, MOR).
+# Development spirit, a civilian factory and infrastructure, the HSP_regional_focus development tree
+# (common/national_focus/HSP_regional.txt), and an AI that builds industry.
+HSP_setup_regional_puppet = {
+	add_ideas = HSP_regional_development
+	load_focus_tree = {
+		tree = HSP_regional_focus
+		keep_completed = no
+	}
+	capital_scope = {
+		add_extra_state_shared_building_slots = 1
+		add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+		}
+	}
+	every_owned_state = {
+		limit = { infrastructure < 5 }
+		add_building_construction = {
+			type = infrastructure
+			level = 1
+			instant_build = yes
+		}
+	}
+	add_ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 50
+	}
+	add_ai_strategy = {
+		type = building_target
+		id = infrastructure
+		value = 25
+	}
+	add_ai_strategy = {
+		type = alliance
+		id = ROOT
+		value = 200
+	}
+}
+
+# Scope: a regional puppet. ROOT = Spain. Spain takes cores on the land it owns, its generals and its states.
+HSP_reunite_regional_puppet = {
+	every_owned_state = {
+		add_core_of = ROOT
+	}
+	every_unit_leader = {
+		set_nationality = ROOT
+	}
+	ROOT = {
+		annex_country = {
+			target = PREV
+			transfer_troops = yes
+		}
+	}
+}
+
+# Scope: Spain. Like Yugoslavia's split route: once all of Morocco or all of the Basque lands are held,
+# all of them become Spanish cores (French Morocco, French Basque Country).
+HSP_claim_conquered_regions = {
+	custom_effect_tooltip = HSP_claim_conquered_regions_tt
+	hidden_effect = {
+		if = {
+			limit = {
+				all_state = {
+					OR = {
+						NOT = { is_core_of = MOR }
+						is_controlled_by = ROOT
+					}
+				}
+			}
+			every_state = {
+				limit = { is_core_of = MOR }
+				add_core_of = ROOT
+			}
+		}
+		if = {
+			limit = {
+				all_state = {
+					OR = {
+						NOT = { is_core_of = NAV }
+						is_controlled_by = ROOT
+					}
+				}
+			}
+			every_state = {
+				limit = { is_core_of = NAV }
+				add_core_of = ROOT
+			}
+		}
+	}
+}
+
+# Scope: a country joining Spain's faction. ROOT = Spain. If Spain is not the leader (the Allies),
+# its faction leader adds the country.
+HSP_join_spanish_faction = {
+	if = {
+		limit = { ROOT = { is_faction_leader = yes } }
+		ROOT = { add_to_faction = PREV }
+	}
+	else = {
+		random_country = {
+			limit = {
+				is_faction_leader = yes
+				is_in_faction_with = ROOT
+			}
+			add_to_faction = PREV
+		}
+	}
+	add_ai_strategy = {
+		type = alliance
+		id = ROOT
+		value = 200
+	}
+}
+
+# Scope: the country that rises. ROOT = Spain. A communist uprising sized by communist support (25-60%);
+# Spain joins the rebels and makes them its puppet (vanilla lar_spain.49 and HSP_spain_events.36 pattern).
+HSP_start_communist_uprising = {
+	save_event_target_as = HSP_revolution_target
+	set_temp_variable = { HSP_revolt_size = party_popularity@communism }
+	clamp_temp_variable = {
+		var = HSP_revolt_size
+		min = 0.25
+		max = 0.6
+	}
+	start_civil_war = {
+		ideology = communism
+		size = var:HSP_revolt_size
+		ROOT = {
+			add_to_war = {
+				targeted_alliance = PREV
+				enemy = event_target:HSP_revolution_target
+				hostility_reason = asked_to_join
+			}
+			puppet = {
+				target = PREV
+				end_wars = no
+				end_civil_wars = no
+			}
+		}
+	}
+}
+
+# HSP_com_portuguese_revolution. A communist Portugal is offered a union instead (HSP_spain_events.46).
+HSP_start_portuguese_revolution = {
+	random_country = {
+		limit = {
+			original_tag = POR
+			NOT = { is_subject_of = ROOT }
+		}
+		if = {
+			limit = { has_government = communism }
+			country_event = { id = HSP_spain_events.46 hours = 6 }
+		}
+		else = {
+			HSP_start_communist_uprising = yes
+			news_event = { id = HSP_spain_news.5 hours = 6 }
+		}
+	}
+}
+
+# HSP_com_french_revolution
+HSP_start_french_revolution = {
+	FRA = {
+		HSP_start_communist_uprising = yes
+		news_event = { id = HSP_spain_news.6 hours = 6 }
+	}
+}
+
+# HSP_ana_masters_of_our_own_fate. Spain becomes anarchist (vanilla lar_spain.10's Anarchist Commune) and the
+# Republic revolts with every state outside the anarchist heartland. The player keeps the HSP tree.
+HSP_start_anarchist_revolution = {
+	set_country_flag = HSP_anarchist_revolution_flag
+	HSP_retire_republican_characters = yes
+	set_politics = {
+		ruling_party = neutrality
+		elections_allowed = no
+	}
+	create_country_leader = {
+		name = "Anarchist Commune"
+		desc = "POLITICS_ANARCHIST_COMMUNE_DESC"
+		picture = "GFX_portrait_SPR_anarchist_commune"
+		expire = "1965.1.1"
+		ideology = anarchism
+		traits = {
+			our_right_to_survive
+		}
+	}
+	set_cosmetic_tag = SPR_anarchist_spain
+	# vanilla lar_spain.10's anarchist rules: no collaboration governments, puppets or factions
+	if = {
+		limit = { is_in_faction = yes }
+		leave_faction = yes
+	}
+	set_rule = {
+		can_create_collaboration_government = no
+		can_puppet = no
+		can_create_factions = no
+		can_join_factions = no
+		can_generate_female_aces = yes
+	}
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 41
+				state = 165
+				state = 166
+				state = 167
+				state = 168
+				state = 794
+			}
+		}
+		set_state_flag = HSP_anarchist_state_flag
+	}
+	if = {
+		limit = { democratic < 0.05 }
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.1
+		}
+	}
+	start_civil_war = {
+		ideology = democratic
+		size = 0.35
+		states = all
+		states_filter = {
+			NOT = { has_state_flag = HSP_anarchist_state_flag }
+		}
+		keep_all_characters = yes # the Republican figures are retired beforehand; the CNT advisors stay with us
+		set_cosmetic_tag = SPR_republican_spain
+		set_country_flag = HSP_republican_rebels_flag
+	}
+	news_event = { id = HSP_spain_news.7 hours = 6 }
+}
+
+# Scope: the country that rises. ROOT = Spain. An anarchist uprising in the states nearest Spain; Spain joins
+# the rebels' war. Anarchists take no puppets: the commune stays free (Portuguese anarchism, HSP_ignite_anarchist_uprising).
+HSP_start_anarchist_uprising = {
+	save_event_target_as = HSP_revolution_target
+	if = {
+		limit = {
+			any_controlled_state = {
+				is_capital = no
+				any_neighbor_state = { is_controlled_by = ROOT }
+			}
+		}
+		every_controlled_state = {
+			limit = {
+				is_capital = no
+				any_neighbor_state = { is_controlled_by = ROOT }
+			}
+			set_state_flag = HSP_anarchist_uprising_state
+		}
+	}
+	else = {
+		random_controlled_state = {
+			limit = {
+				is_capital = no
+				is_in_home_area = yes
+			}
+			set_state_flag = HSP_anarchist_uprising_state
+		}
+	}
+	start_civil_war = {
+		ideology = neutrality
+		size = 0.3
+		states = all
+		states_filter = { has_state_flag = HSP_anarchist_uprising_state }
+		set_country_flag = HSP_anarchist_commune_flag
+		create_country_leader = {
+			name = "Anarchist Commune"
+			desc = "POLITICS_ANARCHIST_COMMUNE_DESC"
+			picture = "GFX_portrait_SPR_anarchist_commune"
+			expire = "1965.1.1"
+			ideology = anarchism
+			traits = {
+				our_right_to_survive
+			}
+		}
+		ROOT = {
+			add_to_war = {
+				targeted_alliance = PREV
+				enemy = event_target:HSP_revolution_target
+				hostility_reason = asked_to_join
+			}
+		}
+	}
+}
+
+# Scope: Spain, after HSP_start_fascist_uprising saved the rebels as event_target:HSP_fascist_rebels.
+# Franco, the Nationalist generals and the Francoist, Falangist and Carlist advisors join the rebels
+# (same list as HSP_retire_fascist_characters).
+HSP_send_fascists_to_rebels = {
+	hidden_effect = {
+		every_unit_leader = {
+			limit = {
+				OR = {
+					has_trait = trait_SPA_nationalist_sympathies
+					has_id = 1108 # Franco
+				}
+			}
+			set_nationality = event_target:HSP_fascist_rebels
+		}
+		if = {
+			limit = { has_character = SPA_emilio_mola }
+			SPA_emilio_mola = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_juan_yague }
+			SPA_juan_yague = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_agustin_munoz_grandes }
+			SPA_agustin_munoz_grandes = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_jose_enrique_varela }
+			SPA_jose_enrique_varela = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_miguel_cabanellas }
+			SPA_miguel_cabanellas = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPR_mohamed_meziane }
+			SPR_mohamed_meziane = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPR_gonzalo_queipo_de_llano }
+			SPR_gonzalo_queipo_de_llano = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPR_jose_millan_astray }
+			SPR_jose_millan_astray = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_luis_carrero_blanco }
+			SPA_luis_carrero_blanco = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_rafael_garcia_valino }
+			SPA_rafael_garcia_valino = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_heli_rolando_de_tella }
+			SPA_heli_rolando_de_tella = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_miguel_ponte }
+			SPA_miguel_ponte = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_joaquin_garcia_morato }
+			SPA_joaquin_garcia_morato = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_juan_vigon_suero_diaz }
+			SPA_juan_vigon_suero_diaz = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_ricardo_rada }
+			SPA_ricardo_rada = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_enrique_canovas_lacruz }
+			SPA_enrique_canovas_lacruz = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_jose_antonio_primo_de_rivera }
+			SPA_jose_antonio_primo_de_rivera = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_jose_antonio_giron }
+			SPA_jose_antonio_giron = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_manuel_hedilla }
+			SPA_manuel_hedilla = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_raimundo_fernandez_cuesta }
+			SPA_raimundo_fernandez_cuesta = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_ramon_serrano_suner }
+			SPA_ramon_serrano_suner = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_diego_hidalgo_y_duran }
+			SPA_diego_hidalgo_y_duran = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPR_manuel_fal_conde }
+			SPR_manuel_fal_conde = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_tomas_dominguez_arevalo }
+			SPA_tomas_dominguez_arevalo = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_luis_hernando_de_larramendi }
+			SPA_luis_hernando_de_larramendi = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_martin_de_riquer }
+			SPA_martin_de_riquer = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+		if = {
+			limit = { has_character = SPA_mauricio_de_sivatte }
+			SPA_mauricio_de_sivatte = { set_nationality = event_target:HSP_fascist_rebels }
+		}
+	}
+}
+
+# Fascist path: timeout of HSP_nationalist_plot_mission, or stability 0% with fascism above 60%.
+# Spain becomes Nationalist under Franco and keeps the states won over (HSP_win_over_state) plus Spanish Morocco
+# and the Canaries; the Republic revolts with the rest. The player keeps the HSP tree.
+HSP_start_nationalist_uprising = {
+	set_country_flag = HSP_nationalist_uprising_flag
+	if = {
+		limit = { has_active_mission = HSP_nationalist_plot_mission }
+		remove_mission = HSP_nationalist_plot_mission
+	}
+	if = {
+		limit = { has_idea = HSP_fascist_conspiracy }
+		remove_ideas = HSP_fascist_conspiracy
+	}
+	HSP_retire_republican_characters = yes
+	HSP_retire_communist_characters = yes
+	set_politics = {
+		ruling_party = fascism
+		elections_allowed = no
+	}
+	if = {
+		limit = { has_character = SPA_francisco_franco }
+		add_country_leader_role = {
+			character = SPA_francisco_franco
+			country_leader = {
+				ideology = fascism_ideology
+				traits = { caudillo_1 }
+				expire = "1965.1.1"
+			}
+			promote_leader = yes
+		}
+	}
+	set_cosmetic_tag = SPR_civil_war
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 290
+				state = 178
+			}
+		}
+		set_state_flag = HSP_won_over_flag
+	}
+	# the capital must stay with us: Burgos (the Nationalist capital) or another state we hold
+	if = {
+		limit = { NOT = { capital_scope = { has_state_flag = HSP_won_over_flag } } }
+		if = {
+			limit = { 176 = { has_state_flag = HSP_won_over_flag is_owned_by = ROOT } }
+			set_capital = { state = 176 }
+		}
+		else = {
+			random_owned_state = {
+				limit = { has_state_flag = HSP_won_over_flag }
+				ROOT = { set_capital = { state = PREV } }
+			}
+		}
+	}
+	if = {
+		limit = { democratic < 0.05 }
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.1
+		}
+	}
+	start_civil_war = {
+		ideology = democratic
+		size = 0.5
+		states = all
+		states_filter = {
+			NOT = { has_state_flag = HSP_won_over_flag }
+		}
+		keep_all_characters = yes # the Republican and communist figures are retired just above
+		set_cosmetic_tag = SPR_republican_spain
+		set_country_flag = HSP_republican_rebels_flag
+	}
+	news_event = { id = HSP_spain_news.10 hours = 6 }
+}
+
+# HSP_nat_restore_the_monarchy: a king reigns over a neutrality government while Franco keeps the army.
+# Alfonso XIII as on the Borbón route (HSP_spain_events.30), or vanilla's Jaime IV if Alfonso is gone.
+HSP_crown_nationalist_king = {
+	add_popularity = {
+		ideology = neutrality
+		popularity = 0.2
+	}
+	set_politics = {
+		ruling_party = neutrality
+		elections_allowed = no
+	}
+	if = {
+		limit = { HSP_alfonso_available = yes }
+		create_country_leader = {
+			name = HSP_alfonso_xiii
+			desc = "POLITICS_ALFONSO_XIII_DESC"
+			picture = "GFX_portrait_SPA_alfonso_xiii"
+			expire = "1965.1.1"
+			ideology = despotism
+			traits = { the_legitimist }
+		}
+	}
+	else = {
+		create_country_leader = {
+			name = HSP_jaime_iv
+			picture = "GFX_portrait_fra_infante_jaime"
+			expire = "1965.1.1"
+			ideology = despotism
+			traits = { the_legitimist }
+		}
+	}
+	set_cosmetic_tag = HSP_kingdom_of_spain
+	add_ideas = HSP_nat_crowned_monarchy
 }

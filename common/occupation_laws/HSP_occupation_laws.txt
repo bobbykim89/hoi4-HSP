@@ -1,0 +1,23 @@
+# Vanilla liberate_workers_occupation (occupation_laws.txt) is visible only to communist governments.
+# This copy is for anarchist Spain, enabled by HSP_ana_liberated_territories.
+HSP_liberate_workers_occupation = {
+	icon = 5
+	sound_effect = "Martial_Law_Interface_Liberate_Workers_Occupation_Unique_COM"
+
+	visible = {
+		has_country_flag = HSP_liberated_workers_flag
+	}
+
+	state_modifier = {
+		resistance_target 				= -0.15
+		compliance_gain 				= -0.025
+		required_garrison_factor 		= -0.15
+		resistance_damage_to_garrison 	= 0.25
+		local_factories 				= 0.2
+		local_resources 				= 0.3
+	}
+
+	ai_will_do = {
+		base = 200
+	}
+}

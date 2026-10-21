@@ -26,3 +26,35 @@ technology_sharing_group = {
 		}
 	}
 }
+
+# Created by HSP_latin_research_cooperation (democracy path, Latin Sphere)
+technology_sharing_group = {
+	id = HSP_latin_sphere_research
+	name = HSP_latin_sphere_research_name
+	desc = HSP_latin_sphere_research_desc
+	picture = GFX_technology_sharing_default
+	research_sharing_per_country_bonus = 0.1
+
+	available = {
+		OR = {
+			original_tag = SPR
+			is_in_faction_with = SPR
+		}
+	}
+}
+
+# Created by HSP_com_workers_research (communism, independent line)
+technology_sharing_group = {
+	id = HSP_workers_front_research
+	name = HSP_workers_front_research_name
+	desc = HSP_workers_front_research_desc
+	picture = GFX_technology_sharing_default
+	research_sharing_per_country_bonus = 0.1
+
+	available = {
+		OR = {
+			original_tag = SPR
+			is_in_faction_with = SPR
+		}
+	}
+}
