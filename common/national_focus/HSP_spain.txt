@@ -5863,19 +5863,20 @@ focus_tree = {
 	}
 
 	## 아프리카군 모델
+	# Shared by the Nationalist and Falange branches (either army focus), between them
 	focus = {
-		id = HSP_nat_army_of_africa_model
+		id = HSP_army_of_africa_model
 		icon = GFX_goal_generic_army_artillery
-		prerequisite = { focus = HSP_nat_national_army }
+		prerequisite = { focus = HSP_nat_national_army focus = HSP_fal_national_and_popular_army }
 		cost = 10
-		x = 8
-		y = 2
-		relative_position_id = HSP_nat_caudillo_of_spain
+		x = 0
+		y = 6
+		relative_position_id = HSP_national_movement
 		search_filters = { FOCUS_FILTER_ARMY_XP }
 		completion_reward = {
 			army_experience = 25
 			add_doctrine_cost_reduction = {
-				name = HSP_nat_army_of_africa_model
+				name = HSP_army_of_africa_model
 				cost_reduction = 0.5
 				uses = 2
 				category = land_doctrine
@@ -5908,7 +5909,8 @@ focus_tree = {
 	focus = {
 		id = HSP_nat_equipment_modernization
 		icon = GFX_goal_generic_small_arms
-		prerequisite = { focus = HSP_nat_army_of_africa_model }
+		prerequisite = { focus = HSP_army_of_africa_model }
+		prerequisite = { focus = HSP_nat_national_army }
 		cost = 10
 		x = 7
 		y = 3
@@ -5931,7 +5933,8 @@ focus_tree = {
 	focus = {
 		id = HSP_nat_motorization
 		icon = GFX_goal_generic_army_motorized
-		prerequisite = { focus = HSP_nat_army_of_africa_model }
+		prerequisite = { focus = HSP_army_of_africa_model }
+		prerequisite = { focus = HSP_nat_national_army }
 		cost = 10
 		x = 10
 		y = 3
@@ -6677,30 +6680,6 @@ focus_tree = {
 		}
 	}
 
-	## 아프리카군 모델
-	focus = {
-		id = HSP_fal_army_of_africa_model
-		icon = GFX_goal_generic_army_artillery
-		prerequisite = { focus = HSP_fal_national_and_popular_army }
-		cost = 10
-		x = -1
-		y = 2
-		relative_position_id = HSP_fal_phalanx_ascendant
-		search_filters = { FOCUS_FILTER_ARMY_XP }
-		completion_reward = {
-			army_experience = 25
-			add_doctrine_cost_reduction = {
-				name = HSP_fal_army_of_africa_model
-				cost_reduction = 0.5
-				uses = 2
-				category = land_doctrine
-			}
-		}
-		ai_will_do = {
-			base = 10
-		}
-	}
-
 	## 스페인의 운명을 받아들이다
 	# vanilla spirit: mobilisation +20%, attack +5%
 	focus = {
@@ -6724,7 +6703,8 @@ focus_tree = {
 	focus = {
 		id = HSP_fal_equipment_modernization
 		icon = GFX_goal_generic_small_arms
-		prerequisite = { focus = HSP_fal_army_of_africa_model }
+		prerequisite = { focus = HSP_army_of_africa_model }
+		prerequisite = { focus = HSP_fal_national_and_popular_army }
 		cost = 10
 		x = -2
 		y = 3
@@ -6747,7 +6727,8 @@ focus_tree = {
 	focus = {
 		id = HSP_fal_motorization
 		icon = GFX_goal_generic_army_motorized
-		prerequisite = { focus = HSP_fal_army_of_africa_model }
+		prerequisite = { focus = HSP_army_of_africa_model }
+		prerequisite = { focus = HSP_fal_national_and_popular_army }
 		cost = 10
 		x = 0
 		y = 3
