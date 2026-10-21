@@ -31,6 +31,18 @@ focus_tree = {
 		cost = 5
 		x = 80
 		y = 0
+		offset = {
+			x = -43
+			y = 0
+			trigger = { has_completed_focus = HSP_defend_the_republic }
+		}
+		# hidden once another path is chosen; the chosen path and the military branch then move left (offsets)
+		allow_branch = {
+			NOT = {
+				has_completed_focus = HSP_assemble_emergency_council
+				has_completed_focus = HSP_national_movement
+			}
+		}
 		available = {
 			NOT = {
 				has_country_flag = SPR_spanish_elections_flag
@@ -40,6 +52,7 @@ focus_tree = {
 		mutually_exclusive = { focus = HSP_assemble_emergency_council focus = HSP_national_movement }
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 		completion_reward = {
+			hidden_effect = { mark_focus_tree_layout_dirty = yes }
 			add_popularity = {
 				ideology = democratic
 				popularity = 0.05
@@ -250,6 +263,11 @@ focus_tree = {
 		cost = 5
 		x = 66
 		y = 4
+		offset = {
+			x = -43
+			y = 0
+			trigger = { has_completed_focus = HSP_defend_the_republic }
+		}
 		mutually_exclusive = { focus = HSP_the_workers_republic focus = HSP_the_cnt_fai }
 		available = {
 			has_country_flag = HSP_fascists_defeated_flag
@@ -2105,6 +2123,11 @@ focus_tree = {
 		cost = 5
 		x = 93
 		y = 4
+		offset = {
+			x = -43
+			y = 0
+			trigger = { has_completed_focus = HSP_defend_the_republic }
+		}
 		available = {
 			has_country_flag = HSP_fascists_defeated_flag
 		}
@@ -3370,6 +3393,11 @@ focus_tree = {
 		cost = 5
 		x = 112
 		y = 4
+		offset = {
+			x = -43
+			y = 0
+			trigger = { has_completed_focus = HSP_defend_the_republic }
+		}
 		available = {
 			has_country_flag = HSP_fascists_defeated_flag
 		}
@@ -4799,6 +4827,18 @@ focus_tree = {
 		cost = 5
 		x = 150
 		y = 0
+		offset = {
+			x = -116
+			y = 0
+			trigger = { has_completed_focus = HSP_national_movement }
+		}
+		# hidden once another path is chosen; the chosen path and the military branch then move left (offsets)
+		allow_branch = {
+			NOT = {
+				has_completed_focus = HSP_assemble_emergency_council
+				has_completed_focus = HSP_defend_the_republic
+			}
+		}
 		available = {
 			NOT = {
 				has_country_flag = SPR_spanish_elections_flag
@@ -4808,6 +4848,7 @@ focus_tree = {
 		mutually_exclusive = { focus = HSP_assemble_emergency_council focus = HSP_defend_the_republic }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			hidden_effect = { mark_focus_tree_layout_dirty = yes }
 			add_popularity = {
 				ideology = fascism
 				popularity = 0.05
@@ -4962,6 +5003,11 @@ focus_tree = {
 		cost = 5
 		x = 136
 		y = 4
+		offset = {
+			x = -116
+			y = 0
+			trigger = { has_completed_focus = HSP_national_movement }
+		}
 		available = {
 			has_country_flag = HSP_nationalists_won_flag
 		}
@@ -6246,6 +6292,11 @@ focus_tree = {
 		cost = 5
 		x = 160
 		y = 4
+		offset = {
+			x = -116
+			y = 0
+			trigger = { has_completed_focus = HSP_national_movement }
+		}
 		available = {
 			has_country_flag = HSP_nationalists_won_flag
 		}
@@ -7352,8 +7403,16 @@ focus_tree = {
 		mutually_exclusive = { focus = HSP_defend_the_republic focus = HSP_national_movement }
 		x = 24
 		y = 0
+		# hidden once another path is chosen; the chosen path and the military branch then move left (offsets)
+		allow_branch = {
+			NOT = {
+				has_completed_focus = HSP_defend_the_republic
+				has_completed_focus = HSP_national_movement
+			}
+		}
 		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
 		completion_reward = {
+			hidden_effect = { mark_focus_tree_layout_dirty = yes }
 			add_ideas = HSP_inefficient_bureaucracy_01
 			add_popularity = {
 				ideology = neutrality
@@ -10749,6 +10808,21 @@ focus_tree = {
 		cost = 5
 		x = 202
 		y = 0
+		offset = {
+			x = -144
+			y = 0
+			trigger = { has_completed_focus = HSP_assemble_emergency_council }
+		}
+		offset = {
+			x = -114
+			y = 0
+			trigger = { has_completed_focus = HSP_defend_the_republic }
+		}
+		offset = {
+			x = -124
+			y = 0
+			trigger = { has_completed_focus = HSP_national_movement }
+		}
 		completion_reward = {
 			swap_ideas = {
 				remove_idea = HSP_old_fashioned_army_01
