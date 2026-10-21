@@ -848,8 +848,8 @@ HSP_send_fascists_to_rebels = {
 }
 
 # Fascist path: timeout of HSP_nationalist_plot_mission, or stability 0% with fascism above 60%.
-# Spain becomes Nationalist under Franco and keeps the states won over (HSP_win_over_state) plus Spanish Morocco
-# and the Canaries; the Republic revolts with the rest. The player keeps the HSP tree.
+# Spain becomes Nationalist under Franco and keeps the historical Nationalist zone plus the states won over
+# (HSP_win_over_state); the Republic revolts with the rest. The player keeps the HSP tree.
 HSP_start_nationalist_uprising = {
 	set_country_flag = HSP_nationalist_uprising_flag
 	if = {
@@ -879,11 +879,26 @@ HSP_start_nationalist_uprising = {
 		}
 	}
 	set_cosmetic_tag = SPR_civil_war
+	# the historical Nationalist zone (vanilla spain.1's 1936 split, plus Ifni) always rises with us
 	every_owned_state = {
 		limit = {
 			OR = {
-				state = 290
+				state = 166
+				state = 169
+				state = 170
+				state = 171
+				state = 172
+				state = 174
+				state = 176
+				state = 177
 				state = 178
+				state = 290
+				state = 297
+				state = 699
+				state = 783
+				state = 788
+				state = 789
+				state = 791
 			}
 		}
 		set_state_flag = HSP_won_over_flag

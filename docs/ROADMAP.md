@@ -53,7 +53,7 @@ Status as of 2026-10-20. The full design is the author's plan; this file records
 - **Root:** 국민 운동 (`HSP_national_movement`). The 역사적 스페인 hand-off to vanilla's tree is gone. The election starts a 180-day countdown to the uprising, which can also come early at 0% stability with fascism above 60%.
 - **Before the uprising:** decisions to incite unrest and to win over states one by one.
 - **The uprising:**
-  - The player is the Nationalists under Franco and keeps the states won over, plus Spanish Morocco and the Canaries; the Republic revolts with the rest.
+  - The player is the Nationalists under Franco and keeps the historical Nationalist zone plus the states won over; the Republic revolts with the rest.
   - Winning adds 내전으로부터 회복 (−10% output, stability, construction and recruitable population).
 - **Nationalist** (32 focuses), close to vanilla's Francoist route:
   - no new cores

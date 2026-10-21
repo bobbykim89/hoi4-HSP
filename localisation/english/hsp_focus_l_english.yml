@@ -318,7 +318,7 @@
   HSP_sow_unrest_tt:0 "Unlocks the decision §YIncite Unrest§!."
   HSP_win_over_the_garrisons:0 "Win Over the Garrisons"
   HSP_win_over_the_garrisons_desc:0 ""
-  HSP_win_over_the_garrisons_tt:0 "Unlocks decisions to §Ywin over§! Spanish states. A state won over §Gjoins us§! when the uprising begins."
+  HSP_win_over_the_garrisons_tt:0 "Unlocks decisions to §Ywin over§! Spanish states outside the Nationalist heartland. Those states §Gjoin us§! when the uprising begins, along with the heartland itself."
   HSP_purge_the_left:0 "Purge the Left"
   HSP_purge_the_left_desc:0 ""
   HSP_airlift_the_army_of_africa:0 "Airlift the Army of Africa"

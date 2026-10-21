@@ -2810,7 +2810,7 @@ HSP_nationalist_plot_cat = {
 		}
 	}
 
-	# Unlocked by HSP_win_over_the_garrisons. 30 days, one state at a time; the state joins us in the uprising.
+	# Unlocked by HSP_win_over_the_garrisons. 30 days, one state at a time; a state outside the Nationalist zone joins us in the uprising.
 	HSP_win_over_state = {
 		icon = GFX_decision_generic_military
 		allowed = {
@@ -2827,8 +2827,25 @@ HSP_nationalist_plot_cat = {
 			FROM = {
 				is_core_of = ROOT
 				NOT = { has_state_flag = HSP_won_over_flag }
-				NOT = { state = 290 }
-				NOT = { state = 178 }
+				# the historical Nationalist zone joins the uprising anyway (HSP_start_nationalist_uprising)
+				NOT = {
+					state = 166
+					state = 169
+					state = 170
+					state = 171
+					state = 172
+					state = 174
+					state = 176
+					state = 177
+					state = 178
+					state = 290
+					state = 297
+					state = 699
+					state = 783
+					state = 788
+					state = 789
+					state = 791
+				}
 			}
 		}
 		available = {

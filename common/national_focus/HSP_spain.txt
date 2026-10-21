@@ -7557,7 +7557,12 @@ focus_tree = {
 		y = 1
 		relative_position_id = HSP_new_monarchy
 		allow_branch = {
-			NOT = { has_country_flag = HSP_house_borbon_flag }
+			NOT = {
+				has_country_flag = HSP_house_borbon_flag
+				# also hidden with the rest of the monarchy once another path is chosen
+				has_completed_focus = HSP_defend_the_republic
+				has_completed_focus = HSP_national_movement
+			}
 		}
 		available = {
 			has_country_flag = HSP_house_habsburg_flag
@@ -7585,7 +7590,12 @@ focus_tree = {
 		y = 1
 		relative_position_id = HSP_new_monarchy
 		allow_branch = {
-			NOT = { has_country_flag = HSP_house_habsburg_flag }
+			NOT = {
+				has_country_flag = HSP_house_habsburg_flag
+				# also hidden with the rest of the monarchy once another path is chosen
+				has_completed_focus = HSP_defend_the_republic
+				has_completed_focus = HSP_national_movement
+			}
 		}
 		available = {
 			has_country_flag = HSP_house_borbon_flag
