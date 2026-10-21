@@ -5335,10 +5335,7 @@ focus_tree = {
 		relative_position_id = HSP_nat_caudillo_of_spain
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY }
 		completion_reward = {
-			if = {
-				limit = { has_idea = HSP_recovering_from_civil_war }
-				remove_ideas = HSP_recovering_from_civil_war
-			}
+			remove_ideas = HSP_recovering_from_civil_war
 		}
 		ai_will_do = {
 			base = 10
@@ -6376,10 +6373,7 @@ focus_tree = {
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
-			if = {
-				limit = { has_idea = HSP_recovering_from_civil_war }
-				remove_ideas = HSP_recovering_from_civil_war
-			}
+			remove_ideas = HSP_recovering_from_civil_war
 			random_owned_controlled_state = {
 				limit = {
 					is_core_of = ROOT
@@ -6443,10 +6437,10 @@ focus_tree = {
 	focus = {
 		id = HSP_fal_glory_on_the_sea_lanes
 		icon = GFX_goal_generic_navy_doctrines_tactics
-		prerequisite = { focus = HSP_fal_phalanx_ascendant }
+		prerequisite = { focus = HSP_fal_national_and_popular_army }
 		cost = 10
-		x = -18
-		y = 1
+		x = -7
+		y = 2
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_NAVY_XP }
 		completion_reward = {
@@ -6481,8 +6475,8 @@ focus_tree = {
 		icon = GFX_goal_generic_construct_naval_dockyard
 		prerequisite = { focus = HSP_fal_glory_on_the_sea_lanes }
 		cost = 10
-		x = -18
-		y = 2
+		x = -7
+		y = 3
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_NAVY_XP }
 		completion_reward = {
@@ -6552,8 +6546,8 @@ focus_tree = {
 		icon = GFX_goal_generic_navy_battleship
 		prerequisite = { focus = HSP_fal_improve_naval_facilities }
 		cost = 10
-		x = -18
-		y = 3
+		x = -7
+		y = 4
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_NAVY_XP }
 		completion_reward = {
@@ -6859,10 +6853,10 @@ focus_tree = {
 	focus = {
 		id = HSP_fal_the_will_to_empire
 		icon = GFX_goal_generic_demand_territory
-		prerequisite = { focus = HSP_fal_phalanx_ascendant }
+		prerequisite = { focus = HSP_fal_supreme_reality_of_spain }
 		cost = 10
-		x = 11
-		y = 1
+		x = 2
+		y = 5
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
@@ -6881,8 +6875,8 @@ focus_tree = {
 		icon = GFX_goal_support_fascism
 		prerequisite = { focus = HSP_fal_the_will_to_empire }
 		cost = 5
-		x = 5
-		y = 2
+		x = -4
+		y = 6
 		relative_position_id = HSP_fal_phalanx_ascendant
 		available = {
 			is_in_faction = no
@@ -6916,14 +6910,14 @@ focus_tree = {
 	}
 
 	## 이베리아 통일
-	# Cores on all of Portugal, and a war claim (vanilla SPA_unite_iberia gave claims)
+	# Claims on Portugal and a war goal (vanilla SPA_unite_iberia); the cores come with HSP_fal_iberian_union
 	focus = {
 		id = HSP_fal_unite_iberia
 		icon = GFX_focus_generic_attack_portugal
 		prerequisite = { focus = HSP_fal_the_will_to_empire }
 		cost = 10
-		x = 8
-		y = 2
+		x = -1
+		y = 6
 		relative_position_id = HSP_fal_phalanx_ascendant
 		available = {
 			NOT = { is_in_faction_with = POR }
@@ -6932,7 +6926,7 @@ focus_tree = {
 		completion_reward = {
 			every_state = {
 				limit = { is_core_of = POR }
-				add_core_of = ROOT
+				add_claim_by = ROOT
 			}
 			if = {
 				limit = { country_exists = POR }
@@ -6949,14 +6943,14 @@ focus_tree = {
 	}
 
 	## 스페인령 북아프리카
-	# Cores on Spanish North Africa, claims on Morocco and Algeria (HSP_integrate_north_africa)
+	# Cores on Spanish North Africa, claims and a war goal on Morocco and Algeria
 	focus = {
 		id = HSP_fal_spanish_north_africa
 		icon = GFX_goal_generic_occupy_states_ongoing_war
 		prerequisite = { focus = HSP_fal_the_will_to_empire }
 		cost = 10
-		x = 11
-		y = 2
+		x = 2
+		y = 6
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
@@ -6993,7 +6987,21 @@ focus_tree = {
 				add_claim_by = ROOT
 				set_state_flag = HSP_north_africa_claim_flag
 			}
-			custom_effect_tooltip = HSP_fal_spanish_north_africa_tt
+			every_country = {
+				limit = {
+					any_owned_state = { has_state_flag = HSP_north_africa_claim_flag }
+					NOT = { tag = ROOT }
+					NOT = { is_in_faction_with = ROOT }
+				}
+				ROOT = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						generator = { 461 462 459 460 513 514 }
+						expire = 0
+					}
+				}
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -7007,8 +7015,8 @@ focus_tree = {
 		icon = GFX_goal_generic_territory_or_war
 		prerequisite = { focus = HSP_fal_the_will_to_empire }
 		cost = 10
-		x = 14
-		y = 2
+		x = 5
+		y = 6
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
@@ -7056,7 +7064,6 @@ focus_tree = {
 				add_claim_by = ROOT
 				set_state_flag = HSP_aragonese_claim_flag
 			}
-			custom_effect_tooltip = HSP_fal_aragonese_possessions_tt
 			every_country = {
 				limit = {
 					any_owned_state = { has_state_flag = HSP_aragonese_claim_flag }
@@ -7085,8 +7092,8 @@ focus_tree = {
 		icon = GFX_goal_generic_political_pressure
 		prerequisite = { focus = HSP_fal_the_will_to_empire }
 		cost = 10
-		x = 17
-		y = 2
+		x = 8
+		y = 6
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
@@ -7104,8 +7111,8 @@ focus_tree = {
 		icon = GFX_focus_spa_the_war_of_vengeance
 		prerequisite = { focus = HSP_fal_reassert_american_dominance }
 		cost = 10
-		x = 16
-		y = 3
+		x = 7
+		y = 7
 		relative_position_id = HSP_fal_phalanx_ascendant
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
@@ -7153,7 +7160,7 @@ focus_tree = {
 					}
 				}
 			}
-			add_ideas = HSP_fal_nueva_espana_unrest
+			add_stability = -0.1
 		}
 		ai_will_do = {
 			base = 10
@@ -7167,8 +7174,8 @@ focus_tree = {
 		icon = GFX_focus_CHL_promote_pan_hispanic_rhetoric
 		prerequisite = { focus = HSP_fal_reassert_american_dominance }
 		cost = 10
-		x = 18
-		y = 4
+		x = 9
+		y = 7
 		relative_position_id = HSP_fal_phalanx_ascendant
 		available = {
 			custom_trigger_tooltip = {
@@ -7198,7 +7205,98 @@ focus_tree = {
 				}
 				add_core_of = ROOT
 			}
-			add_ideas = HSP_fal_hispanic_empire_strain
+			add_stability = -0.1
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 추축국 연구 협력
+	# vanilla axis_research, as the monarchy's Axis branch
+	focus = {
+		id = HSP_fal_axis_research
+		icon = GFX_focus_research2
+		prerequisite = { focus = HSP_fal_join_the_axis }
+		cost = 5
+		x = -4
+		y = 7
+		relative_position_id = HSP_fal_phalanx_ascendant
+		available = {
+			is_in_faction_with = GER
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			GER = { add_to_tech_sharing_group = axis_research }
+			add_to_tech_sharing_group = axis_research
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 이베리아 연합
+	# Cores on all of Portugal once it has been annexed
+	focus = {
+		id = HSP_fal_iberian_union
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = HSP_fal_unite_iberia }
+		cost = 10
+		x = -1
+		y = 7
+		relative_position_id = HSP_fal_phalanx_ascendant
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = HSP_fal_portugal_annexed_tt
+				NOT = {
+					any_country = { original_tag = POR }
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			every_state = {
+				limit = { is_core_of = POR }
+				add_core_of = ROOT
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 북아프리카 통합
+	# Unlocks HSP_integrate_north_africa
+	focus = {
+		id = HSP_fal_integrate_north_africa
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = HSP_fal_spanish_north_africa }
+		cost = 10
+		x = 2
+		y = 7
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			custom_effect_tooltip = HSP_fal_integrate_north_africa_tt
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	## 아라곤 영토 통합
+	# Unlocks HSP_integrate_aragonese_possession
+	focus = {
+		id = HSP_fal_integrate_aragonese_possessions
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = HSP_fal_aragonese_possessions }
+		cost = 10
+		x = 5
+		y = 7
+		relative_position_id = HSP_fal_phalanx_ascendant
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			custom_effect_tooltip = HSP_fal_integrate_aragonese_possessions_tt
 		}
 		ai_will_do = {
 			base = 10

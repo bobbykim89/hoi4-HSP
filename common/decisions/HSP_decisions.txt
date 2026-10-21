@@ -2901,18 +2901,18 @@ HSP_spanish_empire_cat = {
 		}
 	}
 
-	# Unlocked by HSP_fal_aragonese_possessions: an occupied Aragonese possession becomes a core. 30 days, one at a time (shared with the others).
+	# Unlocked by HSP_fal_integrate_aragonese_possessions: an occupied Aragonese possession becomes a core. 30 days, one at a time (shared with the others).
 	HSP_integrate_aragonese_possession = {
 		icon = GFX_decision_generic_civil_support
 		allowed = {
 			original_tag = SPR
 		}
 		visible = {
-			has_completed_focus = HSP_fal_aragonese_possessions
+			has_completed_focus = HSP_fal_integrate_aragonese_possessions
 		}
 		state_target = any_controlled_state
 		target_root_trigger = {
-			has_completed_focus = HSP_fal_aragonese_possessions
+			has_completed_focus = HSP_fal_integrate_aragonese_possessions
 		}
 		target_trigger = {
 			FROM = {
@@ -2995,18 +2995,18 @@ HSP_spanish_empire_cat = {
 		}
 	}
 
-	# Unlocked by HSP_fal_spanish_north_africa: an occupied North African state becomes a core. 30 days, one at a time (shared with the others).
+	# Unlocked by HSP_fal_integrate_north_africa: an occupied North African state becomes a core. 30 days, one at a time (shared with the others).
 	HSP_integrate_north_africa = {
 		icon = GFX_decision_generic_civil_support
 		allowed = {
 			original_tag = SPR
 		}
 		visible = {
-			has_completed_focus = HSP_fal_spanish_north_africa
+			has_completed_focus = HSP_fal_integrate_north_africa
 		}
 		state_target = any_controlled_state
 		target_root_trigger = {
-			has_completed_focus = HSP_fal_spanish_north_africa
+			has_completed_focus = HSP_fal_integrate_north_africa
 		}
 		target_trigger = {
 			FROM = {

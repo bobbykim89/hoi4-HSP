@@ -507,31 +507,5 @@ ideas = {
 				training_time_factor = -0.1
 			}
 		}
-		HSP_fal_nueva_espana_unrest = {
-			picture = generic_disjointed_gov
-			allowed = {
-				original_tag = SPR
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			modifier = {
-				stability_factor = -0.1
-			}
-		}
-		HSP_fal_hispanic_empire_strain = {
-			picture = generic_disjointed_gov
-			allowed = {
-				original_tag = SPR
-			}
-			allowed_civil_war = {
-				always = yes
-			}
-			removal_cost = -1
-			modifier = {
-				stability_factor = -0.1
-			}
-		}
 	}
 }

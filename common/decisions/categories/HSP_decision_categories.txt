@@ -229,8 +229,8 @@ HSP_spanish_empire_cat = {
 	}
 	visible = {
 		OR = {
-			has_completed_focus = HSP_fal_spanish_north_africa
-			has_completed_focus = HSP_fal_aragonese_possessions
+			has_completed_focus = HSP_fal_integrate_north_africa
+			has_completed_focus = HSP_fal_integrate_aragonese_possessions
 			has_completed_focus = HSP_fal_reassert_american_dominance
 			has_completed_focus = HSP_fal_reclaim_nueva_espana
 		}
