@@ -44,56 +44,6 @@ HSP_pan_hispanic_federation_cat = {
 			}
 		}
 	}
-	HSP_demand_submission = {
-		icon = GFX_decision_eng_trade_unions_demand
-		allowed = {
-			original_tag = SPR
-		}
-		target_root_trigger = {
-			has_completed_focus = HSP_reestablish_viceroyalty
-		}
-		target_trigger = {
-			FROM = {
-				HSP_is_hispanic_american = yes
-				is_in_faction_with = ROOT
-				is_subject = no
-			}
-		}
-		visible = {
-			has_completed_focus = HSP_reestablish_viceroyalty
-		}
-		available = {
-			FROM = {
-				has_opinion = {
-					target = ROOT
-					value > 50
-				}
-			}
-		}
-		ai_will_do = {
-			base = 50
-			modifier = {
-				add = 20
-				FROM = {
-					has_opinion = {
-						target = ROOT
-						value > 60
-					}
-				}
-			}
-		}
-		cost = 20
-		fire_only_once = no
-		days_remove = 10
-		remove_effect = {
-			FROM = {
-				country_event = {
-					id = HSP_spain_events.12 hours = 4
-				}
-			}
-			custom_effect_tooltip = HSP_demand_submission_tt
-		}
-	}
 }
 
 HSP_restore_viceroyalty_cat = {
@@ -673,6 +623,7 @@ HSP_disunite_italy_cat = {
 }
 
 HSP_allied_kingdom_cat = {
+	# The required states may be held by Spain or by its subjects (HSP_held_by_spain_or_subject)
 	HSP_restore_poland = {
 		icon = generic_operation
 		visible = {
@@ -680,24 +631,24 @@ HSP_allied_kingdom_cat = {
 			has_completed_focus = HSP_restore_allied_kingdoms
 		}
 		available = {
-			controls_state = 85
-			controls_state = 807
-			controls_state = 86
-			controls_state = 98
-			controls_state = 87
-			controls_state = 10
-			controls_state = 90
-			controls_state = 762
-			controls_state = 88
-			controls_state = 92
-			controls_state = 97
-			controls_state = 96
-			controls_state = 784
-			controls_state = 95
-			controls_state = 94
-			controls_state = 93
-			controls_state = 91
-			controls_state = 89
+			85 = { HSP_held_by_spain_or_subject = yes }
+			807 = { HSP_held_by_spain_or_subject = yes }
+			86 = { HSP_held_by_spain_or_subject = yes }
+			98 = { HSP_held_by_spain_or_subject = yes }
+			87 = { HSP_held_by_spain_or_subject = yes }
+			10 = { HSP_held_by_spain_or_subject = yes }
+			90 = { HSP_held_by_spain_or_subject = yes }
+			762 = { HSP_held_by_spain_or_subject = yes }
+			88 = { HSP_held_by_spain_or_subject = yes }
+			92 = { HSP_held_by_spain_or_subject = yes }
+			97 = { HSP_held_by_spain_or_subject = yes }
+			96 = { HSP_held_by_spain_or_subject = yes }
+			784 = { HSP_held_by_spain_or_subject = yes }
+			95 = { HSP_held_by_spain_or_subject = yes }
+			94 = { HSP_held_by_spain_or_subject = yes }
+			93 = { HSP_held_by_spain_or_subject = yes }
+			91 = { HSP_held_by_spain_or_subject = yes }
+			89 = { HSP_held_by_spain_or_subject = yes }
 
 		}
 		fire_only_once = yes
@@ -764,39 +715,39 @@ HSP_allied_kingdom_cat = {
 				exists = yes
 				is_subject_of = ROOT
 			}
-			controls_state = 207
-			controls_state = 206
-			controls_state = 204
-			controls_state = 241
-			controls_state = 199
-			controls_state = 201
-			controls_state = 198
-			controls_state = 202
-			controls_state = 203
-			controls_state = 259
-			controls_state = 193
-			controls_state = 225
-			controls_state = 221
-			controls_state = 226
-			controls_state = 197
-			controls_state = 192
-			controls_state = 242
-			controls_state = 243
-			controls_state = 224
-			controls_state = 205
-			controls_state = 223
-			controls_state = 222
-			controls_state = 220
-			controls_state = 240
-			controls_state = 194
-			controls_state = 137
-			controls_state = 5
-			controls_state = 763
-			controls_state = 67
-			controls_state = 66
-			controls_state = 68
-			controls_state = 63
-			controls_state = 80
+			207 = { HSP_held_by_spain_or_subject = yes }
+			206 = { HSP_held_by_spain_or_subject = yes }
+			204 = { HSP_held_by_spain_or_subject = yes }
+			241 = { HSP_held_by_spain_or_subject = yes }
+			199 = { HSP_held_by_spain_or_subject = yes }
+			201 = { HSP_held_by_spain_or_subject = yes }
+			198 = { HSP_held_by_spain_or_subject = yes }
+			202 = { HSP_held_by_spain_or_subject = yes }
+			203 = { HSP_held_by_spain_or_subject = yes }
+			259 = { HSP_held_by_spain_or_subject = yes }
+			193 = { HSP_held_by_spain_or_subject = yes }
+			225 = { HSP_held_by_spain_or_subject = yes }
+			221 = { HSP_held_by_spain_or_subject = yes }
+			226 = { HSP_held_by_spain_or_subject = yes }
+			197 = { HSP_held_by_spain_or_subject = yes }
+			192 = { HSP_held_by_spain_or_subject = yes }
+			242 = { HSP_held_by_spain_or_subject = yes }
+			243 = { HSP_held_by_spain_or_subject = yes }
+			224 = { HSP_held_by_spain_or_subject = yes }
+			205 = { HSP_held_by_spain_or_subject = yes }
+			223 = { HSP_held_by_spain_or_subject = yes }
+			222 = { HSP_held_by_spain_or_subject = yes }
+			220 = { HSP_held_by_spain_or_subject = yes }
+			240 = { HSP_held_by_spain_or_subject = yes }
+			194 = { HSP_held_by_spain_or_subject = yes }
+			137 = { HSP_held_by_spain_or_subject = yes }
+			5 = { HSP_held_by_spain_or_subject = yes }
+			763 = { HSP_held_by_spain_or_subject = yes }
+			67 = { HSP_held_by_spain_or_subject = yes }
+			66 = { HSP_held_by_spain_or_subject = yes }
+			68 = { HSP_held_by_spain_or_subject = yes }
+			63 = { HSP_held_by_spain_or_subject = yes }
+			80 = { HSP_held_by_spain_or_subject = yes }
 			# LIT
 			controls_state =  188
 			controls_state =  189
@@ -804,22 +755,22 @@ HSP_allied_kingdom_cat = {
 			controls_state =  815
 			controls_state =  11
 			# LAT
-			controls_state = 12
-			controls_state = 190
-			controls_state = 808
-			controls_state = 809
-			controls_state = 810
-			controls_state = 11
-			controls_state = 188
-			controls_state = 189
-			controls_state = 814
-			controls_state = 815
-			controls_state = 196
-			controls_state = 200
-			controls_state = 227
-			controls_state = 228
-			controls_state = 766
-			controls_state = 834
+			12 = { HSP_held_by_spain_or_subject = yes }
+			190 = { HSP_held_by_spain_or_subject = yes }
+			808 = { HSP_held_by_spain_or_subject = yes }
+			809 = { HSP_held_by_spain_or_subject = yes }
+			810 = { HSP_held_by_spain_or_subject = yes }
+			11 = { HSP_held_by_spain_or_subject = yes }
+			188 = { HSP_held_by_spain_or_subject = yes }
+			189 = { HSP_held_by_spain_or_subject = yes }
+			814 = { HSP_held_by_spain_or_subject = yes }
+			815 = { HSP_held_by_spain_or_subject = yes }
+			196 = { HSP_held_by_spain_or_subject = yes }
+			200 = { HSP_held_by_spain_or_subject = yes }
+			227 = { HSP_held_by_spain_or_subject = yes }
+			228 = { HSP_held_by_spain_or_subject = yes }
+			766 = { HSP_held_by_spain_or_subject = yes }
+			834 = { HSP_held_by_spain_or_subject = yes }
 		}
 		fire_only_once = yes
 		cost = 50
@@ -946,10 +897,10 @@ HSP_allied_kingdom_cat = {
 			has_completed_focus = HSP_restore_allied_kingdoms
 		}
 		available = {
-			controls_state = 211
-			controls_state = 801
-			controls_state = 48
-			controls_state = 212
+			211 = { HSP_held_by_spain_or_subject = yes }
+			801 = { HSP_held_by_spain_or_subject = yes }
+			48 = { HSP_held_by_spain_or_subject = yes }
+			212 = { HSP_held_by_spain_or_subject = yes }
 
 		}
 		fire_only_once = yes
@@ -1013,33 +964,33 @@ HSP_allied_kingdom_cat = {
 				exists = yes
 				is_subject_of = ROOT
 			}
-			controls_state = 77
-			controls_state = 46
-			controls_state = 78
-			controls_state = 79
-			controls_state = 81
-			controls_state = 105
-			controls_state = 106
-			controls_state = 107
-			controls_state = 108
-			controls_state = 802
-			controls_state = 803
+			77 = { HSP_held_by_spain_or_subject = yes }
+			46 = { HSP_held_by_spain_or_subject = yes }
+			78 = { HSP_held_by_spain_or_subject = yes }
+			79 = { HSP_held_by_spain_or_subject = yes }
+			81 = { HSP_held_by_spain_or_subject = yes }
+			105 = { HSP_held_by_spain_or_subject = yes }
+			106 = { HSP_held_by_spain_or_subject = yes }
+			107 = { HSP_held_by_spain_or_subject = yes }
+			108 = { HSP_held_by_spain_or_subject = yes }
+			802 = { HSP_held_by_spain_or_subject = yes }
+			803 = { HSP_held_by_spain_or_subject = yes }
 			# albania
-			controls_state = 805
-			controls_state = 44
-			controls_state = 934
+			805 = { HSP_held_by_spain_or_subject = yes }
+			44 = { HSP_held_by_spain_or_subject = yes }
+			934 = { HSP_held_by_spain_or_subject = yes }
 			# greece
-			controls_state = 47
-			controls_state = 184
-			controls_state = 185
-			controls_state = 186
-			controls_state = 187
-			controls_state = 731
+			47 = { HSP_held_by_spain_or_subject = yes }
+			184 = { HSP_held_by_spain_or_subject = yes }
+			185 = { HSP_held_by_spain_or_subject = yes }
+			186 = { HSP_held_by_spain_or_subject = yes }
+			187 = { HSP_held_by_spain_or_subject = yes }
+			731 = { HSP_held_by_spain_or_subject = yes }
 			# turkey
-			controls_state = 341
-			controls_state = 797
-			controls_state = 971
-			controls_state = 970
+			341 = { HSP_held_by_spain_or_subject = yes }
+			797 = { HSP_held_by_spain_or_subject = yes }
+			971 = { HSP_held_by_spain_or_subject = yes }
+			970 = { HSP_held_by_spain_or_subject = yes }
 		}
 		fire_only_once = yes
 		cost = 50
@@ -1168,25 +1119,25 @@ HSP_allied_kingdom_cat = {
 				is_subject_of = ROOT
 			}
 			# denmark
-			controls_state = 37
-			controls_state = 99
-			#controls_state = 100 Iceland should not be included here
-			#controls_state = 101 Greenland should not be included here
-			controls_state = 337
-			controls_state = 910
-			controls_state = 911
-			controls_state = 912
+			37 = { HSP_held_by_spain_or_subject = yes }
+			99 = { HSP_held_by_spain_or_subject = yes }
+			#100 = { HSP_held_by_spain_or_subject = yes } Iceland should not be included here
+			#101 = { HSP_held_by_spain_or_subject = yes } Greenland should not be included here
+			337 = { HSP_held_by_spain_or_subject = yes }
+			910 = { HSP_held_by_spain_or_subject = yes }
+			911 = { HSP_held_by_spain_or_subject = yes }
+			912 = { HSP_held_by_spain_or_subject = yes }
 			# norway
-			controls_state = 110
-			controls_state = 142
-			controls_state = 143
-			controls_state = 144
-			controls_state = 920
-			controls_state = 921
-			controls_state = 922
-			controls_state = 923
-			controls_state = 924
-			controls_state = 925
+			110 = { HSP_held_by_spain_or_subject = yes }
+			142 = { HSP_held_by_spain_or_subject = yes }
+			143 = { HSP_held_by_spain_or_subject = yes }
+			144 = { HSP_held_by_spain_or_subject = yes }
+			920 = { HSP_held_by_spain_or_subject = yes }
+			921 = { HSP_held_by_spain_or_subject = yes }
+			922 = { HSP_held_by_spain_or_subject = yes }
+			923 = { HSP_held_by_spain_or_subject = yes }
+			924 = { HSP_held_by_spain_or_subject = yes }
+			925 = { HSP_held_by_spain_or_subject = yes }
 		}
 		fire_only_once = yes
 		cost = 50
@@ -1253,18 +1204,18 @@ HSP_allied_kingdom_cat = {
 				has_cosmetic_tag = SCA_UNIFIED
 			}
 			# iceland
-			controls_state = 100
+			100 = { HSP_held_by_spain_or_subject = yes }
 			# finland
-			controls_state = 111
-			controls_state = 145
-			controls_state = 148
-			controls_state = 149
-			controls_state = 150
-			controls_state = 926
-			controls_state = 927
-			controls_state = 928
-			controls_state = 929
-			controls_state = 930
+			111 = { HSP_held_by_spain_or_subject = yes }
+			145 = { HSP_held_by_spain_or_subject = yes }
+			148 = { HSP_held_by_spain_or_subject = yes }
+			149 = { HSP_held_by_spain_or_subject = yes }
+			150 = { HSP_held_by_spain_or_subject = yes }
+			926 = { HSP_held_by_spain_or_subject = yes }
+			927 = { HSP_held_by_spain_or_subject = yes }
+			928 = { HSP_held_by_spain_or_subject = yes }
+			929 = { HSP_held_by_spain_or_subject = yes }
+			930 = { HSP_held_by_spain_or_subject = yes }
 		}
 		fire_only_once = yes
 		cost = 50
@@ -1327,11 +1278,11 @@ HSP_allied_kingdom_cat = {
 				has_cosmetic_tag = NDC_UNIFIED
 			}
 			# estonia
-			controls_state = 811
-			controls_state = 812
-			controls_state = 813
-			controls_state = 13
-			controls_state = 191
+			811 = { HSP_held_by_spain_or_subject = yes }
+			812 = { HSP_held_by_spain_or_subject = yes }
+			813 = { HSP_held_by_spain_or_subject = yes }
+			13 = { HSP_held_by_spain_or_subject = yes }
+			191 = { HSP_held_by_spain_or_subject = yes }
 		}
 		fire_only_once = yes
 		cost = 50

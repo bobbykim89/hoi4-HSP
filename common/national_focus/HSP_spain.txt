@@ -9580,7 +9580,6 @@ focus_tree = {
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
-			unlock_decision_tooltip = HSP_demand_submission
 			unlock_decision_tooltip = HSP_restore_viceroyalty_of_nueva_espana
 			unlock_decision_tooltip = HSP_restore_viceroyalty_of_nueva_granada
 			unlock_decision_tooltip = HSP_restore_viceroyalty_of_rio_de_la_plata

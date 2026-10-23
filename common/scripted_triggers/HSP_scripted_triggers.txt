@@ -225,3 +225,11 @@ HSP_is_hispanic_american_state = {
 		is_core_of = URG
 	}
 }
+
+# Scope: a state. ROOT = Spain. Controlled by Spain or by one of its subjects (HSP_allied_kingdom_cat).
+HSP_held_by_spain_or_subject = {
+	OR = {
+		is_controlled_by = ROOT
+		CONTROLLER = { is_subject_of = ROOT }
+	}
+}

@@ -3,8 +3,6 @@
   HSP_pan_hispanic_federation_cat: "범 스페인어권 연합"
   HSP_pan_hispanic_federation_cat_desc: ""
   HSP_invite_to_faction: "§Y[FROM.GetNameDef]§! 초대"
-  HSP_demand_submission: "§Y[FROM.GetNameDef]§!의 종속 요구"
-  HSP_demand_submission_tt:0 "수락하면 우리의 종속국이 됩니다."
   # reestablish viceroyalty
   HSP_restore_viceroyalty_cat: "부왕령 복원"
   HSP_restore_viceroyalty_of_nueva_espana: "누에바 에스파냐 부왕령 복원"

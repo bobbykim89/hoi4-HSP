@@ -3,8 +3,6 @@
   HSP_pan_hispanic_federation_cat: "Pan-Hispanic Federation"
   HSP_pan_hispanic_federation_cat_desc: ""
   HSP_invite_to_faction: "Invite §Y[FROM.GetNameDef]§!"
-  HSP_demand_submission: "Demand the Submission of §Y[FROM.GetNameDef]§!"
-  HSP_demand_submission_tt:0 "If they accept, they become our subject."
   # reestablish viceroyalty
   HSP_restore_viceroyalty_cat: "Restore the Viceroyalties"
   HSP_restore_viceroyalty_of_nueva_espana: "Restore the Viceroyalty of New Spain"
