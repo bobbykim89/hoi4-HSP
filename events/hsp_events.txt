@@ -900,6 +900,7 @@ country_event = {
 			}
 		}
 		set_country_flag = HSP_house_habsburg_flag
+		complete_national_focus = HSP_house_of_habsburg
 		set_country_flag = HSP_king_otto_flag
 		hidden_effect = {
 			# Hungary and Austria can no longer claim him (vanilla checks these flags)
@@ -928,6 +929,7 @@ country_event = {
 			traits = { the_legitimist }
 		}
 		set_country_flag = HSP_house_borbon_flag
+		complete_national_focus = HSP_house_of_borbon
 		hidden_effect = {
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -958,6 +960,7 @@ country_event = {
 			}
 		}
 		set_country_flag = HSP_house_habsburg_flag
+		complete_national_focus = HSP_house_of_habsburg
 		hidden_effect = {
 			mark_focus_tree_layout_dirty = yes
 		}
@@ -1683,5 +1686,89 @@ country_event = {
 				}
 			}
 		}
+	}
+}
+
+# The fascist threat is over (HSP_fascists_defeated): the Republic chooses its future. FROM/ROOT = Spain.
+country_event = {
+	id = HSP_spain_events.56
+	title = HSP_spain_events.56.t
+	desc = HSP_spain_events.56.desc
+	picture = GFX_report_event_generic_parliament
+	is_triggered_only = yes
+
+	# democracy
+	option = {
+		name = HSP_spain_events.56.a
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 2
+				democratic > 0.3
+			}
+		}
+		complete_national_focus = HSP_the_democratic_republic
+	}
+	# communism
+	option = {
+		name = HSP_spain_events.56.b
+		ai_chance = {
+			base = 3
+			modifier = {
+				factor = 2
+				communism > 0.3
+			}
+			modifier = {
+				factor = 0.2
+				is_historical_focus_on = yes
+			}
+		}
+		complete_national_focus = HSP_the_workers_republic
+	}
+	# anarchism
+	option = {
+		name = HSP_spain_events.56.c
+		ai_chance = {
+			base = 2
+			modifier = {
+				factor = 0.2
+				is_historical_focus_on = yes
+			}
+		}
+		complete_national_focus = HSP_the_cnt_fai
+	}
+}
+
+# The Nationalists have won the civil war (HSP_on_actions): Franco's Spain or the Falange's. ROOT = Spain.
+country_event = {
+	id = HSP_spain_events.57
+	title = HSP_spain_events.57.t
+	desc = HSP_spain_events.57.desc
+	picture = GFX_report_event_generic_rally
+	is_triggered_only = yes
+
+	# nationalist
+	option = {
+		name = HSP_spain_events.57.a
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 2
+				is_historical_focus_on = yes
+			}
+		}
+		complete_national_focus = HSP_nat_caudillo_of_spain
+	}
+	# falange
+	option = {
+		name = HSP_spain_events.57.b
+		ai_chance = {
+			base = 3
+			modifier = {
+				factor = 0.2
+				is_historical_focus_on = yes
+			}
+		}
+		complete_national_focus = HSP_fal_phalanx_ascendant
 	}
 }

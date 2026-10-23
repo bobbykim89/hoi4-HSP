@@ -58,6 +58,7 @@ on_actions = {
 				set_country_flag = HSP_nationalists_won_flag
 				set_global_flag = scw_over
 				news_event = { id = HSP_spain_news.11 hours = 6 } # Spain's option adds HSP_recovering_from_civil_war
+				country_event = { id = HSP_spain_events.57 days = 1 } # choose Nationalist or Falange
 			}
 			# The anarchists win against the Republic (HSP_start_anarchist_revolution)
 			if = {

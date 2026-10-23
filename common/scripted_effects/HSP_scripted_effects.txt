@@ -361,6 +361,7 @@ HSP_fascists_defeated = {
 			limit = { has_active_mission = HSP_fascist_plot_mission }
 			remove_mission = HSP_fascist_plot_mission
 		}
+		country_event = { id = HSP_spain_events.56 days = 1 } # choose Democracy, Communism or Anarchism
 	}
 }
 
