@@ -584,6 +584,9 @@
   # hispanic unity focus
   HSP_hispanic_unity:0 "스페인어권 단결"
   HSP_hispanic_unity_desc:0 ""
+  HSP_hispanic_customs_union:0 "범 스페인어권 관세 동맹"
+  HSP_hispanic_customs_union_desc:0 ""
+  HSP_hispanic_customs_union_tt:0 "우리 진영의 모든 회원국이 관세 동맹에 초대됩니다. 우리에 대한 우호도가 §Y60§!을 넘는 회원국은 동맹에 가입하고 같은 국민정신을 얻습니다."
   HSP_purchase_latin_american_territory:0 "영국령 라틴아메리카 매입"
   HSP_purchase_latin_american_territory_desc:0 ""
   HSP_purchase_dutch_territory:0 "네덜란드령 라틴아메리카 매입"

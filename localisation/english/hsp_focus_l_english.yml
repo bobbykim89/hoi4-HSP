@@ -584,6 +584,9 @@
   # hispanic unity focus
   HSP_hispanic_unity:0 "Hispanic Unity"
   HSP_hispanic_unity_desc:0 ""
+  HSP_hispanic_customs_union:0 "The Pan-Hispanic Customs Union"
+  HSP_hispanic_customs_union_desc:0 ""
+  HSP_hispanic_customs_union_tt:0 "Every member of our faction is invited into the customs union. Members whose opinion of us is above §Y60§! join and gain the same national spirit."
   HSP_purchase_latin_american_territory:0 "Purchase British Latin America"
   HSP_purchase_latin_american_territory_desc:0 ""
   HSP_purchase_dutch_territory:0 "Purchase Dutch Latin America"

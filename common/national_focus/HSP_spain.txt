@@ -9568,15 +9568,50 @@ focus_tree = {
 			factor = 1
 		}
 	}
+
+	## 범 스페인어권 관세 동맹
+	# The federation's members are offered a customs union (HSP_spain_events.55): the AI joins above 60 opinion of Spain
+	focus = {
+		id = HSP_hispanic_customs_union
+		icon = GFX_focus_generic_diplomatic_treaty
+		prerequisite = {
+			focus = HSP_hispanic_unity
+		}
+		cost = 5
+		x = 2
+		y = 1
+		relative_position_id = HSP_hispanic_unity
+		available = {
+			is_faction_leader = yes
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = HSP_latin_customs_union_1
+			custom_effect_tooltip = HSP_hispanic_customs_union_tt
+			hidden_effect = {
+				every_country = {
+					limit = {
+						is_in_faction_with = ROOT
+						NOT = { tag = ROOT }
+						NOT = { has_idea = HSP_latin_customs_union_1 }
+					}
+					country_event = { id = HSP_spain_events.55 hours = 6 }
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
 	focus = {
 		id = HSP_reestablish_viceroyalty
 		icon = GFX_focus_ARG_align_with_the_monroe_doctrine
 		cost = 10
-		x = 2
+		x = 0
 		y = 1
-		relative_position_id = HSP_hispanic_unity
+		relative_position_id = HSP_hispanic_customs_union
 		prerequisite = {
-			focus = HSP_hispanic_unity
+			focus = HSP_hispanic_customs_union
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {

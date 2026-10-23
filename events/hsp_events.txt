@@ -987,6 +987,10 @@ country_event = {
 			add_to_faction = ROOT
 			country_event = { id = HSP_spain_events.32 hours = 6 }
 		}
+		if = {
+			limit = { FROM = { has_completed_focus = HSP_hispanic_customs_union } }
+			country_event = { id = HSP_spain_events.55 days = 7 }
+		}
 		# Keep the AI in the federation: without this its faction desire (other ideology, not at war
 		# together) is negative and it leaves at once. Vanilla does the same in Generic.txt faction joins.
 		hidden_effect = {
@@ -1634,5 +1638,50 @@ country_event = {
 
 	option = {
 		name = HSP_spain_events.54.a
+	}
+}
+
+# Spain offers its federation partners a customs union (HSP_hispanic_customs_union). ROOT = the member, FROM = Spain.
+# The AI joins if its opinion of Spain is above 60.
+country_event = {
+	id = HSP_spain_events.55
+	title = HSP_spain_events.55.t
+	desc = HSP_spain_events.55.desc
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+
+	# join
+	option = {
+		name = HSP_spain_events.55.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = {
+					has_opinion = {
+						target = FROM
+						value > 60
+					}
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { has_idea = HSP_latin_customs_union_1 } }
+			add_ideas = HSP_latin_customs_union_1
+		}
+	}
+	# stay out
+	option = {
+		name = HSP_spain_events.55.b
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_opinion = {
+					target = FROM
+					value > 60
+				}
+			}
+		}
 	}
 }
