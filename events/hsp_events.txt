@@ -1772,3 +1772,36 @@ country_event = {
 		complete_national_focus = HSP_fal_phalanx_ascendant
 	}
 }
+
+# Spain joins an anarchist uprising it started (HSP_start_anarchist_uprising). Fired after start_civil_war,
+# once the civil war exists (vanilla lar_spain.49). ROOT = the country that rose, FROM = Spain.
+country_event = {
+	id = HSP_spain_events.58
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_country = {
+			limit = {
+				has_country_flag = HSP_anarchist_commune_flag
+				has_war_with = ROOT
+				NOT = { is_subject_of = FROM }
+			}
+			FROM = {
+				add_to_war = {
+					targeted_alliance = PREV
+					enemy = ROOT
+					hostility_reason = asked_to_join
+				}
+				# anarchists take no puppets (HSP_start_anarchist_revolution): lift the rule for this one
+				set_rule = { can_puppet = yes }
+				puppet = {
+					target = PREV
+					end_wars = no
+					end_civil_wars = no
+				}
+				set_rule = { can_puppet = no }
+			}
+		}
+	}
+}

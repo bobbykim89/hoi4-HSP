@@ -671,6 +671,7 @@ HSP_start_anarchist_revolution = {
 
 # Scope: the country that rises. ROOT = Spain. An anarchist uprising in the states nearest Spain; Spain joins
 # the rebels' war and takes the commune under its wing (Portuguese anarchism, HSP_ignite_anarchist_uprising).
+# Spain joins in HSP_spain_events.58, once the civil war exists, as vanilla lar_spain.49 does.
 HSP_start_anarchist_uprising = {
 	save_event_target_as = HSP_revolution_target
 	if = {
@@ -713,21 +714,8 @@ HSP_start_anarchist_uprising = {
 				our_right_to_survive
 			}
 		}
-		ROOT = {
-			add_to_war = {
-				targeted_alliance = PREV
-				enemy = event_target:HSP_revolution_target
-				hostility_reason = asked_to_join
-			}
-			# a scripted puppet, as vanilla lar_spain.49 does for SPC: can_puppet = no only stops the player
-			# puppeting in peace conferences and releases, not effects
-			puppet = {
-				target = PREV
-				end_wars = no
-				end_civil_wars = no
-			}
-		}
 	}
+	country_event = { id = HSP_spain_events.58 }
 }
 
 # Scope: Spain, after HSP_start_fascist_uprising saved the rebels as event_target:HSP_fascist_rebels.
