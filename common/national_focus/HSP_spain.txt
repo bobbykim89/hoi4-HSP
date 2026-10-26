@@ -6315,6 +6315,7 @@ focus_tree = {
 				long_name = SPR_fascism_falange_party_long
 				name = SPR_fascism_falange_party
 			}
+			set_cosmetic_tag = SPA_directory # vanilla's Falangist flag; HSP_fal_the_national_syndicalist_state then makes it the Spanish Empire
 			add_popularity = {
 				ideology = fascism
 				popularity = 0.1
