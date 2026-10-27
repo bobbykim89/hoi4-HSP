@@ -11216,6 +11216,10 @@ focus_tree = {
 				HSP_army_training_time_army_factor = -0.1
 				tooltip = training_time_army_factor_tt
 			}
+			add_to_variable = {
+				HSP_army_conscription = 0.01
+				tooltip = conscription_tt
+			}
 			random_owned_controlled_state = {
 				limit = {
 					free_building_slots = {
