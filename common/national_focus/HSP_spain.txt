@@ -4195,7 +4195,7 @@ focus_tree = {
 		id = HSP_ana_torchbearers_of_tomorrow
 		icon = GFX_goal_generic_demand_territory
 		prerequisite = { focus = HSP_ana_collective_recovery }
-		cost = 10
+		cost = 5
 		x = 2
 		y = 8
 		relative_position_id = HSP_the_cnt_fai
@@ -4530,7 +4530,7 @@ focus_tree = {
 		id = HSP_ana_fortify_the_pyrenees
 		icon = GFX_goal_generic_fortify_city
 		prerequisite = { focus = HSP_ana_improve_military_infrastructure }
-		cost = 10
+		cost = 5
 		x = -2
 		y = 11
 		relative_position_id = HSP_the_cnt_fai
@@ -4663,7 +4663,7 @@ focus_tree = {
 		id = HSP_ana_fortify_la_linea
 		icon = GFX_goal_generic_fortify_city
 		prerequisite = { focus = HSP_ana_fortify_the_pyrenees }
-		cost = 10
+		cost = 5
 		x = -3
 		y = 12
 		relative_position_id = HSP_the_cnt_fai
@@ -4710,7 +4710,7 @@ focus_tree = {
 		id = HSP_ana_fortify_the_coastlines
 		icon = GFX_focus_generic_coastal_fort
 		prerequisite = { focus = HSP_ana_fortify_the_pyrenees }
-		cost = 10
+		cost = 5
 		x = -1
 		y = 12
 		relative_position_id = HSP_the_cnt_fai
