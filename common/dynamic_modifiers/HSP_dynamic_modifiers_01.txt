@@ -17,6 +17,7 @@ HSP_army_modifier_01 = {
 	planning_speed = HSP_army_planning_speed
 	training_time_army_factor = HSP_army_training_time_army_factor
 	special_forces_cap = HSP_army_special_forces_cap
+	conscription = HSP_army_conscription
 }
 
 HSP_airforce_modifier_01 = {
