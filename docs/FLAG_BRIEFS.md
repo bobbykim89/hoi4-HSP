@@ -30,11 +30,7 @@ For each ideology the game first looks for a flag named `<tag>_<ideology>.tga` (
 | `HSP_viceroyalty_rio_de_la_plata` | Viceroyalty of the Río de la Plata | Carlist Cross of Burgundy |
 | `HSP_viceroyalty_peru` | Viceroyalty of Peru | Carlist Cross of Burgundy |
 
-Still needed:
-
-| File name | Country | Current state |
-|---|---|---|
-| `CAT_aragon_democratic` | Aragonese Republic | none; vanilla only has `CAT_aragon_neutrality` (Crown of Aragon) |
+Also made: `CAT_aragon_democratic` (Aragonese Republic), the democratic version of vanilla's `CAT_aragon`; vanilla only has `CAT_aragon_neutrality` (Crown of Aragon).
 
 ## Shared style block
 

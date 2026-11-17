@@ -82,5 +82,5 @@ Status as of 2026-10-20. The full design is the author's plan; this file records
 
 - **Event text review.** Every event now has a functional draft in both languages, including the Republican and Fascist events and news added in Phases 2 and 3. The author reviews and rewrites the Korean; keep the English as a faithful translation.
 - **Focus descriptions.** Most `_desc` keys are still the `""` placeholder.
-- **Flags.** Every mod cosmetic tag has its own flag. Catalonia becomes vanilla's `CAT_aragon` on the federal path, which has no democratic flag (`CAT_aragon_democratic.tga`). Optional ideology variants (`<tag>_<ideology>.tga`) for the Kingdom of Spain, Iberia and the Habsburg Empire are not made yet. Briefs for generating flags are in `docs/FLAG_BRIEFS.md`.
+- **Flags.** Every mod cosmetic tag has its own flag, and vanilla's `CAT_aragon` (Catalonia on the federal path) now has a democratic one. Optional ideology variants (`<tag>_<ideology>.tga`) for the Kingdom of Spain, Iberia and the Habsburg Empire are not made yet. Briefs for generating flags are in `docs/FLAG_BRIEFS.md`.
 - **Portrait.** Archduke Felix (king of Bulgaria) uses Archduke Joseph Ferdinand's portrait.
