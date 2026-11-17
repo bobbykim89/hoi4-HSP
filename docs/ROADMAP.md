@@ -36,7 +36,7 @@ Status as of 2026-10-20. The full design is the author's plan; this file records
   - an economy spine with a three-level spirit
   - domestic reforms
   - the Allies (with their research group) or the Latin Sphere (customs union, research group, mutual defence, annexation into the Latin Union)
-  - the federal split (Galicia, the Basque Country, Catalonia and Morocco as puppets with their own development tree, then reunified or freed into an Iberian Defense Council)
+  - the federal split (Galicia, the Basque Country, Catalonia and Morocco as puppets with their own development tree, then reunified or freed into an Iberian Defense Council). Catalonia takes the Spanish lands of the Crown of Aragon as the Aragonese Republic, with claims on Sardinia and Sicily; Galicia gets cores on mainland Portugal.
   - a Popular Front line that can turn communist and join the Comintern
   - late-game war
 - **Communism** (about 40 focuses): Stalinist or independent lines; Portuguese and French revolutions; the Iberian Socialist Union; exporting the revolution to Latin America.
@@ -82,5 +82,5 @@ Status as of 2026-10-20. The full design is the author's plan; this file records
 
 - **Event text review.** Every event now has a functional draft in both languages, including the Republican and Fascist events and news added in Phases 2 and 3. The author reviews and rewrites the Korean; keep the English as a faithful translation.
 - **Focus descriptions.** Most `_desc` keys are still the `""` placeholder.
-- **Flags.** Every cosmetic tag has its own flag. Optional ideology variants (`<tag>_<ideology>.tga`) for the Kingdom of Spain, Iberia and the Habsburg Empire are not made yet. Briefs for generating flags are in `docs/FLAG_BRIEFS.md`.
+- **Flags.** Every mod cosmetic tag has its own flag. Catalonia becomes vanilla's `CAT_aragon` on the federal path, which has no democratic flag (`CAT_aragon_democratic.tga`). Optional ideology variants (`<tag>_<ideology>.tga`) for the Kingdom of Spain, Iberia and the Habsburg Empire are not made yet. Briefs for generating flags are in `docs/FLAG_BRIEFS.md`.
 - **Portrait.** Archduke Felix (king of Bulgaria) uses Archduke Joseph Ferdinand's portrait.

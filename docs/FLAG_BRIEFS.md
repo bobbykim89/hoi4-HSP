@@ -30,6 +30,12 @@ For each ideology the game first looks for a flag named `<tag>_<ideology>.tga` (
 | `HSP_viceroyalty_rio_de_la_plata` | Viceroyalty of the Río de la Plata | Carlist Cross of Burgundy |
 | `HSP_viceroyalty_peru` | Viceroyalty of Peru | Carlist Cross of Burgundy |
 
+Still needed:
+
+| File name | Country | Current state |
+|---|---|---|
+| `CAT_aragon_democratic` | Aragonese Republic | none; vanilla only has `CAT_aragon_neutrality` (Crown of Aragon) |
+
 ## Shared style block
 
 > A national flag for an alternate-history 1936–1945 strategy game. Flat colours, bold simple shapes, no text or lettering, no fabric texture, no shading or 3D, no border, filling the whole frame at a 1.58:1 ratio. It must stay recognisable when shrunk to 82×52 pixels. Use the style of real 1930s vexillology and heraldry.
@@ -65,6 +71,12 @@ Motifs: the Second Republic's red, yellow and purple tricolour, a star or sun fo
 The Republic turns communist, sparks a revolution in Portugal and absorbs it into a single socialist state covering the whole peninsula.
 
 Motifs: a red field, a star or hammer and sickle, the Republic's purple, an emblem of the peninsula. The map colour is dark red.
+
+## Aragonese Republic (`CAT_aragon_democratic`)
+
+On the democratic Republic's federal path, Spain grants Catalonia autonomy as a self-governing republic within the federation, and hands it every Spanish land of the old Crown of Aragon: Catalonia, Aragón, Valencia and the Balearic Islands. It also claims the Crown's old Mediterranean kingdoms, Sardinia and Sicily. It takes vanilla's name for this, the Aragonese Republic. It's a democratic republic, so no crown. Spain can later reunite the federation or set it free.
+
+Motifs: the red and gold stripes of the Senyera (the Crown of Aragon's bars), shared by Catalonia, Aragón, Valencia and the Balearics; a republican star or a plain shield of the four bars; a hint of the Republic's purple. Vanilla's Crown of Aragon flag uses the crowned Aragonese arms on the stripes, and the Catalan independence flag has a white star on blue, so the new flag should be distinct from both. The map colour is dark red (166, 68, 72).
 
 ## Viceroyalties (`HSP_viceroyalty_*`)
 
