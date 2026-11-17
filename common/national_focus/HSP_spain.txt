@@ -1501,6 +1501,12 @@ focus_tree = {
 				remove_dynamic_modifier = { modifier = semi_autonomous_state }
 			}
 			GLC = { HSP_setup_regional_puppet = yes }
+			# Galician-Portuguese unity: cores on mainland Portugal, added after the release so no Spanish-held Portuguese land goes with it
+			112 = { add_core_of = GLC } # Lisbon
+			180 = { add_core_of = GLC } # Porto
+			181 = { add_core_of = GLC } # Guarda
+			795 = { add_core_of = GLC } # Santarém
+			179 = { add_core_of = GLC } # Beja
 		}
 		ai_will_do = {
 			base = 10
@@ -1549,12 +1555,23 @@ focus_tree = {
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			# The former Crown of Aragon: the Spanish lands become Catalan cores before the release, so they are ceded with it
+			166 = { add_core_of = CAT } # Western Aragón
+			794 = { add_core_of = CAT } # Eastern Aragón
+			167 = { add_core_of = CAT } # Valencia
+			177 = { add_core_of = CAT } # Balearic Islands
 			release_puppet = CAT
 			165 = {
 				remove_dynamic_modifier = { modifier = autonomous_state }
 				remove_dynamic_modifier = { modifier = semi_autonomous_state }
 			}
-			CAT = { HSP_setup_regional_puppet = yes }
+			# and claims on its old Mediterranean kingdoms
+			114 = { add_core_of = CAT } # Sardinia
+			115 = { add_core_of = CAT } # Sicily
+			CAT = {
+				set_cosmetic_tag = CAT_aragon # vanilla: Aragonese Republic / Crown of Aragon
+				HSP_setup_regional_puppet = yes
+			}
 		}
 		ai_will_do = {
 			base = 10
