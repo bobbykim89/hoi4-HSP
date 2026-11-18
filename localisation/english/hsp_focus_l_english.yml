@@ -110,6 +110,7 @@
   # democracy popular front focus
   HSP_popular_front_coalition:0 "The Popular Front Coalition"
   HSP_popular_front_coalition_desc:0 ""
+  HSP_popular_front_coalition_tt:0 "Unlocks the Communist Party advisors §Y$SPR_dolores_ibarruri$§! and §Y$SPR_jesus_hernandez_tomas$§!."
   HSP_invite_soviet_military_advisors:0 "Invite Soviet Military Advisors"
   HSP_invite_soviet_military_advisors_desc:0 ""
   HSP_soviet_industrial_investment:0 "Soviet Industrial Investment"

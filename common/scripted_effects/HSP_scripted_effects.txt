@@ -968,3 +968,21 @@ HSP_crown_nationalist_king = {
 	set_cosmetic_tag = HSP_kingdom_of_spain
 	add_ideas = HSP_nat_crowned_monarchy
 }
+
+# Scope: Portugal. ROOT = Spain. A republican uprising sized by democratic support (30-60%), from
+# HSP_restore_the_portuguese_republic. Spain joins in HSP_spain_events.62, once the civil war exists, but as a
+# democracy it does not puppet the republicans.
+HSP_start_portuguese_republican_uprising = {
+	set_temp_variable = { HSP_revolt_size = party_popularity@democratic }
+	clamp_temp_variable = {
+		var = HSP_revolt_size
+		min = 0.3
+		max = 0.6
+	}
+	start_civil_war = {
+		ideology = democratic
+		size = var:HSP_revolt_size
+		set_country_flag = HSP_portuguese_republicans_flag
+	}
+	country_event = { id = HSP_spain_events.62 }
+}

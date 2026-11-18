@@ -279,3 +279,53 @@ news_event = {
 		}
 	}
 }
+
+# Salazar's regime gives way to a republic (HSP_restore_the_portuguese_republic, 50%+ support)
+news_event = {
+	id = HSP_spain_news.12
+	title = HSP_spain_news.12.title
+	desc = HSP_spain_news.12.desc
+	picture = GFX_news_event_generic_parliament
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_news.12.a
+		trigger = {
+			original_tag = SPR
+		}
+	}
+	option = {
+		name = HSP_spain_news.12.b
+		trigger = {
+			NOT = {
+				original_tag = SPR
+			}
+		}
+	}
+}
+
+# The Portuguese republicans rise (HSP_restore_the_portuguese_republic, 30-50% support)
+news_event = {
+	id = HSP_spain_news.13
+	title = HSP_spain_news.13.title
+	desc = HSP_spain_news.13.desc
+	picture = GFX_news_event_generic_rally
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_news.13.a
+		trigger = {
+			original_tag = SPR
+		}
+	}
+	option = {
+		name = HSP_spain_news.13.b
+		trigger = {
+			NOT = {
+				original_tag = SPR
+			}
+		}
+	}
+}

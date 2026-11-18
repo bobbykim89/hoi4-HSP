@@ -110,6 +110,7 @@
   # democracy popular front focus
   HSP_popular_front_coalition:0 "인민전선 연정"
   HSP_popular_front_coalition_desc:0 ""
+  HSP_popular_front_coalition_tt:0 "공산당 측 정치 고문 §Y$SPR_dolores_ibarruri$§!와 §Y$SPR_jesus_hernandez_tomas$§!를 등용할 수 있습니다."
   HSP_invite_soviet_military_advisors:0 "소련 군사 고문단 초청"
   HSP_invite_soviet_military_advisors_desc:0 ""
   HSP_soviet_industrial_investment:0 "소련의 산업 투자"

@@ -1805,3 +1805,102 @@ country_event = {
 		}
 	}
 }
+
+# Spain offers a democratic Portugal union with Galicia (HSP_offer_galician_portuguese_union).
+# ROOT = Portugal, FROM = Spain. Portugal accepts on the same terms as other offers of Spanish leadership.
+country_event = {
+	id = HSP_spain_events.59
+	title = HSP_spain_events.59.t
+	desc = HSP_spain_events.59.desc
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+
+	# accept: Galicia annexes Portugal
+	option = {
+		name = HSP_spain_events.59.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = { HSP_accepts_spanish_leadership = yes }
+			}
+		}
+		FROM = {
+			country_event = { id = HSP_spain_events.60 hours = 6 }
+		}
+		GLC = {
+			annex_country = {
+				target = ROOT
+				transfer_troops = yes
+			}
+		}
+	}
+	# refuse
+	option = {
+		name = HSP_spain_events.59.b
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				HSP_accepts_spanish_leadership = yes
+			}
+		}
+		FROM = {
+			country_event = { id = HSP_spain_events.61 hours = 6 }
+		}
+	}
+}
+
+# Portugal accepts the union with Galicia
+country_event = {
+	id = HSP_spain_events.60
+	title = HSP_spain_events.60.t
+	desc = HSP_spain_events.60.desc
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_events.60.a
+	}
+}
+
+# Portugal refuses the union with Galicia
+country_event = {
+	id = HSP_spain_events.61
+	title = HSP_spain_events.61.t
+	desc = HSP_spain_events.61.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_events.61.a
+	}
+}
+
+# Spain joins the Portuguese republican uprising (HSP_start_portuguese_republican_uprising). Fired after
+# start_civil_war, once the civil war exists (HSP_spain_events.58 pattern). ROOT = the old regime, FROM = Spain.
+country_event = {
+	id = HSP_spain_events.62
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_country = {
+			limit = {
+				has_country_flag = HSP_portuguese_republicans_flag
+				has_war_with = ROOT
+			}
+			add_opinion_modifier = {
+				target = FROM
+				modifier = HSP_republican_liberation
+			}
+			FROM = {
+				add_to_war = {
+					targeted_alliance = PREV
+					enemy = ROOT
+					hostility_reason = asked_to_join
+				}
+			}
+		}
+	}
+}
