@@ -3859,6 +3859,7 @@ characters={
 								has_completed_focus = SPR_demand_ministerial_positions 
 								has_completed_focus = SPR_communists_in_the_government 
 								has_completed_focus = HSP_com_ministerial_positions # HSP
+								has_completed_focus = HSP_popular_front_coalition # HSP
 							}
 							NOT = {
 								has_completed_focus = SPR_masters_of_our_own_fate 
@@ -4351,6 +4352,7 @@ characters={
 					has_completed_focus = SPR_demand_ministerial_positions 
 					has_completed_focus = SPR_new_leadership 
 					has_completed_focus = HSP_com_ministerial_positions # HSP
+					has_completed_focus = HSP_popular_front_coalition # HSP
 				}
 				NOT = {
 					has_completed_focus = SPR_crush_the_revolution 

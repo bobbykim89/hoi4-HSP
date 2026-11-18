@@ -36,7 +36,8 @@ Status as of 2026-10-20. The full design is the author's plan; this file records
   - an economy spine with a three-level spirit
   - domestic reforms
   - the Allies (with their research group) or the Latin Sphere (customs union, research group, mutual defence, annexation into the Latin Union)
-  - the federal split (Galicia, the Basque Country, Catalonia and Morocco as puppets with their own development tree, then reunified or freed into an Iberian Defense Council). Catalonia takes the Spanish lands of the Crown of Aragon as the Aragonese Republic, with claims on Sardinia and Sicily; Galicia gets cores on mainland Portugal.
+  - the federal split (Galicia, the Basque Country, Catalonia and Morocco as puppets with their own development tree, then reunified or freed into an Iberian Defense Council). Catalonia takes the Spanish lands of the Crown of Aragon as the Aragonese Republic, with claims on Sardinia and Sicily; Galicia gets cores on mainland Portugal. A democracy cannot justify war goals, so the Federal Claims decisions cede claimed land Spain owns to Galicia and Aragon, fund Portuguese republicans until the Estado Novo falls (peacefully at 50% democratic support, by an uprising Spain joins from 30%), and offer a republican Portugal union with Galicia until Invite Portugal.
+  - The Popular Front Coalition unlocks the Communist Party advisors Dolores Ibárruri and Jesús Hernández.
   - a Popular Front line that can turn communist and join the Comintern
   - late-game war
 - **Communism** (about 40 focuses): Stalinist or independent lines; Portuguese and French revolutions; the Iberian Socialist Union; exporting the revolution to Latin America.

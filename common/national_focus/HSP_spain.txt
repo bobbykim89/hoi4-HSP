@@ -1779,6 +1779,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			add_ideas = HSP_popular_front_productivity
+			custom_effect_tooltip = HSP_popular_front_coalition_tt # unlock is in common/characters/SPR.txt
 		}
 		ai_will_do = {
 			base = 10

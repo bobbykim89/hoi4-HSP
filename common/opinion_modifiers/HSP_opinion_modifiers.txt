@@ -13,4 +13,5 @@ opinion_modifiers = {
 	HSP_soviet_cooperation = { value = 25 }
 	HSP_soviet_suspicion = { value = -25 }
 	HSP_iberian_pact_opinion = { value = 50 }
+	HSP_republican_liberation = { value = 50 }
 }

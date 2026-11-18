@@ -3010,3 +3010,224 @@ HSP_spanish_empire_cat = {
 		}
 	}
 }
+
+# Democracy federal path. A democracy cannot justify war goals, so Spain takes the land its regions claim in
+# wars it fights anyway and hands it over, and wins Portugal over instead of conquering it.
+HSP_federal_claims_cat = {
+	# Any Portuguese, Sardinian or Sicilian state Spain owns that Galicia or Aragon claims. Stays on after the
+	# Iberian Defense Council frees them, as long as they are our allies.
+	HSP_cede_state_to_region = {
+		icon = GFX_decision_generic_civil_support
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			OR = {
+				has_completed_focus = HSP_galician_autonomy
+				has_completed_focus = HSP_catalan_autonomy
+			}
+		}
+		state_target = any_owned_state
+		target_root_trigger = {
+			OR = {
+				has_completed_focus = HSP_galician_autonomy
+				has_completed_focus = HSP_catalan_autonomy
+			}
+		}
+		target_trigger = {
+			FROM = {
+				is_controlled_by = ROOT
+				NOT = { is_core_of = ROOT }
+				OR = {
+					AND = {
+						is_core_of = GLC
+						GLC = { HSP_is_federal_partner = yes }
+					}
+					AND = {
+						is_core_of = CAT
+						CAT = { HSP_is_federal_partner = yes }
+					}
+				}
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		cost = 10
+		fire_only_once = no
+		complete_effect = {
+			FROM = {
+				if = {
+					limit = {
+						is_core_of = GLC
+						GLC = { HSP_is_federal_partner = yes }
+					}
+					GLC = { transfer_state = PREV }
+				}
+				else = {
+					CAT = { transfer_state = PREV }
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	# Portugal can join Galicia until HSP_invite_portugal_to_the_pact; after that the focus brings it into the
+	# Iberian Defense Council instead. Salazar's Portugal must become a republic first.
+	HSP_fund_portuguese_republicans = {
+		icon = generic_political_rally
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_galician_autonomy
+			NOT = { has_completed_focus = HSP_invite_portugal_to_the_pact }
+			any_country = {
+				original_tag = POR
+				NOT = { has_government = democratic }
+			}
+		}
+		available = {
+			GLC = { HSP_is_federal_partner = yes }
+			any_country = {
+				original_tag = POR
+				NOT = { has_government = democratic }
+				is_subject = no
+				has_civil_war = no
+				NOT = { has_war_with = ROOT }
+				democratic < 0.6
+			}
+		}
+		cost = 25
+		days_remove = 30
+		fire_only_once = no
+		remove_effect = {
+			random_country = {
+				limit = {
+					original_tag = POR
+					NOT = { has_government = democratic }
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.05
+				}
+				add_stability = -0.02
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	# At 50% support the regime gives way; from 30% the republicans rise and Spain fights at their side
+	HSP_restore_the_portuguese_republic = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_galician_autonomy
+			NOT = { has_completed_focus = HSP_invite_portugal_to_the_pact }
+			any_country = {
+				original_tag = POR
+				NOT = { has_government = democratic }
+			}
+		}
+		available = {
+			GLC = { HSP_is_federal_partner = yes }
+			any_country = {
+				original_tag = POR
+				NOT = { has_government = democratic }
+				is_subject = no
+				has_civil_war = no
+				NOT = { has_war_with = ROOT }
+				custom_trigger_tooltip = {
+					tooltip = HSP_portuguese_republicans_30_tt
+					democratic > 0.29
+				}
+			}
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 180
+		complete_effect = {
+			custom_effect_tooltip = HSP_restore_the_portuguese_republic_tt
+			hidden_effect = {
+				random_country = {
+					limit = {
+						original_tag = POR
+						NOT = { has_government = democratic }
+						is_subject = no
+					}
+					if = {
+						limit = { democratic > 0.49 }
+						set_politics = {
+							ruling_party = democratic
+							elections_allowed = yes
+						}
+						add_opinion_modifier = {
+							target = ROOT
+							modifier = HSP_republican_liberation
+						}
+						news_event = { id = HSP_spain_news.12 hours = 6 }
+					}
+					else = {
+						HSP_start_portuguese_republican_uprising = yes
+						news_event = { id = HSP_spain_news.13 hours = 6 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+	}
+	HSP_offer_galician_portuguese_union = {
+		icon = generic_form_nation
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_completed_focus = HSP_galician_autonomy
+			NOT = { has_completed_focus = HSP_invite_portugal_to_the_pact }
+		}
+		available = {
+			GLC = { HSP_is_federal_partner = yes }
+			any_country = {
+				original_tag = POR
+				has_government = democratic
+				is_subject = no
+				has_civil_war = no
+				NOT = { has_war_with = ROOT }
+			}
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 90
+		complete_effect = {
+			custom_effect_tooltip = HSP_offer_galician_portuguese_union_tt
+			hidden_effect = {
+				random_country = {
+					limit = {
+						original_tag = POR
+						has_government = democratic
+						is_subject = no
+					}
+					country_event = { id = HSP_spain_events.59 hours = 6 }
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				NOT = {
+					any_country = {
+						original_tag = POR
+						has_government = democratic
+						HSP_accepts_spanish_leadership = yes
+					}
+				}
+			}
+		}
+	}
+}
