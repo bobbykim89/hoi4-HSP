@@ -105,7 +105,7 @@
   HSP_invite_portugal_to_the_pact:0 "포르투갈 초청"
   HSP_invite_portugal_to_the_pact_desc:0 ""
   HSP_regional_puppets_are_ours_tt:0 "갈리시아, 바스크, 카탈루냐, 모로코가 우리의 괴뢰국이거나 존재하지 않음"
-  HSP_claim_conquered_regions_tt:0 "모로코 전역 또는 바스크 전역을 차지하고 있다면, 그 땅 전체가 우리의 §Y코어§!가 됩니다."
+  HSP_reunite_spain_tt:0 "갈리시아, 바스크, 카탈루냐, 모로코를 §Y합병§!합니다. 이들이 소유한 모든 주는 우리의 §Y코어§!가 되며, 소유하지 못한 땅에 대한 영유권은 §R사라집니다§!."
   HSP_peoples_republic_available_tt:0 "공산주의 정부이거나, 공산주의 지지율이 §Y50%§!를 넘음"
   # democracy popular front focus
   HSP_popular_front_coalition:0 "인민전선 연정"

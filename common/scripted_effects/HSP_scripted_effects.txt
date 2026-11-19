@@ -490,42 +490,6 @@ HSP_reunite_regional_puppet = {
 	}
 }
 
-# Scope: Spain. Like Yugoslavia's split route: once all of Morocco or all of the Basque lands are held,
-# all of them become Spanish cores (French Morocco, French Basque Country).
-HSP_claim_conquered_regions = {
-	custom_effect_tooltip = HSP_claim_conquered_regions_tt
-	hidden_effect = {
-		if = {
-			limit = {
-				all_state = {
-					OR = {
-						NOT = { is_core_of = MOR }
-						is_controlled_by = ROOT
-					}
-				}
-			}
-			every_state = {
-				limit = { is_core_of = MOR }
-				add_core_of = ROOT
-			}
-		}
-		if = {
-			limit = {
-				all_state = {
-					OR = {
-						NOT = { is_core_of = NAV }
-						is_controlled_by = ROOT
-					}
-				}
-			}
-			every_state = {
-				limit = { is_core_of = NAV }
-				add_core_of = ROOT
-			}
-		}
-	}
-}
-
 # Scope: a country joining Spain's faction. ROOT = Spain. If Spain is not the leader (the Allies),
 # its faction leader adds the country.
 HSP_join_spanish_faction = {
