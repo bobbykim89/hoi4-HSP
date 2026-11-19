@@ -950,3 +950,84 @@ HSP_start_portuguese_republican_uprising = {
 	}
 	country_event = { id = HSP_spain_events.62 }
 }
+
+# Limited wars (HSP_federal_claims_cat), after vanilla SIA_start_limited_war_indochina.
+# Scope: Spain. FROM = the target. The caller has set HSP_limited_war_puppet and filled HSP_limited_war_states.
+# Records who fights on the target's side (its overlord, faction, guarantors) so only they get the peace.
+HSP_limited_war_start = {
+	custom_effect_tooltip = HSP_limited_war_start_tt
+	hidden_effect = {
+		clear_array = HSP_limited_war_enemies
+		add_to_array = { array = HSP_limited_war_enemies value = FROM }
+		FROM = {
+			if = {
+				limit = { is_subject = yes }
+				overlord = {
+					add_to_array = { array = ROOT.HSP_limited_war_enemies value = THIS }
+				}
+			}
+			if = {
+				limit = { is_in_faction = yes }
+				every_allied_country = {
+					limit = {
+						NOT = { is_in_array = { array = ROOT.HSP_limited_war_enemies value = THIS } }
+					}
+					add_to_array = { array = ROOT.HSP_limited_war_enemies value = THIS }
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				has_guaranteed = FROM
+				NOT = { is_in_array = { array = ROOT.HSP_limited_war_enemies value = THIS } }
+			}
+			add_to_array = { array = ROOT.HSP_limited_war_enemies value = THIS }
+		}
+		set_variable = { HSP_limited_war_target = FROM }
+	}
+	declare_war_on = {
+		target = FROM
+		type = annex_everything
+	}
+	activate_mission = HSP_limited_war_mission
+}
+
+# Scope: Spain. White peace between Spain (and its subjects) and the countries recorded at the start
+# (and their subjects). Wars with anyone else go on.
+HSP_limited_war_peace_out = {
+	for_each_scope_loop = {
+		array = HSP_limited_war_enemies
+		every_enemy_country = {
+			limit = {
+				OR = {
+					tag = ROOT
+					is_subject_of = ROOT
+				}
+			}
+			white_peace = { tag = PREV }
+		}
+		every_subject_country = {
+			every_enemy_country = {
+				limit = {
+					OR = {
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+				white_peace = { tag = PREV }
+			}
+		}
+	}
+}
+
+# Scope: Spain. Ends the limited war's bookkeeping. HSP_limited_war_tried_MOR/NAV are kept: a country
+# fought once for a region can't be fought again for it.
+HSP_limited_war_clear = {
+	hidden_effect = {
+		clear_variable = HSP_limited_war_target
+		clear_variable = HSP_limited_war_puppet
+		clear_array = HSP_limited_war_states
+		clear_array = HSP_limited_war_enemies
+		clr_country_flag = HSP_limited_war_timed_out_flag
+	}
+}
