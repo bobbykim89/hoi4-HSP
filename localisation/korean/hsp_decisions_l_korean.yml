@@ -151,6 +151,8 @@
   HSP_limited_war_start_tt:0 "§Y[FROM.GetName]§!에 선전포고하고, §Y120일§! 안에 강조된 주들을 점령해야 합니다. 기한 안에 모두 점령하면 백색 평화로 전쟁이 끝나고 그 주들은 우리 지방에 넘어갑니다. 실패하면 §Y휴전§!과 §R전면전§! 중 하나를 고릅니다."
   HSP_limited_war_full_war_tt:0 "전쟁이 일반 전쟁으로 계속됩니다. 평화는 강화 회의에서 얻어내야 합니다."
   HSP_no_limited_war_running_tt:0 "다른 제한전을 치르고 있지 않음"
+  HSP_target_side_not_at_war_tt:0 "[FROM.GetName]의 편(진영, 종주국, 보장국, 함께 싸우는 나라) 중 우리와 전쟁 중인 나라가 없음"
+  HSP_not_in_limited_war_tt:0 "제한전을 치르고 있지 않음"
   HSP_is_federal_partner_tt:0 "우리의 괴뢰국이거나 같은 진영에 속해 있으며, 우리와 전쟁 중이 아님"
   HSP_fund_portuguese_republicans:0 "포르투갈 공화파 지원"
   HSP_fund_portuguese_republicans_desc:0 "포르투갈 제1공화국의 망명자들이 스페인 땅에서 살라자르에 맞선 음모를 꾸미고 있습니다. 자금과 인쇄기, 은신처를 제공하면 그들의 대의가 포르투갈에 퍼질 것입니다."
