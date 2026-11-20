@@ -1915,6 +1915,11 @@ focus_tree = {
 					elections_allowed = no
 				}
 			}
+			# its own name and flag, apart from the communist path's vanilla look; the Latin Union keeps its own
+			if = {
+				limit = { NOT = { has_cosmetic_tag = HSP_latin_union } }
+				set_cosmetic_tag = HSP_spanish_peoples_republic
+			}
 			add_stability = 0.05
 		}
 		ai_will_do = {

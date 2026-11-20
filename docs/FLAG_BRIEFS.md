@@ -23,8 +23,10 @@ For each ideology the game first looks for a flag named `<tag>_<ideology>.tga` (
 | `SPR_POR_commonwealth` | United Kingdom of Iberia | hand-made, to redo |
 | `HSP_habsburg_empire` | Habsburg Empire | hand-made, to redo |
 | `HSP_franco_spanish_commonwealth` | Franco-Spanish Commonwealth | copy of Kingdom of Spain |
-| `HSP_latin_union` | Latin Union | copy of vanilla Gran Colombia |
+| `HSP_latin_union` | Latin Union | made: tricolour, globe, sun, laurel, ring of white stars |
 | `HSP_iberian_socialist_republic` | Iberian Socialist Republic | copy of vanilla communist Spain |
+| `HSP_spanish_peoples_republic` | Spanish People's Republic | made |
+| `HSP_latin_union_communism` | Latin Socialist Union | made |
 | `HSP_viceroyalty_nueva_espana` | Viceroyalty of New Spain | Carlist Cross of Burgundy |
 | `HSP_viceroyalty_nueva_granada` | Viceroyalty of New Granada | Carlist Cross of Burgundy |
 | `HSP_viceroyalty_rio_de_la_plata` | Viceroyalty of the Río de la Plata | Carlist Cross of Burgundy |
@@ -67,6 +69,18 @@ Motifs: the Second Republic's red, yellow and purple tricolour, a star or sun fo
 The Republic turns communist, sparks a revolution in Portugal and absorbs it into a single socialist state covering the whole peninsula.
 
 Motifs: a red field, a star or hammer and sickle, the Republic's purple, an emblem of the peninsula. The map colour is dark red.
+
+## Spanish People's Republic (`HSP_spanish_peoples_republic`)
+
+The democratic Republic's popular front of socialists, communists and left republicans wins power by the ballot and turns the Republic socialist (`HSP_peoples_republic`). It is the Second Republic gone red, not Moscow's Spain: it must look clearly different from the communist path, which keeps vanilla's communist flag.
+
+Motifs: keep the Second Republic's red, yellow and purple tricolour as the base; one red five-pointed star, edged in gold, centred on the yellow band. No hammer and sickle, no coat of arms (a crest turns to mud at 82×52). The map colour is a wine red.
+
+## Latin Socialist Union (`HSP_latin_union_communism`)
+
+The Latin Union (see above) under a socialist government: the same transatlantic union of the Spanish Republic and the Latin American republics, now socialist. The game uses this flag for the Latin Union whenever its government is communist.
+
+Made as the Latin Union's flag turned red, so the country stays recognisable when its government changes: a red field; the Latin Union's globe (Atlantic-centred, Spain marked) in a gold-edged laurel wreath; a red star edged in gold in place of the rising sun; the ring of stars in gold. The blue globe keeps it distinct from the Iberian Socialist Republic's all-gold emblem. The map colour stays the Latin Union's red.
 
 ## Aragonese Republic (`CAT_aragon_democratic`)
 
