@@ -3230,4 +3230,267 @@ HSP_federal_claims_cat = {
 			}
 		}
 	}
+
+	# Limited wars, after vanilla SIA_start_limited_war_indochina. The target controls land that is a core of
+	# our puppet but not its own: France or Vichy for Morocco; for the French Basque Country (a French core)
+	# only a power occupying it, such as Germany after france.3. Italy's Sardinia and Sicily never qualify.
+	# One war at a time; a country fought once for a region can't be fought again for it.
+	HSP_limited_war_morocco = {
+		icon = GFX_decision_border_war
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			country_exists = MOR
+			MOR = { is_subject_of = ROOT }
+		}
+		target_root_trigger = {
+			country_exists = MOR
+			MOR = { is_subject_of = ROOT }
+		}
+		target_trigger = {
+			FROM = {
+				NOT = { tag = ROOT }
+				NOT = { original_tag = MOR }
+				NOT = { is_subject_of = ROOT }
+				any_controlled_state = {
+					is_core_of = MOR
+					NOT = { is_core_of = PREV }
+				}
+			}
+			NOT = { is_in_array = { array = ROOT.HSP_limited_war_tried_MOR value = FROM } }
+		}
+		available = {
+			FROM = { HSP_can_start_limited_war = yes }
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_core_of = MOR
+				is_controlled_by = FROM
+				NOT = { is_core_of = FROM }
+			}
+		}
+		cost = 25
+		fire_only_once = no
+		complete_effect = {
+			hidden_effect = {
+				MOR = {
+					ROOT = { set_variable = { HSP_limited_war_puppet = PREV } }
+				}
+				clear_array = HSP_limited_war_states
+				every_state = {
+					limit = {
+						is_core_of = MOR
+						is_controlled_by = FROM
+						NOT = { is_core_of = FROM }
+					}
+					add_to_array = { array = ROOT.HSP_limited_war_states value = THIS }
+				}
+				add_to_array = { array = HSP_limited_war_tried_MOR value = FROM }
+			}
+			HSP_limited_war_start = yes
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 0
+				FROM = { is_major = yes }
+				NOT = {
+					fighting_army_strength_ratio = {
+						tag = FROM
+						ratio > 0.6
+					}
+				}
+			}
+		}
+	}
+
+	HSP_limited_war_basque = {
+		icon = GFX_decision_border_war
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			country_exists = NAV
+			NAV = { is_subject_of = ROOT }
+		}
+		target_root_trigger = {
+			country_exists = NAV
+			NAV = { is_subject_of = ROOT }
+		}
+		target_trigger = {
+			FROM = {
+				NOT = { tag = ROOT }
+				NOT = { original_tag = NAV }
+				NOT = { is_subject_of = ROOT }
+				any_controlled_state = {
+					is_core_of = NAV
+					NOT = { is_core_of = PREV }
+				}
+			}
+			NOT = { is_in_array = { array = ROOT.HSP_limited_war_tried_NAV value = FROM } }
+		}
+		available = {
+			FROM = { HSP_can_start_limited_war = yes }
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_core_of = NAV
+				is_controlled_by = FROM
+				NOT = { is_core_of = FROM }
+			}
+		}
+		cost = 25
+		fire_only_once = no
+		complete_effect = {
+			hidden_effect = {
+				NAV = {
+					ROOT = { set_variable = { HSP_limited_war_puppet = PREV } }
+				}
+				clear_array = HSP_limited_war_states
+				every_state = {
+					limit = {
+						is_core_of = NAV
+						is_controlled_by = FROM
+						NOT = { is_core_of = FROM }
+					}
+					add_to_array = { array = ROOT.HSP_limited_war_states value = THIS }
+				}
+				add_to_array = { array = HSP_limited_war_tried_NAV value = FROM }
+			}
+			HSP_limited_war_start = yes
+		}
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 0
+				FROM = { is_major = yes }
+				NOT = {
+					fighting_army_strength_ratio = {
+						tag = FROM
+						ratio > 0.6
+					}
+				}
+			}
+		}
+	}
+
+	# 120 days to take the recorded states (HSP_limited_war_start). A win makes peace and hands them to the
+	# puppet; a timeout unlocks HSP_limited_war_ceasefire and HSP_limited_war_full_war. Cancelled if Spain
+	# capitulates, the target falls or makes peace, or the puppet is gone (reunification): then the war goes
+	# on as a normal war, except that a fallen target's side still gets the white peace.
+	HSP_limited_war_mission = {
+		icon = GFX_decision_generic_military
+		allowed = {
+			original_tag = SPR
+		}
+		activation = {
+			always = no
+		}
+		available = {
+			all_of_scopes = {
+				array = HSP_limited_war_states
+				OR = {
+					is_controlled_by = ROOT
+					controller = { is_subject_of = ROOT }
+				}
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_in_array = { array = ROOT.HSP_limited_war_states value = THIS }
+				NOT = { is_controlled_by = ROOT }
+				NOT = { controller = { is_subject_of = ROOT } }
+			}
+		}
+		days_mission_timeout = 120
+		is_good = no
+		fire_only_once = no
+		complete_effect = {
+			HSP_limited_war_peace_out = yes
+			var:HSP_limited_war_puppet = {
+				for_each_scope_loop = {
+					array = ROOT.HSP_limited_war_states
+					transfer_state_to = PREV
+				}
+			}
+			HSP_limited_war_clear = yes
+		}
+		timeout_effect = {
+			set_country_flag = HSP_limited_war_timed_out_flag
+		}
+		cancel_trigger = {
+			OR = {
+				has_capitulated = yes
+				NOT = { has_variable = HSP_limited_war_target }
+				var:HSP_limited_war_target = {
+					OR = {
+						exists = no
+						has_capitulated = yes
+					}
+				}
+				NOT = { has_war_with = var:HSP_limited_war_target }
+				var:HSP_limited_war_puppet = {
+					OR = {
+						exists = no
+						NOT = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		cancel_effect = {
+			if = {
+				limit = {
+					has_capitulated = no
+					var:HSP_limited_war_puppet = {
+						exists = yes
+						is_subject_of = ROOT
+					}
+				}
+				HSP_limited_war_peace_out = yes
+			}
+			HSP_limited_war_clear = yes
+		}
+	}
+
+	# After a timeout: give up for nothing, or fight on as a normal war
+	HSP_limited_war_ceasefire = {
+		icon = GFX_decision_generic_civil_support
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_country_flag = HSP_limited_war_timed_out_flag
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			HSP_limited_war_peace_out = yes
+			add_stability = -0.05
+			add_war_support = -0.05
+			HSP_limited_war_clear = yes
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	HSP_limited_war_full_war = {
+		icon = GFX_decision_generic_military
+		allowed = {
+			original_tag = SPR
+		}
+		visible = {
+			has_country_flag = HSP_limited_war_timed_out_flag
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			custom_effect_tooltip = HSP_limited_war_full_war_tt
+			HSP_limited_war_clear = yes
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
 }

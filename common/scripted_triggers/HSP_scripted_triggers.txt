@@ -247,3 +247,15 @@ HSP_is_federal_partner = {
 		NOT = { has_war_with = ROOT }
 	}
 }
+
+# Limited wars (HSP_federal_claims_cat). Scope: the target. ROOT = Spain.
+HSP_can_start_limited_war = {
+	NOT = { is_ally_with = ROOT }
+	NOT = { has_war_with = ROOT }
+	NOT = { has_non_aggression_pact_with = ROOT }
+	NOT = { is_guaranteed_by = ROOT }
+	custom_trigger_tooltip = {
+		tooltip = HSP_no_limited_war_running_tt
+		ROOT = { NOT = { has_variable = HSP_limited_war_target } }
+	}
+}

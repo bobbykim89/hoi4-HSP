@@ -1603,7 +1603,7 @@ focus_tree = {
 	}
 
 	## 스페인 재통일
-	# Yugoslavia-style: French Morocco and French Basque become cores once all of that land is held
+	# Yugoslavia-style: Spain cores only the states the puppets own when they are annexed
 	focus = {
 		id = HSP_reunite_spain
 		icon = GFX_goal_generic_national_unity
@@ -1631,20 +1631,22 @@ focus_tree = {
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
-			every_country = {
-				limit = {
-					OR = {
-						original_tag = GLC
-						original_tag = NAV
-						original_tag = CAT
-						original_tag = MOR
+			custom_effect_tooltip = HSP_reunite_spain_tt
+			hidden_effect = {
+				every_country = {
+					limit = {
+						OR = {
+							original_tag = GLC
+							original_tag = NAV
+							original_tag = CAT
+							original_tag = MOR
+						}
+						is_subject_of = ROOT
 					}
-					is_subject_of = ROOT
+					HSP_reunite_regional_puppet = yes
 				}
-				HSP_reunite_regional_puppet = yes
 			}
 			add_ideas = HSP_reunification_strain
-			HSP_claim_conquered_regions = yes
 		}
 		ai_will_do = {
 			base = 10
@@ -1666,7 +1668,6 @@ focus_tree = {
 				remove_idea = HSP_reunification_strain
 				add_idea = HSP_local_autonomy
 			}
-			HSP_claim_conquered_regions = yes
 		}
 		ai_will_do = {
 			base = 10
