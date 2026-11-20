@@ -23,10 +23,10 @@ For each ideology the game first looks for a flag named `<tag>_<ideology>.tga` (
 | `SPR_POR_commonwealth` | United Kingdom of Iberia | hand-made, to redo |
 | `HSP_habsburg_empire` | Habsburg Empire | hand-made, to redo |
 | `HSP_franco_spanish_commonwealth` | Franco-Spanish Commonwealth | copy of Kingdom of Spain |
-| `HSP_latin_union` | Latin Union | copy of vanilla Gran Colombia |
+| `HSP_latin_union` | Latin Union | made: tricolour, globe, sun, laurel, ring of white stars |
 | `HSP_iberian_socialist_republic` | Iberian Socialist Republic | copy of vanilla communist Spain |
-| `HSP_spanish_peoples_republic` | Spanish People's Republic | copy of vanilla democratic Spain |
-| `HSP_latin_union_communism` | Latin Socialist Union | none yet (falls back to the Latin Union) |
+| `HSP_spanish_peoples_republic` | Spanish People's Republic | made |
+| `HSP_latin_union_communism` | Latin Socialist Union | made |
 | `HSP_viceroyalty_nueva_espana` | Viceroyalty of New Spain | Carlist Cross of Burgundy |
 | `HSP_viceroyalty_nueva_granada` | Viceroyalty of New Granada | Carlist Cross of Burgundy |
 | `HSP_viceroyalty_rio_de_la_plata` | Viceroyalty of the Río de la Plata | Carlist Cross of Burgundy |
@@ -80,7 +80,7 @@ Motifs: keep the Second Republic's red, yellow and purple tricolour as the base;
 
 The Latin Union (see above) under a socialist government: the same transatlantic union of the Spanish Republic and the Latin American republics, now socialist. The game uses this flag for the Latin Union whenever its government is communist.
 
-Motifs: a red field; a wavy blue band edged in white running across the middle, the Atlantic that joins the two sides; in the upper hoist, a ring of five small gold stars, one per founding nation. It must stay distinct from the Iberian Socialist Republic (red field with a peninsula emblem), so the Atlantic band is the key element. The map colour stays the Latin Union's red.
+Made as the Latin Union's flag turned red, so the country stays recognisable when its government changes: a red field; the Latin Union's globe (Atlantic-centred, Spain marked) in a gold-edged laurel wreath; a red star edged in gold in place of the rising sun; the ring of stars in gold. The blue globe keeps it distinct from the Iberian Socialist Republic's all-gold emblem. The map colour stays the Latin Union's red.
 
 ## Aragonese Republic (`CAT_aragon_democratic`)
 
