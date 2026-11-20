@@ -151,6 +151,8 @@
   HSP_limited_war_start_tt:0 "We declare war on §Y[FROM.GetName]§! and have §Y120 days§! to take the highlighted states. If we take them all in time, the war ends in a white peace and they are handed to our region. If not, we choose between a §Yceasefire§! and §Rfull war§!."
   HSP_limited_war_full_war_tt:0 "The war goes on as a normal war; peace must be won at the peace conference."
   HSP_no_limited_war_running_tt:0 "We are not fighting another limited war"
+  HSP_target_side_not_at_war_tt:0 "Nobody on [FROM.GetNameDef]'s side (its faction, overlord, guarantors or war partners) is at war with us"
+  HSP_not_in_limited_war_tt:0 "We are not fighting a limited war"
   HSP_is_federal_partner_tt:0 "Is our puppet or in our faction, and not at war with us"
   HSP_fund_portuguese_republicans:0 "Fund the Portuguese Republicans"
   HSP_fund_portuguese_republicans_desc:0 "Exiles of the First Portuguese Republic plot against Salazar from Spanish soil. Money, printing presses and safe houses will spread their cause in Portugal."

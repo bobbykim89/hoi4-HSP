@@ -1615,6 +1615,10 @@ focus_tree = {
 		mutually_exclusive = { focus = HSP_iberian_defense_council }
 		available = {
 			custom_trigger_tooltip = {
+				tooltip = HSP_not_in_limited_war_tt
+				NOT = { has_variable = HSP_limited_war_target }
+			}
+			custom_trigger_tooltip = {
 				tooltip = HSP_regional_puppets_are_ours_tt
 				NOT = {
 					any_country = {
@@ -1686,6 +1690,10 @@ focus_tree = {
 		relative_position_id = HSP_moroccan_autonomy
 		mutually_exclusive = { focus = HSP_reunite_spain }
 		available = {
+			custom_trigger_tooltip = {
+				tooltip = HSP_not_in_limited_war_tt
+				NOT = { has_variable = HSP_limited_war_target }
+			}
 			custom_trigger_tooltip = {
 				tooltip = HSP_regional_puppets_are_ours_tt
 				NOT = {

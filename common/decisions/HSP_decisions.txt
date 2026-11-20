@@ -3377,8 +3377,9 @@ HSP_federal_claims_cat = {
 
 	# 120 days to take the recorded states (HSP_limited_war_start). A win makes peace and hands them to the
 	# puppet; a timeout unlocks HSP_limited_war_ceasefire and HSP_limited_war_full_war. Cancelled if Spain
-	# capitulates, the target falls or makes peace, or the puppet is gone (reunification): then the war goes
-	# on as a normal war, except that a fallen target's side still gets the white peace.
+	# capitulates, the target falls or makes peace, or the puppet is gone. A fallen target still means a win
+	# if we hold every state, and otherwise a white peace; if Spain capitulated or the puppet is gone, the
+	# war goes on as a normal war. Reunification waits for the limited war to end (HSP_not_in_limited_war_tt).
 	HSP_limited_war_mission = {
 		icon = GFX_decision_generic_military
 		allowed = {
@@ -3388,13 +3389,7 @@ HSP_federal_claims_cat = {
 			always = no
 		}
 		available = {
-			all_of_scopes = {
-				array = HSP_limited_war_states
-				OR = {
-					is_controlled_by = ROOT
-					controller = { is_subject_of = ROOT }
-				}
-			}
+			HSP_limited_war_won = yes
 		}
 		highlight_states = {
 			highlight_states_trigger = {
@@ -3407,14 +3402,7 @@ HSP_federal_claims_cat = {
 		is_good = no
 		fire_only_once = no
 		complete_effect = {
-			HSP_limited_war_peace_out = yes
-			var:HSP_limited_war_puppet = {
-				for_each_scope_loop = {
-					array = ROOT.HSP_limited_war_states
-					transfer_state_to = PREV
-				}
-			}
-			HSP_limited_war_clear = yes
+			HSP_limited_war_win = yes
 		}
 		timeout_effect = {
 			set_country_flag = HSP_limited_war_timed_out_flag
@@ -3447,7 +3435,14 @@ HSP_federal_claims_cat = {
 						is_subject_of = ROOT
 					}
 				}
-				HSP_limited_war_peace_out = yes
+				if = {
+					# we beat the target ourselves while holding every state: still a win
+					limit = { HSP_limited_war_won = yes }
+					HSP_limited_war_win = yes
+				}
+				else = {
+					HSP_limited_war_peace_out = yes
+				}
 			}
 			HSP_limited_war_clear = yes
 		}

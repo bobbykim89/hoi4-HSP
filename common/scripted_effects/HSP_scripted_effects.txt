@@ -992,32 +992,58 @@ HSP_limited_war_start = {
 	activate_mission = HSP_limited_war_mission
 }
 
-# Scope: Spain. White peace between Spain (and its subjects) and the countries recorded at the start
-# (and their subjects). Wars with anyone else go on.
+# Scope: Spain. White peace between our side (Spain, its subjects, and its faction members if Spain leads)
+# and the target's side: the countries recorded at the start, anyone who has since joined the target
+# (its faction, its subjects, its war partners), and their subjects. HSP_can_start_limited_war made sure
+# none of them was at war with us before, so wars with anyone else go on.
 HSP_limited_war_peace_out = {
+	hidden_effect = {
+		if = {
+			limit = {
+				has_variable = HSP_limited_war_target
+				var:HSP_limited_war_target = { exists = yes }
+			}
+			var:HSP_limited_war_target = {
+				every_country = {
+					limit = {
+						has_war_with = ROOT
+						OR = {
+							has_war_together_with = PREV
+							is_in_faction_with = PREV
+							is_subject_of = PREV
+						}
+						NOT = { is_in_array = { array = ROOT.HSP_limited_war_enemies value = THIS } }
+					}
+					add_to_array = { array = ROOT.HSP_limited_war_enemies value = THIS }
+				}
+			}
+		}
+	}
 	for_each_scope_loop = {
 		array = HSP_limited_war_enemies
 		every_enemy_country = {
-			limit = {
-				OR = {
-					tag = ROOT
-					is_subject_of = ROOT
-				}
-			}
+			limit = { HSP_is_on_our_limited_war_side = yes }
 			white_peace = { tag = PREV }
 		}
 		every_subject_country = {
 			every_enemy_country = {
-				limit = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
+				limit = { HSP_is_on_our_limited_war_side = yes }
 				white_peace = { tag = PREV }
 			}
 		}
 	}
+}
+
+# Scope: Spain. The win: peace, and the recorded states go to the puppet.
+HSP_limited_war_win = {
+	HSP_limited_war_peace_out = yes
+	var:HSP_limited_war_puppet = {
+		for_each_scope_loop = {
+			array = ROOT.HSP_limited_war_states
+			transfer_state_to = PREV
+		}
+	}
+	HSP_limited_war_clear = yes
 }
 
 # Scope: Spain. Ends the limited war's bookkeeping. HSP_limited_war_tried_MOR/NAV are kept: a country
