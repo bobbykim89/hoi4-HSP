@@ -1983,3 +1983,9 @@ HSP_iberian_socialist_republic = {
 	color = rgb { 170 30 40 }
 	color_ui = rgb { 220 60 60 }
 }
+
+# Democracy path: Spain after the popular front's socialist switch (HSP_peoples_republic)
+HSP_spanish_peoples_republic = {
+	color = rgb { 150 40 60 }
+	color_ui = rgb { 200 70 90 }
+}
