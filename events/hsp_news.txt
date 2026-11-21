@@ -329,3 +329,28 @@ news_event = {
 		}
 	}
 }
+
+# The Latin Sphere forms a customs union (HSP_latin_customs_union)
+news_event = {
+	id = HSP_spain_news.14
+	title = HSP_spain_news.14.title
+	desc = HSP_spain_news.14.desc
+	picture = GFX_news_event_generic_sign_treaty1
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = HSP_spain_news.14.a
+		trigger = {
+			original_tag = SPR
+		}
+	}
+	option = {
+		name = HSP_spain_news.14.b
+		trigger = {
+			NOT = {
+				original_tag = SPR
+			}
+		}
+	}
+}
